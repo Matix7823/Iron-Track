@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
 import { sessions } from "../data/sessions";
