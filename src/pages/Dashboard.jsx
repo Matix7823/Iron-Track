@@ -47,53 +47,7 @@ const Ring = ({ score, size = 72, strokeWidth = 6, color = "#3b82f6" }) => {
   );
 };
 
-// ─── Week calendar strip ─────────────────────────────────────────
-const WeekStrip = ({ history }) => {
-  const days = ["L", "M", "M", "J", "V", "S", "D"];
-  const today = new Date();
-  const monday = new Date(today);
-  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
 
-  const activeDates = new Set();
-  Object.values(history).forEach(entries =>
-    entries.forEach(e => { if (e.date) activeDates.add(e.date); })
-  );
-
-  const { customSchedule } = useApp();
-  const STATUS_ICONS = { super: '🏆', good: '✅', rest: '😴' };
-
-  return (
-    <div className="flex gap-2 justify-between">
-      {days.map((d, i) => {
-        const date = new Date(monday);
-        date.setDate(monday.getDate() + i);
-        const dateStr = date.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" });
-        const isToday = date.toDateString() === today.toDateString();
-        const isActive = activeDates.has(dateStr);
-        const isFuture = date > today;
-        
-        // Status from customSchedule if exists
-        const dayStatus = customSchedule[i]?.status;
-        const statusIcon = STATUS_ICONS[dayStatus];
-
-        return (
-          <div key={i} className="flex flex-col items-center gap-1.5 relative">
-            <div className={`day-dot ${isActive ? "active" : isFuture ? "rest" : "inactive"} ${isToday ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-transparent" : ""} relative`}>
-              {statusIcon ? (
-                <span className="text-[14px] leading-none">{statusIcon}</span>
-              ) : isActive ? (
-                "✓"
-              ) : (
-                d
-              )}
-            </div>
-            {isToday && <div className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.07 } } };
 const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } } };
@@ -264,11 +218,7 @@ const Dashboard = () => {
         ))}
       </motion.div>
 
-      {/* ── WEEK CALENDAR ── */}
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="glass-card p-4 mb-6">
-        <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Cette semaine</p>
-        <WeekStrip history={history} />
-      </motion.div>
+
 
       {/* ── TONNAGE HERO ── */}
       {weekStats.tonnage > 0 && (
