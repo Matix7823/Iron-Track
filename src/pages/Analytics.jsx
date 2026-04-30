@@ -140,9 +140,9 @@ const Analytics = () => {
               <p className="text-[10px] text-slate-500">/100</p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-1 sm:gap-2">
             {[["Épaules 3D",aes.latDelts,"text-violet-400"],["Haut Pecs",aes.upperChest,"text-blue-400"],["V-Taper Dos",aes.lats,"text-cyan-400"]].map(([l,v,c])=>(
-              <div key={l} className="glass rounded-xl p-3 text-center">
+              <div key={l} className="glass rounded-xl p-2 sm:p-3 text-center">
                 <p className="text-[9px] uppercase font-bold text-slate-500 mb-1">{l}</p>
                 <p className={`text-xl font-black ${c}`}>{v}</p>
                 <p className="text-[9px] text-slate-600">séries</p>
@@ -184,9 +184,9 @@ const Analytics = () => {
         {/* 1RM + Standards */}
         <motion.div variants={item} className="glass-card p-5 mb-5">
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><Zap size={16} className="text-amber-400"/>Records 1RM Estimés</h3>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {top1RMs.map(lift=>(
-              <div key={lift.label} className="glass rounded-2xl p-4 text-center">
+              <div key={lift.label} className="glass rounded-2xl p-2 sm:p-4 text-center">
                 <p className="text-[9px] uppercase font-bold text-slate-500 mb-2">{lift.label.split(" ").pop()}</p>
                 <p className="text-2xl font-black text-white">{lift.best||"—"}</p>
                 {lift.best>0&&<p className="text-[9px] text-slate-600 mt-0.5">kg 1RM</p>}

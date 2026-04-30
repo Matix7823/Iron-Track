@@ -178,13 +178,13 @@ const Dashboard = () => {
       </motion.div>
 
       {/* ── HERO STATS ROW ── */}
-      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-3 gap-3 mb-6">
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
         {[
           { label: "Séries 7j", value: weekStats.sessions, icon: Dumbbell, color: "text-blue-400", bg: "bg-blue-500/12" },
           { label: "Streak", value: streak, suffix: "🔥", icon: Flame, color: "text-orange-400", bg: "bg-orange-500/12" },
           { label: "Total", value: totalSessions, icon: Trophy, color: "text-amber-400", bg: "bg-amber-500/12" },
         ].map(({ label, value, suffix = "", icon: Icon, color, bg }) => (
-          <motion.div key={label} variants={item} className="stat-card text-center">
+          <motion.div key={label} variants={item} className="stat-card text-center !p-2 sm:!p-4">
             <div className={`w-8 h-8 rounded-xl ${bg} flex items-center justify-center mx-auto mb-2`}>
               <Icon size={16} className={color} />
             </div>
@@ -263,10 +263,10 @@ const Dashboard = () => {
       {/* ── QUICK START ── */}
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="mb-6">
         <p className="section-title"><Target size={18} className="text-blue-400" />Démarrer une séance</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
           {Object.entries(sessions).slice(0, 6).map(([key, s], i) => (
             <motion.div key={key} initial={{ opacity: 0, scale: .93 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .3 + i * .05 }}>
-              <Link to="/workout" state={{ session: key }} className="glass-card glass-card-interactive p-4 flex flex-col gap-3 hover:glow-blue block no-underline group">
+              <Link to="/workout" state={{ session: key }} className="glass-card glass-card-interactive p-3 sm:p-4 flex flex-col gap-2 sm:gap-3 hover:glow-blue block no-underline group">
                 <div className="flex items-center justify-between">
                   <span className={`w-9 h-9 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white text-sm font-black shadow-lg`}>{key}</span>
                   <ChevronRight size={14} className="text-slate-600 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
@@ -298,11 +298,11 @@ const Dashboard = () => {
       </motion.div>
 
       {/* ── 1RM RECORDS ── */}
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }} className="glass-card p-5 mb-6 glow-gold border-amber-500/15">
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }} className="glass-card p-4 sm:p-5 mb-6 glow-gold border-amber-500/15">
         <p className="section-title text-base"><Trophy size={16} className="text-amber-400" />Records Personnels</p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {top1RMs.map(lift => (
-            <div key={lift.label} className="glass rounded-2xl p-3 text-center">
+            <div key={lift.label} className="glass rounded-2xl p-2 sm:p-3 text-center">
               <p className="text-[9px] uppercase font-bold text-slate-500 mb-2">{lift.label}</p>
               <p className="text-xl font-black text-white">{lift.best || "—"}</p>
               {lift.best > 0 && <p className="text-[9px] text-slate-600">kg 1RM</p>}

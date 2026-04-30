@@ -73,7 +73,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
       <motion.div 
         initial={{ y: 50, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
-        className="glass-dark w-full max-w-xl max-h-[80vh] rounded-3xl p-6 overflow-hidden flex flex-col border border-white/10"
+        className="glass-dark w-[95%] sm:w-full max-w-xl max-h-[80vh] rounded-3xl p-4 sm:p-6 overflow-hidden flex flex-col border border-white/10"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
@@ -238,12 +238,12 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
               </div>
 
               {/* Column labels */}
-              <div className="flex gap-1.5 text-[9px] text-slate-600 font-bold uppercase text-center px-1">
-                <div className="w-6">Set</div>
+              <div className="flex gap-1 sm:gap-1.5 text-[8px] sm:text-[9px] text-slate-600 font-bold uppercase text-center px-0.5 sm:px-1">
+                <div className="w-5 sm:w-6">Set</div>
                 <div className="flex-1">{isCardio?"Niv.":isTime?"Lest (kg)":"Poids (kg)"}</div>
                 <div className="flex-1">{isTime?(exo.unit==="minutes"?"Min":"Sec"):"Reps"}</div>
                 {!isCardio && <div className="flex-1">RPE</div>}
-                <div className="w-7">✓</div>
+                <div className="w-6 sm:w-7">✓</div>
               </div>
 
               {/* Sets */}
@@ -270,20 +270,20 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                     <button
                       onClick={() => canTag && cycleSetTag(exo.id, si)}
                       disabled={!canTag}
-                      className={`w-6 h-7 text-[10px] font-bold rounded-md flex items-center justify-center shrink-0 border transition-all ${tagCls} ${canTag?"cursor-pointer hover:scale-110 active:scale-90":"cursor-default border-transparent"}`}>
+                      className={`w-5 h-6 sm:w-6 sm:h-7 text-[9px] sm:text-[10px] font-bold rounded-md flex items-center justify-center shrink-0 border transition-all ${tagCls} ${canTag?"cursor-pointer hover:scale-110 active:scale-90":"cursor-default border-transparent"}`}>
                       {label}
                     </button>
                     <input type="number" disabled={isDone||isJunk} value={set.weight}
                       onChange={e => handleSetChange(exo.id, si, "weight", e.target.value)}
-                      className="set-input border-l border-white/6" placeholder="—" />
+                      className="set-input border-l border-white/6 text-sm sm:text-base" placeholder="—" />
                     <input type="number" disabled={isDone||isJunk} value={set.reps}
                       onChange={e => handleSetChange(exo.id, si, "reps", e.target.value)}
-                      className="set-input border-l border-white/6" placeholder={repsPlaceholder} />
+                      className="set-input border-l border-white/6 text-sm sm:text-base" placeholder={repsPlaceholder} />
                     {!isCardio && (
                       <div className="flex-1 border-l border-white/6">
                         <select disabled={isDone||isJunk} value={set.rpe}
                           onChange={e => handleSetChange(exo.id, si, "rpe", e.target.value)}
-                          className="w-full bg-transparent text-center font-bold text-sm py-1.5 appearance-none outline-none cursor-pointer text-blue-400 disabled:text-slate-600">
+                          className="w-full bg-transparent text-center font-bold text-xs sm:text-sm py-1 sm:py-1.5 appearance-none outline-none cursor-pointer text-blue-400 disabled:text-slate-600">
                           <option value="">—</option>
                           {[6,7,8,9,10].map(n=><option key={n} value={n} className="bg-[#0a0f1e]">{n}</option>)}
                         </select>
@@ -291,10 +291,10 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                     )}
                     <button
                       onClick={() => !isJunk && toggleSetDone(exo.id, si, exo.rest)}
-                      className="w-7 flex justify-center items-center active:scale-90 transition-transform">
+                      className="w-6 sm:w-7 flex justify-center items-center active:scale-90 transition-transform shrink-0">
                       {isDone
-                        ? <CheckCircle2 size={20} className="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,.7)]" />
-                        : <Circle size={20} className="text-slate-700 hover:text-blue-400 transition-colors" />}
+                        ? <CheckCircle2 className="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,.7)] w-5 h-5 sm:w-6 sm:h-6" />
+                        : <Circle className="text-slate-700 hover:text-blue-400 transition-colors w-5 h-5 sm:w-6 sm:h-6" />}
                     </button>
                   </motion.div>
                 );
