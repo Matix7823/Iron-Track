@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Dumbbell, Activity } from "lucide-react";
+import { Search, Dumbbell, Activity, Play, Youtube } from "lucide-react";
 
 const muscleColors = {
   "Pectoraux":  { bg: "bg-blue-500/20",    text: "text-blue-400",    border: "border-blue-500/50"    },
@@ -122,17 +122,24 @@ const ExerciseLibrary = () => {
                 <h3 className={`text-sm font-black text-white group-hover:${colors.text} transition-colors mb-1.5 leading-tight`}>{exo.name}</h3>
                 <p className="text-[11px] text-slate-500 italic leading-relaxed mb-3 line-clamp-2">"{exo.note}"</p>
                 <div className="flex gap-4 pt-2.5 border-t border-white/5">
-                  <div>
+                  <div className="flex-1">
                     <p className="text-[9px] uppercase font-bold text-slate-600">Séries/Reps</p>
                     <p className="text-xs font-bold text-white">{exo.sets} × {exo.reps}</p>
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-[9px] uppercase font-bold text-slate-600">Tempo</p>
                     <p className={`text-xs font-bold ${colors.text}`}>{exo.tempo}</p>
                   </div>
-                  <div>
-                    <p className="text-[9px] uppercase font-bold text-slate-600">Repos</p>
-                    <p className="text-xs font-bold text-white">{exo.rest}s</p>
+                  <div className="flex-1 shrink-0">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(`https://www.youtube.com/results?search_query=how+to+do+${exo.name.replace(/\s+/g, '+')}+fitness`, '_blank');
+                      }}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${colors.bg} ${colors.text} border ${colors.border} hover:scale-105 active:scale-95 transition-all text-[10px] font-black uppercase mt-1`}
+                    >
+                      <Play size={10} fill="currentColor" /> Vidéo
+                    </button>
                   </div>
                 </div>
               </motion.div>

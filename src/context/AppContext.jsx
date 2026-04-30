@@ -24,13 +24,30 @@ export const AppProvider = ({ children }) => {
 
   const [customSchedule, setCustomSchedule] = useState(() => {
     const saved = localStorage.getItem('iron_track_custom_schedule');
-    if (saved) return JSON.parse(saved);
-    return ["-", "-", "-", "-", "-", "-", "-"];
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        // Migrer les anciens formats (strings) vers le nouveau format (objets)
+        return parsed.map(d => typeof d === 'string' ? { session: d, label: '', status: null } : d);
+      } catch(e) { return Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })); }
+    }
+    return Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
   });
 
   const updateCustomSchedule = useCallback((newSchedule) => {
     setCustomSchedule(newSchedule);
     localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+  }, []);
+
+  const updateDayStatus = useCallback((index, status) => {
+    setCustomSchedule(prev => {
+      const newSchedule = [...prev];
+      if (newSchedule[index]) {
+        newSchedule[index] = { ...newSchedule[index], status };
+      }
+      localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+      return newSchedule;
+    });
   }, []);
 
   // ... (CNS, Timer, UI states restants identiques) ...
@@ -394,7 +411,7 @@ export const AppProvider = ({ children }) => {
     history, bodyWeightHistory, bodyMeasurements, userSessions, isDataLoading,
     allExercises, currentBodyWeight,
     currentSession, setCurrentSession,
-    currentInput, customSchedule, updateCustomSchedule,
+    currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
     createCustomSession, deleteCustomSession,

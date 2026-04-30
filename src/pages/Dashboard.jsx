@@ -59,6 +59,9 @@ const WeekStrip = ({ history }) => {
     entries.forEach(e => { if (e.date) activeDates.add(e.date); })
   );
 
+  const { customSchedule } = useApp();
+  const STATUS_ICONS = { super: '🏆', good: '✅', rest: '😴' };
+
   return (
     <div className="flex gap-2 justify-between">
       {days.map((d, i) => {
@@ -68,10 +71,21 @@ const WeekStrip = ({ history }) => {
         const isToday = date.toDateString() === today.toDateString();
         const isActive = activeDates.has(dateStr);
         const isFuture = date > today;
+        
+        // Status from customSchedule if exists
+        const dayStatus = customSchedule[i]?.status;
+        const statusIcon = STATUS_ICONS[dayStatus];
+
         return (
-          <div key={i} className="flex flex-col items-center gap-1.5">
-            <div className={`day-dot ${isActive ? "active" : isFuture ? "rest" : "inactive"} ${isToday ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-transparent" : ""}`}>
-              {isActive ? "✓" : d}
+          <div key={i} className="flex flex-col items-center gap-1.5 relative">
+            <div className={`day-dot ${isActive ? "active" : isFuture ? "rest" : "inactive"} ${isToday ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-transparent" : ""} relative`}>
+              {statusIcon ? (
+                <span className="text-[14px] leading-none">{statusIcon}</span>
+              ) : isActive ? (
+                "✓"
+              ) : (
+                d
+              )}
             </div>
             {isToday && <div className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />}
           </div>
@@ -86,8 +100,34 @@ const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, trans
 
 // ─── Dashboard ───────────────────────────────────────────────────
 const Dashboard = () => {
-  const { history, bodyWeightHistory, allExercises, currentBodyWeight, cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS } = useApp();
+  const { 
+    history, bodyWeightHistory, allExercises, currentBodyWeight, 
+    cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel, 
+    setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS,
+    updateDayStatus
+  } = useApp();
   const { profile } = useAuth();
+  const [showYesterdayCheck, setShowYesterdayCheck] = React.useState(false);
+
+  React.useEffect(() => {
+    const lastCheck = localStorage.getItem('iron_last_yesterday_check');
+    const today = new Date().toDateString();
+    if (lastCheck !== today) {
+      setShowYesterdayCheck(true);
+    }
+  }, []);
+
+  const handleYesterdayAnswer = (answer) => {
+    // yesterday index (0-6)
+    const todayIdx = (new Date().getDay() + 6) % 7; // 0=Mon, 6=Sun
+    const yesterdayIdx = (todayIdx + 6) % 7;
+    
+    if (answer === 'repos') {
+      updateDayStatus(yesterdayIdx, 'rest');
+    }
+    localStorage.setItem('iron_last_yesterday_check', new Date().toDateString());
+    setShowYesterdayCheck(false);
+  };
 
   const todayStr = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   const hour = new Date().getHours();
@@ -172,6 +212,31 @@ const Dashboard = () => {
   return (
     <div className="page-container">
       <div className="bg-orbs" />
+
+      {/* ── YESTERDAY PROMPT ── */}
+      <AnimatePresence>
+        {showYesterdayCheck && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="glass-card p-5 mb-6 border-blue-500/30 glow-blue relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-10 rotate-12">
+              <Calendar size={60} className="text-blue-400" />
+            </div>
+            <h3 className="text-lg font-black text-white mb-1">Hier ? Repos ou Séance ?</h3>
+            <p className="text-xs text-slate-400 mb-4">Mets à jour ton calendrier de la semaine.</p>
+            <div className="flex gap-2">
+              <button onClick={() => handleYesterdayAnswer('seance')} className="btn-primary flex-1 py-2 text-xs">J'ai poussé ! 💪</button>
+              <button onClick={() => handleYesterdayAnswer('repos')} className="btn-glass flex-1 py-2 text-xs">C'était Repos 😴</button>
+              <button onClick={() => setShowYesterdayCheck(false)} className="px-3 text-slate-500 hover:text-white transition-colors">
+                <Bolt size={14} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── HEADER ── */}
       <motion.div variants={item} initial="hidden" animate="visible" className="mb-8">

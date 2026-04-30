@@ -107,20 +107,22 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
           {data.map((d, i) => {
             const xPos = getX(i);
             const yPos = getY(values[i]);
+            const dateStr = String(d.date || '');
+            // Show short date: "30/04" instead of full date
+            const shortDate = dateStr.length >= 5 ? dateStr.slice(0,5) : dateStr;
             return (
               <g key={i}>
                 <circle cx={xPos} cy={yPos} r="8" fill={color} opacity="0.1" />
                 <circle cx={xPos} cy={yPos} r="4" fill="#0d1117" stroke={color} strokeWidth="2" />
-                <text x={xPos} y={yPos - 13} textAnchor="middle" fill="#e2e8f0" fontSize="9" fontWeight="800">
+                <text x={xPos} y={yPos - 13} textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="800">
                   {Math.round(values[i] * 10) / 10}
                 </text>
                 <text
-                  x={xPos} y={height - 14}
-                  textAnchor="end" fill="#475569" fontSize="7"
-                  transform={`rotate(-40, ${xPos}, ${height - 14})`}
-                  fontFamily="monospace"
+                  x={xPos} y={height - 10}
+                  textAnchor="middle" fill="#94a3b8" fontSize="9"
+                  fontFamily="monospace" fontWeight="bold"
                 >
-                  {d.date}
+                  {shortDate}
                 </text>
               </g>
             );

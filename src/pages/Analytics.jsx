@@ -96,10 +96,44 @@ const Analytics = () => {
 
   const selectedHist = selectedExo ? normalizeHistory(history[selectedExo]||[]) : [];
 
-  const carbInfo = (() => {
-    const w=currentBodyWeight, maint=Math.round(w*33), prot=Math.round(w*2);
-    const isHigh=["A","B","C","D","E","F","G"].includes(currentSession);
-    return {cal:isHigh?maint+300:maint-300,prot,isHigh};
+  // Nutrition science-based calculations
+  const [nutritionGoal, setNutritionGoal] = React.useState(
+    () => localStorage.getItem('iron_nutrition_goal') || 'maintien'
+  );
+  const [userHeight, setUserHeight] = React.useState(
+    () => parseInt(localStorage.getItem('iron_user_height')) || 175
+  );
+  const [userAge, setUserAge] = React.useState(
+    () => parseInt(localStorage.getItem('iron_user_age')) || 25
+  );
+  const [showNutritionSetup, setShowNutritionSetup] = React.useState(false);
+
+  const saveNutritionPref = (goal, height, age) => {
+    localStorage.setItem('iron_nutrition_goal', goal);
+    localStorage.setItem('iron_user_height', height);
+    localStorage.setItem('iron_user_age', age);
+    setNutritionGoal(goal); setUserHeight(height); setUserAge(age);
+    setShowNutritionSetup(false);
+  };
+
+  const nutri = (() => {
+    const w = currentBodyWeight, h = userHeight, age = userAge;
+    // Harris-Benedict BMR (homme by default — a préciser si besoin)
+    const bmr = Math.round(88.36 + (13.4 * w) + (4.8 * h) - (5.7 * age));
+    const tdee = Math.round(bmr * 1.55); // Niveau actif (sport 3-5j/sem)
+    const isTrainingDay = ["A","B","C","D","E","F","G","H","I","J","K"].includes(currentSession);
+    
+    const goals = {
+      seche:    { calMod: -500, protFactor: 2.4, lipFactor: 0.8,  label: 'Sèche',        badge: 'badge-orange', icon: '🔥', color: 'text-orange-400' },
+      maintien: { calMod: 0,    protFactor: 2.0, lipFactor: 1.0,  label: 'Maintien',     badge: 'badge-blue',   icon: '⚖️',  color: 'text-blue-400'   },
+      masse:    { calMod: +400, protFactor: 1.8, lipFactor: 1.1,  label: 'Prise de Masse', badge: 'badge-green', icon: '💪', color: 'text-emerald-400' }
+    };
+    const g = goals[nutritionGoal] || goals.maintien;
+    const baseCal = tdee + g.calMod + (isTrainingDay ? 150 : 0);
+    const prot = Math.round(w * g.protFactor);
+    const lip = Math.round(w * g.lipFactor);
+    const glucides = Math.round((baseCal - prot*4 - lip*9) / 4);
+    return { bmr, tdee, cal: baseCal, prot, lip, glucides: Math.max(0, glucides), ...g, isTrainingDay };
   })();
 
   return (
@@ -198,19 +232,79 @@ const Analytics = () => {
           <p className="text-[9px] text-slate-600 text-center mt-3">*Basé sur {currentBodyWeight}kg (poids de corps)</p>
         </motion.div>
 
-        {/* Carb cycling */}
+        {/* Nutrition du Jour */}
         <motion.div variants={item} className="glass-card p-5 mb-5">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-white flex items-center gap-2"><Flame size={16} className={carbInfo.isHigh?"text-emerald-400":"text-orange-400"}/>Nutrition du Jour</h3>
-            <span className={`badge ${carbInfo.isHigh?"badge-green":"badge-orange"}`}>{carbInfo.isHigh?"High Carb 💪":"Low Carb 🔥"}</span>
+            <h3 className="font-bold text-white flex items-center gap-2"><Flame size={16} className={nutri.color}/>Nutrition du Jour</h3>
+            <div className="flex items-center gap-2">
+              <span className={`badge ${nutri.badge}`}>{nutri.icon} {nutri.label}</span>
+              <button onClick={() => setShowNutritionSetup(v => !v)} className="text-slate-500 hover:text-white transition-colors">
+                <Target size={14}/>
+              </button>
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            {[["Protéines",`${carbInfo.prot}g`,"text-blue-400"],["Calories",`${carbInfo.cal} kcal`,carbInfo.isHigh?"text-emerald-400":"text-orange-400"]].map(([l,v,c])=>(
-              <div key={l} className="glass rounded-xl p-4 text-center">
-                <p className="text-[9px] uppercase font-bold text-slate-500 mb-1">{l}</p>
-                <p className={`text-xl font-black ${c}`}>{v}</p>
+
+          {/* Setup form */}
+          {showNutritionSetup && (
+            <div className="glass rounded-2xl p-4 mb-4 border border-white/5 space-y-3">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tes informations</p>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1">Taille (cm)</label>
+                  <input type="number" defaultValue={userHeight} onChange={e => localStorage.setItem('iron_user_height', e.target.value) || setUserHeight(+e.target.value)} className="input-premium text-center"/>
+                </div>
+                <div>
+                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1">Age</label>
+                  <input type="number" defaultValue={userAge} onChange={e => localStorage.setItem('iron_user_age', e.target.value) || setUserAge(+e.target.value)} className="input-premium text-center"/>
+                </div>
               </div>
+              <div className="flex gap-2">
+                {['seche','maintien','masse'].map(g => (
+                  <button key={g} onClick={() => { localStorage.setItem('iron_nutrition_goal', g); setNutritionGoal(g); setShowNutritionSetup(false); }}
+                    className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${ nutritionGoal===g ? 'bg-blue-600 text-white' : 'glass text-slate-400 hover:text-white'}`}>
+                    {g==='seche'?'🔥 Sèche':g==='maintien'?'⚖️ Maintien':'💪 Masse'}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Goal selector tabs */}
+          <div className="flex gap-1.5 mb-4">
+            {[['seche','🔥 Sèche'],['maintien','⚖️ Maintien'],['masse','💪 Masse']].map(([g, l]) => (
+              <button key={g} onClick={() => { localStorage.setItem('iron_nutrition_goal', g); setNutritionGoal(g); }}
+                className={`flex-1 py-2 text-[10px] font-bold rounded-xl transition-all border ${ nutritionGoal===g ? 'bg-blue-600/30 border-blue-500/50 text-blue-300' : 'border-white/8 text-slate-500 hover:text-slate-300'}`}>
+                {l}
+              </button>
             ))}
+          </div>
+
+          {/* Main macros grid */}
+          <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="glass rounded-xl p-4 text-center">
+              <p className="text-[9px] uppercase font-bold text-slate-500 mb-1">Calories</p>
+              <p className={`text-2xl font-black ${nutri.color}`}>{nutri.cal}</p>
+              <p className="text-[9px] text-slate-600">kcal/jour</p>
+            </div>
+            <div className="glass rounded-xl p-4 text-center">
+              <p className="text-[9px] uppercase font-bold text-slate-500 mb-1">Protéines</p>
+              <p className="text-2xl font-black text-blue-400">{nutri.prot}g</p>
+              <p className="text-[9px] text-slate-600">{(nutri.prot/currentBodyWeight).toFixed(1)}g/kg</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="glass rounded-xl p-3 text-center">
+              <p className="text-[9px] uppercase font-bold text-slate-500 mb-0.5">Glucides</p>
+              <p className="text-lg font-black text-amber-400">{nutri.glucides}g</p>
+            </div>
+            <div className="glass rounded-xl p-3 text-center">
+              <p className="text-[9px] uppercase font-bold text-slate-500 mb-0.5">Lipides</p>
+              <p className="text-lg font-black text-orange-400">{nutri.lip}g</p>
+            </div>
+          </div>
+          <div className="text-[9px] text-slate-600 text-center space-y-0.5">
+            <p>BMR : {nutri.bmr} kcal • TDEE (actif) : {nutri.tdee} kcal • {currentBodyWeight}kg</p>
+            {nutri.isTrainingDay && <p className="text-blue-500/70">+150 kcal jour d'entraînement inclus</p>}
           </div>
         </motion.div>
 

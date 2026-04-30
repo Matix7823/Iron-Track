@@ -23,10 +23,15 @@ const Planning = () => {
   const [editingDayName, setEditingDayName] = useState(false);
   const [newDayName, setNewDayName] = useState("");
 
-  // customSchedule is now an array of {session, label} objects or old string format
-  const normalizedSchedule = customSchedule.map(d =>
-    typeof d === 'string' ? { session: d, label: '' } : d
-  );
+  const days = ["L","M","M","J","V","S","D"];
+
+  // customSchedule is now an array of {session, label, status} objects or old string format
+  const normalizedSchedule = Array.isArray(customSchedule) ? customSchedule.map(d =>
+    typeof d === 'string' ? { session: d, label: '', status: null } : { session: d?.session || '-', label: d?.label || '', status: d?.status || null }
+  ) : Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
+
+  const STATUS_ICONS = { super: '🏆', good: '✅', rest: '😴', none: null };
+  const STATUS_LABELS = { super: 'Super', good: 'Bonne', rest: 'Repos', none: '' };
 
   const handleSelectSession = (sessionKey) => {
     if (editingDay !== null) {
@@ -47,6 +52,15 @@ const Planning = () => {
   const removeDay = (idx) => {
     if (normalizedSchedule.length <= 1) return;
     const newSchedule = normalizedSchedule.filter((_, i) => i !== idx);
+    updateCustomSchedule(newSchedule);
+  };
+
+  const cycleStatus = (idx) => {
+    const d = normalizedSchedule[idx];
+    const cycle = { null: 'rest', rest: 'good', good: 'super', super: null };
+    const nextStatus = cycle[d.status ?? 'null'] !== undefined ? cycle[d.status ?? 'null'] : 'rest';
+    const newSchedule = [...normalizedSchedule];
+    newSchedule[idx] = { ...d, status: nextStatus === 'null' ? null : nextStatus };
     updateCustomSchedule(newSchedule);
   };
 
@@ -92,9 +106,16 @@ const Planning = () => {
                     {isRest ? "+" : d.session}
                   </button>
                   
-                  <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest ? "text-slate-700" : "text-slate-400"}`}>
-                    {isRest ? "Repos" : (s?.category || d.session)}
-                  </span>
+                  {/* Status icon — click to cycle */}
+                  <button
+                    onClick={() => cycleStatus(i)}
+                    title="Cliquer pour changer le statut"
+                    className="text-base leading-none hover:scale-125 transition-transform"
+                  >
+                    {d.status ? STATUS_ICONS[d.status] : (
+                      <span className="w-4 h-1 rounded-full bg-white/10 block mt-0.5" />
+                    )}
+                  </button>
 
                   {/* Remove day button (visible on hover) */}
                   {normalizedSchedule.length > 1 && (
