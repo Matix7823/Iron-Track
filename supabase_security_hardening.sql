@@ -11,20 +11,17 @@ ADD CONSTRAINT valid_email_format CHECK (
 );
 
 -- 2. Renforcement des politiques RLS (Row Level Security)
--- On s'assure explicitement que le rôle est 'authenticated' pour chaque action.
--- Cela empêche l'accès anonyme même s'il y avait un bug d'UID.
 
 -- Pour la table profiles
 DROP POLICY IF EXISTS "Les utilisateurs peuvent lire leur propre profil" ON public.profiles;
 CREATE POLICY "Les utilisateurs peuvent lire leur propre profil" 
 ON public.profiles FOR SELECT 
-USING (auth.uid() = id AND auth.role() = 'authenticated');
+USING (auth.uid() = id);
 
 DROP POLICY IF EXISTS "Les admins peuvent lire tous les profils" ON public.profiles;
 CREATE POLICY "Les admins peuvent lire tous les profils" 
 ON public.profiles FOR SELECT 
 USING ( 
-  auth.role() = 'authenticated' AND 
   (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
 );
 
@@ -32,7 +29,6 @@ DROP POLICY IF EXISTS "Les admins peuvent modifier les profils" ON public.profil
 CREATE POLICY "Les admins peuvent modifier les profils" 
 ON public.profiles FOR UPDATE 
 USING ( 
-  auth.role() = 'authenticated' AND 
   (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
 );
 
@@ -40,7 +36,6 @@ DROP POLICY IF EXISTS "Les admins peuvent supprimer les profils" ON public.profi
 CREATE POLICY "Les admins peuvent supprimer les profils" 
 ON public.profiles FOR DELETE 
 USING ( 
-  auth.role() = 'authenticated' AND 
   (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
 );
 
@@ -49,17 +44,17 @@ USING (
 DROP POLICY IF EXISTS "Les utilisateurs peuvent voir leurs données" ON public.app_state;
 CREATE POLICY "Les utilisateurs peuvent voir leurs données" 
 ON public.app_state FOR SELECT 
-USING (auth.uid() = user_id AND auth.role() = 'authenticated');
+USING (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Les utilisateurs peuvent inserer leurs données" ON public.app_state;
 CREATE POLICY "Les utilisateurs peuvent inserer leurs données" 
 ON public.app_state FOR INSERT 
-WITH CHECK (auth.uid() = user_id AND auth.role() = 'authenticated');
+WITH CHECK (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Les utilisateurs peuvent modifier leurs données" ON public.app_state;
 CREATE POLICY "Les utilisateurs peuvent modifier leurs données" 
 ON public.app_state FOR UPDATE 
-USING (auth.uid() = user_id AND auth.role() = 'authenticated');
+USING (auth.uid() = user_id);
 
 -- Bloquer la suppression des données app_state si non souhaité (par sécurité)
 -- Les utilisateurs ne devraient pas supprimer leur ligne principale app_state
