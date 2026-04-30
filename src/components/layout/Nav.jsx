@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Dumbbell, LayoutDashboard, Activity, Scale, Calendar, BookOpen } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Dumbbell, LayoutDashboard, Activity, Scale, Calendar, BookOpen, Shield, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "../../context/AuthContext";
 
 const navItems = [
   { to: "/",          icon: LayoutDashboard, label: "Home" },
@@ -12,8 +13,17 @@ const navItems = [
   { to: "/planning",  icon: Calendar,        label: "Planning" },
 ];
 
-export const Navbar = () => (
-  <header className="sticky top-0 z-40 glass-dark border-b border-white/5 shadow-2xl">
+export const Navbar = () => {
+  const { profile, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/auth');
+  };
+
+  return (
+    <header className="sticky top-0 z-40 glass-dark border-b border-white/5 shadow-2xl">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center gap-3">
@@ -54,11 +64,21 @@ export const Navbar = () => (
         ))}
       </nav>
 
-      {/* Mobile: show title */}
-      <p className="sm:hidden text-sm font-black text-white">IRON <span className="text-gradient">TRACKER</span></p>
+      {/* Auth / Admin actions */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        {profile?.role === 'admin' && (
+          <NavLink to="/admin" className="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-colors">
+            <Shield size={18} className="text-emerald-400" />
+          </NavLink>
+        )}
+        <button onClick={handleLogout} className="p-2 text-slate-400 hover:text-red-400 hover:bg-white/5 rounded-xl transition-colors">
+          <LogOut size={18} />
+        </button>
+      </div>
     </div>
   </header>
-);
+  );
+};
 
 export const BottomNav = () => (
   <nav className="sm:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark border-t border-white/5 shadow-2xl">

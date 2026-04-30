@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
 import { supabase } from "../supabaseClient";
+import { useAuth } from "./AuthContext";
 import { sessions } from "../data/sessions";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
+import { sanitizeData } from "../utils/security";
 
 const AppContext = createContext(null);
 
@@ -14,6 +16,7 @@ export const AppProvider = ({ children }) => {
   const [bodyMeasurements, setBodyMeasurements] = useState([]);
   const [userSessions, setUserSessions] = useState(sessions);
   const [isDataLoading, setIsDataLoading] = useState(true);
+  const { user } = useAuth();
 
   // Session state
   const [currentSession, setCurrentSession] = useState("A");
@@ -36,11 +39,14 @@ export const AppProvider = ({ children }) => {
   // --- CHARGEMENT DATA ---
   useEffect(() => {
     const loadData = async () => {
+      if (!user) return; // Wait for user
+
+      setIsDataLoading(true);
       try {
         const { data, error } = await supabase
           .from("app_state")
           .select("data")
-          .eq("id", 1)
+          .eq("user_id", user.id)
           .single();
 
         if (error && error.code !== "PGRST116") {
@@ -54,14 +60,11 @@ export const AppProvider = ({ children }) => {
           setBodyMeasurements(parsed.bodyMeasurements || []);
           if (parsed.userSessions) setUserSessions(parsed.userSessions);
         } else {
-          const savedData = localStorage.getItem(STORAGE_KEY);
-          if (savedData) {
-            const parsed = JSON.parse(savedData);
-            setHistory(parsed.history || {});
-            setBodyWeightHistory(parsed.bodyWeight || []);
-            setBodyMeasurements(parsed.bodyMeasurements || []);
-            if (parsed.userSessions) setUserSessions(parsed.userSessions);
-          }
+          // If no data in Supabase, load default
+          setHistory({});
+          setBodyWeightHistory([]);
+          setBodyMeasurements([]);
+          setUserSessions(sessions);
         }
       } catch (err) {
         console.error("Erreur lors du chargement des données", err);
@@ -70,18 +73,21 @@ export const AppProvider = ({ children }) => {
       }
     };
     loadData();
-  }, []);
+  }, [user]);
 
   // --- PERSISTENCE ---
   const persistData = useCallback(async (dataToSave) => {
+    if (!user) return;
     try {
-      const { error } = await supabase.from("app_state").upsert({ id: 1, data: dataToSave });
+      // Assainissement de toutes les données avant envoi en base de données (Défense contre XSS)
+      const safeData = sanitizeData(dataToSave);
+      
+      const { error } = await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
       if (error) console.error("Erreur sauvegarde Supabase", error);
     } catch (err) {
       console.error("Erreur sauvegarde Supabase", err);
     }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-  }, []);
+  }, [user]);
 
   // --- ALL EXERCISES (memoized based on userSessions) ---
   const allExercises = useMemo(() => {
