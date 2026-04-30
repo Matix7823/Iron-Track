@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, ChevronRight, Settings, Plus, Trash2 } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -18,7 +18,7 @@ const getSessionColor = (key, userSessions) => {
 };
 
 const Planning = () => {
-  const { setCurrentSession, customSchedule, updateCustomSchedule, userSessions } = useApp();
+  const { setCurrentSession, customSchedule, updateCustomSchedule, userSessions, deleteCustomSession, renameCustomSession } = useApp();
   const [editingDay, setEditingDay] = useState(null);
   const [editingDayName, setEditingDayName] = useState(false);
   const [newDayName, setNewDayName] = useState("");
@@ -180,12 +180,46 @@ const Planning = () => {
                   <span className="text-xl">😴</span>
                   <span className="text-xs font-bold text-slate-400">Repos</span>
                 </button>
-                {Object.entries(userSessions).map(([k, s]) => (
-                  <button key={k} onClick={() => handleSelectSession(k)} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-blue-500/50">
-                    <span className={`w-8 h-8 rounded-xl bg-gradient-to-br ${getSessionColor(k, userSessions)} flex items-center justify-center text-white font-black text-xs`}>{k}</span>
-                    <span className="text-[10px] font-bold text-white text-center leading-tight mt-1">{s.category}</span>
-                  </button>
-                ))}
+                {Object.entries(userSessions).map(([k, s]) => {
+                  const isCustom = !sessions[k];
+                  return (
+                    <div key={k} className="relative group">
+                      <button 
+                        onClick={() => handleSelectSession(k)} 
+                        className="w-full glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-blue-500/50"
+                      >
+                        <span className={`w-8 h-8 rounded-xl bg-gradient-to-br ${getSessionColor(k, userSessions)} flex items-center justify-center text-white font-black text-xs`}>{k}</span>
+                        <span className="text-[10px] font-bold text-white text-center leading-tight mt-1">{s.category}</span>
+                      </button>
+                      
+                      {isCustom && (
+                        <div className="absolute top-1 right-1 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const newName = window.prompt("Nouveau nom de la séance :", s.category);
+                              if (newName) renameCustomSession(k, newName);
+                            }}
+                            className="w-5 h-5 bg-blue-500 rounded-md flex items-center justify-center text-white hover:bg-blue-400"
+                          >
+                            <Edit2 size={10} />
+                          </button>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (window.confirm(`Supprimer définitivement la séance ${k} ?`)) {
+                                deleteCustomSession(k);
+                              }
+                            }}
+                            className="w-5 h-5 bg-red-500 rounded-md flex items-center justify-center text-white hover:bg-red-400"
+                          >
+                            <Trash size={10} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>

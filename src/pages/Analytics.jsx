@@ -106,21 +106,31 @@ const Analytics = () => {
   const [userAge, setUserAge] = useState(
     () => parseInt(localStorage.getItem('iron_user_age')) || 25
   );
+  const [userGender, setUserGender] = useState(
+    () => localStorage.getItem('iron_user_gender') || 'homme'
+  );
+  const [activityLevel, setActivityLevel] = useState(
+    () => parseFloat(localStorage.getItem('iron_activity_level')) || 1.55
+  );
   const [showNutritionSetup, setShowNutritionSetup] = useState(false);
 
-  const saveNutritionPref = (goal, height, age) => {
+  const saveNutritionPref = (goal, height, age, gender, activity) => {
     localStorage.setItem('iron_nutrition_goal', goal);
     localStorage.setItem('iron_user_height', height);
     localStorage.setItem('iron_user_age', age);
-    setNutritionGoal(goal); setUserHeight(height); setUserAge(age);
+    localStorage.setItem('iron_user_gender', gender);
+    localStorage.setItem('iron_activity_level', activity);
+    setNutritionGoal(goal); setUserHeight(height); setUserAge(age); setUserGender(gender); setActivityLevel(activity);
     setShowNutritionSetup(false);
   };
 
   const nutri = (() => {
-    const w = currentBodyWeight, h = userHeight, age = userAge;
-    // Harris-Benedict BMR (homme by default — a préciser si besoin)
-    const bmr = Math.round(88.36 + (13.4 * w) + (4.8 * h) - (5.7 * age));
-    const tdee = Math.round(bmr * 1.55); // Niveau actif (sport 3-5j/sem)
+    const w = currentBodyWeight, h = userHeight, age = userAge, gender = userGender;
+    // Mifflin-St Jeor BMR (plus précis)
+    let bmr = (10 * w) + (6.25 * h) - (5 * age);
+    bmr = gender === 'homme' ? bmr + 5 : bmr - 161;
+    
+    const tdee = Math.round(bmr * activityLevel);
     const isTrainingDay = ["A","B","C","D","E","F","G","H","I","J","K"].includes(currentSession);
     
     const goals = {
@@ -246,25 +256,42 @@ const Analytics = () => {
 
           {/* Setup form */}
           {showNutritionSetup && (
-            <div className="glass rounded-2xl p-4 mb-4 border border-white/5 space-y-3">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tes informations</p>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1">Taille (cm)</label>
-                  <input type="number" defaultValue={userHeight} onChange={e => localStorage.setItem('iron_user_height', e.target.value) || setUserHeight(+e.target.value)} className="input-premium text-center"/>
+            <div className="glass rounded-2xl p-4 mb-4 border border-white/5 space-y-4 animate-scale-in">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tes informations physiologiques</p>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex gap-1 p-1 bg-black/30 rounded-xl">
+                  {['homme','femme'].map(g => (
+                    <button key={g} onClick={() => { localStorage.setItem('iron_user_gender', g); setUserGender(g); }}
+                      className={`flex-1 py-1.5 text-[10px] font-bold rounded-lg transition-all ${userGender===g ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}>
+                      {g==='homme'?'HOMME':'FEMME'}
+                    </button>
+                  ))}
                 </div>
                 <div>
-                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1">Age</label>
-                  <input type="number" defaultValue={userAge} onChange={e => localStorage.setItem('iron_user_age', e.target.value) || setUserAge(+e.target.value)} className="input-premium text-center"/>
+                  <input type="number" placeholder="Âge" defaultValue={userAge} onChange={e => {localStorage.setItem('iron_user_age', e.target.value); setUserAge(+e.target.value);}} className="input-premium text-center !py-2 !text-xs"/>
                 </div>
               </div>
-              <div className="flex gap-2">
-                {['seche','maintien','masse'].map(g => (
-                  <button key={g} onClick={() => { localStorage.setItem('iron_nutrition_goal', g); setNutritionGoal(g); setShowNutritionSetup(false); }}
-                    className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${ nutritionGoal===g ? 'bg-blue-600 text-white' : 'glass text-slate-400 hover:text-white'}`}>
-                    {g==='seche'?'🔥 Sèche':g==='maintien'?'⚖️ Maintien':'💪 Masse'}
-                  </button>
-                ))}
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1 ml-1">Taille (cm)</label>
+                  <input type="number" defaultValue={userHeight} onChange={e => {localStorage.setItem('iron_user_height', e.target.value); setUserHeight(+e.target.value);}} className="input-premium text-center !py-2 !text-xs"/>
+                </div>
+                <div>
+                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1 ml-1">Activité</label>
+                  <select value={activityLevel} onChange={e => {localStorage.setItem('iron_activity_level', e.target.value); setActivityLevel(+e.target.value);}} className="input-premium !py-2 !text-[10px]">
+                    <option value="1.2" className="bg-[#0a0f1e]">Sédentaire</option>
+                    <option value="1.375" className="bg-[#0a0f1e]">Léger (1-2j)</option>
+                    <option value="1.55" className="bg-[#0a0f1e]">Modéré (3-5j)</option>
+                    <option value="1.725" className="bg-[#0a0f1e]">Intense (6-7j)</option>
+                    <option value="1.9" className="bg-[#0a0f1e]">Athlète</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-white/5">
+                <button onClick={() => setShowNutritionSetup(false)} className="btn-primary w-full !py-2 !text-xs">Valider les réglages</button>
               </div>
             </div>
           )}
@@ -303,8 +330,40 @@ const Analytics = () => {
             </div>
           </div>
           <div className="text-[9px] text-slate-600 text-center space-y-0.5">
-            <p>BMR : {nutri.bmr} kcal • TDEE (actif) : {nutri.tdee} kcal • {currentBodyWeight}kg</p>
+            <p>BMR : {nutri.bmr} kcal • TDEE (x{activityLevel}) : {nutri.tdee} kcal • {currentBodyWeight}kg</p>
             {nutri.isTrainingDay && <p className="text-blue-500/70">+150 kcal jour d'entraînement inclus</p>}
+          </div>
+        </motion.div>
+
+        {/* Objectifs Élite - 5% Bodyfat */}
+        <motion.div variants={item} className="glass-card p-5 mb-5 border-blue-500/30 glow-blue overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-4 opacity-5 -rotate-12">
+            <Trophy size={80} className="text-blue-400" />
+          </div>
+          <h3 className="font-bold text-white flex items-center gap-2 mb-3">
+            <Target size={16} className="text-blue-400"/> Objectifs Élite : Road to 5% BF
+          </h3>
+          <p className="text-[11px] text-slate-400 mb-4 leading-relaxed">
+            Atteindre 5% de masse grasse est le Graal du bodybuilding. Voici les pré-requis estimés pour y parvenir sans sacrifier ton muscle.
+          </p>
+          <div className="space-y-3">
+            {[
+              { label: "Protéines", val: "2.6 - 3.0g / kg", desc: "Nécessaire pour protéger le muscle en déficit extrême." },
+              { label: "Cardio NEAT", val: "12,000 pas / jour", desc: "Maintien de la dépense calorique hors salle." },
+              { label: "Force", val: "Maintenir 1RM", desc: "Si ta force chute de >10%, tu perds du muscle." },
+              { label: "Patience", val: "12 - 20 semaines", desc: "Une sèche réussie est lente et contrôlée." }
+            ].map((obj, i) => (
+              <div key={i} className="flex gap-3 items-start bg-black/20 p-2.5 rounded-xl border border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 shadow-[0_0_8px_#3b82f6]" />
+                <div>
+                  <div className="flex justify-between items-center mb-0.5">
+                    <span className="text-[10px] font-black text-white uppercase">{obj.label}</span>
+                    <span className="text-[10px] font-black text-blue-400">{obj.val}</span>
+                  </div>
+                  <p className="text-[9px] text-slate-500 leading-tight">{obj.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 

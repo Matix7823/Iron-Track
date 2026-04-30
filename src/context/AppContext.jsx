@@ -199,6 +199,29 @@ export const AppProvider = ({ children }) => {
     setUserSessions((prev) => {
       const newSessions = { ...prev };
       delete newSessions[sessionId];
+      
+      // Also update customSchedule to remove references to this session
+      setCustomSchedule(prevSchedule => {
+        const newSchedule = prevSchedule.map(d => d.session === sessionId ? { ...d, session: '-' } : d);
+        localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+        return newSchedule;
+      });
+
+      const dataToSave = { history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions: newSessions };
+      persistData(dataToSave);
+      return newSessions;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, persistData]);
+
+  const renameCustomSession = useCallback((sessionId, newName) => {
+    setUserSessions((prev) => {
+      if (!prev[sessionId]) return prev;
+      const newSessions = { ...prev };
+      newSessions[sessionId] = { 
+        ...newSessions[sessionId], 
+        category: newName,
+        title: `Séance ${sessionId} : ${newName}`
+      };
       const dataToSave = { history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions: newSessions };
       persistData(dataToSave);
       return newSessions;
@@ -414,7 +437,7 @@ export const AppProvider = ({ children }) => {
     currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
-    createCustomSession, deleteCustomSession,
+    createCustomSession, deleteCustomSession, renameCustomSession,
     sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel,
     cnsScore, energyLevel, calculateCNS, resetCNS,
     timerSeconds, isTimerRunning, startTimer, stopTimer,
