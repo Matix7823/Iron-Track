@@ -1,16 +1,16 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Dumbbell, LayoutDashboard, Activity, Scale, Calendar, BookOpen, Shield, LogOut } from "lucide-react";
+import { Dumbbell, LayoutDashboard, Activity, Scale, Calendar, BookOpen, Shield, LogOut, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 
 const navItems = [
   { to: "/",          icon: LayoutDashboard, label: "Home" },
   { to: "/workout",   icon: Dumbbell,        label: "Séance" },
-  { to: "/exercises", icon: BookOpen,        label: "Encyclo" },
-  { to: "/analytics", icon: Activity,        label: "Stats" },
-  { to: "/profile",   icon: Scale,           label: "Profil" },
   { to: "/planning",  icon: Calendar,        label: "Planning" },
+  { to: "/community", icon: Users,           label: "Social" },
+  { to: "/exercises", icon: BookOpen,        label: "Encyclo" },
+  { to: "/profile",   icon: Scale,           label: "Profil" },
 ];
 
 export const Navbar = () => {

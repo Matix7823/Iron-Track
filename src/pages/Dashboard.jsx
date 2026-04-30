@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useApp } from "../context/AppContext";
+import { useAuth } from "../context/AuthContext";
 import { sessions } from "../data/sessions";
 import { parseDate } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard, calculateCNSScore } from "../utils/metrics";
@@ -86,10 +87,14 @@ const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, trans
 // ─── Dashboard ───────────────────────────────────────────────────
 const Dashboard = () => {
   const { history, bodyWeightHistory, allExercises, currentBodyWeight, cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS } = useApp();
+  const { profile } = useAuth();
 
   const todayStr = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Bonjour" : hour < 18 ? "Bon après-midi" : "Bonsoir";
+  
+  const userName = profile?.email ? profile.email.split('@')[0] : "";
+  const capitalizedName = userName.charAt(0).toUpperCase() + userName.slice(1);
 
   // Streak
   const streak = useMemo(() => {
@@ -172,7 +177,7 @@ const Dashboard = () => {
       <motion.div variants={item} initial="hidden" animate="visible" className="mb-8">
         <p className="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-1 capitalize">{todayStr}</p>
         <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight">
-          {greeting} 👋
+          {greeting} <span className="text-blue-400">{capitalizedName}</span> 👋
         </h1>
         <p className="text-slate-400 text-sm mt-1">Prêt à <span className="text-gradient font-bold">dominer</span> ta séance ?</p>
       </motion.div>

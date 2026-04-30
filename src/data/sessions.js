@@ -157,19 +157,11 @@ export const sessions = {
     ],
   },
   K: {
-    category: "Full Body",
-    title: "Séance K : Full Body Science",
-    focus: "Hypertrophie / Force Globale",
+    category: "Perso",
+    title: "Séance K : Personnalisée",
+    focus: "Ta propre séance sur mesure",
     color: "from-indigo-600 to-indigo-800",
-    exercises: [
-      { id: "k1", muscle: "Jambes", name: "Squat (Barre ou Machine)", note: "Focus chaîne antérieure.", tempo: "3-0-1-0", sets: 3, reps: "6-8", rest: 180 },
-      { id: "k2", muscle: "Ischios", name: "Soulevé de Terre Roumain", note: "Focus chaîne postérieure.", tempo: "3-1-1-0", sets: 3, reps: "8-10", rest: 120 },
-      { id: "k3", muscle: "Pecs", name: "Développé Couché / Incliné", note: "Poussée horizontale lourd.", tempo: "2-0-1-0", sets: 3, reps: "8-10", rest: 120 },
-      { id: "k4", muscle: "Dos", name: "Rowing Barre / Tirage Horizontal", note: "Tirage horizontal épais.", tempo: "2-0-1-1", sets: 3, reps: "8-12", rest: 120 },
-      { id: "k5", muscle: "Épaules", name: "Développé Militaire", note: "Poussée verticale.", tempo: "2-0-1-0", sets: 3, reps: "10-12", rest: 90 },
-      { id: "k6", muscle: "Dos", name: "Tractions / Tirage Vertical", note: "Tirage vertical largeur.", tempo: "2-0-1-1", sets: 3, reps: "10-12", rest: 90 },
-      { id: "k7", muscle: "Bras", name: "Superset Biceps/Triceps", note: "Isolation bras.", tempo: "2-0-1-0", sets: 2, reps: "12-15", rest: 60 },
-    ],
+    exercises: [],
   },
 };
 
@@ -182,10 +174,10 @@ export const schedules = [
     days: [
       { name: "Lun", session: "F", label: "Upper (Lourd)" },
       { name: "Mar", session: "G", label: "Lower (Lourd)" },
-      { name: "Mer", session: "-", label: "Repos" },
-      { name: "Jeu", session: "A", label: "Push (Volume)" },
-      { name: "Ven", session: "B", label: "Pull (Volume)" },
-      { name: "Sam", session: "C", label: "Legs (Volume)" },
+      { name: "Mer", session: "A", label: "Push (Volume)" },
+      { name: "Jeu", session: "B", label: "Pull (Volume)" },
+      { name: "Ven", session: "C", label: "Legs (Volume)" },
+      { name: "Sam", session: "-", label: "Repos" },
       { name: "Dim", session: "-", label: "Repos" },
     ],
   },

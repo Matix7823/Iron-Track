@@ -7,7 +7,7 @@ import { normalizeHistory, getPerformanceMetrics, calculate1RM } from "../utils/
 import {
   Save, CheckCircle2, Circle, Timer, PlayCircle, Flame, Zap,
   Target, Activity, AlertTriangle, TrendingDown, Clock,
-  ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search
+  ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2
 } from "lucide-react";
 
 // ─── Coach Advice Logic ──────────────────────────────────────────
@@ -308,7 +308,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
 };
 
 // ─── Session Summary Modal ───────────────────────────────────────
-const SummaryModal = ({ rank, tonnage, onClose }) => (
+const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared }) => (
   <div className="modal-overlay" onClick={onClose}>
     <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
       transition={{ type:"spring", stiffness:280, damping:20 }} onClick={e=>e.stopPropagation()}>
@@ -325,7 +325,17 @@ const SummaryModal = ({ rank, tonnage, onClose }) => (
         <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Tonnage total soulevé</p>
         <p className="text-5xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-xl text-slate-500 font-normal ml-1">kg</span></p>
       </div>
-      <button onClick={onClose} className="btn-glass w-full">Continuer</button>
+      <div className="flex flex-col gap-2">
+        <button 
+          onClick={onShare} 
+          disabled={hasShared}
+          className={`btn-primary w-full flex items-center justify-center gap-2 ${hasShared ? '!bg-emerald-600/50 !text-white/50 !border-emerald-500/30' : ''}`}
+        >
+          {hasShared ? <CheckCircle2 size={18} /> : <Share2 size={18} />}
+          {hasShared ? "Séance partagée !" : "Partager ma séance"}
+        </button>
+        <button onClick={onClose} className="btn-glass w-full">Continuer</button>
+      </div>
     </motion.div>
   </div>
 );
@@ -343,12 +353,60 @@ const Workout = () => {
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
+  const [hasShared, setHasShared] = useState(false);
 
   const location = useLocation();
-  React.useEffect(() => { if (location.state?.session) setCurrentSession(location.state.session); }, [location.state, setCurrentSession]);
+  React.useEffect(() => { 
+    if (location.state?.session) setCurrentSession(location.state.session); 
+    setHasShared(false); // reset share state when session changes
+  }, [location.state, setCurrentSession]);
 
   const session = userSessions[currentSession];
   const fmt = s => `${Math.floor(s/60)}:${(s%60).toString().padStart(2,"0")}`;
+
+  const handleShareWorkout = async () => {
+    if (hasShared) return;
+    try {
+      const { supabase } = await import('../supabaseClient');
+      const { useAuth } = await import('../context/AuthContext');
+      // Nous ne pouvons pas appeler de hooks ici, alors on récupère la session via supabase
+      const { data: { session: authSession } } = await supabase.auth.getSession();
+      
+      if (!authSession?.user) return;
+      
+      const { data: profile } = await supabase.from('profiles').select('email').eq('id', authSession.user.id).single();
+      const userName = profile?.email ? profile.email.split('@')[0] : "Utilisateur";
+      const capitalizedName = userName.charAt(0).toUpperCase() + userName.slice(1);
+
+      // Collect exercises done
+      const exercisesDone = [];
+      Object.keys(currentInput).forEach(exoId => {
+        const exoDef = session.exercises.find(e => e.id === exoId);
+        if (exoDef) {
+          const doneSets = currentInput[exoId].filter(s => s.done).length;
+          if (doneSets > 0) exercisesDone.push({ name: exoDef.name, sets: doneSets });
+        }
+      });
+
+      const workoutData = {
+        sessionTitle: session.title,
+        tonnage: sessionTonnage,
+        rank: sessionRank,
+        exercises: exercisesDone
+      };
+
+      await supabase.from('messages').insert([{
+        user_id: authSession.user.id,
+        user_email: capitalizedName,
+        content: `J'ai terminé ma séance ! 🚀`,
+        workout_data: workoutData
+      }]);
+      
+      setHasShared(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="page-container">
@@ -385,7 +443,7 @@ const Workout = () => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {showSummary && <SummaryModal rank={sessionRank} tonnage={sessionTonnage} onClose={() => setShowSummary(false)} />}
+        {showSummary && <SummaryModal rank={sessionRank} tonnage={sessionTonnage} onClose={() => setShowSummary(false)} onShare={handleShareWorkout} hasShared={hasShared} />}
       </AnimatePresence>
 
       <AnimatePresence>

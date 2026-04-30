@@ -1,40 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, Dumbbell, ChevronRight } from "lucide-react";
+import { Calendar, Dumbbell, ChevronRight, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 
 const sessionColors = {
   A:"from-blue-600 to-blue-800", B:"from-cyan-600 to-cyan-800", C:"from-emerald-600 to-emerald-800",
   D:"from-violet-600 to-violet-800", E:"from-orange-600 to-orange-800", F:"from-sky-600 to-sky-800",
   G:"from-teal-600 to-teal-800", H:"from-red-600 to-red-800", I:"from-pink-600 to-pink-800", J:"from-rose-600 to-rose-800",
+  K:"from-indigo-600 to-indigo-800"
 };
 
 const Planning = () => {
-  const { setCurrentSession } = useApp();
+  const { setCurrentSession, customSchedule, updateCustomSchedule } = useApp();
+  const [editingDay, setEditingDay] = useState(null);
   const days = ["L","M","M","J","V","S","D"];
+  const fullDays = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+
+  const handleSelectSession = (sessionKey) => {
+    if (editingDay !== null) {
+      const newSchedule = [...customSchedule];
+      newSchedule[editingDay] = sessionKey;
+      updateCustomSchedule(newSchedule);
+      setEditingDay(null);
+    }
+  };
 
   return (
     <div className="page-container">
       <div className="bg-orbs"/>
       <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} className="mb-8">
         <p className="section-title"><Calendar size={20} className="text-blue-400"/>Programmes d'Entraînement</p>
-        <p className="text-sm text-slate-400 -mt-2">6 splits scientifiques pour chaque objectif</p>
+        <p className="text-sm text-slate-400 -mt-2">Choisis un programme ou crée le tien</p>
       </motion.div>
+
+      {/* Mon Programme Personnalisé */}
+      <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="glass-card overflow-hidden mb-8 border-indigo-500/30 glow-purple">
+        <div className="p-5 border-b border-white/5 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+            <Settings size={20} />
+          </div>
+          <div>
+            <h3 className="font-black text-white text-base">Programme Personnalisé</h3>
+            <p className="text-xs text-indigo-400 font-medium mt-0.5">Crée ta semaine sur mesure (clique sur un jour)</p>
+          </div>
+        </div>
+
+        <div className="p-5">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+            {customSchedule.map((sessionKey, i) => {
+              const isRest = sessionKey === "-";
+              const s = !isRest ? sessions[sessionKey] : null;
+              return (
+                <div key={i} className="flex flex-col items-center gap-2 shrink-0">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-600">{days[i]}</span>
+                  
+                  <button 
+                    onClick={() => setEditingDay(i)}
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all ${isRest ? "bg-white/5 border border-dashed border-white/20 text-slate-500 hover:text-white" : "text-white bg-gradient-to-br " + (sessionColors[sessionKey] || "from-blue-600 to-blue-800")}`}
+                  >
+                    {isRest ? "+" : sessionKey}
+                  </button>
+                  
+                  <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest?"text-slate-700":"text-slate-400"}`}>
+                    {isRest ? "Repos" : s?.category}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          
+          <div className="mt-4 flex items-center justify-end">
+            <Link to="/workout" state={{session:customSchedule.find(s=>s!=="-")}}
+              onClick={()=>{const first=customSchedule.find(s=>s!=="-");if(first)setCurrentSession(first);}}
+              className={`btn-primary text-xs gap-1.5 ${customSchedule.every(s=>s==="-") ? "opacity-50 pointer-events-none" : ""}`}>
+              Commencer ma semaine <ChevronRight size={13}/>
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Selector Modal for Custom Schedule */}
+      <AnimatePresence>
+        {editingDay !== null && (
+          <div className="modal-overlay" onClick={() => setEditingDay(null)}>
+            <motion.div className="modal-card !p-0 overflow-hidden flex flex-col max-h-[80vh]" initial={{ y:50, opacity:0 }} animate={{ y:0, opacity:1 }} exit={{ y:50, opacity:0 }} onClick={e=>e.stopPropagation()}>
+              <div className="p-5 border-b border-white/5">
+                <h3 className="font-black text-white">Séance du {fullDays[editingDay]}</h3>
+                <p className="text-xs text-slate-400">Choisis la séance à effectuer ce jour-là.</p>
+              </div>
+              <div className="p-4 overflow-y-auto grid grid-cols-2 gap-2">
+                <button onClick={() => handleSelectSession("-")} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-slate-500/50">
+                  <span className="text-xl">😴</span>
+                  <span className="text-xs font-bold text-slate-400">Repos</span>
+                </button>
+                {Object.entries(sessions).map(([k, s]) => (
+                  <button key={k} onClick={() => handleSelectSession(k)} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-blue-500/50">
+                    <span className={`w-8 h-8 rounded-xl bg-gradient-to-br ${sessionColors[k]||"from-blue-600 to-blue-800"} flex items-center justify-center text-white font-black text-xs`}>{k}</span>
+                    <span className="text-[10px] font-bold text-white text-center leading-tight mt-1">{s.title.split(" : ")[1] || s.title}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       <div className="space-y-5">
         {schedules.map((prog, idx) => (
           <motion.div key={idx} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:idx*.07}}
             className="glass-card overflow-hidden group hover:glow-blue transition-all duration-300">
-
-            {/* Program header */}
             <div className="p-5 border-b border-white/5">
               <h3 className="font-black text-white text-base group-hover:text-blue-400 transition-colors">{prog.title}</h3>
               <p className="text-xs text-blue-400 font-medium mt-0.5">{prog.desc}</p>
             </div>
-
-            {/* Week strip */}
             <div className="p-5">
               <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
                 {prog.days.map((d, i) => {
@@ -42,10 +122,7 @@ const Planning = () => {
                   const s = !isRest ? sessions[d.session] : null;
                   return (
                     <div key={i} className="flex flex-col items-center gap-2 shrink-0">
-                      {/* Day label */}
                       <span className="text-[9px] font-bold uppercase tracking-widest text-slate-600">{days[i]}</span>
-
-                      {/* Session bubble */}
                       {isRest ? (
                         <div className="w-12 h-12 rounded-2xl bg-white/3 border border-dashed border-white/8 flex items-center justify-center text-slate-700 text-xs font-bold">
                           —
@@ -56,8 +133,6 @@ const Planning = () => {
                           {d.session}
                         </Link>
                       )}
-
-                      {/* Label */}
                       <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest?"text-slate-700":"text-slate-400"}`}>
                         {d.label}
                       </span>
@@ -65,8 +140,6 @@ const Planning = () => {
                   );
                 })}
               </div>
-
-              {/* CTA */}
               <div className="mt-4 flex items-center justify-end">
                 <Link to="/workout" state={{session:prog.days.find(d=>d.session!=="-")?.session}}
                   onClick={()=>{const first=prog.days.find(d=>d.session!=="-");if(first)setCurrentSession(first.session);}}
@@ -83,3 +156,4 @@ const Planning = () => {
 };
 
 export default Planning;
+

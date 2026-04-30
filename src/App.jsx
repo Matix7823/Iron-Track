@@ -9,6 +9,7 @@ import Analytics from "./pages/Analytics";
 import Profile from "./pages/Profile";
 import Planning from "./pages/Planning";
 import ExerciseLibrary from "./pages/ExerciseLibrary";
+import Community from "./pages/Community";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import { RefreshCw, ShieldAlert } from "lucide-react";
@@ -99,6 +100,7 @@ const AppInner = () => {
       <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
       <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
       <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
+      <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
     </Routes>
   );

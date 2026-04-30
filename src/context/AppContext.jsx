@@ -22,6 +22,17 @@ export const AppProvider = ({ children }) => {
   const [currentSession, setCurrentSession] = useState("A");
   const [currentInput, setCurrentInput] = useState({});
 
+  const [customSchedule, setCustomSchedule] = useState(() => {
+    const saved = localStorage.getItem('iron_track_custom_schedule');
+    if (saved) return JSON.parse(saved);
+    return ["-", "-", "-", "-", "-", "-", "-"];
+  });
+
+  const updateCustomSchedule = useCallback((newSchedule) => {
+    setCustomSchedule(newSchedule);
+    localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+  }, []);
+
   // ... (CNS, Timer, UI states restants identiques) ...
   const [sleepHours, setSleepHours] = useState(7);
   const [stressLevel, setStressLevel] = useState(5);
@@ -335,7 +346,7 @@ export const AppProvider = ({ children }) => {
     history, bodyWeightHistory, bodyMeasurements, userSessions, isDataLoading,
     allExercises, currentBodyWeight,
     currentSession, setCurrentSession,
-    currentInput,
+    currentInput, customSchedule, updateCustomSchedule,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
     sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel,
