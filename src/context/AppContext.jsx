@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "./AuthContext";
-import { sessions } from "../data/sessions";
+import { sessions, schedules } from "../data/sessions";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
 import { sanitizeData } from "../utils/security";
@@ -27,30 +27,55 @@ export const AppProvider = ({ children }) => {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        // Migrer les anciens formats (strings) vers le nouveau format (objets)
-        return parsed.map(d => typeof d === 'string' ? { session: d, label: '', status: null } : d);
-      } catch(e) { return Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })); }
+        if (Array.isArray(parsed)) {
+          return parsed.map(d => typeof d === 'string' ? { session: d, label: '', status: null } : d);
+        }
+      } catch(e) { console.error("Error parsing schedule", e); }
     }
     return Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
   });
 
+  // --- PERSISTENCE ---
+  const persistData = useCallback(async (dataToSave) => {
+    if (!user) return;
+    try {
+      const safeData = sanitizeData(dataToSave);
+      const { error } = await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
+      if (error) console.error("Erreur sauvegarde Supabase", error);
+    } catch (err) {
+      console.error("Erreur sauvegarde Supabase", err);
+    }
+  }, [user]);
+
   const updateCustomSchedule = useCallback((newSchedule) => {
     setCustomSchedule(newSchedule);
     localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
-  }, []);
+    if (user) {
+      persistData({ 
+        history, 
+        bodyWeight: bodyWeightHistory, 
+        bodyMeasurements, 
+        userSessions, 
+        customSchedule: newSchedule 
+      });
+    }
+  }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
   const updateDayStatus = useCallback((index, status) => {
     setCustomSchedule(prev => {
       const newSchedule = [...prev];
-      if (newSchedule[index]) {
-        newSchedule[index] = { ...newSchedule[index], status };
-      }
+      if (newSchedule[index]) newSchedule[index] = { ...newSchedule[index], status };
       localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+      // Side effect here is risky but kept for simplicity if it was working before.
+      // Ideally, this should be in a separate useEffect.
+      if (user) {
+        persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule });
+      }
       return newSchedule;
     });
-  }, []);
+  }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
-  // ... (CNS, Timer, UI states restants identiques) ...
+  // CNS, Timer, UI states
   const [sleepHours, setSleepHours] = useState(7);
   const [stressLevel, setStressLevel] = useState(5);
   const [sorenessLevel, setSorenessLevel] = useState(5);
@@ -64,39 +89,68 @@ export const AppProvider = ({ children }) => {
   const [sessionTonnage, setSessionTonnage] = useState(0);
   const [sessionRank, setSessionRank] = useState("medium");
 
-  // --- CHARGEMENT DATA ---
+  // --- CHARGEMENT DATA & WEEKLY RESET ---
   useEffect(() => {
     const loadData = async () => {
       if (!user) {
         setIsDataLoading(false);
         return;
       }
-
       setIsDataLoading(true);
       try {
-        const { data, error } = await supabase
-          .from("app_state")
-          .select("data")
-          .eq("user_id", user.id)
-          .single();
+        const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
+        if (error && error.code !== "PGRST116") console.error("Erreur de chargement Supabase", error);
+        
+        let loadedHistory = {};
+        let loadedBW = [];
+        let loadedMeas = [];
+        let loadedSessions = sessions;
+        let loadedSchedule = customSchedule;
 
-        if (error && error.code !== "PGRST116") {
-          console.error("Erreur de chargement Supabase", error);
-        }
-
-        if (data && data.data) {
+        if (data?.data) {
           const parsed = data.data;
-          setHistory(parsed.history || {});
-          setBodyWeightHistory(parsed.bodyWeight || []);
-          setBodyMeasurements(parsed.bodyMeasurements || []);
-          if (parsed.userSessions) setUserSessions(parsed.userSessions);
-        } else {
-          // If no data in Supabase, load default
-          setHistory({});
-          setBodyWeightHistory([]);
-          setBodyMeasurements([]);
-          setUserSessions(sessions);
+          loadedHistory = parsed.history || {};
+          loadedBW = parsed.bodyWeight || [];
+          loadedMeas = parsed.bodyMeasurements || [];
+          if (parsed.userSessions) loadedSessions = parsed.userSessions;
+          if (parsed.customSchedule && Array.isArray(parsed.customSchedule)) {
+            loadedSchedule = parsed.customSchedule;
+          }
         }
+
+        // Apply Weekly Reset if needed
+        const lastReset = localStorage.getItem('iron_last_weekly_reset');
+        const now = new Date();
+        const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+        const dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        const currentWeekKey = `${d.getUTCFullYear()}-W${weekNo}`;
+
+        if (lastReset !== currentWeekKey) {
+          loadedSchedule = loadedSchedule.map(day => ({ ...day, status: null }));
+          localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
+          localStorage.setItem('iron_track_custom_schedule', JSON.stringify(loadedSchedule));
+          // Persist the reset
+          const safeData = sanitizeData({ 
+            history: loadedHistory, 
+            bodyWeight: loadedBW, 
+            bodyMeasurements: loadedMeas, 
+            userSessions: loadedSessions, 
+            customSchedule: loadedSchedule 
+          });
+          await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
+        }
+
+        // Update state
+        setHistory(loadedHistory);
+        setBodyWeightHistory(loadedBW);
+        setBodyMeasurements(loadedMeas);
+        setUserSessions(loadedSessions);
+        setCustomSchedule(loadedSchedule);
+        localStorage.setItem('iron_track_custom_schedule', JSON.stringify(loadedSchedule));
+
       } catch (err) {
         console.error("Erreur lors du chargement des données", err);
       } finally {
@@ -106,25 +160,18 @@ export const AppProvider = ({ children }) => {
     loadData();
   }, [user]);
 
-  // --- PERSISTENCE ---
-  const persistData = useCallback(async (dataToSave) => {
-    if (!user) return;
-    try {
-      // Assainissement de toutes les données avant envoi en base de données (Défense contre XSS)
-      const safeData = sanitizeData(dataToSave);
-      
-      const { error } = await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
-      if (error) console.error("Erreur sauvegarde Supabase", error);
-    } catch (err) {
-      console.error("Erreur sauvegarde Supabase", err);
-    }
-  }, [user]);
+
 
   // --- ALL EXERCISES (memoized based on userSessions) ---
   const allExercises = useMemo(() => {
     let list = [];
-    Object.values(userSessions).forEach((s) => list.push(...s.exercises));
-    return list.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
+    if (!userSessions) return list;
+    Object.values(userSessions).forEach((s) => {
+      if (s && Array.isArray(s.exercises)) {
+        list.push(...s.exercises);
+      }
+    });
+    return list.filter((v, i, a) => v && v.id && a.findIndex((t) => t && t.id === v.id) === i);
   }, [userSessions]);
 
   // --- SESSION CUSTOMIZATION ---
@@ -444,6 +491,7 @@ export const AppProvider = ({ children }) => {
     showSummary, setShowSummary, showConfirmModal, setShowConfirmModal, showErrorModal, setShowErrorModal,
     sessionTonnage, sessionRank, handlePreSave, saveWorkout,
     saveBodyData, exportToCSV,
+    schedules,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
