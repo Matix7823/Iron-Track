@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -107,9 +107,9 @@ const Dashboard = () => {
     updateDayStatus
   } = useApp();
   const { profile } = useAuth();
-  const [showYesterdayCheck, setShowYesterdayCheck] = React.useState(false);
+  const [showYesterdayCheck, setShowYesterdayCheck] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const lastCheck = localStorage.getItem('iron_last_yesterday_check');
     const today = new Date().toDateString();
     if (lastCheck !== today) {

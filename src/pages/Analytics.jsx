@@ -97,16 +97,16 @@ const Analytics = () => {
   const selectedHist = selectedExo ? normalizeHistory(history[selectedExo]||[]) : [];
 
   // Nutrition science-based calculations
-  const [nutritionGoal, setNutritionGoal] = React.useState(
+  const [nutritionGoal, setNutritionGoal] = useState(
     () => localStorage.getItem('iron_nutrition_goal') || 'maintien'
   );
-  const [userHeight, setUserHeight] = React.useState(
+  const [userHeight, setUserHeight] = useState(
     () => parseInt(localStorage.getItem('iron_user_height')) || 175
   );
-  const [userAge, setUserAge] = React.useState(
+  const [userAge, setUserAge] = useState(
     () => parseInt(localStorage.getItem('iron_user_age')) || 25
   );
-  const [showNutritionSetup, setShowNutritionSetup] = React.useState(false);
+  const [showNutritionSetup, setShowNutritionSetup] = useState(false);
 
   const saveNutritionPref = (goal, height, age) => {
     localStorage.setItem('iron_nutrition_goal', goal);
