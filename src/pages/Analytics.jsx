@@ -269,6 +269,7 @@ const Analytics = () => {
                   ))}
                 </div>
                 <div>
+                  <label className="text-[9px] text-slate-500 uppercase font-bold block mb-1 ml-1">Âge</label>
                   <input type="number" placeholder="Âge" defaultValue={userAge} onChange={e => {localStorage.setItem('iron_user_age', e.target.value); setUserAge(+e.target.value);}} className="input-premium text-center !py-2 !text-xs"/>
                 </div>
               </div>

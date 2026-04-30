@@ -156,13 +156,6 @@ export const sessions = {
       cardioExercise,
     ],
   },
-  K: {
-    category: "Perso",
-    title: "Séance K : Personnalisée",
-    focus: "Ta propre séance sur mesure",
-    color: "from-indigo-600 to-indigo-800",
-    exercises: [],
-  },
 };
 
 

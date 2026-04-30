@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -62,6 +62,18 @@ const Planning = () => {
     const newSchedule = [...normalizedSchedule];
     newSchedule[idx] = { ...d, status: nextStatus === 'null' ? null : nextStatus };
     updateCustomSchedule(newSchedule);
+  };
+
+  const applyProgram = (prog) => {
+    if (window.confirm(`Appliquer le programme "${prog.title}" à ta semaine ? Cela écrasera ton planning actuel.`)) {
+      const newSchedule = prog.days.map(d => ({
+        session: d.session,
+        label: d.label,
+        status: null
+      }));
+      updateCustomSchedule(newSchedule);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const getDayLabel = (d, i) => {
@@ -227,44 +239,55 @@ const Planning = () => {
       </AnimatePresence>
 
       <div className="space-y-5">
+        <div className="flex justify-between items-center px-1">
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Bibliothèque de Programmes</p>
+          <button onClick={() => updateCustomSchedule(Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })))}
+            className="text-[10px] font-bold text-red-400/70 hover:text-red-400 transition-colors uppercase">
+            Réinitialiser tout
+          </button>
+        </div>
+
         {schedules.map((prog, idx) => (
           <motion.div key={idx} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:idx*.07}}
             className="glass-card overflow-hidden group hover:glow-blue transition-all duration-300">
-            <div className="p-5 border-b border-white/5">
-              <h3 className="font-black text-white text-base group-hover:text-blue-400 transition-colors">{prog.title}</h3>
-              <p className="text-xs text-blue-400 font-medium mt-0.5">{prog.desc}</p>
+            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+              <div>
+                <h3 className="font-black text-white text-base group-hover:text-blue-400 transition-colors">{prog.title}</h3>
+                <p className="text-xs text-slate-500 mt-0.5">{prog.desc}</p>
+              </div>
+              <button 
+                onClick={() => applyProgram(prog)}
+                className="btn-primary !py-2 !px-4 !text-[10px] !rounded-xl gap-1.5"
+              >
+                <Check size={12} /> Appliquer
+              </button>
             </div>
-            <div className="p-5">
-              <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+            
+            <div className="p-5 bg-black/20">
+              <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-1">
                 {prog.days.map((d, i) => {
                   const isRest = d.session === "-";
                   const s = !isRest ? sessions[d.session] : null;
+                  const daysShort = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
                   return (
                     <div key={i} className="flex flex-col items-center gap-2 shrink-0">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-slate-600">{days[i]}</span>
-                      {isRest ? (
-                        <div className="w-12 h-12 rounded-2xl bg-white/3 border border-dashed border-white/8 flex items-center justify-center text-slate-700 text-xs font-bold">
-                          —
-                        </div>
-                      ) : (
-                        <Link to="/workout" state={{session:d.session}} onClick={()=>setCurrentSession(d.session)}
-                          className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${sessionColors[d.session]||"from-blue-600 to-blue-800"} flex items-center justify-center text-white text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all`}>
-                          {d.session}
-                        </Link>
-                      )}
-                      <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest?"text-slate-700":"text-slate-400"}`}>
-                        {d.label}
-                      </span>
+                      <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">{daysShort[i]}</span>
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s ? s.color : "from-slate-800 to-slate-900"} border border-white/5 flex flex-col items-center justify-center relative shadow-lg`}>
+                        <span className="text-sm font-black text-white">{d.session}</span>
+                        {s && (
+                          <button 
+                            onClick={() => window.open(`https://www.youtube.com/results?search_query=routine+fitness+${s.category.replace(/\s+/g, '+')}`, '_blank')}
+                            className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center text-slate-900 shadow-xl hover:scale-110 transition-transform"
+                            title="Voir la vidéo explicative"
+                          >
+                            <Play size={10} fill="currentColor" />
+                          </button>
+                        )}
+                      </div>
+                      <span className="text-[8px] font-bold text-slate-500 text-center w-16 leading-tight truncate">{d.label}</span>
                     </div>
                   );
                 })}
-              </div>
-              <div className="mt-4 flex items-center justify-end">
-                <Link to="/workout" state={{session:prog.days.find(d=>d.session!=="-")?.session}}
-                  onClick={()=>{const first=prog.days.find(d=>d.session!=="-");if(first)setCurrentSession(first.session);}}
-                  className="btn-glass text-xs gap-1.5">
-                  Commencer ce programme <ChevronRight size={13}/>
-                </Link>
               </div>
             </div>
           </motion.div>
