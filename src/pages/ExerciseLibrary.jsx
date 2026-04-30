@@ -29,24 +29,30 @@ const ExerciseLibrary = () => {
         <p className="text-sm text-slate-400">Tous les exercices pour sculpter ton corps</p>
       </motion.div>
 
-      <div className="sticky top-20 z-20 bg-[#03060f]/80 backdrop-blur-md pb-4 pt-1">
-        <div className="relative mb-4">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18}/>
+      <div className="sticky top-20 z-20 bg-[#03060f]/90 backdrop-blur-xl pb-4 pt-2 border-b border-white/5 mb-6">
+        <div className="relative mb-5 max-w-2xl mx-auto">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <Search className="h-5 w-5 text-blue-400" />
+          </div>
           <input 
             type="text" 
             placeholder="Chercher un exercice (ex: Bench, Squat...)" 
             value={search} 
             onChange={e => setSearch(e.target.value)}
-            className="input-premium pl-10 py-4 text-base"
+            className="w-full bg-slate-900/50 border border-slate-700/50 text-white text-sm rounded-2xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 block pl-12 p-4 transition-all shadow-lg placeholder-slate-500"
           />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto pb-3 pt-1 px-1 scrollbar-hide snap-x">
           {muscles.map(m => (
             <button 
               key={m} 
               onClick={() => setMuscleFilter(m)}
-              className={`px-5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all border ${muscleFilter === m ? "bg-blue-600 border-blue-400 text-white shadow-lg shadow-blue-500/20" : "glass border-white/5 text-slate-500 hover:text-white"}`}
+              className={`snap-start flex-shrink-0 px-4 py-2 rounded-xl text-[13px] font-bold tracking-wide transition-all border ${
+                muscleFilter === m 
+                  ? "bg-gradient-to-r from-blue-600 to-cyan-600 border-blue-400 text-white shadow-lg shadow-blue-500/30" 
+                  : "bg-slate-800/40 border-slate-700/50 text-slate-400 hover:text-white hover:bg-slate-800/80"
+              }`}
             >
               {m}
             </button>

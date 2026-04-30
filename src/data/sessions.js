@@ -156,10 +156,52 @@ export const sessions = {
       cardioExercise,
     ],
   },
+  K: {
+    category: "Full Body",
+    title: "Séance K : Full Body Science",
+    focus: "Hypertrophie / Force Globale",
+    color: "from-indigo-600 to-indigo-800",
+    exercises: [
+      { id: "k1", muscle: "Jambes", name: "Squat (Barre ou Machine)", note: "Focus chaîne antérieure.", tempo: "3-0-1-0", sets: 3, reps: "6-8", rest: 180 },
+      { id: "k2", muscle: "Ischios", name: "Soulevé de Terre Roumain", note: "Focus chaîne postérieure.", tempo: "3-1-1-0", sets: 3, reps: "8-10", rest: 120 },
+      { id: "k3", muscle: "Pecs", name: "Développé Couché / Incliné", note: "Poussée horizontale lourd.", tempo: "2-0-1-0", sets: 3, reps: "8-10", rest: 120 },
+      { id: "k4", muscle: "Dos", name: "Rowing Barre / Tirage Horizontal", note: "Tirage horizontal épais.", tempo: "2-0-1-1", sets: 3, reps: "8-12", rest: 120 },
+      { id: "k5", muscle: "Épaules", name: "Développé Militaire", note: "Poussée verticale.", tempo: "2-0-1-0", sets: 3, reps: "10-12", rest: 90 },
+      { id: "k6", muscle: "Dos", name: "Tractions / Tirage Vertical", note: "Tirage vertical largeur.", tempo: "2-0-1-1", sets: 3, reps: "10-12", rest: 90 },
+      { id: "k7", muscle: "Bras", name: "Superset Biceps/Triceps", note: "Isolation bras.", tempo: "2-0-1-0", sets: 2, reps: "12-15", rest: 60 },
+    ],
+  },
 };
+
 
 // Plannings d'entraînement
 export const schedules = [
+  {
+    title: "U/L/P/P/L Science (5J)",
+    desc: "Fréquence x2 : Upper, Lower, Push, Pull, Legs",
+    days: [
+      { name: "Lun", session: "F", label: "Upper (Lourd)" },
+      { name: "Mar", session: "G", label: "Lower (Lourd)" },
+      { name: "Mer", session: "-", label: "Repos" },
+      { name: "Jeu", session: "A", label: "Push (Volume)" },
+      { name: "Ven", session: "B", label: "Pull (Volume)" },
+      { name: "Sam", session: "C", label: "Legs (Volume)" },
+      { name: "Dim", session: "-", label: "Repos" },
+    ],
+  },
+  {
+    title: "Full Body Athlétique (3J)",
+    desc: "Stimulation globale optimale",
+    days: [
+      { name: "Lun", session: "K", label: "Full Body 1" },
+      { name: "Mar", session: "-", label: "Repos" },
+      { name: "Mer", session: "K", label: "Full Body 2" },
+      { name: "Jeu", session: "-", label: "Repos" },
+      { name: "Ven", session: "K", label: "Full Body 3" },
+      { name: "Sam", session: "I", label: "Abdos/Cardio" },
+      { name: "Dim", session: "-", label: "Repos" },
+    ],
+  },
   {
     title: "Esthétique Dieu Grec (6J)",
     desc: "Focus V-Taper (Épaules, Dos, Haut Pecs)",
@@ -187,32 +229,6 @@ export const schedules = [
     ],
   },
   {
-    title: "Upper / Lower (4J)",
-    desc: "Fréquence x2 pour Haut et Bas",
-    days: [
-      { name: "Lun", session: "F", label: "Haut" },
-      { name: "Mar", session: "G", label: "Bas" },
-      { name: "Mer", session: "-", label: "Repos" },
-      { name: "Jeu", session: "F", label: "Haut" },
-      { name: "Ven", session: "G", label: "Bas" },
-      { name: "Sam", session: "-", label: "Repos" },
-      { name: "Dim", session: "-", label: "Repos" },
-    ],
-  },
-  {
-    title: "Spécial Sangle Abdominale (3J)",
-    desc: "Abdos 3D & Gainage",
-    days: [
-      { name: "Lun", session: "H", label: "Épaisseur" },
-      { name: "Mar", session: "-", label: "Repos" },
-      { name: "Mer", session: "I", label: "Obliques" },
-      { name: "Jeu", session: "-", label: "Repos" },
-      { name: "Ven", session: "J", label: "Destruction" },
-      { name: "Sam", session: "-", label: "Repos" },
-      { name: "Dim", session: "-", label: "Repos" },
-    ],
-  },
-  {
     title: "Push / Pull / Legs (6J)",
     desc: "Volume Extrême Athlétique",
     days: [
@@ -222,19 +238,6 @@ export const schedules = [
       { name: "Jeu", session: "D", label: "Push (Épaules)" },
       { name: "Ven", session: "E", label: "Pull (Bras)" },
       { name: "Sam", session: "C", label: "Legs" },
-      { name: "Dim", session: "-", label: "Repos" },
-    ],
-  },
-  {
-    title: "Hybride Mixte (4J)",
-    desc: "Force & Esthétique combinées",
-    days: [
-      { name: "Lun", session: "F", label: "Haut Lourd" },
-      { name: "Mar", session: "G", label: "Bas Lourd" },
-      { name: "Mer", session: "-", label: "Repos" },
-      { name: "Jeu", session: "D", label: "Épaules 3D" },
-      { name: "Ven", session: "E", label: "Bras Volume" },
-      { name: "Sam", session: "H", label: "Abdos" },
       { name: "Dim", session: "-", label: "Repos" },
     ],
   },
