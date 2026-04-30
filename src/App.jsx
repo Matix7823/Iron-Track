@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
   
   if (!user) return <Navigate to="/auth" />;
   
-  if (profile?.status !== 'active') {
+  if (profile?.status?.toLowerCase() !== 'active') {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4">
         <div className="text-center bg-slate-800/50 p-8 rounded-3xl border border-slate-700/50 max-w-md shadow-2xl backdrop-blur-xl">
@@ -41,7 +41,17 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
             <ShieldAlert size={32} />
           </div>
           <h2 className="text-2xl font-black text-white mb-2">Compte en attente</h2>
-          <p className="text-slate-400">Votre compte est en cours de validation par un administrateur. Veuillez patienter.</p>
+          <p className="text-slate-400 mb-2">Votre compte est en cours de validation par un administrateur.</p>
+          {profile && (
+            <p className="text-xs text-slate-500 mb-6 uppercase tracking-wider">Statut actuel : {profile.status}</p>
+          )}
+          <button 
+            onClick={() => window.location.reload()}
+            className="flex items-center justify-center gap-2 mx-auto px-6 py-3 bg-slate-700 text-white rounded-xl font-bold hover:bg-slate-600 transition-colors"
+          >
+            <RefreshCw size={18} />
+            Rafraîchir
+          </button>
         </div>
       </div>
     );
