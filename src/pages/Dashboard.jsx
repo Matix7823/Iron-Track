@@ -1,0 +1,335 @@
+import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useApp } from "../context/AppContext";
+import { sessions } from "../data/sessions";
+import { parseDate } from "../utils/date";
+import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard, calculateCNSScore } from "../utils/metrics";
+import {
+  Dumbbell, TrendingUp, Zap, Activity, Target, Trophy,
+  Moon, Frown, Brain, ArrowRight, Flame, BarChart2, Calendar,
+  ChevronRight, Bolt
+} from "lucide-react";
+
+// ─── Animated counter ───────────────────────────────────────────
+const AnimatedNumber = ({ value, suffix = "" }) => {
+  return (
+    <motion.span
+      key={value}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {value}{suffix}
+    </motion.span>
+  );
+};
+
+// ─── Circular Progress Ring ─────────────────────────────────────
+const Ring = ({ score, size = 72, strokeWidth = 6, color = "#3b82f6" }) => {
+  const r = (size - strokeWidth * 2) / 2;
+  const circ = 2 * Math.PI * r;
+  const offset = circ - (circ * Math.min(score, 100)) / 100;
+  return (
+    <svg width={size} height={size} className="-rotate-90">
+      <circle className="ring-track" cx={size/2} cy={size/2} r={r} strokeWidth={strokeWidth} />
+      <circle
+        className="ring-fill"
+        cx={size/2} cy={size/2} r={r}
+        strokeWidth={strokeWidth}
+        stroke={color}
+        strokeDasharray={circ}
+        strokeDashoffset={offset}
+        style={{ filter: `drop-shadow(0 0 6px ${color}80)` }}
+      />
+    </svg>
+  );
+};
+
+// ─── Week calendar strip ─────────────────────────────────────────
+const WeekStrip = ({ history }) => {
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+  const today = new Date();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+
+  const activeDates = new Set();
+  Object.values(history).forEach(entries =>
+    entries.forEach(e => { if (e.date) activeDates.add(e.date); })
+  );
+
+  return (
+    <div className="flex gap-2 justify-between">
+      {days.map((d, i) => {
+        const date = new Date(monday);
+        date.setDate(monday.getDate() + i);
+        const dateStr = date.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" });
+        const isToday = date.toDateString() === today.toDateString();
+        const isActive = activeDates.has(dateStr);
+        const isFuture = date > today;
+        return (
+          <div key={i} className="flex flex-col items-center gap-1.5">
+            <div className={`day-dot ${isActive ? "active" : isFuture ? "rest" : "inactive"} ${isToday ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-transparent" : ""}`}>
+              {isActive ? "✓" : d}
+            </div>
+            {isToday && <div className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.07 } } };
+const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } } };
+
+// ─── Dashboard ───────────────────────────────────────────────────
+const Dashboard = () => {
+  const { history, bodyWeightHistory, allExercises, currentBodyWeight, cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS } = useApp();
+
+  const todayStr = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? "Bonjour" : hour < 18 ? "Bon après-midi" : "Bonsoir";
+
+  // Streak
+  const streak = useMemo(() => {
+    const dates = new Set();
+    Object.values(history).forEach(e => e.forEach(h => { if (h.date) dates.add(h.date); }));
+    const sorted = [...dates].map(d => parseDate(d)).sort((a, b) => b - a);
+    if (!sorted.length) return 0;
+    const msDay = 864e5;
+    const now = new Date(); now.setHours(0,0,0,0);
+    if (Math.floor((now - sorted[0]) / msDay) > 1) return 0;
+    let s = 1;
+    for (let i = 1; i < sorted.length; i++) {
+      if (Math.floor((sorted[i-1] - sorted[i]) / msDay) === 1) s++;
+      else break;
+    }
+    return s;
+  }, [history]);
+
+  // Weekly stats
+  const weekStats = useMemo(() => {
+    const now = new Date(), d7 = new Date(now - 7*864e5);
+    let tonnage = 0; const dates = new Set();
+    Object.values(history).forEach(entries => entries.forEach(e => {
+      const d = parseDate(e.date);
+      if (d >= d7 && d <= now) {
+        dates.add(e.date);
+        (e.setsData || []).forEach(s => { if (s.done && +s.weight > 0 && +s.reps > 0) tonnage += +s.weight * +s.reps; });
+      }
+    }));
+    return { sessions: dates.size, tonnage: Math.round(tonnage) };
+  }, [history]);
+
+  // Total sessions
+  const totalSessions = useMemo(() => {
+    const d = new Set();
+    Object.values(history).forEach(e => e.forEach(h => { if (h.date) d.add(h.date); }));
+    return d.size;
+  }, [history]);
+
+  // Muscle recovery
+  const recovery = useMemo(() => {
+    const groups = { Pecs: ["Pecs (Haut)","Pecs (Masse)","Pecs (Bas)","Pecs (Iso)","Finition","Pecs"], Dos: ["Dos (Largeur)","Dos (Épaisseur)","Dos (Bas)","Dos (Isolation)","Dos"], Jambes: ["Cuisses","Ischios","Mollets","Jambes"], Épaules: ["Épaules (Masse)","Épaules (Latéral)","Arr. Épaules","Épaules","Trapèzes"], Bras: ["Biceps (Long)","Biceps (Court)","Brachial","Triceps (Masse)","Triceps (Long)","Triceps (Vaste)","Avant-Bras","Bras"], Abdos: ["Abdos","Abdos (Bas)","Obliques","Transverse","Gainage"] };
+    const last = {}; const now = new Date();
+    Object.keys(history).forEach(id => {
+      const hist = history[id]; if (!hist?.length) return;
+      const d = parseDate(hist[hist.length-1].date);
+      const exo = allExercises.find(e => e.id === id); if (!exo) return;
+      Object.entries(groups).forEach(([g, subs]) => { if (subs.includes(exo.muscle) && (!last[g] || d > last[g])) last[g] = d; });
+    });
+    return Object.keys(groups).map(g => {
+      const d = last[g];
+      if (!d) return { group: g, label: "Frais", pct: 100, color: "#34d399" };
+      const days = Math.ceil(Math.abs(now - d) / 864e5);
+      if (days <= 1) return { group: g, label: "Épuisé", pct: 15, color: "#ef4444" };
+      if (days <= 2) return { group: g, label: "En récup", pct: 55, color: "#f59e0b" };
+      return { group: g, label: "Frais", pct: 100, color: "#34d399" };
+    });
+  }, [history, allExercises]);
+
+  // Top 1RMs
+  const top1RMs = useMemo(() => [
+    { label: "Couché", ids: ["a2","f1"], type: "bench" },
+    { label: "Squat",  ids: ["c1","g1"], type: "squat" },
+    { label: "Trac.",  ids: ["b1"],      type: "pullup" },
+  ].map(lift => {
+    let best = 0;
+    lift.ids.forEach(id => normalizeHistory(history[id]||[]).forEach(h =>
+      (h.setsData||[]).forEach(s => { if (+s.weight>0&&+s.reps>0&&s.done&&!s.isExtra) { const rm=calculate1RM(+s.weight,+s.reps); if(rm>best)best=rm; } })
+    ));
+    return { ...lift, best, std: getStrengthStandard(lift.type, best, currentBodyWeight) };
+  }), [history, currentBodyWeight]);
+
+  const cnsColor = !cnsScore ? "#3b82f6" : cnsScore >= 85 ? "#f59e0b" : cnsScore >= 45 ? "#34d399" : "#ef4444";
+
+  return (
+    <div className="page-container">
+      <div className="bg-orbs" />
+
+      {/* ── HEADER ── */}
+      <motion.div variants={item} initial="hidden" animate="visible" className="mb-8">
+        <p className="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-1 capitalize">{todayStr}</p>
+        <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+          {greeting} 👋
+        </h1>
+        <p className="text-slate-400 text-sm mt-1">Prêt à <span className="text-gradient font-bold">dominer</span> ta séance ?</p>
+      </motion.div>
+
+      {/* ── HERO STATS ROW ── */}
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-3 gap-3 mb-6">
+        {[
+          { label: "Séries 7j", value: weekStats.sessions, icon: Dumbbell, color: "text-blue-400", bg: "bg-blue-500/12" },
+          { label: "Streak", value: streak, suffix: "🔥", icon: Flame, color: "text-orange-400", bg: "bg-orange-500/12" },
+          { label: "Total", value: totalSessions, icon: Trophy, color: "text-amber-400", bg: "bg-amber-500/12" },
+        ].map(({ label, value, suffix = "", icon: Icon, color, bg }) => (
+          <motion.div key={label} variants={item} className="stat-card text-center">
+            <div className={`w-8 h-8 rounded-xl ${bg} flex items-center justify-center mx-auto mb-2`}>
+              <Icon size={16} className={color} />
+            </div>
+            <p className="text-2xl font-black text-white"><AnimatedNumber value={value} suffix={suffix} /></p>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">{label}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* ── WEEK CALENDAR ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="glass-card p-4 mb-6">
+        <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-3">Cette semaine</p>
+        <WeekStrip history={history} />
+      </motion.div>
+
+      {/* ── TONNAGE HERO ── */}
+      {weekStats.tonnage > 0 && (
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }} className="glass-card p-5 mb-6 neon-border glow-blue">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-1 flex items-center gap-1.5"><TrendingUp size={10} className="text-blue-400" /> Tonnage cette semaine</p>
+              <p className="hero-number text-gradient">{weekStats.tonnage >= 1000 ? `${(weekStats.tonnage/1000).toFixed(1)}t` : `${weekStats.tonnage}kg`}</p>
+            </div>
+            <BarChart2 size={40} className="text-blue-400/20" />
+          </div>
+        </motion.div>
+      )}
+
+      {/* ── CNS LAB ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass-card p-5 mb-6">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-9 h-9 rounded-xl bg-blue-500/12 flex items-center justify-center"><Brain size={17} className="text-blue-400" /></div>
+          <div><p className="text-sm font-bold text-white">Laboratoire CNS</p><p className="text-[10px] text-slate-500">Calibre ton système nerveux</p></div>
+        </div>
+        {cnsScore === null ? (
+          <div className="space-y-5">
+            {[
+              { label: "Sommeil", icon: Moon, color: "text-blue-400", cls: "accent-blue", val: sleepHours, set: setSleepHours, min: 3, max: 10, fmt: v => `${v}h` },
+              { label: "Stress Mental", icon: Activity, color: "text-orange-400", cls: "accent-orange", val: stressLevel, set: setStressLevel, min: 1, max: 10, fmt: v => `${v}/10` },
+              { label: "Courbatures", icon: Frown, color: "text-red-400", cls: "accent-red", val: sorenessLevel, set: setSorenessLevel, min: 1, max: 10, fmt: v => `${v}/10` },
+            ].map(({ label, icon: Icon, color, cls, val, set, min, max, fmt }) => (
+              <div key={label}>
+                <div className="flex justify-between items-center mb-2">
+                  <label className={`text-xs font-semibold text-slate-300 flex items-center gap-1.5`}><Icon size={12} className={color} />{label}</label>
+                  <span className="text-sm font-black text-white">{fmt(val)}</span>
+                </div>
+                <input type="range" min={min} max={max} value={val} onChange={e => set(+e.target.value)} className={`w-full ${cls}`} />
+              </div>
+            ))}
+            <button onClick={calculateCNS} className="btn-primary w-full mt-2"><Zap size={16} /> Scanner mon CNS</button>
+          </div>
+        ) : (
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <Ring score={cnsScore} color={cnsColor} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-lg font-black text-white">{cnsScore}</span>
+                </div>
+              </div>
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Score CNS</p>
+                <p className="text-base font-bold mt-0.5" style={{ color: cnsColor }}>
+                  {cnsScore >= 85 ? "⚡ Berserker" : cnsScore >= 70 ? "🟢 Optimal" : cnsScore >= 45 ? "🔵 Correct" : "🛡️ Fatigué"}
+                </p>
+                <p className="text-[10px] text-slate-600 mt-1">
+                  {cnsScore >= 85 ? "+5% sur les charges" : cnsScore <= 30 ? "−10% recommandé" : "Séance normale"}
+                </p>
+              </div>
+            </div>
+            <button onClick={resetCNS} className="btn-glass text-xs shrink-0">Réévaluer</button>
+          </div>
+        )}
+      </motion.div>
+
+      {/* ── QUICK START ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="mb-6">
+        <p className="section-title"><Target size={18} className="text-blue-400" />Démarrer une séance</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {Object.entries(sessions).slice(0, 6).map(([key, s], i) => (
+            <motion.div key={key} initial={{ opacity: 0, scale: .93 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .3 + i * .05 }}>
+              <Link to="/workout" state={{ session: key }} className="glass-card glass-card-interactive p-4 flex flex-col gap-3 hover:glow-blue block no-underline group">
+                <div className="flex items-center justify-between">
+                  <span className={`w-9 h-9 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white text-sm font-black shadow-lg`}>{key}</span>
+                  <ChevronRight size={14} className="text-slate-600 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white leading-tight">{s.category}</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">{s.exercises.length - 1} exercices</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* ── MUSCLE RECOVERY ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }} className="glass-card p-5 mb-6">
+        <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
+        <div className="space-y-3">
+          {recovery.map(({ group, label, pct, color }) => (
+            <div key={group} className="flex items-center gap-3">
+              <span className="text-xs font-bold text-slate-300 w-16 shrink-0">{group}</span>
+              <div className="flex-1 progress-track">
+                <div className="progress-fill" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}80, ${color})` }} />
+              </div>
+              <span className="text-xs font-bold shrink-0" style={{ color }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* ── 1RM RECORDS ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }} className="glass-card p-5 mb-6 glow-gold border-amber-500/15">
+        <p className="section-title text-base"><Trophy size={16} className="text-amber-400" />Records Personnels</p>
+        <div className="grid grid-cols-3 gap-3">
+          {top1RMs.map(lift => (
+            <div key={lift.label} className="glass rounded-2xl p-3 text-center">
+              <p className="text-[9px] uppercase font-bold text-slate-500 mb-2">{lift.label}</p>
+              <p className="text-xl font-black text-white">{lift.best || "—"}</p>
+              {lift.best > 0 && <p className="text-[9px] text-slate-600">kg 1RM</p>}
+              <p className={`text-[9px] font-bold mt-2 ${lift.std.color}`}>{lift.std.rank}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[10px] text-slate-600 text-center mt-3">*Ratios basés sur {currentBodyWeight} kg de poids de corps</p>
+      </motion.div>
+
+      {/* ── BODY WEIGHT ── */}
+      {bodyWeightHistory.length > 0 && (
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.44 }}>
+          <Link to="/profile" className="glass-card p-4 flex items-center justify-between hover:glow-purple block no-underline group">
+            <div>
+              <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Poids actuel</p>
+              <p className="text-3xl font-black text-white mt-0.5">{currentBodyWeight} <span className="text-base text-slate-500 font-normal">kg</span></p>
+            </div>
+            <div className="flex items-center gap-2 text-slate-500 group-hover:text-slate-300 transition-colors">
+              <span className="text-xs">Voir profil</span>
+              <ArrowRight size={14} />
+            </div>
+          </Link>
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
+export default Dashboard;
