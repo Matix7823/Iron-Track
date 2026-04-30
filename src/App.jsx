@@ -40,11 +40,25 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
           <div className="w-16 h-16 bg-amber-500/20 text-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20">
             <ShieldAlert size={32} />
           </div>
-          <h2 className="text-2xl font-black text-white mb-2">Compte en attente</h2>
-          <p className="text-slate-400 mb-2">Votre compte est en cours de validation par un administrateur.</p>
-          {profile && (
-            <p className="text-xs text-slate-500 mb-6 uppercase tracking-wider">Statut actuel : {profile.status}</p>
+          <h2 className="text-2xl font-black text-white mb-2">Diagnostic en cours</h2>
+          
+          <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700 mb-6 text-left space-y-2 text-sm text-slate-300">
+            <p><strong className="text-cyan-400">ID de connexion :</strong><br/> <span className="text-xs font-mono">{user?.id}</span></p>
+            <p><strong className="text-cyan-400">Profil trouvé :</strong> {profile ? "Oui" : "Non (Bloqué ou Introuvable)"}</p>
+          </div>
+          
+          {profile === null ? (
+            <div className="bg-red-500/10 p-4 rounded-xl border border-red-500/30 mb-6">
+              <p className="text-red-400 font-bold mb-1">Erreur de lecture du profil</p>
+              <p className="text-red-300 text-sm">Votre profil n'a pas pu être lu dans la base de données. Cela est généralement dû aux règles de sécurité (RLS) dans Supabase.</p>
+            </div>
+          ) : (
+            <>
+              <p className="text-slate-400 mb-2">Votre compte est en cours de validation par un administrateur.</p>
+              <p className="text-xs text-slate-500 mb-6 uppercase tracking-wider">Statut actuel : {profile.status}</p>
+            </>
           )}
+
           <button 
             onClick={() => window.location.reload()}
             className="flex items-center justify-center gap-2 mx-auto px-6 py-3 bg-slate-700 text-white rounded-xl font-bold hover:bg-slate-600 transition-colors"
