@@ -78,9 +78,17 @@ const Profile = () => {
         </motion.div>
 
         {/* Weight chart */}
-        {bodyWeightHistory.length > 1 && (
-          <motion.div variants={item} className="mb-6">
-            <p className="text-sm font-bold text-slate-400 flex items-center gap-2 mb-3"><TrendingUp size={14} className="text-violet-400"/>Évolution du Poids</p>
+        {bodyWeightHistory.length > 0 && (
+          <motion.div variants={item} className="glass-card p-5 mb-6 border-violet-500/15">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-xl bg-violet-500/15 flex items-center justify-center">
+                <TrendingUp size={16} className="text-violet-400"/>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white">Évolution du Poids</p>
+                <p className="text-[10px] text-slate-500">{bodyWeightHistory.length} mesure{bodyWeightHistory.length > 1 ? "s" : ""} enregistrée{bodyWeightHistory.length > 1 ? "s" : ""}</p>
+              </div>
+            </div>
             <EvolutionChart data={bodyWeightHistory} metric="bodyweight" color="#8b5cf6"/>
           </motion.div>
         )}

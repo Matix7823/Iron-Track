@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, Dumbbell, ChevronRight, Settings } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -12,19 +12,48 @@ const sessionColors = {
   K:"from-indigo-600 to-indigo-800"
 };
 
+const getSessionColor = (key, userSessions) => {
+  if (sessionColors[key]) return sessionColors[key];
+  return userSessions?.[key]?.color || "from-purple-600 to-purple-800";
+};
+
 const Planning = () => {
-  const { setCurrentSession, customSchedule, updateCustomSchedule } = useApp();
+  const { setCurrentSession, customSchedule, updateCustomSchedule, userSessions } = useApp();
   const [editingDay, setEditingDay] = useState(null);
-  const days = ["L","M","M","J","V","S","D"];
-  const fullDays = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+  const [editingDayName, setEditingDayName] = useState(false);
+  const [newDayName, setNewDayName] = useState("");
+
+  // customSchedule is now an array of {session, label} objects or old string format
+  const normalizedSchedule = customSchedule.map(d =>
+    typeof d === 'string' ? { session: d, label: '' } : d
+  );
 
   const handleSelectSession = (sessionKey) => {
     if (editingDay !== null) {
-      const newSchedule = [...customSchedule];
-      newSchedule[editingDay] = sessionKey;
+      const newSchedule = [...normalizedSchedule];
+      newSchedule[editingDay] = { ...newSchedule[editingDay], session: sessionKey };
       updateCustomSchedule(newSchedule);
       setEditingDay(null);
     }
+  };
+
+  const addDay = () => {
+    const newSchedule = [...normalizedSchedule, { session: '-', label: newDayName || `Jour ${normalizedSchedule.length + 1}` }];
+    updateCustomSchedule(newSchedule);
+    setNewDayName('');
+    setEditingDayName(false);
+  };
+
+  const removeDay = (idx) => {
+    if (normalizedSchedule.length <= 1) return;
+    const newSchedule = normalizedSchedule.filter((_, i) => i !== idx);
+    updateCustomSchedule(newSchedule);
+  };
+
+  const getDayLabel = (d, i) => {
+    if (d.label) return d.label;
+    const defaults = ["L", "M", "M", "J", "V", "S", "D"];
+    return defaults[i] || `J${i+1}`;
   };
 
   return (
@@ -48,33 +77,68 @@ const Planning = () => {
         </div>
 
         <div className="p-5">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
-            {customSchedule.map((sessionKey, i) => {
-              const isRest = sessionKey === "-";
-              const s = !isRest ? sessions[sessionKey] : null;
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+            {normalizedSchedule.map((d, i) => {
+              const isRest = d.session === "-";
+              const s = !isRest ? (sessions[d.session] || userSessions?.[d.session]) : null;
               return (
-                <div key={i} className="flex flex-col items-center gap-2 shrink-0">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-600">{days[i]}</span>
+                <div key={i} className="flex flex-col items-center gap-1.5 shrink-0 group relative">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500">{getDayLabel(d, i)}</span>
                   
-                  <button 
+                  <button
                     onClick={() => setEditingDay(i)}
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all ${isRest ? "bg-white/5 border border-dashed border-white/20 text-slate-500 hover:text-white" : "text-white bg-gradient-to-br " + (sessionColors[sessionKey] || "from-blue-600 to-blue-800")}`}
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all ${isRest ? "bg-white/5 border border-dashed border-white/20 text-slate-500 hover:text-white" : "text-white bg-gradient-to-br " + getSessionColor(d.session, userSessions)}`}
                   >
-                    {isRest ? "+" : sessionKey}
+                    {isRest ? "+" : d.session}
                   </button>
                   
-                  <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest?"text-slate-700":"text-slate-400"}`}>
-                    {isRest ? "Repos" : s?.category}
+                  <span className={`text-[8px] font-bold uppercase tracking-wider text-center max-w-[52px] leading-tight ${isRest ? "text-slate-700" : "text-slate-400"}`}>
+                    {isRest ? "Repos" : (s?.category || d.session)}
                   </span>
+
+                  {/* Remove day button (visible on hover) */}
+                  {normalizedSchedule.length > 1 && (
+                    <button
+                      onClick={() => removeDay(i)}
+                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500/80 rounded-full hidden group-hover:flex items-center justify-center text-white text-[9px] font-black hover:bg-red-400"
+                    >×</button>
+                  )}
                 </div>
               );
             })}
+
+            {/* Add day button */}
+            {editingDayName ? (
+              <div className="flex flex-col items-center gap-1 shrink-0">
+                <input
+                  type="text"
+                  value={newDayName}
+                  onChange={e => setNewDayName(e.target.value)}
+                  placeholder="Nom..."
+                  className="w-20 text-center text-xs bg-slate-800 border border-blue-500/50 rounded-xl px-1 py-1.5 text-white outline-none"
+                  autoFocus
+                  onKeyDown={e => { if(e.key==='Enter') addDay(); if(e.key==='Escape') setEditingDayName(false); }}
+                />
+                <button onClick={addDay} className="text-[9px] text-blue-400 font-bold hover:text-blue-300">OK</button>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center gap-1.5 shrink-0">
+                <span className="text-[9px] text-transparent">+</span>
+                <button
+                  onClick={() => setEditingDayName(true)}
+                  className="w-12 h-12 rounded-2xl border border-dashed border-indigo-500/40 text-indigo-500 hover:text-indigo-300 hover:border-indigo-400 flex items-center justify-center transition-all"
+                >
+                  <Plus size={18} />
+                </button>
+                <span className="text-[8px] text-indigo-600 uppercase font-bold">Jour +</span>
+              </div>
+            )}
           </div>
           
           <div className="mt-4 flex items-center justify-end">
-            <Link to="/workout" state={{session:customSchedule.find(s=>s!=="-")}}
-              onClick={()=>{const first=customSchedule.find(s=>s!=="-");if(first)setCurrentSession(first);}}
-              className={`btn-primary text-xs gap-1.5 ${customSchedule.every(s=>s==="-") ? "opacity-50 pointer-events-none" : ""}`}>
+            <Link to="/workout" state={{session:normalizedSchedule.find(d=>d.session!=="-")?.session}}
+              onClick={()=>{const first=normalizedSchedule.find(d=>d.session!=="-");if(first)setCurrentSession(first.session);}}
+              className={`btn-primary text-xs gap-1.5 ${normalizedSchedule.every(d=>d.session==="-") ? "opacity-50 pointer-events-none" : ""}`}>
               Commencer ma semaine <ChevronRight size={13}/>
             </Link>
           </div>
@@ -87,7 +151,7 @@ const Planning = () => {
           <div className="modal-overlay" onClick={() => setEditingDay(null)}>
             <motion.div className="modal-card !p-0 overflow-hidden flex flex-col max-h-[80vh]" initial={{ y:50, opacity:0 }} animate={{ y:0, opacity:1 }} exit={{ y:50, opacity:0 }} onClick={e=>e.stopPropagation()}>
               <div className="p-5 border-b border-white/5">
-                <h3 className="font-black text-white">Séance du {fullDays[editingDay]}</h3>
+                <h3 className="font-black text-white">Séance du {getDayLabel(normalizedSchedule[editingDay] || {}, editingDay)}</h3>
                 <p className="text-xs text-slate-400">Choisis la séance à effectuer ce jour-là.</p>
               </div>
               <div className="p-4 overflow-y-auto grid grid-cols-2 gap-2">
@@ -95,10 +159,10 @@ const Planning = () => {
                   <span className="text-xl">😴</span>
                   <span className="text-xs font-bold text-slate-400">Repos</span>
                 </button>
-                {Object.entries(sessions).map(([k, s]) => (
+                {Object.entries(userSessions).map(([k, s]) => (
                   <button key={k} onClick={() => handleSelectSession(k)} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-blue-500/50">
-                    <span className={`w-8 h-8 rounded-xl bg-gradient-to-br ${sessionColors[k]||"from-blue-600 to-blue-800"} flex items-center justify-center text-white font-black text-xs`}>{k}</span>
-                    <span className="text-[10px] font-bold text-white text-center leading-tight mt-1">{s.title.split(" : ")[1] || s.title}</span>
+                    <span className={`w-8 h-8 rounded-xl bg-gradient-to-br ${getSessionColor(k, userSessions)} flex items-center justify-center text-white font-black text-xs`}>{k}</span>
+                    <span className="text-[10px] font-bold text-white text-center leading-tight mt-1">{s.category}</span>
                   </button>
                 ))}
               </div>

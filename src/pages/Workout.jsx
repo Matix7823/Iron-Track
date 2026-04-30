@@ -348,12 +348,15 @@ const Workout = () => {
     showErrorModal, setShowErrorModal,
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
-    removeExerciseFromSession
+    removeExerciseFromSession, createCustomSession, deleteCustomSession,
+    currentInput
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
   const [hasShared, setHasShared] = useState(false);
+  const [showCreateSession, setShowCreateSession] = useState(false);
+  const [newSessionName, setNewSessionName] = useState("");
 
   const location = useLocation();
   React.useEffect(() => { 
@@ -488,16 +491,33 @@ const Workout = () => {
       {/* Session selector */}
       <div className="flex gap-2 overflow-x-auto pb-4 mb-5 scrollbar-hide snap-x">
         {Object.entries(userSessions).map(([key, s]) => (
-          <button key={key} onClick={() => setCurrentSession(key)}
-            className={`snap-center shrink-0 flex flex-col items-center px-4 py-3 rounded-2xl border transition-all duration-200 ${
-              currentSession===key
-                ? "bg-gradient-to-br from-blue-600 to-blue-700 border-blue-400/50 text-white shadow-xl shadow-blue-500/25 scale-105"
-                : "glass border-white/8 text-slate-500 hover:border-white/16 hover:text-slate-300"
-            }`}>
-            <span className="text-lg font-black">{key}</span>
-            <span className="text-[9px] uppercase font-bold tracking-wider opacity-80 mt-0.5">{s.category}</span>
-          </button>
+          <div key={key} className="relative group snap-center shrink-0">
+            <button onClick={() => setCurrentSession(key)}
+              className={`flex flex-col items-center px-4 py-3 rounded-2xl border transition-all duration-200 ${
+                currentSession===key
+                  ? "bg-gradient-to-br from-blue-600 to-blue-700 border-blue-400/50 text-white shadow-xl shadow-blue-500/25 scale-105"
+                  : "glass border-white/8 text-slate-500 hover:border-white/16 hover:text-slate-300"
+              }`}>
+              <span className="text-lg font-black">{key}</span>
+              <span className="text-[9px] uppercase font-bold tracking-wider opacity-80 mt-0.5 max-w-[50px] truncate">{s.category}</span>
+            </button>
+            {/* Delete button for custom sessions */}
+            {!['A','B','C','D','E','F','G','H','I','J','K'].includes(key) && (
+              <button
+                onClick={() => { deleteCustomSession(key); if(currentSession===key) setCurrentSession('A'); }}
+                className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 rounded-full hidden group-hover:flex items-center justify-center text-white text-[10px] font-black hover:bg-red-400"
+              >×</button>
+            )}
+          </div>
         ))}
+        {/* Add new session button */}
+        <button
+          onClick={() => { setNewSessionName(""); setShowCreateSession(true); }}
+          className="snap-center shrink-0 flex flex-col items-center px-4 py-3 rounded-2xl border border-dashed border-white/20 text-slate-600 hover:text-white hover:border-white/40 transition-all"
+        >
+          <Plus size={20}/>
+          <span className="text-[9px] font-bold mt-0.5">Créer</span>
+        </button>
       </div>
 
       {/* Session info banner */}
@@ -513,6 +533,36 @@ const Workout = () => {
         )}
       </motion.div>
 
+      {/* Create session modal */}
+      <AnimatePresence>
+        {showCreateSession && (
+          <div className="modal-overlay" onClick={() => setShowCreateSession(false)}>
+            <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }} exit={{ scale:.8, opacity:0 }} onClick={e=>e.stopPropagation()}>
+              <Plus size={40} className="text-indigo-400 mx-auto mb-4" />
+              <h3 className="text-xl font-black text-white mb-2">Créer une séance</h3>
+              <p className="text-sm text-slate-400 mb-5">Donne un nom à ta nouvelle séance personnalisée.</p>
+              <input
+                type="text"
+                placeholder="Ex: Épaules Lourd, Cardio HIIT..."
+                value={newSessionName}
+                onChange={e => setNewSessionName(e.target.value)}
+                onKeyDown={e => { if(e.key==='Enter' && newSessionName.trim()) { createCustomSession(newSessionName.trim()); setShowCreateSession(false); }}}
+                className="input-premium mb-4"
+                autoFocus
+              />
+              <div className="flex gap-3">
+                <button onClick={() => setShowCreateSession(false)} className="btn-glass flex-1">Annuler</button>
+                <button
+                  onClick={() => { if(newSessionName.trim()) { createCustomSession(newSessionName.trim()); setShowCreateSession(false); }}}
+                  disabled={!newSessionName.trim()}
+                  className="btn-primary flex-1 disabled:opacity-50"
+                >Créer ✓</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* Intensity legend */}
       <div className="glass-card p-4 mb-6 border-purple-500/15">
         <p className="text-[10px] font-bold text-purple-400 uppercase tracking-wider mb-3 flex items-center gap-2"><Zap size={10}/> Techniques d'Intensité (Clic sur N° dernière série)</p>
@@ -524,26 +574,23 @@ const Workout = () => {
       </div>
 
       {/* Exercises */}
-      {session.exercises.length === 0 && currentSession === 'K' ? (
+      {session.exercises.length === 0 ? (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="glass-card p-8 mb-6 border-indigo-500/30 text-center flex flex-col items-center gap-4"
         >
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center shadow-2xl shadow-indigo-500/30 text-white text-3xl font-black">
-            K
+          <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${session.color || 'from-indigo-600 to-indigo-800'} flex items-center justify-center shadow-2xl text-white text-3xl font-black`}>
+            {currentSession}
           </div>
           <div>
-            <h3 className="text-xl font-black text-white mb-2">Séance Personnalisée</h3>
-            <p className="text-sm text-slate-400 max-w-xs mx-auto">Ta séance est vide pour l'instant. Ajoute les exercices de ton choix depuis la bibliothèque.</p>
+            <h3 className="text-xl font-black text-white mb-2">{session.category || 'Séance Personnalisée'}</h3>
+            <p className="text-sm text-slate-400 max-w-xs mx-auto">Cette séance est vide. Ajoute les exercices de ton choix depuis la bibliothèque.</p>
           </div>
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="btn-primary px-8 py-3 text-sm gap-2"
-          >
+          <button onClick={() => setShowAddModal(true)} className="btn-primary px-8 py-3 text-sm gap-2">
             <Plus size={18} /> Construire ma séance
           </button>
-          <p className="text-[10px] text-slate-600 uppercase tracking-widest">Tes exercices seront sauvegardés automatiquement</p>
+          <p className="text-[10px] text-slate-600 uppercase tracking-widest">Sauvegardés automatiquement</p>
         </motion.div>
       ) : (
         <>
@@ -558,6 +605,7 @@ const Workout = () => {
           </button>
         </>
       )}
+
 
       {/* Save button */}
       <div className="fixed bottom-0 left-0 right-0 glass-dark border-t border-white/5 p-4 pb-safe flex justify-center z-30">

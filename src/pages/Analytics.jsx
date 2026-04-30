@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
+import { exerciseLibrary } from "../data/exerciseLibrary";
 import { parseDate } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard } from "../utils/metrics";
 import EvolutionChart from "../components/charts/EvolutionChart";
@@ -218,7 +219,17 @@ const Analytics = () => {
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><BarChart2 size={16} className="text-blue-400"/>Progression par Exercice</h3>
           <select value={selectedExo} onChange={e=>setSelectedExo(e.target.value)} className="input-premium mb-4">
             <option value="">— Sélectionner un exercice —</option>
-            {allExercises.map(exo=><option key={exo.id} value={exo.id} className="bg-[#0a0f1e]">{exo.name}</option>)}
+            {Object.entries(
+              exerciseLibrary.reduce((acc, exo) => {
+                if (!acc[exo.muscle]) acc[exo.muscle] = [];
+                acc[exo.muscle].push(exo);
+                return acc;
+              }, {})
+            ).sort(([a],[b])=>a.localeCompare(b)).map(([muscle, exos]) => (
+              <optgroup key={muscle} label={`── ${muscle} ──`}>
+                {exos.map(exo => <option key={exo.id} value={exo.id} className="bg-[#0a0f1e]">{exo.name}</option>)}
+              </optgroup>
+            ))}
           </select>
           {selectedExo && (
             <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} className="space-y-4">

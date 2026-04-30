@@ -140,6 +140,54 @@ export const AppProvider = ({ children }) => {
     });
   }, [history, bodyWeightHistory, bodyMeasurements, persistData]);
 
+  const createCustomSession = useCallback((name, color = "from-indigo-600 to-indigo-800") => {
+    setUserSessions((prev) => {
+      const usedKeys = Object.keys(prev);
+      // Generate next key after Z use AA, AB... or use user-provided key
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let nextKey = null;
+      for (let i = 0; i < alphabet.length; i++) {
+        if (!usedKeys.includes(alphabet[i])) { nextKey = alphabet[i]; break; }
+      }
+      if (!nextKey) {
+        for (let i = 0; i < alphabet.length; i++) {
+          for (let j = 0; j < alphabet.length; j++) {
+            const key = alphabet[i] + alphabet[j];
+            if (!usedKeys.includes(key)) { nextKey = key; break; }
+          }
+          if (nextKey) break;
+        }
+      }
+      if (!nextKey) return prev;
+
+      const newSessions = {
+        ...prev,
+        [nextKey]: {
+          category: name || `Séance ${nextKey}`,
+          title: `Séance ${nextKey} : ${name || 'Personnalisée'}`,
+          focus: 'Ta séance sur mesure',
+          color,
+          exercises: []
+        }
+      };
+      const dataToSave = { history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions: newSessions };
+      persistData(dataToSave);
+      return newSessions;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, persistData]);
+
+  const deleteCustomSession = useCallback((sessionId) => {
+    const defaultKeys = Object.keys(sessions);
+    if (defaultKeys.includes(sessionId)) return; // don't delete built-in sessions
+    setUserSessions((prev) => {
+      const newSessions = { ...prev };
+      delete newSessions[sessionId];
+      const dataToSave = { history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions: newSessions };
+      persistData(dataToSave);
+      return newSessions;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, persistData]);
+
   // --- REST OF LOGIC (TIMER, CNS, SETS...) ---
   // (Copied from original for completeness within the Provider)
   
@@ -349,6 +397,7 @@ export const AppProvider = ({ children }) => {
     currentInput, customSchedule, updateCustomSchedule,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
+    createCustomSession, deleteCustomSession,
     sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel,
     cnsScore, energyLevel, calculateCNS, resetCNS,
     timerSeconds, isTimerRunning, startTimer, stopTimer,
