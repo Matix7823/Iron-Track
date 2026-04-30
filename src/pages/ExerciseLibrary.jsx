@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Dumbbell, Activity, Play, Youtube } from "lucide-react";
+import { Search, Dumbbell, Activity, Play } from "lucide-react";
 
 const muscleColors = {
   "Pectoraux":  { bg: "bg-blue-500/20",    text: "text-blue-400",    border: "border-blue-500/50"    },
