@@ -18,26 +18,31 @@ CREATE POLICY "Les utilisateurs peuvent lire leur propre profil"
 ON public.profiles FOR SELECT 
 USING (auth.uid() = id);
 
+-- CRÉATION D'UNE FONCTION POUR ÉVITER LA RÉCURSION INFINIE (Bug RLS)
+CREATE OR REPLACE FUNCTION public.is_admin()
+RETURNS boolean AS $$
+DECLARE
+  status boolean;
+BEGIN
+  SELECT (role = 'admin') INTO status FROM public.profiles WHERE id = auth.uid();
+  RETURN COALESCE(status, false);
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
 DROP POLICY IF EXISTS "Les admins peuvent lire tous les profils" ON public.profiles;
 CREATE POLICY "Les admins peuvent lire tous les profils" 
 ON public.profiles FOR SELECT 
-USING ( 
-  (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
-);
+USING ( public.is_admin() );
 
 DROP POLICY IF EXISTS "Les admins peuvent modifier les profils" ON public.profiles;
 CREATE POLICY "Les admins peuvent modifier les profils" 
 ON public.profiles FOR UPDATE 
-USING ( 
-  (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
-);
+USING ( public.is_admin() );
 
 DROP POLICY IF EXISTS "Les admins peuvent supprimer les profils" ON public.profiles;
 CREATE POLICY "Les admins peuvent supprimer les profils" 
 ON public.profiles FOR DELETE 
-USING ( 
-  (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' 
-);
+USING ( public.is_admin() );
 
 
 -- Pour la table app_state
