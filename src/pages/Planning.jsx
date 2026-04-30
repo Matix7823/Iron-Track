@@ -92,14 +92,22 @@ const Planning = () => {
 
       {/* Mon Programme Personnalisé */}
       <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="glass-card overflow-hidden mb-8 border-indigo-500/30 glow-purple">
-        <div className="p-5 border-b border-white/5 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-            <Settings size={20} />
+        <div className="p-5 border-b border-white/5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+              <Settings size={20} />
+            </div>
+            <div>
+              <h3 className="font-black text-white text-base">Programme Personnalisé</h3>
+              <p className="text-xs text-indigo-400 font-medium mt-0.5">Clique sur un jour pour modifier</p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-black text-white text-base">Programme Personnalisé</h3>
-            <p className="text-xs text-indigo-400 font-medium mt-0.5">Crée ta semaine sur mesure (clique sur un jour)</p>
-          </div>
+          <button 
+            onClick={() => document.getElementById('programs-lib')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn-glass !py-1.5 !px-3 !text-[10px] !rounded-lg gap-1.5 border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/10"
+          >
+            <Settings size={12}/> Modèles
+          </button>
         </div>
 
         <div className="p-5">
@@ -128,6 +136,19 @@ const Planning = () => {
                       <span className="w-4 h-1 rounded-full bg-white/10 block mt-0.5" />
                     )}
                   </button>
+
+                  {/* Quick Video Button for Active Session */}
+                  {!isRest && sessions[d.session] && (
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(`https://www.youtube.com/results?search_query=routine+fitness+${sessions[d.session].category.replace(/\s+/g, '+')}`, '_blank');
+                      }}
+                      className="absolute -bottom-1 -left-1 w-5 h-5 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/40 hover:text-white transition-all backdrop-blur-sm border border-white/5"
+                    >
+                      <Play size={8} fill="currentColor" />
+                    </button>
+                  )}
 
                   {/* Remove day button (visible on hover) */}
                   {normalizedSchedule.length > 1 && (
@@ -238,7 +259,7 @@ const Planning = () => {
         )}
       </AnimatePresence>
 
-      <div className="space-y-5">
+      <div className="space-y-5" id="programs-lib">
         <div className="flex justify-between items-center px-1">
           <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Bibliothèque de Programmes</p>
           <button onClick={() => updateCustomSchedule(Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })))}
