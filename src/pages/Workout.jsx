@@ -524,16 +524,40 @@ const Workout = () => {
       </div>
 
       {/* Exercises */}
-      {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} onRemoveRequest={setExerciseToDelete} />)}
-
-      {/* Add exercise button */}
-      <button 
-        onClick={() => setShowAddModal(true)}
-        className="w-full glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-blue-400 hover:border-blue-500/50 transition-all mb-12"
-      >
-        <Plus size={24}/>
-        <span className="text-sm font-bold">Ajouter un exercice</span>
-      </button>
+      {session.exercises.length === 0 && currentSession === 'K' ? (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass-card p-8 mb-6 border-indigo-500/30 text-center flex flex-col items-center gap-4"
+        >
+          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center shadow-2xl shadow-indigo-500/30 text-white text-3xl font-black">
+            K
+          </div>
+          <div>
+            <h3 className="text-xl font-black text-white mb-2">Séance Personnalisée</h3>
+            <p className="text-sm text-slate-400 max-w-xs mx-auto">Ta séance est vide pour l'instant. Ajoute les exercices de ton choix depuis la bibliothèque.</p>
+          </div>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="btn-primary px-8 py-3 text-sm gap-2"
+          >
+            <Plus size={18} /> Construire ma séance
+          </button>
+          <p className="text-[10px] text-slate-600 uppercase tracking-widest">Tes exercices seront sauvegardés automatiquement</p>
+        </motion.div>
+      ) : (
+        <>
+          {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} onRemoveRequest={setExerciseToDelete} />)}
+          {/* Add exercise button */}
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="w-full glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-blue-400 hover:border-blue-500/50 transition-all mb-12"
+          >
+            <Plus size={24}/>
+            <span className="text-sm font-bold">Ajouter un exercice</span>
+          </button>
+        </>
+      )}
 
       {/* Save button */}
       <div className="fixed bottom-0 left-0 right-0 glass-dark border-t border-white/5 p-4 pb-safe flex justify-center z-30">
