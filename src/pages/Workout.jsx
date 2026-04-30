@@ -481,7 +481,6 @@ const Workout = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
 
       {/* Modals */}
       <AnimatePresence>
