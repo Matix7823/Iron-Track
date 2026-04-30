@@ -441,90 +441,11 @@ const Workout = () => {
     <div className="page-container">
       <div className="bg-orbs" />
 
-      {/* Week Track & Templates */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          <div>
-            <p className="section-title mb-0 flex items-center gap-2">
-              <Calendar size={18} className="text-blue-400"/>
-              Ma Semaine
-            </p>
-            <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Progression hebdomadaire</p>
-          </div>
-          <button 
-            onClick={() => setShowTemplates(!showTemplates)}
-            className={`btn-glass !py-1.5 !px-3 !text-[10px] !rounded-xl gap-1.5 transition-all ${showTemplates ? 'bg-blue-500/20 text-blue-400 border-blue-500/50' : 'border-white/10 text-slate-400'}`}
-          >
-            <Settings size={12}/> Modèles
-          </button>
-        </div>
 
-        {/* Empty Planning Prompt */}
-        {customSchedule.every(d => d.session === "-") && !showTemplates && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="glass-card p-6 mb-4 border-dashed border-blue-500/30 text-center relative overflow-hidden group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-3 text-blue-400">
-                <Calendar size={24} />
-              </div>
-              <h3 className="text-base font-black text-white mb-1">Semaine non planifiée</h3>
-              <p className="text-xs text-slate-400 mb-4 max-w-[200px] mx-auto">Choisis un programme pour suivre tes séances sur la semaine.</p>
-              <button 
-                onClick={() => setShowTemplates(true)}
-                className="btn-primary !py-2 !px-6 !text-xs !rounded-xl"
-              >
-                Planifier ma semaine
-              </button>
-            </div>
-          </motion.div>
-        )}
 
-        <div className="glass-card p-4 flex justify-between gap-1 overflow-x-auto scrollbar-hide mb-2 border-white/5 shadow-inner bg-black/20">
-          {customSchedule.map((d, i) => {
-            const days = ["L", "M", "M", "J", "V", "S", "D"];
-            const isToday = (new Date().getDay() + 6) % 7 === i;
-            const isSessionActive = currentSession === d.session && d.session !== "-";
-            const sessionColor = userSessions[d.session]?.color || "from-slate-800 to-slate-900";
-            const isCompleted = d.status === 'good' || d.status === 'super';
-            
-            return (
-              <div key={i} className="flex flex-col items-center gap-2 shrink-0 first:ml-0 last:mr-0 px-1">
-                <span className={`text-[10px] font-black uppercase tracking-tighter ${isToday ? "text-blue-400" : "text-slate-600"}`}>
-                  {days[i]}
-                </span>
-                <button 
-                  onClick={() => d.session !== "-" && setCurrentSession(d.session)}
-                  className={`w-11 h-11 rounded-2xl flex items-center justify-center text-xs font-black transition-all relative group ${
-                    d.session === "-" 
-                      ? "bg-white/5 border border-dashed border-white/10 text-slate-700 hover:border-white/20 hover:text-slate-500" 
-                      : `text-white bg-gradient-to-br shadow-lg ${sessionColor} ${isSessionActive ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-black scale-110" : "opacity-80 hover:opacity-100 hover:scale-105"}`
-                  }`}
-                >
-                  {d.session === "-" ? "•" : d.session}
-                  
-                  {/* Status Indicator */}
-                  {d.status && (
-                    <motion.span 
-                      initial={{ scale: 0 }} animate={{ scale: 1 }}
-                      className="absolute -top-1 -right-1 text-[12px] bg-black/40 backdrop-blur-sm rounded-full w-5 h-5 flex items-center justify-center border border-white/10 shadow-lg"
-                    >
-                      {STATUS_ICONS[d.status]}
-                    </motion.span>
-                  )}
 
-                  {/* Today indicator pulse */}
-                  {isToday && (
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
-                  )}
-                </button>
-              </div>
-            );
-          })}
-        </div>
+
+
 
         <AnimatePresence>
           {showTemplates && (

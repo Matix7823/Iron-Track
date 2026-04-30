@@ -22,6 +22,7 @@ const Planning = () => {
   const [editingDay, setEditingDay] = useState(null);
   const [editingDayName, setEditingDayName] = useState(false);
   const [newDayName, setNewDayName] = useState("");
+  const [previewSession, setPreviewSession] = useState(null);
 
   const days = ["L","M","M","J","V","S","D"];
 
@@ -137,12 +138,11 @@ const Planning = () => {
                     )}
                   </button>
 
-                  {/* Quick Video Button for Active Session */}
-                  {!isRest && sessions[d.session] && (
+                  {!isRest && (sessions[d.session] || userSessions?.[d.session]) && (
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        window.open(`https://www.youtube.com/results?search_query=routine+fitness+${sessions[d.session].category.replace(/\s+/g, '+')}`, '_blank');
+                        setPreviewSession(d.session);
                       }}
                       className="absolute -bottom-1 -left-1 w-5 h-5 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/40 hover:text-white transition-all backdrop-blur-sm border border-white/5"
                     >
@@ -297,9 +297,12 @@ const Planning = () => {
                         <span className="text-sm font-black text-white">{d.session}</span>
                         {s && (
                           <button 
-                            onClick={() => window.open(`https://www.youtube.com/results?search_query=routine+fitness+${s.category.replace(/\s+/g, '+')}`, '_blank')}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPreviewSession(d.session);
+                            }}
                             className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center text-slate-900 shadow-xl hover:scale-110 transition-transform"
-                            title="Voir la vidéo explicative"
+                            title="Voir les exercices"
                           >
                             <Play size={10} fill="currentColor" />
                           </button>
@@ -314,6 +317,73 @@ const Planning = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* Session Preview Modal */}
+      <AnimatePresence>
+        {previewSession && (
+          <div className="modal-overlay" onClick={() => setPreviewSession(null)}>
+            <motion.div 
+              className="glass-dark w-[95%] sm:w-full max-w-lg rounded-3xl overflow-hidden border border-white/10 flex flex-col max-h-[85vh] shadow-2xl"
+              initial={{ y: 50, opacity: 0 }} 
+              animate={{ y: 0, opacity: 1 }} 
+              exit={{ y: 50, opacity: 0 }} 
+              onClick={e => e.stopPropagation()}
+            >
+              {(() => {
+                const s = sessions[previewSession] || userSessions?.[previewSession];
+                if (!s) return null;
+                return (
+                  <>
+                    <div className={`p-6 bg-gradient-to-br ${s.color || 'from-slate-800 to-slate-900'} relative`}>
+                      <button onClick={() => setPreviewSession(null)} className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 rounded-full text-white transition-colors">
+                        <Trash size={16} className="rotate-45" />
+                      </button>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="px-2 py-0.5 bg-white/20 rounded text-[10px] font-black text-white uppercase tracking-wider">{previewSession}</span>
+                        <h3 className="text-xl font-black text-white">{s.title || s.category}</h3>
+                      </div>
+                      <p className="text-white/70 text-xs font-medium">{s.focus || "Séance d'entraînement"}</p>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 scrollbar-hide">
+                      {s.exercises?.map((exo, i) => (
+                        <div key={i} className="flex items-center gap-4 p-3 bg-white/5 rounded-2xl border border-white/5">
+                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 shrink-0">
+                            <Plus size={16} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-bold text-white truncate">{exo.name}</p>
+                            <p className="text-[10px] text-slate-500 font-medium">{exo.muscle}</p>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <p className="text-xs font-black text-blue-400">{exo.sets}x{exo.reps}</p>
+                            <p className="text-[10px] text-slate-600 font-bold">{exo.rest}s</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="p-4 border-t border-white/5 flex gap-3">
+                      <button onClick={() => setPreviewSession(null)} className="btn-glass flex-1 py-3 text-xs">Fermer</button>
+                      <Link 
+                        to="/workout" 
+                        state={{ session: previewSession }}
+                        onClick={() => {
+                          setCurrentSession(previewSession);
+                          setPreviewSession(null);
+                        }}
+                        className="btn-primary flex-1 py-3 text-xs gap-2"
+                      >
+                        <Play size={12} fill="currentColor" /> S'entraîner
+                      </Link>
+                    </div>
+                  </>
+                );
+              })()}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
