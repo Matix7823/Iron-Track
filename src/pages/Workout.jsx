@@ -127,8 +127,8 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 };
 
 // ─── ExerciseCard ────────────────────────────────────────────────
-const ExerciseCard = ({ exo, index, sessionId }) => {
-  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, energyLevel, allExercises, removeExerciseFromSession } = useApp();
+const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
+  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, energyLevel, allExercises } = useApp();
   const [open, setOpen] = useState(true);
 
   const sets = getSetsForExo(exo.id);
@@ -190,7 +190,7 @@ const ExerciseCard = ({ exo, index, sessionId }) => {
               <Timer size={14} />
             </button>
           )}
-          <button onClick={() => removeExerciseFromSession(sessionId, exo.id)}
+          <button onClick={() => onRemoveRequest(exo)}
             className="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 hover:bg-red-500/20 active:scale-90 transition-all">
             <X size={14} />
           </button>
@@ -337,10 +337,12 @@ const Workout = () => {
     showConfirmModal, setShowConfirmModal,
     showErrorModal, setShowErrorModal,
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
-    isTimerRunning, timerSeconds, stopTimer, cnsScore
+    isTimerRunning, timerSeconds, stopTimer, cnsScore,
+    removeExerciseFromSession
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
+  const [exerciseToDelete, setExerciseToDelete] = useState(null);
 
   const location = useLocation();
   React.useEffect(() => { if (location.state?.session) setCurrentSession(location.state.session); }, [location.state, setCurrentSession]);
@@ -384,6 +386,25 @@ const Workout = () => {
 
       <AnimatePresence>
         {showSummary && <SummaryModal rank={sessionRank} tonnage={sessionTonnage} onClose={() => setShowSummary(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {exerciseToDelete && (
+          <div className="modal-overlay" onClick={() => setExerciseToDelete(null)}>
+            <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }} exit={{ scale:.8, opacity:0 }} transition={{ type:"spring", stiffness:280, damping:22 }} onClick={e=>e.stopPropagation()}>
+              <AlertTriangle size={52} className="text-red-500 mx-auto mb-4" />
+              <h3 className="text-xl font-black text-white mb-2">Supprimer l'exercice ?</h3>
+              <p className="text-sm text-slate-400 mb-6">Es-tu sûr de vouloir retirer <span className="font-bold text-white">{exerciseToDelete.name}</span> de cette séance ?</p>
+              <div className="flex gap-3">
+                <button onClick={() => setExerciseToDelete(null)} className="btn-glass flex-1">Annuler</button>
+                <button onClick={() => {
+                  removeExerciseFromSession(currentSession, exerciseToDelete.id);
+                  setExerciseToDelete(null);
+                }} className="btn-primary flex-1 !bg-red-600/20 !border-red-500/50 !text-red-500 hover:!bg-red-600/40 hover:!border-red-500">Oui, supprimer</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
@@ -445,7 +466,7 @@ const Workout = () => {
       </div>
 
       {/* Exercises */}
-      {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} />)}
+      {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} onRemoveRequest={setExerciseToDelete} />)}
 
       {/* Add exercise button */}
       <button 
