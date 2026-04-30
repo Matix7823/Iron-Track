@@ -39,7 +39,10 @@ export const AppProvider = ({ children }) => {
   // --- CHARGEMENT DATA ---
   useEffect(() => {
     const loadData = async () => {
-      if (!user) return; // Wait for user
+      if (!user) {
+        setIsDataLoading(false);
+        return;
+      }
 
       setIsDataLoading(true);
       try {
