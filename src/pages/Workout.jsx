@@ -501,8 +501,8 @@ const Workout = () => {
           <div className="modal-overlay">
             <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }} exit={{ scale:.8, opacity:0 }} transition={{ type:"spring", stiffness:280, damping:22 }}>
               <CheckCircle2 size={52} className="text-blue-500 mx-auto mb-4" />
-              <h3 className="text-xl font-black text-white mb-2">Terminer la séance ?</h3>
-              <p className="text-sm text-slate-400 mb-6">Tu as bien tout complété ?</p>
+              <h3 className="text-xl font-black text-white mb-2">Valider la séance ?</h3>
+              <p className="text-sm text-slate-400 mb-6">Veux-tu vraiment valider ta séance ?</p>
               <div className="flex gap-3">
                 <button onClick={() => setShowConfirmModal(false)} className="btn-glass flex-1">Non, continuer</button>
                 <button onClick={saveWorkout} className="btn-primary flex-1">Oui, valider !</button>

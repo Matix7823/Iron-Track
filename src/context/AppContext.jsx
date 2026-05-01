@@ -20,7 +20,22 @@ export const AppProvider = ({ children }) => {
 
   // Session state
   const [currentSession, setCurrentSession] = useState("A");
-  const [currentInput, setCurrentInput] = useState({});
+  const [currentInput, setCurrentInput] = useState(() => {
+    const saved = localStorage.getItem('iron_track_current_input');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error("Error parsing current input", e);
+        return {};
+      }
+    }
+    return {};
+  });
+
+  useEffect(() => {
+    localStorage.setItem('iron_track_current_input', JSON.stringify(currentInput));
+  }, [currentInput]);
 
   const [customSchedule, setCustomSchedule] = useState(() => {
     const saved = localStorage.getItem('iron_track_custom_schedule');
@@ -414,6 +429,7 @@ export const AppProvider = ({ children }) => {
     setHistory(newHistory);
     persistData(dataToSave);
     setCurrentInput({});
+    localStorage.removeItem('iron_track_current_input');
     setCnsScore(null);
     setShowConfirmModal(false);
 
