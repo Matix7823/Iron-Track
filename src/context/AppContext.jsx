@@ -15,7 +15,9 @@ export const AppProvider = ({ children }) => {
   const [bodyWeightHistory, setBodyWeightHistory] = useState([]);
   const [bodyMeasurements, setBodyMeasurements] = useState([]);
   const [userSessions, setUserSessions] = useState(sessions);
+  const [dailyNutrition, setDailyNutrition] = useState({});
   const [isDataLoading, setIsDataLoading] = useState(true);
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const { user } = useAuth();
 
   // Session state
@@ -52,15 +54,46 @@ export const AppProvider = ({ children }) => {
 
   // --- PERSISTENCE ---
   const persistData = useCallback(async (dataToSave) => {
+    // Toujours sauvegarder en local d'abord
+    const safeData = sanitizeData(dataToSave);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(safeData));
+
     if (!user) return;
+    
+    // Si offline, on stocke dans la file d'attente de synchro (optionnel ici car on push tout le state)
+    if (!navigator.onLine) {
+      console.log("Mode offline: données sauvegardées localement");
+      return;
+    }
+
     try {
-      const safeData = sanitizeData(dataToSave);
       const { error } = await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
       if (error) console.error("Erreur sauvegarde Supabase", error);
     } catch (err) {
       console.error("Erreur sauvegarde Supabase", err);
     }
   }, [user]);
+
+  // Synchronisation automatique quand on retrouve internet
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOffline(false);
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && user) {
+        try {
+          const data = JSON.parse(saved);
+          persistData(data);
+        } catch (e) {}
+      }
+    };
+    const handleOffline = () => setIsOffline(true);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [user, persistData]);
 
   const updateCustomSchedule = useCallback((newSchedule) => {
     setCustomSchedule(newSchedule);
@@ -107,67 +140,68 @@ export const AppProvider = ({ children }) => {
   // --- CHARGEMENT DATA & WEEKLY RESET ---
   useEffect(() => {
     const loadData = async () => {
+      // 1. Charger d'abord le LocalStorage (disponibilité immédiate)
+      const localSaved = localStorage.getItem(STORAGE_KEY);
+      let localData = null;
+      if (localSaved) {
+        try {
+          localData = JSON.parse(localSaved);
+          // Pré-remplir le state avec les données locales
+          if (localData.history) setHistory(localData.history);
+          if (localData.bodyWeight) setBodyWeightHistory(localData.bodyWeight);
+          if (localData.bodyMeasurements) setBodyMeasurements(localData.bodyMeasurements);
+          if (localData.userSessions) setUserSessions(localData.userSessions);
+          if (localData.dailyNutrition) setDailyNutrition(localData.dailyNutrition);
+          if (localData.customSchedule) setCustomSchedule(localData.customSchedule);
+        } catch (e) {}
+      }
+
       if (!user) {
         setIsDataLoading(false);
         return;
       }
+
       setIsDataLoading(true);
       try {
+        // 2. Tenter de récupérer les données distantes
         const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
-        if (error && error.code !== "PGRST116") console.error("Erreur de chargement Supabase", error);
         
-        let loadedHistory = {};
-        let loadedBW = [];
-        let loadedMeas = [];
-        let loadedSessions = sessions;
-        let loadedSchedule = customSchedule;
-
         if (data?.data) {
-          const parsed = data.data;
-          loadedHistory = parsed.history || {};
-          loadedBW = parsed.bodyWeight || [];
-          loadedMeas = parsed.bodyMeasurements || [];
-          if (parsed.userSessions) loadedSessions = parsed.userSessions;
-          if (parsed.customSchedule && Array.isArray(parsed.customSchedule)) {
-            loadedSchedule = parsed.customSchedule;
+          const remoteData = data.data;
+          
+          // Logique de fusion simple : si on a des données locales, on pourrait comparer des timestamps,
+          // mais ici on va privilégier la donnée distante si elle existe, sauf si on est en conflit.
+          // Pour faire simple, on fusionne ou on remplace.
+          setHistory(remoteData.history || localData?.history || {});
+          setBodyWeightHistory(remoteData.bodyWeight || localData?.bodyWeight || []);
+          setBodyMeasurements(remoteData.bodyMeasurements || localData?.bodyMeasurements || []);
+          setUserSessions(remoteData.userSessions || localData?.userSessions || sessions);
+          setDailyNutrition(remoteData.dailyNutrition || localData?.dailyNutrition || {});
+          
+          let schedule = remoteData.customSchedule || localData?.customSchedule || customSchedule;
+          
+          // Apply Weekly Reset
+          const lastReset = localStorage.getItem('iron_last_weekly_reset');
+          const now = new Date();
+          const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+          const dayNum = d.getUTCDay() || 7;
+          d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+          const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+          const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+          const currentWeekKey = `${d.getUTCFullYear()}-W${weekNo}`;
+
+          if (lastReset !== currentWeekKey) {
+            schedule = schedule.map(day => ({ ...day, status: null }));
+            localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
+            localStorage.setItem('iron_track_custom_schedule', JSON.stringify(schedule));
+            persistData({ ...remoteData, customSchedule: schedule });
           }
+          
+          setCustomSchedule(schedule);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteData));
         }
-
-        // Apply Weekly Reset if needed
-        const lastReset = localStorage.getItem('iron_last_weekly_reset');
-        const now = new Date();
-        const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-        const dayNum = d.getUTCDay() || 7;
-        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-        const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-        const currentWeekKey = `${d.getUTCFullYear()}-W${weekNo}`;
-
-        if (lastReset !== currentWeekKey) {
-          loadedSchedule = loadedSchedule.map(day => ({ ...day, status: null }));
-          localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
-          localStorage.setItem('iron_track_custom_schedule', JSON.stringify(loadedSchedule));
-          // Persist the reset
-          const safeData = sanitizeData({ 
-            history: loadedHistory, 
-            bodyWeight: loadedBW, 
-            bodyMeasurements: loadedMeas, 
-            userSessions: loadedSessions, 
-            customSchedule: loadedSchedule 
-          });
-          await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
-        }
-
-        // Update state
-        setHistory(loadedHistory);
-        setBodyWeightHistory(loadedBW);
-        setBodyMeasurements(loadedMeas);
-        setUserSessions(loadedSessions);
-        setCustomSchedule(loadedSchedule);
-        localStorage.setItem('iron_track_custom_schedule', JSON.stringify(loadedSchedule));
-
       } catch (err) {
-        console.error("Erreur lors du chargement des données", err);
+        console.error("Erreur de synchro distante (normal si offline)", err);
       } finally {
         setIsDataLoading(false);
       }
@@ -467,9 +501,40 @@ export const AppProvider = ({ children }) => {
       const ratio = (parseFloat(newShoulders) / parseFloat(newWaist)).toFixed(2);
       updatedMeas.push({ date, shoulders: newShoulders, waist: newWaist, ratio }); setBodyMeasurements(updatedMeas);
     }
-    const dataToSave = { history, bodyWeight: updatedBW, bodyMeasurements: updatedMeas, userSessions };
+    const dataToSave = { history, bodyWeight: updatedBW, bodyMeasurements: updatedMeas, userSessions, dailyNutrition };
     persistData(dataToSave);
-  }, [bodyWeightHistory, bodyMeasurements, history, userSessions, persistData]);
+  }, [bodyWeightHistory, bodyMeasurements, history, userSessions, dailyNutrition, persistData]);
+
+  // --- NUTRITION LOGGING ---
+  const logNutrition = useCallback((protein, carbs, fats) => {
+    const date = formatDateFR();
+    setDailyNutrition(prev => {
+      const updated = { 
+        ...prev, 
+        [date]: { 
+          ...(prev[date] || { water: 0 }), 
+          p: parseFloat(protein) || 0, 
+          c: parseFloat(carbs) || 0, 
+          f: parseFloat(fats) || 0 
+        } 
+      };
+      persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, dailyNutrition: updated });
+      return updated;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
+
+  const logWater = useCallback((amount) => {
+    const date = formatDateFR();
+    setDailyNutrition(prev => {
+      const current = prev[date] || { p:0, c:0, f:0, water: 0 };
+      const updated = { 
+        ...prev, 
+        [date]: { ...current, water: (current.water || 0) + amount } 
+      };
+      persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, dailyNutrition: updated });
+      return updated;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
   const exportToCSV = useCallback(() => {
     let csv = "Date,Exercice,Série,Poids,Reps,RPE,Tag\n";
@@ -507,6 +572,7 @@ export const AppProvider = ({ children }) => {
     showSummary, setShowSummary, showConfirmModal, setShowConfirmModal, showErrorModal, setShowErrorModal,
     sessionTonnage, sessionRank, handlePreSave, saveWorkout,
     saveBodyData, exportToCSV,
+    dailyNutrition, logNutrition, logWater, isOffline,
     schedules,
   };
 

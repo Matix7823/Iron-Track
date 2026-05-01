@@ -9,8 +9,10 @@ import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStand
 import {
   Dumbbell, TrendingUp, Zap, Activity, Target, Trophy,
   Moon, Frown, Brain, ArrowRight, Flame, BarChart2, Calendar,
-  ChevronRight, Bolt
+  ChevronRight, Bolt, Droplets, Coffee, Utensils, WifiOff
 } from "lucide-react";
+import Heatmap from "../components/charts/Heatmap";
+import { formatDateFR } from "../utils/date";
 
 // ─── Animated counter ───────────────────────────────────────────
 const AnimatedNumber = ({ value, suffix = "" }) => {
@@ -56,9 +58,8 @@ const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, trans
 const Dashboard = () => {
   const { 
     history, bodyWeightHistory, allExercises, currentBodyWeight, 
-    cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel, 
     setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS,
-    updateDayStatus
+    updateDayStatus, dailyNutrition, logWater, isOffline
   } = useApp();
   const { profile } = useAuth();
   const [showYesterdayCheck, setShowYesterdayCheck] = useState(false);
@@ -167,6 +168,26 @@ const Dashboard = () => {
     <div className="page-container">
       <div className="bg-orbs" />
 
+      {/* ── OFFLINE INDICATOR ── */}
+      <AnimatePresence>
+        {isOffline && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-red-500/20 border-b border-red-500/30 p-2 text-center flex items-center justify-center gap-2 mb-4 rounded-xl"
+          >
+            <WifiOff size={14} className="text-red-400" />
+            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest">Mode Hors-ligne — Sauvegarde locale active</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── HEATMAP ── */}
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+        <Heatmap history={history} />
+      </motion.div>
+
       {/* ── YESTERDAY PROMPT ── */}
       <AnimatePresence>
         {showYesterdayCheck && (
@@ -216,6 +237,55 @@ const Dashboard = () => {
             <p className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">{label}</p>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* ── NUTRITION WIDGETS ── */}
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-2 gap-3 mb-6">
+        {/* Water Tracker */}
+        <motion.div variants={item} className="glass-card p-4 flex flex-col justify-between relative overflow-hidden group">
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Hydratation</p>
+              <p className="text-2xl font-black text-blue-400">
+                {(dailyNutrition[formatDateFR()]?.water || 0).toFixed(1)} <span className="text-[10px] text-slate-500 font-normal">L</span>
+              </p>
+            </div>
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+              <Droplets size={16} />
+            </div>
+          </div>
+          <div className="flex gap-1 mt-4">
+            {[0.25, 0.5].map(amount => (
+              <button 
+                key={amount}
+                onClick={() => logWater(amount)}
+                className="flex-1 py-1 bg-blue-500/10 hover:bg-blue-500/20 rounded-lg text-[9px] font-bold text-blue-400 transition-all active:scale-95"
+              >
+                +{amount}L
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Quick Nutrition Info */}
+        <motion.div variants={item} className="glass-card p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Calories Jour</p>
+              {(() => {
+                const nut = dailyNutrition[formatDateFR()] || { p: 0, c: 0, f: 0 };
+                const cals = Math.round(nut.p * 4 + nut.c * 4 + nut.f * 9);
+                return <p className="text-2xl font-black text-emerald-400">{cals} <span className="text-[10px] text-slate-500 font-normal">kcal</span></p>;
+              })()}
+            </div>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+              <Utensils size={16} />
+            </div>
+          </div>
+          <Link to="/analytics" className="mt-4 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg text-[9px] font-bold text-emerald-400 text-center transition-all block">
+            Détails Macros
+          </Link>
+        </motion.div>
       </motion.div>
 
 

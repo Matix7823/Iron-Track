@@ -14,9 +14,16 @@ const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{durat
 const container = { hidden:{}, visible:{transition:{staggerChildren:.08}} };
 
 const Analytics = () => {
-  const { history, allExercises, currentBodyWeight, exportToCSV, currentSession } = useApp();
+  const { 
+    history, allExercises, currentBodyWeight, exportToCSV, currentSession,
+    dailyNutrition, logNutrition 
+  } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
   const [metric, setMetric] = useState("weight");
+  
+  const [editP, setEditP] = useState("");
+  const [editC, setEditC] = useState("");
+  const [editF, setEditF] = useState("");
 
   // Weekly volume per muscle group
   const weekVolume = (() => {
@@ -252,6 +259,69 @@ const Analytics = () => {
                 <Target size={14}/>
               </button>
             </div>
+          </div>
+          
+          {/* Macro Logger */}
+          <div className="glass rounded-2xl p-4 mb-4 border border-blue-500/10">
+            <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-3">Journal Alimentaire (Aujourd'hui)</p>
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              <div>
+                <label className="text-[8px] text-slate-500 uppercase font-bold block mb-1">Prot (g)</label>
+                <input 
+                  type="number" 
+                  placeholder={nutri.prot} 
+                  value={editP}
+                  onChange={e => setEditP(e.target.value)}
+                  className="input-premium !py-1.5 !text-xs text-center"
+                />
+              </div>
+              <div>
+                <label className="text-[8px] text-slate-500 uppercase font-bold block mb-1">Glu (g)</label>
+                <input 
+                  type="number" 
+                  placeholder={nutri.glucides} 
+                  value={editC}
+                  onChange={e => setEditC(e.target.value)}
+                  className="input-premium !py-1.5 !text-xs text-center"
+                />
+              </div>
+              <div>
+                <label className="text-[8px] text-slate-500 uppercase font-bold block mb-1">Lip (g)</label>
+                <input 
+                  type="number" 
+                  placeholder={nutri.lip} 
+                  value={editF}
+                  onChange={e => setEditF(e.target.value)}
+                  className="input-premium !py-1.5 !text-xs text-center"
+                />
+              </div>
+            </div>
+            <button 
+              onClick={() => {
+                logNutrition(editP || nutri.prot, editC || nutri.glucides, editF || nutri.lip);
+                setEditP(""); setEditC(""); setEditF("");
+              }}
+              className="w-full py-2 bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white rounded-xl text-[10px] font-black transition-all"
+            >
+              Enregistrer mes macros ✓
+            </button>
+            
+            {/* Real-time progress bars vs targets */}
+            {(() => {
+              const today = dailyNutrition[formatDateFR()];
+              if (!today || (!today.p && !today.c && !today.f)) return null;
+              return (
+                <div className="mt-4 space-y-2 pt-3 border-t border-white/5">
+                  <div className="flex justify-between items-center text-[9px]">
+                    <span className="text-slate-400">Progression Calories</span>
+                    <span className="text-white font-bold">{Math.round(today.p*4 + today.c*4 + today.f*9)} / {nutri.cal} kcal</span>
+                  </div>
+                  <div className="progress-track h-1">
+                    <div className="progress-fill bg-blue-500" style={{ width: `${Math.min(100, ((today.p*4 + today.c*4 + today.f*9)/nutri.cal)*100)}%` }} />
+                  </div>
+                </div>
+              );
+            })()}
           </div>
 
           {/* Setup form */}

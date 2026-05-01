@@ -1,19 +1,21 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Navbar, BottomNav } from "./components/layout/Nav";
-import Dashboard from "./pages/Dashboard";
-import Workout from "./pages/Workout";
-import Analytics from "./pages/Analytics";
-import Profile from "./pages/Profile";
-import Planning from "./pages/Planning";
-import ExerciseLibrary from "./pages/ExerciseLibrary";
-import Community from "./pages/Community";
-import Auth from "./pages/Auth";
-import AdminDashboard from "./pages/AdminDashboard";
 import { RefreshCw, ShieldAlert } from "lucide-react";
 import { useApp } from "./context/AppContext";
+
+// Lazy loaded components
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Workout = lazy(() => import("./pages/Workout"));
+const Analytics = lazy(() => import("./pages/Analytics"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Planning = lazy(() => import("./pages/Planning"));
+const ExerciseLibrary = lazy(() => import("./pages/ExerciseLibrary"));
+const Community = lazy(() => import("./pages/Community"));
+const Auth = lazy(() => import("./pages/Auth"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const LoadingScreen = () => (
   <div className="min-h-screen flex flex-col items-center justify-center gap-4">
@@ -92,17 +94,19 @@ const AppInner = () => {
   if (isDataLoading) return <LoadingScreen />;
   
   return (
-    <Routes>
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
-      <Route path="/workout" element={<ProtectedRoute><AppLayout><Workout /></AppLayout></ProtectedRoute>} />
-      <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
-      <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
-      <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
-      <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
-      <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
-      <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
-    </Routes>
+    <Suspense fallback={<LoadingScreen />}>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
+        <Route path="/workout" element={<ProtectedRoute><AppLayout><Workout /></AppLayout></ProtectedRoute>} />
+        <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
+        <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
+        <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
+        <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
+      </Routes>
+    </Suspense>
   );
 };
 

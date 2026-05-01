@@ -10,6 +10,9 @@ import {
   ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2, Play, Check, Calendar, Settings
 } from "lucide-react";
 import { syncWorkoutToAppleHealth } from "../utils/health";
+import { hapticLight, hapticMedium, scheduleRestNotification, cancelRestNotification } from "../utils/native";
+import { supabase } from "../supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 const STATUS_ICONS = {
   good: '✅',
@@ -304,7 +307,19 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                       </div>
                     )}
                     <button
-                      onClick={() => !isJunk && toggleSetDone(exo.id, si, exo.rest)}
+                      onClick={() => {
+                        if (!isJunk) {
+                          const isCurrentlyDone = set.done;
+                          toggleSetDone(exo.id, si, exo.rest);
+                          if (!isCurrentlyDone) {
+                            hapticMedium();
+                            if (exo.rest > 0) scheduleRestNotification(exo.rest);
+                          } else {
+                            hapticLight();
+                            cancelRestNotification();
+                          }
+                        }
+                      }}
                       className="w-6 sm:w-7 flex justify-center items-center active:scale-90 transition-transform shrink-0">
                       {isDone
                         ? <CheckCircle2 className="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,.7)] w-5 h-5 sm:w-6 sm:h-6" />
@@ -404,9 +419,7 @@ const Workout = () => {
   const handleShareWorkout = async () => {
     if (hasShared) return;
     try {
-      const { supabase } = await import('../supabaseClient');
-      const { useAuth } = await import('../context/AuthContext');
-      // Nous ne pouvons pas appeler de hooks ici, alors on récupère la session via supabase
+      // Get session from supabase client directly
       const { data: { session: authSession } } = await supabase.auth.getSession();
       
       if (!authSession?.user) return;
@@ -535,7 +548,7 @@ const Workout = () => {
               <p className="text-sm text-slate-400 mb-6">Veux-tu vraiment valider ta séance ?</p>
               <div className="flex gap-3">
                 <button onClick={() => setShowConfirmModal(false)} className="btn-glass flex-1">Non, continuer</button>
-                <button onClick={saveWorkout} className="btn-primary flex-1">Oui, valider !</button>
+                <button onClick={() => { saveWorkout(); hapticSuccess(); }} className="btn-primary flex-1">Oui, valider !</button>
               </div>
             </motion.div>
           </div>
@@ -587,7 +600,7 @@ const Workout = () => {
             exit={{ opacity:0, y:20, scale:.9 }}>
             <span className="text-3xl font-black font-mono text-white tracking-wider">{fmt(timerSeconds)}</span>
             <span className="text-[9px] text-blue-400 uppercase font-bold tracking-wider mt-1 flex items-center gap-1"><Clock size={9}/> Repos</span>
-            <button onClick={stopTimer} className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
+            <button onClick={() => { stopTimer(); cancelRestNotification(); }} className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
               <X size={11} />
             </button>
           </motion.div>
