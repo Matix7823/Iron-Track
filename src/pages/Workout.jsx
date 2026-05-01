@@ -9,6 +9,7 @@ import {
   Target, Activity, AlertTriangle, TrendingDown, Clock,
   ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2, Play, Check, Calendar, Settings
 } from "lucide-react";
+import { syncWorkoutToAppleHealth } from "../utils/health";
 
 const STATUS_ICONS = {
   good: '✅',
@@ -321,7 +322,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
 };
 
 // ─── Session Summary Modal ───────────────────────────────────────
-const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared }) => (
+const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared, onSyncAppleHealth }) => (
   <div className="modal-overlay" onClick={onClose}>
     <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
       transition={{ type:"spring", stiffness:280, damping:20 }} onClick={e=>e.stopPropagation()}>
@@ -339,6 +340,13 @@ const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared }) => (
         <p className="text-5xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-xl text-slate-500 font-normal ml-1">kg</span></p>
       </div>
       <div className="flex flex-col gap-2">
+        <button 
+          onClick={onSyncAppleHealth}
+          className="btn-primary w-full flex items-center justify-center gap-2 !bg-white !text-black !border-none hover:!bg-slate-200 transition-all font-bold"
+        >
+          <Activity size={18} />
+          Sync avec Apple Santé
+        </button>
         <button 
           onClick={onShare} 
           disabled={hasShared}
@@ -437,6 +445,28 @@ const Workout = () => {
     }
   };
 
+  const handleSyncAppleHealth = async () => {
+    // Collect exercises done
+    const exercisesDone = [];
+    Object.keys(currentInput).forEach(exoId => {
+      const exoDef = session.exercises.find(e => e.id === exoId);
+      if (exoDef) {
+        const doneSets = currentInput[exoId].filter(s => s.done).length;
+        if (doneSets > 0) exercisesDone.push(`${exoDef.name} (${doneSets} séries)`);
+      }
+    });
+
+    const sessionData = {
+      title: session.title,
+      tonnage: sessionTonnage,
+      date: new Date().toLocaleDateString('fr-FR'),
+      type: "Musculation",
+      exercises: exercisesDone.join(', ')
+    };
+    
+    await syncWorkoutToAppleHealth(sessionData);
+  };
+
   return (
     <div className="page-container">
       <div className="bg-orbs" />
@@ -513,7 +543,16 @@ const Workout = () => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {showSummary && <SummaryModal rank={sessionRank} tonnage={sessionTonnage} onClose={() => setShowSummary(false)} onShare={handleShareWorkout} hasShared={hasShared} />}
+        {showSummary && (
+          <SummaryModal 
+            rank={sessionRank} 
+            tonnage={sessionTonnage} 
+            onClose={() => setShowSummary(false)} 
+            onShare={handleShareWorkout} 
+            hasShared={hasShared}
+            onSyncAppleHealth={handleSyncAppleHealth}
+          />
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
