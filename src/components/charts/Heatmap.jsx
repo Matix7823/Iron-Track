@@ -14,11 +14,14 @@ const Heatmap = ({ history }) => {
       
       // Check if any exercise was done on this day
       let workedOut = false;
-      Object.keys(history).forEach(exoId => {
-        if (history[exoId].some(entry => entry.date === dateStr)) {
-          workedOut = true;
-        }
-      });
+      if (history) {
+        Object.keys(history).forEach(exoId => {
+          const entries = history[exoId];
+          if (Array.isArray(entries) && entries.some(entry => entry.date === dateStr)) {
+            workedOut = true;
+          }
+        });
+      }
       
       result.push({ date: dateStr, workedOut });
     }

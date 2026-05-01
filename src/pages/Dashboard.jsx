@@ -247,7 +247,7 @@ const Dashboard = () => {
             <div>
               <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Hydratation</p>
               <p className="text-2xl font-black text-blue-400">
-                {(dailyNutrition[formatDateFR()]?.water || 0).toFixed(1)} <span className="text-[10px] text-slate-500 font-normal">L</span>
+                {((dailyNutrition && dailyNutrition[formatDateFR()])?.water || 0).toFixed(1)} <span className="text-[10px] text-slate-500 font-normal">L</span>
               </p>
             </div>
             <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
@@ -273,8 +273,8 @@ const Dashboard = () => {
             <div>
               <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Calories Jour</p>
               {(() => {
-                const nut = dailyNutrition[formatDateFR()] || { p: 0, c: 0, f: 0 };
-                const cals = Math.round(nut.p * 4 + nut.c * 4 + nut.f * 9);
+                const nut = (dailyNutrition && dailyNutrition[formatDateFR()]) || { p: 0, c: 0, f: 0 };
+                const cals = Math.round((nut.p || 0) * 4 + (nut.c || 0) * 4 + (nut.f || 0) * 9);
                 return <p className="text-2xl font-black text-emerald-400">{cals} <span className="text-[10px] text-slate-500 font-normal">kcal</span></p>;
               })()}
             </div>

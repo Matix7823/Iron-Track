@@ -140,68 +140,73 @@ export const AppProvider = ({ children }) => {
   // --- CHARGEMENT DATA & WEEKLY RESET ---
   useEffect(() => {
     const loadData = async () => {
-      // 1. Charger d'abord le LocalStorage (disponibilité immédiate)
-      const localSaved = localStorage.getItem(STORAGE_KEY);
-      let localData = null;
-      if (localSaved) {
-        try {
-          localData = JSON.parse(localSaved);
-          // Pré-remplir le state avec les données locales
-          if (localData.history) setHistory(localData.history);
-          if (localData.bodyWeight) setBodyWeightHistory(localData.bodyWeight);
-          if (localData.bodyMeasurements) setBodyMeasurements(localData.bodyMeasurements);
-          if (localData.userSessions) setUserSessions(localData.userSessions);
-          if (localData.dailyNutrition) setDailyNutrition(localData.dailyNutrition);
-          if (localData.customSchedule) setCustomSchedule(localData.customSchedule);
-        } catch (e) {}
-      }
-
-      if (!user) {
-        setIsDataLoading(false);
-        return;
-      }
-
       setIsDataLoading(true);
       try {
-        // 2. Tenter de récupérer les données distantes
-        const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
+        const defaultSchedule = Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
         
-        if (data?.data) {
-          const remoteData = data.data;
-          
-          // Logique de fusion simple : si on a des données locales, on pourrait comparer des timestamps,
-          // mais ici on va privilégier la donnée distante si elle existe, sauf si on est en conflit.
-          // Pour faire simple, on fusionne ou on remplace.
-          setHistory(remoteData.history || localData?.history || {});
-          setBodyWeightHistory(remoteData.bodyWeight || localData?.bodyWeight || []);
-          setBodyMeasurements(remoteData.bodyMeasurements || localData?.bodyMeasurements || []);
-          setUserSessions(remoteData.userSessions || localData?.userSessions || sessions);
-          setDailyNutrition(remoteData.dailyNutrition || localData?.dailyNutrition || {});
-          
-          let schedule = remoteData.customSchedule || localData?.customSchedule || customSchedule;
-          
-          // Apply Weekly Reset
-          const lastReset = localStorage.getItem('iron_last_weekly_reset');
-          const now = new Date();
-          const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-          const dayNum = d.getUTCDay() || 7;
-          d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-          const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-          const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-          const currentWeekKey = `${d.getUTCFullYear()}-W${weekNo}`;
+        // 1. Charger le LocalStorage
+        const localSaved = localStorage.getItem(STORAGE_KEY);
+        let currentData = {
+          history: {},
+          bodyWeight: [],
+          bodyMeasurements: [],
+          userSessions: sessions,
+          dailyNutrition: {},
+          customSchedule: defaultSchedule
+        };
 
-          if (lastReset !== currentWeekKey) {
-            schedule = schedule.map(day => ({ ...day, status: null }));
-            localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
-            localStorage.setItem('iron_track_custom_schedule', JSON.stringify(schedule));
-            persistData({ ...remoteData, customSchedule: schedule });
+        if (localSaved) {
+          try {
+            const parsed = JSON.parse(localSaved);
+            if (parsed) currentData = { ...currentData, ...parsed };
+          } catch (e) {
+            console.error("Erreur lecture LocalStorage", e);
           }
-          
-          setCustomSchedule(schedule);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteData));
         }
+
+        // 2. Si connecté, tenter de récupérer les données distantes
+        if (user) {
+          try {
+            const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
+            if (data?.data) {
+              currentData = { ...currentData, ...data.data };
+            }
+          } catch (err) {
+            console.error("Erreur synchro Supabase", err);
+          }
+        }
+
+        // 3. Appliquer le Weekly Reset si nécessaire
+        const lastReset = localStorage.getItem('iron_last_weekly_reset');
+        const now = new Date();
+        const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+        const dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        const currentWeekKey = `${d.getUTCFullYear()}-W${weekNo}`;
+
+        if (lastReset !== currentWeekKey) {
+          if (Array.isArray(currentData.customSchedule)) {
+            currentData.customSchedule = currentData.customSchedule.map(day => ({ ...day, status: null }));
+          }
+          localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
+        }
+
+        // 4. Mettre à jour tous les états d'un coup
+        setHistory(currentData.history || {});
+        setBodyWeightHistory(currentData.bodyWeight || []);
+        setBodyMeasurements(currentData.bodyMeasurements || []);
+        setUserSessions(currentData.userSessions || sessions);
+        setDailyNutrition(currentData.dailyNutrition || {});
+        setCustomSchedule(currentData.customSchedule || defaultSchedule);
+
+        // 5. Sauvegarder l'état final consolidé
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
+        localStorage.setItem('iron_track_custom_schedule', JSON.stringify(currentData.customSchedule));
+
       } catch (err) {
-        console.error("Erreur de synchro distante (normal si offline)", err);
+        console.error("Crash critique lors du chargement des données", err);
       } finally {
         setIsDataLoading(false);
       }
