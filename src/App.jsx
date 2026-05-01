@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Navbar, BottomNav } from "./components/layout/Nav";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { RefreshCw, ShieldAlert } from "lucide-react";
 import { useApp } from "./context/AppContext";
 
@@ -107,14 +108,17 @@ const AppInner = () => {
   );
 };
 
+
 const App = () => (
-  <BrowserRouter>
-    <AuthProvider>
-      <AppProvider>
-        <AppInner />
-      </AppProvider>
-    </AuthProvider>
-  </BrowserRouter>
+  <ErrorBoundary>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppProvider>
+          <AppInner />
+        </AppProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  </ErrorBoundary>
 );
 
 export default App;

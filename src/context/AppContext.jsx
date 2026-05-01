@@ -144,8 +144,6 @@ export const AppProvider = ({ children }) => {
       try {
         const defaultSchedule = Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
         
-        // 1. Charger le LocalStorage
-        const localSaved = localStorage.getItem(STORAGE_KEY);
         let currentData = {
           history: {},
           bodyWeight: [],
@@ -155,28 +153,42 @@ export const AppProvider = ({ children }) => {
           customSchedule: defaultSchedule
         };
 
-        if (localSaved) {
-          try {
+        // 1. Charger le LocalStorage
+        try {
+          const localSaved = localStorage.getItem(STORAGE_KEY);
+          if (localSaved) {
             const parsed = JSON.parse(localSaved);
-            if (parsed) currentData = { ...currentData, ...parsed };
-          } catch (e) {
-            console.error("Erreur lecture LocalStorage", e);
+            if (parsed && typeof parsed === 'object') {
+              currentData = { ...currentData, ...parsed };
+            }
           }
+        } catch (e) {
+          console.error("Erreur LocalStorage:", e);
         }
 
         // 2. Si connecté, tenter de récupérer les données distantes
         if (user) {
           try {
             const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
-            if (data?.data) {
+            if (data?.data && typeof data.data === 'object') {
               currentData = { ...currentData, ...data.data };
             }
           } catch (err) {
-            console.error("Erreur synchro Supabase", err);
+            console.error("Erreur Supabase:", err);
           }
         }
 
-        // 3. Appliquer le Weekly Reset si nécessaire
+        // 3. Validation et Correction des données critiques
+        const validatedHistory = {};
+        if (currentData.history && typeof currentData.history === 'object') {
+          Object.keys(currentData.history).forEach(key => {
+            if (Array.isArray(currentData.history[key])) {
+              validatedHistory[key] = currentData.history[key];
+            }
+          });
+        }
+
+        // 4. Appliquer le Weekly Reset
         const lastReset = localStorage.getItem('iron_last_weekly_reset');
         const now = new Date();
         const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
@@ -193,20 +205,22 @@ export const AppProvider = ({ children }) => {
           localStorage.setItem('iron_last_weekly_reset', currentWeekKey);
         }
 
-        // 4. Mettre à jour tous les états d'un coup
-        setHistory(currentData.history || {});
-        setBodyWeightHistory(currentData.bodyWeight || []);
-        setBodyMeasurements(currentData.bodyMeasurements || []);
-        setUserSessions(currentData.userSessions || sessions);
-        setDailyNutrition(currentData.dailyNutrition || {});
-        setCustomSchedule(currentData.customSchedule || defaultSchedule);
+        // 5. Mise à jour des états avec garanties de type
+        setHistory(validatedHistory);
+        setBodyWeightHistory(Array.isArray(currentData.bodyWeight) ? currentData.bodyWeight : []);
+        setBodyMeasurements(Array.isArray(currentData.bodyMeasurements) ? currentData.bodyMeasurements : []);
+        setUserSessions(currentData.userSessions && typeof currentData.userSessions === 'object' ? currentData.userSessions : sessions);
+        setDailyNutrition(currentData.dailyNutrition && typeof currentData.dailyNutrition === 'object' ? currentData.dailyNutrition : {});
+        setCustomSchedule(Array.isArray(currentData.customSchedule) ? currentData.customSchedule : defaultSchedule);
 
-        // 5. Sauvegarder l'état final consolidé
+        // 6. Sauvegarde de l'état "propre"
         localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
-        localStorage.setItem('iron_track_custom_schedule', JSON.stringify(currentData.customSchedule));
+        if (Array.isArray(currentData.customSchedule)) {
+          localStorage.setItem('iron_track_custom_schedule', JSON.stringify(currentData.customSchedule));
+        }
 
       } catch (err) {
-        console.error("Crash critique lors du chargement des données", err);
+        console.error("CRASH CRITIQUE APP_CONTEXT:", err);
       } finally {
         setIsDataLoading(false);
       }

@@ -37,13 +37,17 @@ const Analytics = () => {
       "Biceps (Long)":"Bras","Biceps (Court)":"Bras",Brachial:"Bras","Triceps (Masse)":"Bras","Triceps (Long)":"Bras","Triceps (Vaste)":"Bras","Avant-Bras":"Bras",Bras:"Bras",
       Abdos:"Abdos","Abdos (Bas)":"Abdos",Obliques:"Abdos",Transverse:"Abdos",Gainage:"Abdos",Lombaires:"Abdos",Taille:"Abdos",
     };
-    Object.keys(history).forEach(id => {
+    Object.keys(history || {}).forEach(id => {
       const exo = allExercises.find(e=>e.id===id); if(!exo) return;
       const g = map[exo.muscle]; if(!g) return;
-      (history[id]||[]).forEach(entry => {
-        const d = parseDate(entry.date);
-        if(d>=d7&&d<=now) vol[g] += (entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
-      });
+      const entries = history[id];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry => {
+          if (!entry || !entry.date) return;
+          const d = parseDate(entry.date);
+          if(d>=d7&&d<=now) vol[g] += (entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
+        });
+      }
     });
     return vol;
   })();
@@ -55,17 +59,21 @@ const Analytics = () => {
   const aes = (() => {
     const now=new Date(),d7=new Date(now-7*864e5);
     let latDelts=0,upperChest=0,lats=0;
-    Object.keys(history).forEach(id=>{
+    Object.keys(history || {}).forEach(id=>{
       const exo=allExercises.find(e=>e.id===id); if(!exo) return;
-      (history[id]||[]).forEach(entry=>{
-        const d=parseDate(entry.date);
-        if(d>=d7&&d<=now){
-          const v=(entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
-          if(exo.muscle==="Épaules (Latéral)") latDelts+=v;
-          if(exo.muscle==="Pecs (Haut)")       upperChest+=v;
-          if(exo.muscle==="Dos (Largeur)")     lats+=v;
-        }
-      });
+      const entries = history[id];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry=>{
+          if (!entry || !entry.date) return;
+          const d=parseDate(entry.date);
+          if(d>=d7&&d<=now){
+            const v=(entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
+            if(exo.muscle==="Épaules (Latéral)") latDelts+=v;
+            if(exo.muscle==="Pecs (Haut)")       upperChest+=v;
+            if(exo.muscle==="Dos (Largeur)")     lats+=v;
+          }
+        });
+      }
     });
     const g = Math.round((Math.min(100,(latDelts/10)*100)+Math.min(100,(upperChest/10)*100)+Math.min(100,(lats/10)*100))/3);
     return {latDelts,upperChest,lats,score:g};
@@ -74,13 +82,16 @@ const Analytics = () => {
   // Sessions history
   const sessionHistory = (() => {
     const m={};
-    Object.keys(history).forEach(id=>{
-      (history[id]||[]).forEach(entry=>{
-        if(!entry.date) return;
-        if(!m[entry.date]) m[entry.date]={date:entry.date,tonnage:0,exos:0};
-        (entry.setsData||[]).forEach(s=>{ if(+s.weight>0&&+s.reps>0&&s.done!==false) m[entry.date].tonnage+=+s.weight*+s.reps; });
-        if(m[entry.date].tonnage>0) m[entry.date].exos++;
-      });
+    Object.keys(history || {}).forEach(id=>{
+      const entries = history[id];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry=>{
+          if(!entry || !entry.date) return;
+          if(!m[entry.date]) m[entry.date]={date:entry.date,tonnage:0,exos:0};
+          (entry.setsData||[]).forEach(s=>{ if(s && +s.weight>0&&+s.reps>0&&s.done!==false) m[entry.date].tonnage+=+s.weight*+s.reps; });
+          if(m[entry.date].tonnage>0) m[entry.date].exos++;
+        });
+      }
     });
     const arr=Object.values(m).filter(d=>d.tonnage>0).sort((a,b)=>parseDate(b.date)-parseDate(a.date));
     const tons=arr.map(a=>a.tonnage).sort((a,b)=>a-b);

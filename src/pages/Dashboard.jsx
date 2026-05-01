@@ -94,8 +94,12 @@ const Dashboard = () => {
   // Streak
   const streak = useMemo(() => {
     const dates = new Set();
-    Object.values(history).forEach(e => e.forEach(h => { if (h.date) dates.add(h.date); }));
-    const sorted = [...dates].map(d => parseDate(d)).sort((a, b) => b - a);
+    Object.values(history || {}).forEach(entries => {
+      if (Array.isArray(entries)) {
+        entries.forEach(h => { if (h && h.date) dates.add(h.date); });
+      }
+    });
+    const sorted = [...dates].map(d => parseDate(d)).filter(d => d.getTime() > 0).sort((a, b) => b - a);
     if (!sorted.length) return 0;
     const msDay = 864e5;
     const now = new Date(); now.setHours(0,0,0,0);
@@ -112,20 +116,29 @@ const Dashboard = () => {
   const weekStats = useMemo(() => {
     const now = new Date(), d7 = new Date(now - 7*864e5);
     let tonnage = 0; const dates = new Set();
-    Object.values(history).forEach(entries => entries.forEach(e => {
-      const d = parseDate(e.date);
-      if (d >= d7 && d <= now) {
-        dates.add(e.date);
-        (e.setsData || []).forEach(s => { if (s.done && +s.weight > 0 && +s.reps > 0) tonnage += +s.weight * +s.reps; });
+    Object.values(history || {}).forEach(entries => {
+      if (Array.isArray(entries)) {
+        entries.forEach(e => {
+          if (!e || !e.date) return;
+          const d = parseDate(e.date);
+          if (d >= d7 && d <= now) {
+            dates.add(e.date);
+            (e.setsData || []).forEach(s => { if (s && s.done && +s.weight > 0 && +s.reps > 0) tonnage += +s.weight * +s.reps; });
+          }
+        });
       }
-    }));
+    });
     return { sessions: dates.size, tonnage: Math.round(tonnage) };
   }, [history]);
 
   // Total sessions
   const totalSessions = useMemo(() => {
     const d = new Set();
-    Object.values(history).forEach(e => e.forEach(h => { if (h.date) d.add(h.date); }));
+    Object.values(history || {}).forEach(entries => {
+      if (Array.isArray(entries)) {
+        entries.forEach(h => { if (h && h.date) d.add(h.date); });
+      }
+    });
     return d.size;
   }, [history]);
 
