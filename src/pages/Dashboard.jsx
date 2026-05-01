@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
 import { sessions } from "../data/sessions";
-import { parseDate } from "../utils/date";
+import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard, calculateCNSScore } from "../utils/metrics";
 import {
   Dumbbell, TrendingUp, Zap, Activity, Target, Trophy,

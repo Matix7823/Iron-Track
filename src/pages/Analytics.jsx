@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { exerciseLibrary } from "../data/exerciseLibrary";
-import { parseDate } from "../utils/date";
+import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard } from "../utils/metrics";
 import EvolutionChart from "../components/charts/EvolutionChart";
 import { motion } from "framer-motion";
