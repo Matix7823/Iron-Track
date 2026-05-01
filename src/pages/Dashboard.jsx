@@ -12,7 +12,6 @@ import {
   ChevronRight, Bolt, Droplets, Coffee, Utensils, WifiOff
 } from "lucide-react";
 import Heatmap from "../components/charts/Heatmap";
-import { formatDateFR } from "../utils/date";
 
 // ─── Animated counter ───────────────────────────────────────────
 const AnimatedNumber = ({ value, suffix = "" }) => {
