@@ -58,6 +58,7 @@ const item = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, trans
 const Dashboard = () => {
   const { 
     history, bodyWeightHistory, allExercises, currentBodyWeight, 
+    cnsScore, energyLevel, sleepHours, setSleepHours, stressLevel,
     setStressLevel, sorenessLevel, setSorenessLevel, calculateCNS, resetCNS,
     updateDayStatus, dailyNutrition, logWater, isOffline
   } = useApp();
