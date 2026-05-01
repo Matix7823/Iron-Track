@@ -1,31 +1,34 @@
 import { Capacitor } from '@capacitor/core';
-import { HealthKit } from 'capacitor-healthkit';
+import { Health } from '@capgo/capacitor-health';
 
 export const syncWorkoutToAppleHealth = async (sessionData) => {
   if (Capacitor.isNativePlatform()) {
     try {
+      const { available } = await Health.isAvailable();
+      if (!available) {
+        return triggerShortcut(sessionData);
+      }
+
       // 1. Demander la permission si nécessaire
-      await HealthKit.requestAuthorization({
-        all: ['workout'],
+      await Health.requestAuthorization({
         read: [],
-        write: ['workout']
+        write: ['workouts']
       });
 
       // 2. Enregistrer l'entraînement
       // Note: On utilise des valeurs par défaut pour la durée et les calories
       // car elles ne sont pas encore suivies précisément dans l'app.
-      await HealthKit.saveWorkout({
-        type: 'traditionalStrengthTraining',
-        startDate: new Date().toISOString(),
+      await Health.saveWorkout({
+        activityType: 'traditionalStrengthTraining',
+        startDate: new Date(Date.now() - 60 * 60 * 1000).toISOString(), // Il y a 1h
         endDate: new Date().toISOString(),
-        duration: 60, // 60 minutes par défaut
-        energyBurned: sessionData.tonnage / 10, // Estimation très brute
-        energyBurnedUnit: 'kilocalories'
+        energy: Math.round(sessionData.tonnage / 10), // Estimation très brute
+        energyUnit: 'kilocalorie'
       });
       
       return { success: true, method: 'native' };
     } catch (err) {
-      console.error("Erreur HealthKit native:", err);
+      console.error("Erreur Health native:", err);
       // Fallback sur le raccourci si le natif échoue
       return triggerShortcut(sessionData);
     }

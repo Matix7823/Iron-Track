@@ -714,11 +714,11 @@ const Workout = () => {
 
 
       {/* Save button */}
-      <div className="fixed bottom-0 left-0 right-0 glass-dark border-t border-white/5 p-4 pb-safe flex justify-center z-30">
+      <div className="fixed bottom-[64px] sm:bottom-0 left-0 right-0 glass-dark border-t border-white/5 p-4 pb-4 sm:pb-safe flex justify-center z-30">
         <motion.button
           whileTap={{ scale:.97 }}
           onClick={handlePreSave}
-          className="btn-primary w-full max-w-lg text-base py-4 neon-border">
+          className="btn-primary w-full max-w-lg text-base py-4 neon-border shadow-2xl">
           <Save size={20} /> Valider la Séance
         </motion.button>
       </div>
