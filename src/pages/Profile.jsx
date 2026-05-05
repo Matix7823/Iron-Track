@@ -8,7 +8,7 @@ const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{durat
 const container = { hidden:{}, visible:{transition:{staggerChildren:.09}} };
 
 const Profile = () => {
-  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData } = useApp();
+  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression } = useApp();
   const [weight, setWeight] = useState("");
   const [shoulders, setShoulders] = useState("");
   const [waist, setWaist] = useState("");
@@ -40,6 +40,60 @@ const Profile = () => {
         {/* Header */}
         <motion.div variants={item} className="section-title mb-8">
           <User size={20} className="text-blue-400" /> Mon Profil Corporel
+        </motion.div>
+
+        {/* Level & Rank System */}
+        <motion.div variants={item} className="glass-card p-0 mb-6 overflow-hidden border-white/5">
+          <div className={`bg-gradient-to-r ${progression.rankColor} p-5 relative overflow-hidden`}>
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <Dumbbell className="absolute -right-4 -bottom-4 rotate-12" size={120} />
+            </div>
+
+            <div className="flex justify-between items-start relative z-10">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Niveau {progression.level}</span>
+                  {progression.isGod && <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[8px] font-bold text-white backdrop-blur-md border border-white/20">DIVIN</span>}
+                </div>
+                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                  {progression.rankName} {progression.step}
+                  <span className="text-2xl drop-shadow-lg">{progression.rankIcon}</span>
+                </h2>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-bold text-white/60 uppercase">Total XP</p>
+                <p className="text-xl font-black text-white">{progression.xp.toLocaleString()}</p>
+              </div>
+            </div>
+
+            <div className="mt-6 relative z-10">
+              <div className="flex justify-between text-[10px] font-bold text-white/80 mb-2 uppercase tracking-wider">
+                <span>Progression</span>
+                {progression.isMax ? <span>Niveau Max atteint</span> : <span>{progression.xpToNext.toLocaleString()} XP avant {progression.step === 3 ? "le rang suivant" : `le palier ${progression.step + 1}`}</span>}
+              </div>
+              <div className="h-3 w-full bg-black/30 rounded-full overflow-hidden backdrop-blur-sm border border-white/10 shadow-inner">
+                <motion.div 
+                  className="h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progression.progress}%` }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-3 bg-slate-900/50 flex justify-center gap-4 border-t border-white/5">
+            <div className="flex items-center gap-1.5">
+              <Activity size={12} className="text-slate-500" />
+              <span className="text-[10px] text-slate-400 font-medium">Statut: <span className="text-emerald-400 font-bold">Actif</span></span>
+            </div>
+            <div className="w-px h-3 bg-slate-800 self-center" />
+            <div className="flex items-center gap-1.5">
+              <Trophy size={12} className="text-slate-500" />
+              <span className="text-[10px] text-slate-400 font-medium">Objectif: <span className="text-amber-400 font-bold">Dieu Grec</span></span>
+            </div>
+          </div>
         </motion.div>
 
         {/* Hero stats */}

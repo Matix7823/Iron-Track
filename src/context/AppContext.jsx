@@ -5,6 +5,7 @@ import { sessions, schedules } from "../data/sessions";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
 import { sanitizeData } from "../utils/security";
+import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../utils/progression";
 
 const AppContext = createContext(null);
 
@@ -16,6 +17,7 @@ export const AppProvider = ({ children }) => {
   const [bodyMeasurements, setBodyMeasurements] = useState([]);
   const [userSessions, setUserSessions] = useState(sessions);
   const [dailyNutrition, setDailyNutrition] = useState({});
+  const [userProgression, setUserProgression] = useState({ xp: 0, lastDate: formatDateFR() });
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const { user } = useAuth();
@@ -104,7 +106,8 @@ export const AppProvider = ({ children }) => {
         bodyWeight: bodyWeightHistory, 
         bodyMeasurements, 
         userSessions, 
-        customSchedule: newSchedule 
+        customSchedule: newSchedule,
+        userProgression
       });
     }
   }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
@@ -117,7 +120,7 @@ export const AppProvider = ({ children }) => {
       // Side effect here is risky but kept for simplicity if it was working before.
       // Ideally, this should be in a separate useEffect.
       if (user) {
-        persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule });
+        persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule, userProgression });
       }
       return newSchedule;
     });
@@ -150,7 +153,8 @@ export const AppProvider = ({ children }) => {
           bodyMeasurements: [],
           userSessions: sessions,
           dailyNutrition: {},
-          customSchedule: defaultSchedule
+          customSchedule: defaultSchedule,
+          userProgression: { xp: 0, lastDate: formatDateFR() }
         };
 
         // 1. Charger le LocalStorage
@@ -212,6 +216,18 @@ export const AppProvider = ({ children }) => {
         setUserSessions(currentData.userSessions && typeof currentData.userSessions === 'object' ? currentData.userSessions : sessions);
         setDailyNutrition(currentData.dailyNutrition && typeof currentData.dailyNutrition === 'object' ? currentData.dailyNutrition : {});
         setCustomSchedule(Array.isArray(currentData.customSchedule) ? currentData.customSchedule : defaultSchedule);
+
+        // --- XP DECAY & PROGRESSION ---
+        if (currentData.userProgression) {
+          const decayedXP = calculateXPDecay(currentData.userProgression.xp, currentData.userProgression.lastDate);
+          const updatedProgression = { ...currentData.userProgression, xp: decayedXP };
+          setUserProgression(updatedProgression);
+          currentData.userProgression = updatedProgression;
+        } else {
+          const initProg = { xp: 0, lastDate: formatDateFR() };
+          setUserProgression(initProg);
+          currentData.userProgression = initProg;
+        }
 
         // 6. Sauvegarde de l'état "propre"
         localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
@@ -507,6 +523,16 @@ export const AppProvider = ({ children }) => {
 
     setSessionTonnage(totalTonnage);
     setSessionRank(rank);
+
+    // --- XP GAIN ---
+    const gainedXP = calculateSessionXP(totalTonnage, energyLevel);
+    setUserProgression(prev => {
+      const newXP = prev.xp + gainedXP;
+      const newProg = { xp: newXP, lastDate: date };
+      persistData({ ...dataToSave, userProgression: newProg });
+      return newProg;
+    });
+
     setShowSummary(true);
     setTimeout(() => setShowSummary(false), 5000);
   }, [history, currentInput, bodyWeightHistory, bodyMeasurements, allExercises, userSessions, persistData]);
@@ -593,6 +619,8 @@ export const AppProvider = ({ children }) => {
     saveBodyData, exportToCSV,
     dailyNutrition, logNutrition, logWater, isOffline,
     schedules,
+    userProgression,
+    progression: getProgressionDetails(userProgression.xp)
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
