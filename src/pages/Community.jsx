@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
+import { showNotification } from "../utils/native";
 import { motion } from "framer-motion";
 import { Send, Trophy, Clock, Dumbbell, Flame, Target, Users } from "lucide-react";
 
@@ -32,6 +33,9 @@ const Community = () => {
       .channel('public:messages')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
         setMessages(current => [...current, payload.new]);
+        if (payload.new.user_id !== user?.id) {
+          showNotification(`Message de ${payload.new.user_email}`, payload.new.content);
+        }
       })
       .subscribe();
 

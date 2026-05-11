@@ -32,7 +32,7 @@ const ExerciseLibrary = () => {
   const muscles = useMemo(() => ["Tous", ...new Set(exerciseLibrary.map(e => e.muscle))], []);
 
   const filtered = useMemo(() => exerciseLibrary.filter(e => {
-    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase());
+    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase()) || e.muscle.toLowerCase().includes(search.toLowerCase());
     const matchMuscle = muscleFilter === "Tous" || e.muscle === muscleFilter;
     return matchSearch && matchMuscle;
   }), [search, muscleFilter]);
@@ -66,7 +66,7 @@ const ExerciseLibrary = () => {
         </div>
 
         {/* Muscle filter bubbles */}
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {muscles.map(m => {
             const isActive = muscleFilter === m;
             const colors = m === "Tous" ? null : getColor(m);
@@ -76,10 +76,10 @@ const ExerciseLibrary = () => {
                 type="button"
                 onClick={() => setMuscleFilter(m)}
                 className={[
-                  "shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 border whitespace-nowrap",
-                  isActive && m === "Tous" ? "bg-white text-slate-900 border-white/50" :
-                  isActive && colors ? `${colors.bg} ${colors.text} ${colors.border}` :
-                  "bg-slate-800/60 border-slate-700/50 text-slate-400 hover:text-white hover:bg-slate-700/60"
+                  "shrink-0 px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 border whitespace-nowrap",
+                  isActive && m === "Tous" ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white border-transparent shadow-lg shadow-blue-500/20" :
+                  isActive && colors ? `${colors.bg} ${colors.text} ${colors.border} shadow-lg` :
+                  "bg-slate-800/40 border-slate-700/30 text-slate-400 hover:text-white hover:bg-slate-800/80"
                 ].join(" ")}
               >
                 {m}

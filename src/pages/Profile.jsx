@@ -96,6 +96,19 @@ const Profile = () => {
           </div>
         </motion.div>
 
+        {/* Info montée de niveau */}
+        <motion.div variants={item} className="glass-card p-4 mb-6 border-blue-500/10">
+          <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+            <Trophy size={14} className="text-blue-400" /> Comment monter de niveau ?
+          </h3>
+          <div className="space-y-2 text-xs text-slate-400">
+            <p><span className="text-white font-bold">🏋️‍♂️ Entraînement</span> : Gagne de l'XP en validant tes séances (200 XP base + 1 XP par 10kg soulevés).</p>
+            <p><span className="text-white font-bold">🔥 Énergie</span> : Plus ton niveau d'énergie est haut (score CNS), plus tu gagnes d'XP (jusqu'à 1.66x).</p>
+            <p><span className="text-white font-bold">📉 Inactivité</span> : Attention, après 3 jours sans entraînement, tu perds 1% d'XP par jour.</p>
+            <p><span className="text-white font-bold">⚡ Ultime</span> : Atteins le niveau 27 pour débloquer le rang <span className="text-yellow-400 font-black">Dieu Grec</span>.</p>
+          </div>
+        </motion.div>
+
         {/* Hero stats */}
         <motion.div variants={item} className="grid grid-cols-2 gap-3 mb-6">
           <div className={`glass-card p-5 ${isGodLevel ? "glow-gold border-amber-500/20" : "glow-blue border-blue-500/10"}`}>

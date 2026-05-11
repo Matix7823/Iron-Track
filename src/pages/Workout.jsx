@@ -73,7 +73,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 
   const muscles = ["Tous", ...new Set(exerciseLibrary.map(e => e.muscle))];
   const filtered = exerciseLibrary.filter(e => {
-    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase());
+    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase()) || e.muscle.toLowerCase().includes(search.toLowerCase());
     const matchMuscle = muscleFilter === "Tous" || e.muscle === muscleFilter;
     return matchSearch && matchMuscle;
   });

@@ -35,14 +35,14 @@ const Heatmap = ({ history }) => {
         <span className="text-[10px] text-blue-400 font-bold">{days.filter(d => d.workedOut).length} jours actifs</span>
       </div>
       
-      <div className="flex flex-wrap gap-1.5 justify-center">
+      <div className="grid grid-rows-7 grid-flow-col gap-1 justify-center overflow-x-auto p-2 max-w-full">
         {days.map((day, i) => (
           <motion.div
             key={i}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: i * 0.002 }}
-            className={`w-2.5 h-2.5 rounded-[2px] ${day.workedOut ? 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]' : 'bg-white/5'}`}
+            className={`w-2 h-2 rounded-[1px] ${day.workedOut ? 'bg-blue-500 shadow-[0_0_4px_rgba(59,130,246,0.5)]' : 'bg-white/5'}`}
             title={day.date}
           />
         ))}

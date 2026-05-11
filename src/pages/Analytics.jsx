@@ -4,7 +4,7 @@ import { exerciseLibrary } from "../data/exerciseLibrary";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard } from "../utils/metrics";
 import EvolutionChart from "../components/charts/EvolutionChart";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Activity, BarChart2, Award, Star, Target, Zap, Download,
   TrendingDown, ArrowRightLeft, AlertTriangle, Trophy, Flame
@@ -19,6 +19,7 @@ const Analytics = () => {
     dailyNutrition, logNutrition 
   } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
+  const [selectedSession, setSelectedSession] = useState(null);
   const [metric, setMetric] = useState("weight");
   
   const [editP, setEditP] = useState("");
@@ -84,12 +85,28 @@ const Analytics = () => {
     const m={};
     Object.keys(history || {}).forEach(id=>{
       const entries = history[id];
+      const exoDef = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
+      const name = exoDef ? exoDef.name : id;
+      
       if (Array.isArray(entries)) {
         entries.forEach(entry=>{
           if(!entry || !entry.date) return;
-          if(!m[entry.date]) m[entry.date]={date:entry.date,tonnage:0,exos:0};
-          (entry.setsData||[]).forEach(s=>{ if(s && +s.weight>0&&+s.reps>0&&s.done!==false) m[entry.date].tonnage+=+s.weight*+s.reps; });
-          if(m[entry.date].tonnage>0) m[entry.date].exos++;
+          if(!m[entry.date]) m[entry.date]={date:entry.date,tonnage:0,exos:0, details: []};
+          
+          let exoTonnage = 0;
+          const sets = [];
+          (entry.setsData||[]).forEach(s=>{
+            if(s && +s.weight>0&&+s.reps>0&&s.done!==false) {
+              m[entry.date].tonnage+=+s.weight*+s.reps;
+              exoTonnage += +s.weight*+s.reps;
+              sets.push(s);
+            }
+          });
+          
+          if (sets.length > 0) {
+            m[entry.date].exos++;
+            m[entry.date].details.push({ name, tonnage: exoTonnage, sets });
+          }
         });
       }
     });
@@ -112,7 +129,46 @@ const Analytics = () => {
     return {...lift,best,std:getStrengthStandard(lift.type,best,currentBodyWeight)};
   });
 
-  const selectedHist = selectedExo ? normalizeHistory(history[selectedExo]||[]) : [];
+  const historyExercises = useMemo(() => {
+    const map = new Map();
+    Object.keys(history || {}).forEach(id => {
+      const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
+      let name = id;
+      let muscle = "Inconnu";
+      if (exo) {
+        name = exo.name;
+        muscle = exo.muscle;
+      } else {
+        const baseId = id.split('_').slice(0, 3).join('_');
+        const baseExo = exerciseLibrary.find(e => e.id === baseId);
+        if (baseExo) {
+          name = baseExo.name;
+          muscle = baseExo.muscle;
+        }
+      }
+      if (!map.has(name)) {
+        map.set(name, { name, muscle, ids: [id] });
+      } else {
+        map.get(name).ids.push(id);
+      }
+    });
+    return Array.from(map.values());
+  }, [history, allExercises]);
+
+  const selectedHist = useMemo(() => {
+    if (!selectedExo) return [];
+    const exoInfo = historyExercises.find(e => e.name === selectedExo);
+    if (!exoInfo) return [];
+    
+    let combined = [];
+    exoInfo.ids.forEach(id => {
+      const hist = normalizeHistory(history[id] || []);
+      combined.push(...hist);
+    });
+    
+    return combined.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+  }, [selectedExo, historyExercises, history]);
+
 
   // Nutrition science-based calculations
   const [nutritionGoal, setNutritionGoal] = useState(
@@ -455,17 +511,18 @@ const Analytics = () => {
           <select value={selectedExo} onChange={e=>setSelectedExo(e.target.value)} className="input-premium mb-4">
             <option value="">— Sélectionner un exercice —</option>
             {Object.entries(
-              exerciseLibrary.reduce((acc, exo) => {
+              historyExercises.reduce((acc, exo) => {
                 if (!acc[exo.muscle]) acc[exo.muscle] = [];
                 acc[exo.muscle].push(exo);
                 return acc;
               }, {})
             ).sort(([a],[b])=>a.localeCompare(b)).map(([muscle, exos]) => (
               <optgroup key={muscle} label={`── ${muscle} ──`}>
-                {exos.map(exo => <option key={exo.id} value={exo.id} className="bg-[#0a0f1e]">{exo.name}</option>)}
+                {exos.map(exo => <option key={exo.name} value={exo.name} className="bg-[#0a0f1e]">{exo.name}</option>)}
               </optgroup>
             ))}
           </select>
+
           {selectedExo && (
             <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} className="space-y-4">
               <div className="flex glass rounded-xl p-1 gap-1">
@@ -502,7 +559,8 @@ const Analytics = () => {
             : <div className="space-y-2">
                 {sessionHistory.map((s,i)=>(
                   <motion.div key={i} initial={{opacity:0,x:-12}} animate={{opacity:1,x:0}} transition={{delay:i*.04}}
-                    className="glass-card p-4 flex justify-between items-center">
+                    className="glass-card p-4 flex justify-between items-center cursor-pointer hover:border-blue-500/30"
+                    onClick={() => setSelectedSession(s)}>
                     <div>
                       <p className="text-white font-bold text-sm">{s.date}</p>
                       <p className="text-[10px] text-slate-500 mt-0.5">{s.exos} exercices</p>
@@ -525,6 +583,42 @@ const Analytics = () => {
             <Download size={16}/> Exporter les données (CSV)
           </button>
         </motion.div>
+
+        <AnimatePresence>
+          {selectedSession && (
+            <div className="modal-overlay" onClick={() => setSelectedSession(null)}>
+              <motion.div 
+                className="modal-card max-h-[80vh] overflow-y-auto" 
+                initial={{ scale:.8, opacity:0 }} 
+                animate={{ scale:1, opacity:1 }} 
+                exit={{ scale:.8, opacity:0 }} 
+                onClick={e=>e.stopPropagation()}
+              >
+                <h2 className="text-xl font-black text-white mb-2">Détails de la séance</h2>
+                <p className="text-sm text-blue-400 mb-4">{selectedSession.date}</p>
+                
+                <div className="space-y-3">
+                  {selectedSession.details.map((exo, idx) => (
+                    <div key={idx} className="glass-card p-3 border-white/5">
+                      <p className="text-sm font-bold text-white mb-1">{exo.name}</p>
+                      <p className="text-[10px] text-slate-500 mb-2">{exo.tonnage.toLocaleString()} kg total</p>
+                      <div className="space-y-1">
+                        {exo.sets.map((s, si) => (
+                          <div key={si} className="text-xs text-slate-300 flex justify-between">
+                            <span>Série {si + 1}</span>
+                            <span className="font-mono">{s.weight} kg × {s.reps}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <button onClick={() => setSelectedSession(null)} className="btn-glass w-full mt-5">Fermer</button>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   );

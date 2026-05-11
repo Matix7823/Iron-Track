@@ -34,6 +34,8 @@ export const hapticSuccess = async () => {
   }
 };
 
+let fallbackTimeoutId = null;
+
 /**
  * Schedule a notification for the end of a rest timer
  */
@@ -60,6 +62,26 @@ export const scheduleRestNotification = async (seconds) => {
     });
   } catch (e) {
     console.error("Erreur notification locale:", e);
+    // Fallback pour le web
+    if (typeof Notification !== 'undefined') {
+      if (Notification.permission === "granted") {
+        fallbackTimeoutId = setTimeout(() => {
+          new Notification("Temps de repos terminé ! ⏱", {
+            body: "Il est temps de retourner à l'entraînement. Let's go ! 💪",
+          });
+        }, seconds * 1000);
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            fallbackTimeoutId = setTimeout(() => {
+              new Notification("Temps de repos terminé ! ⏱", {
+                body: "Il est temps de retourner à l'entraînement. Let's go ! 💪",
+              });
+            }, seconds * 1000);
+          }
+        });
+      }
+    }
   }
 };
 
@@ -73,5 +95,50 @@ export const cancelRestNotification = async () => {
     });
   } catch (e) {
     // Ignore
+  }
+  if (fallbackTimeoutId) {
+    clearTimeout(fallbackTimeoutId);
+    fallbackTimeoutId = null;
+  }
+};
+
+/**
+ * Show a generic notification
+ */
+export const showNotification = async (title, body) => {
+  try {
+    const perm = await LocalNotifications.checkPermissions();
+    if (perm.display !== 'granted') {
+      await LocalNotifications.requestPermissions();
+    }
+
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: title,
+          body: body,
+          id: Math.floor(Math.random() * 100000),
+          schedule: { at: new Date() },
+          sound: null,
+          attachments: null,
+          actionTypeId: "",
+          extra: null,
+        },
+      ],
+    });
+  } catch (e) {
+    console.error("Erreur notification locale:", e);
+    // Fallback pour le web
+    if (typeof Notification !== 'undefined') {
+      if (Notification.permission === "granted") {
+        new Notification(title, { body });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification(title, { body });
+          }
+        });
+      }
+    }
   }
 };
