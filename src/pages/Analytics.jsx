@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useApp } from "../context/AppContext";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { parseDate, formatDateFR } from "../utils/date";
