@@ -182,6 +182,15 @@ export const AppProvider = ({ children }) => {
           }
         }
 
+        // Merge base sessions to ensure new ones (like K and L) are always available
+        if (currentData.userSessions && typeof currentData.userSessions === 'object') {
+          Object.keys(sessions).forEach(key => {
+            if (!currentData.userSessions[key] || currentData.userSessions[key].exercises?.length === 0) {
+              currentData.userSessions[key] = sessions[key];
+            }
+          });
+        }
+
         // 3. Validation et Correction des données critiques
         const validatedHistory = {};
         if (currentData.history && typeof currentData.history === 'object') {
