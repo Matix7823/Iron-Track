@@ -25,17 +25,32 @@ const muscleColors = {
 
 const getColor = (muscle) => muscleColors[muscle] || { bg: "bg-slate-500/20", text: "text-slate-400", border: "border-slate-500/50" };
 
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
 const ExerciseLibrary = () => {
   const [search, setSearch] = useState("");
   const [muscleFilter, setMuscleFilter] = useState("Tous");
+  const [visibleCount, setVisibleCount] = useState(50);
 
-  const muscles = useMemo(() => ["Tous", ...new Set(exerciseLibrary.map(e => e.muscle))], []);
+  const muscles = useMemo(() => ["Tous", ...Object.keys(muscleColors)], []);
 
   const filtered = useMemo(() => exerciseLibrary.filter(e => {
-    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase()) || e.muscle.toLowerCase().includes(search.toLowerCase());
+    const searchNormalized = removeAccents(search.toLowerCase());
+    const nameMatch = removeAccents(e.name.toLowerCase()).includes(searchNormalized);
+    const muscleMatchSearch = removeAccents(e.muscle.toLowerCase()).includes(searchNormalized);
+    const matchSearch = nameMatch || muscleMatchSearch;
     const matchMuscle = muscleFilter === "Tous" || e.muscle === muscleFilter;
     return matchSearch && matchMuscle;
   }), [search, muscleFilter]);
+
+  // Reset visible count when filters change
+  React.useEffect(() => {
+    setVisibleCount(50);
+  }, [search, muscleFilter]);
+
+  const displayed = filtered.slice(0, visibleCount);
 
   return (
     <div className="page-container">
@@ -99,7 +114,7 @@ const ExerciseLibrary = () => {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <AnimatePresence mode="popLayout">
-          {filtered.map((exo) => {
+          {displayed.map((exo) => {
             const colors = getColor(exo.muscle);
             return (
               <motion.div
@@ -147,6 +162,17 @@ const ExerciseLibrary = () => {
           })}
         </AnimatePresence>
       </div>
+
+      {visibleCount < filtered.length && (
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setVisibleCount(v => v + 50)}
+            className="px-6 py-3 rounded-xl bg-slate-800/80 text-white font-bold text-sm border border-slate-700/50 hover:bg-slate-700 transition-colors flex items-center gap-2"
+          >
+            Voir plus d'exercices ({filtered.length - visibleCount} restants)
+          </button>
+        </div>
+      )}
 
       {filtered.length === 0 && (
         <div className="text-center py-20">
