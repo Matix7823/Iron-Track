@@ -9,7 +9,8 @@ import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../
 
 const AppContext = createContext(null);
 
-const STORAGE_KEY = "muscu_ultimate_v39_final_fixed";
+const STORAGE_KEY = "iron_track_v40_reset";
+const CURRENT_APP_VERSION = 2;
 
 export const AppProvider = ({ children }) => {
   const [history, setHistory] = useState({});
@@ -30,7 +31,6 @@ export const AppProvider = ({ children }) => {
       try {
         return JSON.parse(saved);
       } catch (e) {
-        console.error("Error parsing current input", e);
         return {};
       }
     }
@@ -49,24 +49,18 @@ export const AppProvider = ({ children }) => {
         if (Array.isArray(parsed)) {
           return parsed.map(d => typeof d === 'string' ? { session: d, label: '', status: null } : d);
         }
-      } catch(e) { console.error("Error parsing schedule", e); }
+      } catch(e) {}
     }
     return Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
   });
 
   // --- PERSISTENCE ---
   const persistData = useCallback(async (dataToSave) => {
-    // Toujours sauvegarder en local d'abord
-    const safeData = sanitizeData(dataToSave);
+    const safeData = sanitizeData({ ...dataToSave, version: CURRENT_APP_VERSION });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(safeData));
 
     if (!user) return;
-    
-    // Si offline, on stocke dans la file d'attente de synchro (optionnel ici car on push tout le state)
-    if (!navigator.onLine) {
-      console.log("Mode offline: données sauvegardées localement");
-      return;
-    }
+    if (!navigator.onLine) return;
 
     try {
       const { error } = await supabase.from("app_state").upsert({ user_id: user.id, data: safeData });
@@ -76,7 +70,6 @@ export const AppProvider = ({ children }) => {
     }
   }, [user]);
 
-  // Synchronisation automatique quand on retrouve internet
   useEffect(() => {
     const handleOnline = () => {
       setIsOffline(false);
@@ -101,14 +94,7 @@ export const AppProvider = ({ children }) => {
     setCustomSchedule(newSchedule);
     localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
     if (user) {
-      persistData({ 
-        history, 
-        bodyWeight: bodyWeightHistory, 
-        bodyMeasurements, 
-        userSessions, 
-        customSchedule: newSchedule,
-        userProgression
-      });
+      persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule, userProgression });
     }
   }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
@@ -117,16 +103,11 @@ export const AppProvider = ({ children }) => {
       const newSchedule = [...prev];
       if (newSchedule[index]) newSchedule[index] = { ...newSchedule[index], status };
       localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
-      // Side effect here is risky but kept for simplicity if it was working before.
-      // Ideally, this should be in a separate useEffect.
-      if (user) {
-        persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule, userProgression });
-      }
+      if (user) persistData({ history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions, customSchedule: newSchedule, userProgression });
       return newSchedule;
     });
   }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
-  // CNS, Timer, UI states
   const [sleepHours, setSleepHours] = useState(7);
   const [stressLevel, setStressLevel] = useState(5);
   const [sorenessLevel, setSorenessLevel] = useState(5);
@@ -140,7 +121,6 @@ export const AppProvider = ({ children }) => {
   const [sessionTonnage, setSessionTonnage] = useState(0);
   const [sessionRank, setSessionRank] = useState("medium");
 
-  // --- CHARGEMENT DATA & WEEKLY RESET ---
   useEffect(() => {
     const loadData = async () => {
       setIsDataLoading(true);
@@ -154,32 +134,29 @@ export const AppProvider = ({ children }) => {
           userSessions: sessions,
           dailyNutrition: {},
           customSchedule: defaultSchedule,
-          userProgression: { xp: 0, lastDate: formatDateFR() }
+          userProgression: { xp: 0, lastDate: formatDateFR() },
+          version: CURRENT_APP_VERSION
         };
 
-        // 1. Charger le LocalStorage
         try {
           const localSaved = localStorage.getItem(STORAGE_KEY);
           if (localSaved) {
             const parsed = JSON.parse(localSaved);
-            if (parsed && typeof parsed === 'object') {
+            if (parsed && typeof parsed === 'object' && parsed.version === CURRENT_APP_VERSION) {
               currentData = { ...currentData, ...parsed };
             }
           }
-        } catch (e) {
-          console.error("Erreur LocalStorage:", e);
-        }
+        } catch (e) {}
 
-        // 2. Si connecté, tenter de récupérer les données distantes
         if (user) {
           try {
             const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
             if (data?.data && typeof data.data === 'object') {
-              currentData = { ...currentData, ...data.data };
+              if (data.data.version === CURRENT_APP_VERSION) {
+                currentData = { ...currentData, ...data.data };
+              }
             }
-          } catch (err) {
-            console.error("Erreur Supabase:", err);
-          }
+          } catch (err) {}
         }
 
         // Merge base sessions to ensure new ones (like K and L) are always available
