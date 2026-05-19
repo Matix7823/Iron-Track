@@ -148,15 +148,33 @@ export const AppProvider = ({ children }) => {
           }
         } catch (e) {}
 
+        let oldData = null;
+        try {
+          const oldLocal = localStorage.getItem("muscu_ultimate_v39_final_fixed");
+          if (oldLocal) {
+            const parsedOld = JSON.parse(oldLocal);
+            if (parsedOld && typeof parsedOld === 'object') oldData = parsedOld;
+          }
+        } catch (e) {}
+
         if (user) {
           try {
             const { data, error } = await supabase.from("app_state").select("data").eq("user_id", user.id).single();
             if (data?.data && typeof data.data === 'object') {
               if (data.data.version === CURRENT_APP_VERSION) {
                 currentData = { ...currentData, ...data.data };
+                oldData = null; // already migrated
+              } else {
+                oldData = { ...oldData, ...data.data }; // prioritize supabase old data
               }
             }
           } catch (err) {}
+        }
+
+        // --- MIGRATION DES ANCIENNES DONNÉES ---
+        if (oldData) {
+          // On restaure tout sauf la version qu'on force à 2
+          currentData = { ...currentData, ...oldData, version: CURRENT_APP_VERSION };
         }
 
         // Merge base sessions to ensure new ones (like K and L) are always available

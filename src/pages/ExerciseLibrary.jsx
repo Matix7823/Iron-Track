@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, Dumbbell, Activity, Play } from "lucide-react";
 
 const muscleColors = {
+  "Machine":    { bg: "bg-fuchsia-500/20",  text: "text-fuchsia-400", border: "border-fuchsia-500/50" },
   "Pectoraux":  { bg: "bg-blue-500/20",    text: "text-blue-400",    border: "border-blue-500/50"    },
   "Dos":        { bg: "bg-cyan-500/20",     text: "text-cyan-400",    border: "border-cyan-500/50"    },
   "Lombaires":  { bg: "bg-teal-500/20",     text: "text-teal-400",    border: "border-teal-500/50"    },
@@ -41,7 +42,12 @@ const ExerciseLibrary = () => {
     const nameMatch = removeAccents(e.name.toLowerCase()).includes(searchNormalized);
     const muscleMatchSearch = removeAccents(e.muscle.toLowerCase()).includes(searchNormalized);
     const matchSearch = nameMatch || muscleMatchSearch;
-    const matchMuscle = muscleFilter === "Tous" || e.muscle === muscleFilter;
+
+    let matchMuscle = false;
+    if (muscleFilter === "Tous") matchMuscle = true;
+    else if (muscleFilter === "Machine") matchMuscle = e.name.toLowerCase().includes("machine");
+    else matchMuscle = e.muscle === muscleFilter;
+
     return matchSearch && matchMuscle;
   }), [search, muscleFilter]);
 
