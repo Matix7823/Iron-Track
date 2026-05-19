@@ -65,25 +65,59 @@ const getAdvice = (exo, exoHistory, currentSets, energyLevel, allExercises, curr
 
 const advStyle = { green:"bg-emerald-950/40 border-emerald-500/25 text-emerald-300", orange:"bg-orange-950/40 border-orange-500/25 text-orange-300", yellow:"bg-amber-950/40 border-amber-500/25 text-amber-300", purple:"bg-purple-950/40 border-purple-500/25 text-purple-300", red:"bg-red-950/40 border-red-500/25 text-red-300", blue:"bg-blue-950/40 border-blue-500/25 text-blue-300" };
 
+// ─── Muscle Colors & Helpers ─────────────────────────────────────
+const muscleColors = {
+  "Pectoraux":  { bg: "bg-blue-500/20",    text: "text-blue-400",    border: "border-blue-500/50"    },
+  "Dos":        { bg: "bg-cyan-500/20",     text: "text-cyan-400",    border: "border-cyan-500/50"    },
+  "Lombaires":  { bg: "bg-teal-500/20",     text: "text-teal-400",    border: "border-teal-500/50"    },
+  "Quadriceps": { bg: "bg-emerald-500/20",  text: "text-emerald-400", border: "border-emerald-500/50" },
+  "Ischios":    { bg: "bg-green-500/20",    text: "text-green-400",   border: "border-green-500/50"   },
+  "Fessiers":   { bg: "bg-lime-500/20",     text: "text-lime-400",    border: "border-lime-500/50"    },
+  "Adducteurs": { bg: "bg-yellow-500/20",   text: "text-yellow-400",  border: "border-yellow-500/50"  },
+  "Abducteurs": { bg: "bg-amber-500/20",    text: "text-amber-400",   border: "border-amber-500/50"   },
+  "Mollets":    { bg: "bg-orange-500/20",   text: "text-orange-400",  border: "border-orange-500/50"  },
+  "Tibias":     { bg: "bg-orange-500/20",   text: "text-orange-300",  border: "border-orange-400/50"  },
+  "Épaules":    { bg: "bg-violet-500/20",   text: "text-violet-400",  border: "border-violet-500/50"  },
+  "Biceps":     { bg: "bg-pink-500/20",     text: "text-pink-400",    border: "border-pink-500/50"    },
+  "Triceps":    { bg: "bg-rose-500/20",     text: "text-rose-400",    border: "border-rose-500/50"    },
+  "Avant-bras": { bg: "bg-red-500/20",      text: "text-red-400",     border: "border-red-500/50"     },
+  "Abdos":      { bg: "bg-indigo-500/20",   text: "text-indigo-400",  border: "border-indigo-500/50"  },
+  "Cardio":     { bg: "bg-sky-500/20",      text: "text-sky-400",     border: "border-sky-500/50"     },
+  "Cou":        { bg: "bg-slate-500/20",    text: "text-slate-400",   border: "border-slate-500/50"   },
+};
+
+const getColor = (muscle) => muscleColors[muscle] || { bg: "bg-slate-500/20", text: "text-slate-400", border: "border-slate-500/50" };
+
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
 // ─── Add Exercise Modal ──────────────────────────────────────────
 const AddExerciseModal = ({ sessionId, onClose }) => {
   const { addExerciseToSession } = useApp();
   const [search, setSearch] = useState("");
   const [muscleFilter, setMuscleFilter] = useState("Tous");
+  const [visibleCount, setVisibleCount] = useState(50);
 
-  const muscles = ["Tous", ...new Set(exerciseLibrary.map(e => e.muscle))];
-  const filtered = exerciseLibrary.filter(e => {
-    const matchSearch = e.name.toLowerCase().includes(search.toLowerCase()) || e.muscle.toLowerCase().includes(search.toLowerCase());
+  const muscles = useMemo(() => ["Tous", ...Object.keys(muscleColors)], []);
+
+  const filtered = useMemo(() => exerciseLibrary.filter(e => {
+    const searchNormalized = removeAccents(search.toLowerCase());
+    const nameMatch = removeAccents(e.name.toLowerCase()).includes(searchNormalized);
+    const muscleMatchSearch = removeAccents(e.muscle.toLowerCase()).includes(searchNormalized);
+    const matchSearch = nameMatch || muscleMatchSearch;
     const matchMuscle = muscleFilter === "Tous" || e.muscle === muscleFilter;
     return matchSearch && matchMuscle;
-  });
+  }), [search, muscleFilter]);
+
+  const displayed = filtered.slice(0, visibleCount);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <motion.div 
         initial={{ y: 50, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
-        className="glass-dark w-[95%] sm:w-full max-w-xl max-h-[80vh] rounded-3xl p-4 sm:p-6 overflow-hidden flex flex-col border border-white/10"
+        className="glass-dark w-[95%] sm:w-full max-w-xl max-h-[85vh] rounded-3xl p-4 sm:p-6 overflow-hidden flex flex-col border border-white/10"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
@@ -91,33 +125,46 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
           <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full"><X size={20}/></button>
         </div>
 
-        <div className="flex gap-2 mb-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16}/>
-            <input 
-              type="text" 
-              placeholder="Chercher un exercice..." 
-              value={search} 
-              onChange={e => setSearch(e.target.value)}
-              className="input-premium pl-10"
-            />
-          </div>
+        {/* Search input */}
+        <div className="relative mb-3">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={16} />
+          <input
+            type="text"
+            placeholder="Rechercher un exercice..."
+            value={search}
+            onChange={e => { setSearch(e.target.value); setVisibleCount(50); }}
+            className="w-full bg-slate-900/80 border border-slate-700/60 text-white text-sm rounded-2xl pl-11 pr-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all backdrop-blur-xl placeholder-slate-500"
+          />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide mb-2">
-          {muscles.map(m => (
-            <button 
-              key={m} 
-              onClick={() => setMuscleFilter(m)}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${muscleFilter === m ? "bg-blue-600 text-white" : "glass text-slate-400 hover:text-white"}`}
-            >
-              {m}
-            </button>
-          ))}
+        {/* Muscle filter bubbles */}
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide shrink-0 mb-2">
+          {muscles.map(m => {
+            const isActive = muscleFilter === m;
+            const colors = m === "Tous" ? null : getColor(m);
+            return (
+              <button
+                key={m}
+                type="button"
+                onClick={() => { setMuscleFilter(m); setVisibleCount(50); }}
+                className={[
+                  "shrink-0 px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 border whitespace-nowrap",
+                  isActive && m === "Tous" ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white border-transparent shadow-lg shadow-blue-500/20" :
+                  isActive && colors ? `${colors.bg} ${colors.text} ${colors.border} shadow-lg` :
+                  "bg-slate-800/40 border-slate-700/30 text-slate-400 hover:text-white hover:bg-slate-800/80"
+                ].join(" ")}
+              >
+                {m}
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex-1 overflow-y-auto space-y-2 pr-2 scrollbar-hide">
-          {filtered.map(exo => (
+          {displayed.length === 0 && (
+            <p className="text-center text-slate-500 text-sm mt-8">Aucun exercice trouvé.</p>
+          )}
+          {displayed.map(exo => (
             <button 
               key={exo.id}
               onClick={() => { addExerciseToSession(sessionId, exo); onClose(); }}
@@ -130,6 +177,14 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
               <Plus size={18} className="text-blue-400"/>
             </button>
           ))}
+          {filtered.length > visibleCount && (
+            <button 
+              onClick={() => setVisibleCount(v => v + 50)} 
+              className="w-full py-3 mt-2 text-sm font-bold text-blue-400 bg-blue-500/10 rounded-xl hover:bg-blue-500/20 transition-colors"
+            >
+              Voir plus d'exercices ({filtered.length - visibleCount} restants)
+            </button>
+          )}
         </div>
       </motion.div>
     </div>
