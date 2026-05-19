@@ -112,9 +112,9 @@ const Community = () => {
           <button 
             onClick={async () => {
               if (window.confirm("Es-tu sûr de vouloir vider toute la conversation ? Cette action est irréversible.")) {
-                const { error } = await supabase.from('messages').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+                const { error } = await supabase.from('messages').delete().not('id', 'is', null);
                 if (!error) setMessages([]);
-                else alert("Erreur: " + error.message);
+                else alert("Erreur (As-tu bien configuré les droits RLS dans Supabase ?) : " + error.message);
               }
             }}
             className="flex items-center gap-2 px-3 py-2 bg-red-500/10 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500/20 transition-colors"
