@@ -103,9 +103,25 @@ const Community = () => {
     <div className="page-container flex flex-col h-[calc(100vh-60px)] sm:h-[calc(100vh-80px)]">
       <div className="bg-orbs" />
       
-      <div className="mb-4 shrink-0">
-        <p className="section-title"><Users size={20} className="text-blue-400"/>Communauté</p>
-        <p className="text-sm text-slate-400 -mt-2">Partage tes perfs avec les autres</p>
+      <div className="mb-4 shrink-0 flex items-center justify-between">
+        <div>
+          <p className="section-title"><Users size={20} className="text-blue-400"/>Communauté</p>
+          <p className="text-sm text-slate-400 -mt-2">Partage tes perfs avec les autres</p>
+        </div>
+        {profile?.role === 'admin' && (
+          <button 
+            onClick={async () => {
+              if (window.confirm("Es-tu sûr de vouloir vider toute la conversation ? Cette action est irréversible.")) {
+                const { error } = await supabase.from('messages').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+                if (!error) setMessages([]);
+                else alert("Erreur: " + error.message);
+              }
+            }}
+            className="flex items-center gap-2 px-3 py-2 bg-red-500/10 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500/20 transition-colors"
+          >
+            Vider le chat
+          </button>
+        )}
       </div>
 
       {/* Chat Messages */}

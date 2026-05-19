@@ -7,11 +7,15 @@ import EvolutionChart from "../components/charts/EvolutionChart";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Activity, BarChart2, Award, Star, Target, Zap, Download,
-  TrendingDown, ArrowRightLeft, AlertTriangle, Trophy, Flame
+  TrendingDown, ArrowRightLeft, AlertTriangle, Trophy, Flame, Search, X
 } from "lucide-react";
 
 const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{duration:.4,ease:"easeOut"}} };
 const container = { hidden:{}, visible:{transition:{staggerChildren:.08}} };
+
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
 
 const Analytics = () => {
   const { 
@@ -22,6 +26,15 @@ const Analytics = () => {
   const [selectedSession, setSelectedSession] = useState(null);
   const [metric, setMetric] = useState("weight");
   
+  const [searchExo, setSearchExo] = useState("");
+  const [showExoList, setShowExoList] = useState(false);
+
+  const filteredExos = useMemo(() => {
+    if (!searchExo) return exerciseLibrary.slice(0, 50);
+    const searchNormalized = removeAccents(searchExo.toLowerCase());
+    return exerciseLibrary.filter(e => removeAccents(e.name.toLowerCase()).includes(searchNormalized)).slice(0, 50);
+  }, [searchExo]);
+
   const [editP, setEditP] = useState("");
   const [editC, setEditC] = useState("");
   const [editF, setEditF] = useState("");
@@ -157,17 +170,23 @@ const Analytics = () => {
 
   const selectedHist = useMemo(() => {
     if (!selectedExo) return [];
-    const exoInfo = historyExercises.find(e => e.name === selectedExo);
-    if (!exoInfo) return [];
     
     let combined = [];
-    exoInfo.ids.forEach(id => {
-      const hist = normalizeHistory(history[id] || []);
-      combined.push(...hist);
+    Object.keys(history || {}).forEach(id => {
+      const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
+      if (exo && exo.name === selectedExo) {
+        combined.push(...normalizeHistory(history[id] || []));
+      } else if (!exo) {
+        const baseId = id.split('_').slice(0, 3).join('_');
+        const baseExo = exerciseLibrary.find(e => e.id === baseId);
+        if (baseExo && baseExo.name === selectedExo) {
+          combined.push(...normalizeHistory(history[id] || []));
+        }
+      }
     });
     
     return combined.sort((a, b) => parseDate(a.date) - parseDate(b.date));
-  }, [selectedExo, historyExercises, history]);
+  }, [selectedExo, history, allExercises]);
 
 
   // Nutrition science-based calculations
@@ -508,20 +527,58 @@ const Analytics = () => {
         {/* Exercise progression */}
         <motion.div variants={item} className="glass-card p-5 mb-5">
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><BarChart2 size={16} className="text-blue-400"/>Progression par Exercice</h3>
-          <select value={selectedExo} onChange={e=>setSelectedExo(e.target.value)} className="input-premium mb-4">
-            <option value="">— Sélectionner un exercice —</option>
-            {Object.entries(
-              historyExercises.reduce((acc, exo) => {
-                if (!acc[exo.muscle]) acc[exo.muscle] = [];
-                acc[exo.muscle].push(exo);
-                return acc;
-              }, {})
-            ).sort(([a],[b])=>a.localeCompare(b)).map(([muscle, exos]) => (
-              <optgroup key={muscle} label={`── ${muscle} ──`}>
-                {exos.map(exo => <option key={exo.name} value={exo.name} className="bg-[#0a0f1e]">{exo.name}</option>)}
-              </optgroup>
-            ))}
-          </select>
+          {/* Searchable Custom Select */}
+          <div className="relative mb-4">
+            <div className="flex items-center bg-slate-900/80 border border-slate-700/60 rounded-2xl px-4 py-3.5 focus-within:ring-2 focus-within:ring-blue-500/50">
+              <Search size={16} className="text-slate-500 mr-2" />
+              <input
+                type="text"
+                placeholder="Rechercher un exercice..."
+                value={searchExo}
+                onChange={e => {
+                  setSearchExo(e.target.value);
+                  setShowExoList(true);
+                }}
+                onFocus={() => setShowExoList(true)}
+                className="bg-transparent w-full text-white text-sm focus:outline-none placeholder-slate-500"
+              />
+              {selectedExo && !showExoList && (
+                <button onClick={() => { setSelectedExo(""); setSearchExo(""); }} className="text-slate-500 hover:text-white">
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+            
+            <AnimatePresence>
+              {showExoList && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-2xl shadow-xl shadow-black/50 z-50 max-h-60 overflow-y-auto"
+                >
+                  {filteredExos.length === 0 ? (
+                    <div className="p-4 text-center text-slate-500 text-sm">Aucun exercice trouvé</div>
+                  ) : (
+                    filteredExos.map(exo => (
+                      <button
+                        key={exo.id}
+                        onClick={() => {
+                          setSelectedExo(exo.name);
+                          setSearchExo(exo.name);
+                          setShowExoList(false);
+                        }}
+                        className="w-full text-left px-4 py-3 border-b border-white/5 hover:bg-slate-700 transition-colors flex items-center justify-between"
+                      >
+                        <span className="text-white text-sm font-medium">{exo.name}</span>
+                        <span className="text-[10px] uppercase font-bold text-slate-500 px-2 py-1 bg-black/20 rounded-lg">{exo.muscle}</span>
+                      </button>
+                    ))
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           {selectedExo && (
             <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} className="space-y-4">

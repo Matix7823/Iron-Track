@@ -65,8 +65,7 @@ const ExerciseLibrary = () => {
       </motion.div>
 
       {/* Sticky filter bar */}
-      <div className="sticky top-16 sm:top-20 z-20 -mx-4 px-4 pb-4 pt-2 mb-4"
-           style={{ background: "linear-gradient(to bottom, #03060f 70%, transparent)" }}>
+      <div className="sticky top-16 sm:top-20 z-20 -mx-4 px-4 pb-4 pt-4 mb-4 bg-[#03060f]/95 backdrop-blur-xl border-b border-white/5 shadow-xl shadow-black/50">
         
         {/* Search input */}
         <div className="relative mb-3 max-w-2xl">
