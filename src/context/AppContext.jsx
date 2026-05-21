@@ -6,6 +6,7 @@ import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
 import { sanitizeData } from "../utils/security";
 import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../utils/progression";
+import { scheduleRestNotification, cancelRestNotification } from "../utils/native";
 
 const AppContext = createContext(null);
 
@@ -367,23 +368,64 @@ export const AppProvider = ({ children }) => {
   // (Copied from original for completeness within the Provider)
   
   const startTimer = useCallback((seconds) => {
-    setTimerSeconds(seconds);
+    const parsed = parseInt(seconds) || 0;
+    if (parsed <= 0) return;
+    const endTime = Date.now() + parsed * 1000;
+    localStorage.setItem('iron_track_timer_end_time', endTime.toString());
+    setTimerSeconds(parsed);
     setIsTimerRunning(true);
+    scheduleRestNotification(parsed);
   }, []);
 
-  const stopTimer = useCallback(() => setIsTimerRunning(false), []);
+  const stopTimer = useCallback(() => {
+    localStorage.removeItem('iron_track_timer_end_time');
+    setTimerSeconds(0);
+    setIsTimerRunning(false);
+    cancelRestNotification();
+  }, []);
 
+  // Restore timer on mount/load
+  useEffect(() => {
+    const endTimeStr = localStorage.getItem('iron_track_timer_end_time');
+    if (endTimeStr) {
+      const endTime = parseInt(endTimeStr);
+      if (!isNaN(endTime)) {
+        const remaining = Math.max(0, Math.round((endTime - Date.now()) / 1000));
+        if (remaining > 0) {
+          setTimerSeconds(remaining);
+          setIsTimerRunning(true);
+        } else {
+          localStorage.removeItem('iron_track_timer_end_time');
+        }
+      }
+    }
+  }, []);
+
+  // Accurate interval checking with timestamp comparison
   useEffect(() => {
     let interval = null;
-    if (isTimerRunning && timerSeconds > 0) {
+    if (isTimerRunning) {
       interval = setInterval(() => {
-        setTimerSeconds((prev) => prev - 1);
+        const endTimeStr = localStorage.getItem('iron_track_timer_end_time');
+        if (endTimeStr) {
+          const endTime = parseInt(endTimeStr);
+          if (!isNaN(endTime)) {
+            const remaining = Math.max(0, Math.round((endTime - Date.now()) / 1000));
+            setTimerSeconds(remaining);
+            if (remaining <= 0) {
+              setIsTimerRunning(false);
+              localStorage.removeItem('iron_track_timer_end_time');
+            }
+          } else {
+            setIsTimerRunning(false);
+          }
+        } else {
+          setIsTimerRunning(false);
+        }
       }, 1000);
-    } else if (timerSeconds === 0) {
-      setIsTimerRunning(false);
     }
     return () => clearInterval(interval);
-  }, [isTimerRunning, timerSeconds]);
+  }, [isTimerRunning]);
 
   const currentBodyWeight = useMemo(() => {
     if (bodyWeightHistory.length > 0)

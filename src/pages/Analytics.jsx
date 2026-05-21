@@ -20,7 +20,7 @@ const removeAccents = (str) => {
 const Analytics = () => {
   const { 
     history, allExercises, currentBodyWeight, exportToCSV, currentSession,
-    dailyNutrition, logNutrition 
+    dailyNutrition, logNutrition, userSessions
   } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
   const [selectedSession, setSelectedSession] = useState(null);
@@ -29,11 +29,22 @@ const Analytics = () => {
   const [searchExo, setSearchExo] = useState("");
   const [showExoList, setShowExoList] = useState(false);
 
+  // Unify the exercises from sessions and the library
+  const unifiedCatalog = useMemo(() => {
+    const list = [...allExercises];
+    exerciseLibrary.forEach(libExo => {
+      if (!list.some(e => e.name.toLowerCase().trim() === libExo.name.toLowerCase().trim())) {
+        list.push(libExo);
+      }
+    });
+    return list;
+  }, [allExercises]);
+
   const filteredExos = useMemo(() => {
-    if (!searchExo) return exerciseLibrary.slice(0, 50);
+    if (!searchExo) return unifiedCatalog.slice(0, 50);
     const searchNormalized = removeAccents(searchExo.toLowerCase());
-    return exerciseLibrary.filter(e => removeAccents(e.name.toLowerCase()).includes(searchNormalized)).slice(0, 50);
-  }, [searchExo]);
+    return unifiedCatalog.filter(e => removeAccents(e.name.toLowerCase()).includes(searchNormalized)).slice(0, 50);
+  }, [searchExo, unifiedCatalog]);
 
   const [editP, setEditP] = useState("");
   const [editC, setEditC] = useState("");
@@ -44,15 +55,15 @@ const Analytics = () => {
     const now = new Date(), d7 = new Date(now - 7*864e5);
     const vol = { Pecs:0, Dos:0, Jambes:0, Épaules:0, Bras:0, Abdos:0 };
     const map = {
-      "Pecs (Haut)":"Pecs","Pecs (Masse)":"Pecs","Pecs (Bas)":"Pecs","Pecs (Iso)":"Pecs","Finition":"Pecs",Pecs:"Pecs",
-      "Dos (Largeur)":"Dos","Dos (Épaisseur)":"Dos","Dos (Bas)":"Dos","Dos (Isolation)":"Dos",Dos:"Dos",
-      Cuisses:"Jambes",Ischios:"Jambes",Mollets:"Jambes",Jambes:"Jambes",
+      "Pecs (Haut)":"Pecs","Pecs (Masse)":"Pecs","Pecs (Bas)":"Pecs","Pecs (Iso)":"Pecs","Finition":"Pecs",Pecs:"Pecs","Pectoraux":"Pecs",
+      "Dos (Largeur)":"Dos","Dos (Épaisseur)":"Dos","Dos (Bas)":"Dos","Dos (Isolation)":"Dos",Dos:"Dos","Lombaires":"Dos",
+      Cuisses:"Jambes",Ischios:"Jambes",Mollets:"Jambes",Jambes:"Jambes",Quadriceps:"Jambes",Adducteurs:"Jambes",Abducteurs:"Jambes",Fessiers:"Jambes",
       "Épaules (Masse)":"Épaules","Épaules (Latéral)":"Épaules","Arr. Épaules":"Épaules",Épaules:"Épaules",Trapèzes:"Épaules",
-      "Biceps (Long)":"Bras","Biceps (Court)":"Bras",Brachial:"Bras","Triceps (Masse)":"Bras","Triceps (Long)":"Bras","Triceps (Vaste)":"Bras","Avant-Bras":"Bras",Bras:"Bras",
-      Abdos:"Abdos","Abdos (Bas)":"Abdos",Obliques:"Abdos",Transverse:"Abdos",Gainage:"Abdos",Lombaires:"Abdos",Taille:"Abdos",
+      "Biceps (Long)":"Bras","Biceps (Court)":"Bras",Brachial:"Bras","Triceps (Masse)":"Bras","Triceps (Long)":"Bras","Triceps (Vaste)":"Bras","Avant-Bras":"Bras",Bras:"Bras",Biceps:"Bras",Triceps:"Bras","Avant-bras":"Bras",
+      Abdos:"Abdos","Abdos (Bas)":"Abdos",Obliques:"Abdos",Transverse:"Abdos",Gainage:"Abdos",Taille:"Abdos",
     };
     Object.keys(history || {}).forEach(id => {
-      const exo = allExercises.find(e=>e.id===id); if(!exo) return;
+      const exo = allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
       const g = map[exo.muscle]; if(!g) return;
       const entries = history[id];
       if (Array.isArray(entries)) {
@@ -74,7 +85,7 @@ const Analytics = () => {
     const now=new Date(),d7=new Date(now-7*864e5);
     let latDelts=0,upperChest=0,lats=0;
     Object.keys(history || {}).forEach(id=>{
-      const exo=allExercises.find(e=>e.id===id); if(!exo) return;
+      const exo=allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
       const entries = history[id];
       if (Array.isArray(entries)) {
         entries.forEach(entry=>{
@@ -123,6 +134,56 @@ const Analytics = () => {
         });
       }
     });
+    
+    // Auto-match session titles from preset/custom sessions
+    Object.values(m).forEach(sessionData => {
+      let bestSessionTitle = "";
+      let maxMatches = 0;
+      
+      if (userSessions) {
+        Object.values(userSessions).forEach(sess => {
+          if (sess && Array.isArray(sess.exercises)) {
+            let matches = 0;
+            sess.exercises.forEach(se => {
+              const completedHasExo = sessionData.details.some(d => d.name.toLowerCase().trim() === se.name.toLowerCase().trim());
+              if (completedHasExo) matches++;
+            });
+            if (matches > maxMatches) {
+              maxMatches = matches;
+              bestSessionTitle = sess.title || `${sess.category}`;
+            }
+          }
+        });
+      }
+      
+      if (!bestSessionTitle) {
+        const muscleCounts = {};
+        sessionData.details.forEach(d => {
+          const exoDef = allExercises.find(e => e.name.toLowerCase().trim() === d.name.toLowerCase().trim()) || 
+                         exerciseLibrary.find(e => e.name.toLowerCase().trim() === d.name.toLowerCase().trim());
+          if (exoDef) {
+            const mus = exoDef.muscle;
+            muscleCounts[mus] = (muscleCounts[mus] || 0) + 1;
+          }
+        });
+        let dominantMuscle = "";
+        let maxCount = 0;
+        Object.entries(muscleCounts).forEach(([mus, count]) => {
+          if (count > maxCount) {
+            maxCount = count;
+            dominantMuscle = mus;
+          }
+        });
+        if (dominantMuscle) {
+          bestSessionTitle = `Séance : ${dominantMuscle}`;
+        } else {
+          bestSessionTitle = `Séance Libre`;
+        }
+      }
+      
+      sessionData.sessionTitle = bestSessionTitle;
+    });
+
     const arr=Object.values(m).filter(d=>d.tonnage>0).sort((a,b)=>parseDate(b.date)-parseDate(a.date));
     const tons=arr.map(a=>a.tonnage).sort((a,b)=>a-b);
     const p75=tons[Math.floor(tons.length*.75)]||0, p25=tons[Math.floor(tons.length*.25)]||0;
@@ -152,17 +213,19 @@ const Analytics = () => {
         name = exo.name;
         muscle = exo.muscle;
       } else {
-        const baseId = id.split('_').slice(0, 3).join('_');
-        const baseExo = exerciseLibrary.find(e => e.id === baseId);
+        const baseId = id.replace(/_\d+$/, '');
+        const baseExo = allExercises.find(e => e.id === baseId) || exerciseLibrary.find(e => e.id === baseId);
         if (baseExo) {
           name = baseExo.name;
           muscle = baseExo.muscle;
         }
       }
-      if (!map.has(name)) {
-        map.set(name, { name, muscle, ids: [id] });
+      const cleanName = name.trim();
+      const lowerName = cleanName.toLowerCase();
+      if (!map.has(lowerName)) {
+        map.set(lowerName, { name: cleanName, muscle, ids: [id] });
       } else {
-        map.get(name).ids.push(id);
+        map.get(lowerName).ids.push(id);
       }
     });
     return Array.from(map.values());
@@ -174,12 +237,12 @@ const Analytics = () => {
     let combined = [];
     Object.keys(history || {}).forEach(id => {
       const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
-      if (exo && exo.name === selectedExo) {
+      if (exo && exo.name.toLowerCase().trim() === selectedExo.toLowerCase().trim()) {
         combined.push(...normalizeHistory(history[id] || []));
       } else if (!exo) {
-        const baseId = id.split('_').slice(0, 3).join('_');
-        const baseExo = exerciseLibrary.find(e => e.id === baseId);
-        if (baseExo && baseExo.name === selectedExo) {
+        const baseId = id.replace(/_\d+$/, '');
+        const baseExo = allExercises.find(e => e.id === baseId) || exerciseLibrary.find(e => e.id === baseId);
+        if (baseExo && baseExo.name.toLowerCase().trim() === selectedExo.toLowerCase().trim()) {
           combined.push(...normalizeHistory(history[id] || []));
         }
       }
@@ -619,8 +682,8 @@ const Analytics = () => {
                     className="glass-card p-4 flex justify-between items-center cursor-pointer hover:border-blue-500/30"
                     onClick={() => setSelectedSession(s)}>
                     <div>
-                      <p className="text-white font-bold text-sm">{s.date}</p>
-                      <p className="text-[10px] text-slate-500 mt-0.5">{s.exos} exercices</p>
+                      <p className="text-white font-bold text-sm">{s.sessionTitle}</p>
+                      <p className="text-[10px] text-slate-500 mt-0.5">{s.date} • {s.exos} exercices</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <p className="text-base font-black text-blue-400">{s.tonnage.toLocaleString()} <span className="text-xs text-slate-500 font-normal">kg</span></p>
@@ -651,7 +714,7 @@ const Analytics = () => {
                 exit={{ scale:.8, opacity:0 }} 
                 onClick={e=>e.stopPropagation()}
               >
-                <h2 className="text-xl font-black text-white mb-2">Détails de la séance</h2>
+                <h2 className="text-xl font-black text-white mb-2">{selectedSession.sessionTitle}</h2>
                 <p className="text-sm text-blue-400 mb-4">{selectedSession.date}</p>
                 
                 <div className="space-y-3">

@@ -10,7 +10,7 @@ import {
   ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2, Play, Check, Calendar, Settings
 } from "lucide-react";
 import { syncWorkoutToAppleHealth } from "../utils/health";
-import { hapticLight, hapticMedium, scheduleRestNotification, cancelRestNotification } from "../utils/native";
+import { hapticLight, hapticMedium } from "../utils/native";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
 
@@ -109,9 +109,19 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
     const matchSearch = nameMatch || muscleMatchSearch;
     
     let matchMuscle = false;
-    if (muscleFilter === "Tous") matchMuscle = true;
-    else if (muscleFilter === "Machine") matchMuscle = e.name.toLowerCase().includes("machine");
-    else matchMuscle = e.muscle === muscleFilter;
+    if (muscleFilter === "Tous") {
+      matchMuscle = true;
+    } else if (muscleFilter === "Machine") {
+      matchMuscle = e.name.toLowerCase().includes("machine");
+    } else if (muscleFilter === "Adducteurs") {
+      matchMuscle = e.muscle === "Adducteurs" || e.name.toLowerCase().includes("adduc");
+    } else if (muscleFilter === "Abducteurs") {
+      matchMuscle = e.muscle === "Abducteurs" || e.name.toLowerCase().includes("abduc");
+    } else if (muscleFilter === "Lombaires") {
+      matchMuscle = e.muscle === "Lombaires" || e.name.toLowerCase().includes("lombaire") || e.name.toLowerCase().includes("hyperextension");
+    } else {
+      matchMuscle = e.muscle === muscleFilter;
+    }
 
     return matchSearch && matchMuscle;
   }), [search, muscleFilter]);
@@ -199,7 +209,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 
 // ─── ExerciseCard ────────────────────────────────────────────────
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
-  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, energyLevel, allExercises } = useApp();
+  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises } = useApp();
   const [open, setOpen] = useState(true);
 
   const sets = getSetsForExo(exo.id);
@@ -374,10 +384,9 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                           toggleSetDone(exo.id, si, exo.rest);
                           if (!isCurrentlyDone) {
                             hapticMedium();
-                            if (exo.rest > 0) scheduleRestNotification(exo.rest);
                           } else {
                             hapticLight();
-                            cancelRestNotification();
+                            stopTimer();
                           }
                         }
                       }}
@@ -661,7 +670,7 @@ const Workout = () => {
             exit={{ opacity:0, y:20, scale:.9 }}>
             <span className="text-3xl font-black font-mono text-white tracking-wider">{fmt(timerSeconds)}</span>
             <span className="text-[9px] text-blue-400 uppercase font-bold tracking-wider mt-1 flex items-center gap-1"><Clock size={9}/> Repos</span>
-            <button onClick={() => { stopTimer(); cancelRestNotification(); }} className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
+            <button onClick={() => { stopTimer(); }} className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
               <X size={11} />
             </button>
           </motion.div>

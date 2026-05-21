@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
 import { sessions } from "../data/sessions";
+import { exerciseLibrary } from "../data/exerciseLibrary";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard, calculateCNSScore } from "../utils/metrics";
 import {
@@ -144,21 +145,119 @@ const Dashboard = () => {
 
   // Muscle recovery
   const recovery = useMemo(() => {
-    const groups = { Pecs: ["Pecs (Haut)","Pecs (Masse)","Pecs (Bas)","Pecs (Iso)","Finition","Pecs"], Dos: ["Dos (Largeur)","Dos (Épaisseur)","Dos (Bas)","Dos (Isolation)","Dos"], Jambes: ["Cuisses","Ischios","Mollets","Jambes"], Épaules: ["Épaules (Masse)","Épaules (Latéral)","Arr. Épaules","Épaules","Trapèzes"], Bras: ["Biceps (Long)","Biceps (Court)","Brachial","Triceps (Masse)","Triceps (Long)","Triceps (Vaste)","Avant-Bras","Bras"], Abdos: ["Abdos","Abdos (Bas)","Obliques","Transverse","Gainage"] };
-    const last = {}; const now = new Date();
-    Object.keys(history).forEach(id => {
-      const hist = history[id]; if (!hist?.length) return;
-      const d = parseDate(hist[hist.length-1].date);
-      const exo = allExercises.find(e => e.id === id); if (!exo) return;
-      Object.entries(groups).forEach(([g, subs]) => { if (subs.includes(exo.muscle) && (!last[g] || d > last[g])) last[g] = d; });
-    });
+    const groups = {
+      Pecs: ["Pecs (Haut)", "Pecs (Masse)", "Pecs (Bas)", "Pecs (Iso)", "Finition", "Pecs", "Pectoraux"],
+      Dos: ["Dos (Largeur)", "Dos (Épaisseur)", "Dos (Bas)", "Dos (Isolation)", "Dos", "Lombaires"],
+      Jambes: ["Cuisses", "Ischios", "Mollets", "Jambes", "Quadriceps", "Adducteurs", "Abducteurs", "Fessiers", "Tibias"],
+      Épaules: ["Épaules (Masse)", "Épaules (Latéral)", "Arr. Épaules", "Épaules", "Trapèzes"],
+      Bras: ["Biceps (Long)", "Biceps (Court)", "Brachial", "Triceps (Masse)", "Triceps (Long)", "Triceps (Vaste)", "Avant-Bras", "Avant-bras", "Bras", "Biceps", "Triceps"],
+      Abdos: ["Abdos", "Abdos (Bas)", "Obliques", "Transverse", "Gainage", "Taille"]
+    };
+
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+
     return Object.keys(groups).map(g => {
-      const d = last[g];
-      if (!d) return { group: g, label: "Frais", pct: 100, color: "#34d399" };
-      const days = Math.ceil(Math.abs(now - d) / 864e5);
-      if (days <= 1) return { group: g, label: "Épuisé", pct: 15, color: "#ef4444" };
-      if (days <= 2) return { group: g, label: "En récup", pct: 55, color: "#f59e0b" };
-      return { group: g, label: "Frais", pct: 100, color: "#34d399" };
+      const subs = groups[g];
+      let records = [];
+
+      Object.keys(history || {}).forEach(id => {
+        const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
+        if (exo && subs.includes(exo.muscle)) {
+          const hist = history[id];
+          if (Array.isArray(hist)) {
+            hist.forEach(entry => {
+              if (entry && entry.date) {
+                records.push({
+                  dateStr: entry.date,
+                  date: parseDate(entry.date),
+                  setsCount: (entry.setsData || []).filter(s => s && s.done && parseFloat(s.weight) > 0).length
+                });
+              }
+            });
+          }
+        }
+      });
+
+      if (records.length === 0) {
+        return {
+          group: g,
+          label: "Frais",
+          pct: 100,
+          color: "#34d399",
+          desc: "Aucune séance récente enregistrée. Prêt à performer !"
+        };
+      }
+
+      records.sort((a, b) => b.date - a.date);
+
+      const lastWorkoutDate = records[0].date;
+      const lastWorkoutDateStr = records[0].dateStr;
+      
+      let lastWorkoutVolume = 0;
+      records.forEach(r => {
+        if (r.dateStr === lastWorkoutDateStr) {
+          lastWorkoutVolume += r.setsCount;
+        }
+      });
+
+      const diffTime = now.getTime() - lastWorkoutDate.getTime();
+      const elapsedDays = Math.max(0, Math.floor(diffTime / 864e5));
+
+      let pct = 100;
+      let label = "Frais";
+      let color = "#34d399";
+      let desc = "Muscle pleinement récupéré. Prêt à s'entraîner !";
+
+      if (lastWorkoutVolume <= 3) {
+        if (elapsedDays === 0 || elapsedDays === 1) {
+          pct = 80;
+          label = "Légère fatigue";
+          color = "#10b981";
+          desc = `Séance légère (${lastWorkoutVolume} série${lastWorkoutVolume > 1 ? 's' : ''}) ${elapsedDays === 0 ? "aujourd'hui" : "hier"}. Récupération très rapide.`;
+        }
+      } else if (lastWorkoutVolume <= 8) {
+        if (elapsedDays === 0) {
+          pct = 40;
+          label = "Fatigué";
+          color = "#f59e0b";
+          desc = `Séance modérée (${lastWorkoutVolume} séries) aujourd'hui. Phase de récupération initiale active.`;
+        } else if (elapsedDays === 1) {
+          pct = 75;
+          label = "En récup";
+          color = "#84cc16";
+          desc = `Séance modérée (${lastWorkoutVolume} séries) hier. Muscle en bonne voie de récupération.`;
+        } else if (elapsedDays === 2) {
+          pct = 90;
+          label = "Quasi frais";
+          color = "#a3e635";
+          desc = `Séance modérée (${lastWorkoutVolume} séries) il y a 2 jours. Récupération presque totale.`;
+        }
+      } else {
+        if (elapsedDays === 0) {
+          pct = 15;
+          label = "Épuisé";
+          color = "#ef4444";
+          desc = `Séance intense (${lastWorkoutVolume} séries) aujourd'hui. Reconstruction active. Repos impératif !`;
+        } else if (elapsedDays === 1) {
+          pct = 45;
+          label = "Fatigué";
+          color = "#f59e0b";
+          desc = `Séance intense (${lastWorkoutVolume} séries) hier. Courbatures probables, repos conseillé.`;
+        } else if (elapsedDays === 2) {
+          pct = 70;
+          label = "En récup";
+          color = "#eab308";
+          desc = `Séance intense (${lastWorkoutVolume} séries) il y a 2 jours. Le muscle se reconstruit efficacement.`;
+        } else if (elapsedDays === 3) {
+          pct = 85;
+          label = "Quasi récupéré";
+          color = "#84cc16";
+          desc = `Séance intense (${lastWorkoutVolume} séries) il y a 3 jours. Presque prêt pour une nouvelle stimulation.`;
+        }
+      }
+
+      return { group: g, label, pct, color, desc };
     });
   }, [history, allExercises]);
 
@@ -387,14 +486,17 @@ const Dashboard = () => {
       {/* ── MUSCLE RECOVERY ── */}
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }} className="glass-card p-5 mb-6">
         <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
-        <div className="space-y-3">
-          {recovery.map(({ group, label, pct, color }) => (
-            <div key={group} className="flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-300 w-16 shrink-0">{group}</span>
-              <div className="flex-1 progress-track">
-                <div className="progress-fill" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}80, ${color})` }} />
+        <div className="space-y-4">
+          {recovery.map(({ group, label, pct, color, desc }) => (
+            <div key={group} className="flex flex-col gap-1 pb-2 border-b border-white/5 last:border-b-0 last:pb-0">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-300">{group}</span>
+                <span className="text-xs font-black" style={{ color }}>{label} ({pct}%)</span>
               </div>
-              <span className="text-xs font-bold shrink-0" style={{ color }}>{label}</span>
+              <div className="progress-track w-full h-2">
+                <div className="progress-fill h-full rounded-full" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}80, ${color})` }} />
+              </div>
+              <p className="text-[10px] text-slate-400 leading-relaxed font-medium mt-0.5">{desc}</p>
             </div>
           ))}
         </div>

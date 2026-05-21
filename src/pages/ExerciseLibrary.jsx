@@ -44,9 +44,19 @@ const ExerciseLibrary = () => {
     const matchSearch = nameMatch || muscleMatchSearch;
 
     let matchMuscle = false;
-    if (muscleFilter === "Tous") matchMuscle = true;
-    else if (muscleFilter === "Machine") matchMuscle = e.name.toLowerCase().includes("machine");
-    else matchMuscle = e.muscle === muscleFilter;
+    if (muscleFilter === "Tous") {
+      matchMuscle = true;
+    } else if (muscleFilter === "Machine") {
+      matchMuscle = e.name.toLowerCase().includes("machine");
+    } else if (muscleFilter === "Adducteurs") {
+      matchMuscle = e.muscle === "Adducteurs" || e.name.toLowerCase().includes("adduc");
+    } else if (muscleFilter === "Abducteurs") {
+      matchMuscle = e.muscle === "Abducteurs" || e.name.toLowerCase().includes("abduc");
+    } else if (muscleFilter === "Lombaires") {
+      matchMuscle = e.muscle === "Lombaires" || e.name.toLowerCase().includes("lombaire") || e.name.toLowerCase().includes("hyperextension");
+    } else {
+      matchMuscle = e.muscle === muscleFilter;
+    }
 
     return matchSearch && matchMuscle;
   }), [search, muscleFilter]);
