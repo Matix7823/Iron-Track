@@ -22,8 +22,8 @@ export const MAX_LEVEL = 27;
  */
 export const getXPForLevel = (level) => {
   if (level <= 1) return 0;
-  // Courbe: (level-1)^2.5 * 1000
-  return Math.floor(Math.pow(level - 1, 2.5) * 1000);
+  // Courbe plus progressive pour le début, tout en restant un défi ultime
+  return Math.floor(Math.pow(level - 1, 2.2) * 600);
 };
 
 /**

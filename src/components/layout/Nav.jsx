@@ -5,10 +5,11 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import { useApp } from "../../context/AppContext";
 
-// 4 items around the central FAB (mobile)
+// 5 items in bottom nav (mobile)
 const bottomNavItems = [
   { to: "/",           icon: LayoutDashboard, label: "Home",    color: "text-blue-400",    activeBg: "bg-blue-500/15"   },
   { to: "/analytics",  icon: Activity,        label: "Stats",   color: "text-emerald-400", activeBg: "bg-emerald-500/15"},
+  { to: "/workout",    icon: Dumbbell,        label: "Séance",  color: "text-cyan-400",    activeBg: "bg-cyan-500/15"   },
   { to: "/pr-tracker", icon: Trophy,          label: "Records", color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
   { to: "/profile",    icon: Users,           label: "Profil",  color: "text-orange-400",  activeBg: "bg-orange-500/15" },
 ];
@@ -130,16 +131,10 @@ export const Navbar = () => {
 };
 
 export const BottomNav = () => {
-  const navigate = useNavigate();
-  const { history } = useApp();
-  const { profile } = useAuth();
-  const streak = useStreak(history);
-
   return (
     <nav className="sm:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark border-t border-white/5 shadow-2xl">
       <div className="flex items-center justify-around px-1 py-1.5 pb-safe relative">
-        {/* First 2 items */}
-        {bottomNavItems.slice(0, 2).map(({ to, icon: Icon, label, color, activeBg }) => (
+        {bottomNavItems.map(({ to, icon: Icon, label, color, activeBg }) => (
           <NavLink key={to} to={to} end={to === "/"}
             className={({ isActive }) =>
               `flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl transition-all duration-200 min-w-[48px] ${
@@ -149,7 +144,7 @@ export const BottomNav = () => {
           >
             {({ isActive }) => (
               <>
-                <div className="relative">
+                <div className="relative flex items-center justify-center">
                   <Icon size={19} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
                   {isActive && (
                     <motion.div layoutId="bottom-indicator"
@@ -163,79 +158,6 @@ export const BottomNav = () => {
             )}
           </NavLink>
         ))}
-
-        {/* Center FAB */}
-        <div className="flex flex-col items-center relative z-10" style={{ marginTop: -20 }}>
-          <motion.button
-            whileTap={{ scale: 0.88 }}
-            onClick={() => navigate('/workout')}
-            className="fab fab-pulse"
-            style={{ width: 54, height: 54 }}
-          >
-            <Dumbbell size={21} className="text-white drop-shadow-lg" />
-          </motion.button>
-          {streak > 0 ? (
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}
-              className="flex items-center gap-0.5 mt-0.5">
-              <span className="text-[9px] animate-fire">🔥</span>
-              <span className="text-[8px] font-black text-orange-400">{streak}</span>
-            </motion.div>
-          ) : (
-            <span className="text-[7px] text-slate-600 font-bold mt-0.5 uppercase tracking-wide">Séance</span>
-          )}
-        </div>
-
-        {/* Last 2 items */}
-        {bottomNavItems.slice(2).map(({ to, icon: Icon, label, color, activeBg }) => (
-          <NavLink key={to} to={to} end={to === "/"}
-            className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl transition-all duration-200 min-w-[48px] ${
-                isActive ? color : "text-slate-600 hover:text-slate-400"
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <div className="relative">
-                  <Icon size={19} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
-                  {isActive && (
-                    <motion.div layoutId="bottom-indicator"
-                      className={`absolute -inset-1.5 ${activeBg} rounded-xl -z-10`}
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.35 }}
-                    />
-                  )}
-                </div>
-                <span className={`text-[7px] font-bold uppercase tracking-wider ${isActive ? color : ""}`}>{label}</span>
-              </>
-            )}
-          </NavLink>
-        ))}
-
-        {/* Admin Shield for Admin on Mobile */}
-        {profile?.role === 'admin' && (
-          <NavLink to="/admin"
-            className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl transition-all duration-200 min-w-[48px] ${
-                isActive ? "text-emerald-400" : "text-slate-600 hover:text-slate-400"
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <div className="relative">
-                  <Shield size={19} className={isActive ? "text-emerald-400 drop-shadow-[0_0_6px_currentColor]" : "text-emerald-500"} />
-                  {isActive && (
-                    <motion.div layoutId="bottom-indicator"
-                      className="absolute -inset-1.5 bg-emerald-500/15 rounded-xl -z-10"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.35 }}
-                    />
-                  )}
-                </div>
-                <span className={`text-[7px] font-bold uppercase tracking-wider ${isActive ? "text-emerald-400" : "text-emerald-500"}`}>Admin</span>
-              </>
-            )}
-          </NavLink>
-        )}
       </div>
     </nav>
   );

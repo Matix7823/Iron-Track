@@ -94,7 +94,7 @@ const ExerciseDetailCard = ({ exo, getCol }) => {
             <div className="text-xs font-black text-white">{exo.bestWeight} kg</div>
             <p className="text-[9px] text-slate-500 mt-0.5">Charge Max</p>
           </div>
-          <button className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+          <button className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
             {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>
         </div>
@@ -195,31 +195,36 @@ const ExerciseDetailCard = ({ exo, getCol }) => {
 
               {/* Workout chronological feed */}
               <div>
-                <p className="text-[9px] text-slate-500 uppercase tracking-widest font-bold mb-2 flex items-center gap-1.5">
+                <p className="text-[9px] text-slate-500 uppercase tracking-widest font-bold mb-2.5 flex items-center gap-1.5">
                   <History size={11} /> Historique des séances (10 dernières)
                 </p>
+                <div className="flex justify-between text-[9px] text-slate-500 font-bold uppercase tracking-wider px-2 mb-2 gap-2">
+                  <span className="w-20 shrink-0">Date</span>
+                  <span className="flex-1 text-center">Séries (Poids × Répétitions)</span>
+                  <span className="w-16 text-right shrink-0">1RM Estimé</span>
+                </div>
                 <div className="space-y-1 bg-[#090d16] border border-white/5 rounded-xl p-2.5 max-h-[220px] overflow-y-auto scrollbar-hide">
                   {[...exo.historyFeed].reverse().slice(0, 10).map((h, i) => (
-                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-white/5 last:border-0 hover:bg-white/2 px-1 rounded transition-colors">
+                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-white/5 last:border-0 hover:bg-white/2 px-1 rounded transition-colors gap-2">
                       <span className="text-[10px] text-slate-400 font-mono w-20 flex items-center gap-1 shrink-0">
                         <Calendar size={9} className="text-slate-600" />
                         {h.date.split("-").reverse().slice(0, 2).join("/")}
                       </span>
-                      <div className="flex items-center gap-1.5 flex-1 justify-end flex-wrap mr-3">
+                      <div className="flex items-center gap-1.5 flex-1 justify-center flex-wrap">
                         {h.sets.map((s, idx) => {
                           const isBestSet = s.weight === overallBestWeight;
                           return (
                             <span
                               key={idx}
-                              className={`text-[9px] font-mono px-1.5 py-0.5 rounded border transition-all ${isBestSet ? "bg-amber-500/20 border-amber-500/40 text-amber-300 font-bold" : "bg-[#0b101b] border-white/5 text-slate-400"}`}
+                              className={`text-[9px] font-mono px-2 py-0.5 rounded-lg border transition-all ${isBestSet ? "bg-amber-500/20 border-amber-500/40 text-amber-300 font-bold" : "bg-[#0b101b] border-white/5 text-slate-400"}`}
                             >
-                              {s.weight}×{s.reps}{s.rpe ? <span className="text-[7px] text-slate-500">@{s.rpe}</span> : ""}
+                              {s.weight} kg × {s.reps} reps{s.rpe ? <span className="text-[7px] text-slate-500"> @RPE {s.rpe}</span> : ""}
                             </span>
                           );
                         })}
                       </div>
                       <span className="text-[10px] font-bold text-amber-400 w-16 text-right shrink-0">
-                        {h.best1RM} kg <span className="text-[8px] text-slate-500 font-normal">1RM</span>
+                        {h.best1RM} kg
                       </span>
                     </div>
                   ))}
@@ -753,7 +758,7 @@ const PRTracker = () => {
               </div>
 
               {/* Sorting selectors */}
-              <div className="flex items-center gap-2 flex-wrap text-[10px] text-slate-500 font-bold uppercase tracking-wider border-t border-white/5 pt-2.5">
+              <div className="flex items-center gap-2 flex-wrap text-[10px] text-slate-500 font-bold uppercase tracking-wider border-t border-white/5 pt-3">
                 <span className="mr-1">Trier par :</span>
                 {[
                   { key: "best1RM", label: "🏆 Meilleur 1RM" },
@@ -763,33 +768,11 @@ const PRTracker = () => {
                   <button
                     key={key}
                     onClick={() => setSortBy(key)}
-                    className={`px-3 py-1.5 rounded-xl border transition-all ${sortBy === key ? "bg-amber-500/12 text-amber-400 border-amber-500/35 font-black" : "bg-white/4 text-slate-400 border-transparent hover:text-white"}`}
+                    className={`flex items-center justify-center h-9 px-3.5 rounded-xl border text-[10px] font-bold transition-all ${sortBy === key ? "bg-amber-500/12 text-amber-400 border-amber-500/35 font-black shadow-md shadow-amber-500/5" : "bg-white/4 text-slate-400 border-white/5 hover:text-white"}`}
                   >
                     {label}
                   </button>
                 ))}
-              </div>
-
-              {/* Muscle badge category slider */}
-              <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1">
-                {MUSCLE_GROUPS.filter(m => m === "Tous" || musclesWithPRs.includes(m)).map(m => {
-                  const col = m === "Tous" ? null : getCol(m);
-                  return (
-                    <button
-                      key={m}
-                      onClick={() => setMuscleFilter(m)}
-                      className={`shrink-0 px-3 py-1 rounded-xl text-[10px] font-bold transition-all border whitespace-nowrap ${
-                        muscleFilter === m
-                          ? m === "Tous"
-                            ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white border-transparent"
-                            : `${col.bg} ${col.text} ${col.border}`
-                          : "bg-white/4 text-slate-500 border-white/5 hover:text-white"
-                      }`}
-                    >
-                      {m}
-                    </button>
-                  );
-                })}
               </div>
             </div>
 

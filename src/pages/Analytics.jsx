@@ -550,13 +550,13 @@ const Analytics = () => {
                 </p>
                 <div className="space-y-1.5 max-h-[220px] overflow-y-auto pr-1 scrollbar-hide">
                   {advices.map(({ muscle, icon, text, level }) => (
-                    <div key={muscle} className={`flex items-start gap-2.5 p-2.5 rounded-xl border transition-all ${
+                    <div key={muscle} className={`flex items-start gap-2.5 p-2.5 rounded-xl border ${
                       level === "ok"      ? "bg-emerald-950/20 border-emerald-500/12 text-emerald-200" :
                       level === "warning" ? "bg-amber-950/20 border-amber-500/12 text-amber-200" :
                                             "bg-red-950/20 border-red-500/12 text-red-200"
                     }`}>
-                      <span className="text-sm shrink-0 mt-px">{icon}</span>
-                      <div className="text-[10px] leading-relaxed">
+                      <span className="text-sm shrink-0 w-5 h-5 flex items-center justify-center mt-px">{icon}</span>
+                      <div className="text-[10px] sm:text-xs leading-relaxed">
                         <span className={`font-black uppercase tracking-wide mr-1.5 ${
                           level === "ok" ? "text-emerald-400" : level === "warning" ? "text-amber-400" : "text-red-400"
                         }`}>{muscle}</span>
@@ -643,6 +643,14 @@ const Analytics = () => {
         {/* 1RM + Standards */}
         <motion.div variants={item} className="glass-card p-5 mb-5">
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><Zap size={16} className="text-amber-400"/>Records 1RM Estimés</h3>
+          <div className="bg-amber-500/5 border border-amber-500/10 rounded-xl p-3 mb-4 text-left">
+            <p className="text-[10px] text-amber-300 font-bold flex items-center gap-1.5 mb-1">
+              💡 Le 1RM Estimé, c'est quoi ?
+            </p>
+            <p className="text-[9px] text-slate-400 leading-relaxed font-medium">
+              C'est la charge maximale théorique que tu pourrais soulever sur <strong>une seule répétition</strong>. Il est calculé scientifiquement d'après tes meilleures performances (poids × répétitions) pour mesurer ta force maximale sans avoir à tester tes limites physiques réelles en toute sécurité.
+            </p>
+          </div>
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {top1RMs.map(lift=>(
               <div key={lift.label} className="glass rounded-2xl p-2 sm:p-4 text-center">
