@@ -50,17 +50,33 @@ const Analytics = () => {
   const [editC, setEditC] = useState("");
   const [editF, setEditF] = useState("");
 
-  // Weekly volume per muscle group
-  const weekVolume = (() => {
+  // Weekly volume per muscle group (all 18 detailed groups)
+  const weekVolume = useMemo(() => {
     const now = new Date(), d7 = new Date(now - 7*864e5);
-    const vol = { Pecs:0, Dos:0, Jambes:0, Épaules:0, Bras:0, Abdos:0 };
+    const vol = {
+      Pectoraux: 0, Dos: 0, Lombaires: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0,
+      Adducteurs: 0, Abducteurs: 0, Mollets: 0, Tibias: 0, Épaules: 0, Trapèzes: 0,
+      Biceps: 0, Triceps: 0, "Avant-bras": 0, Abdos: 0, Cou: 0, Cardio: 0
+    };
     const map = {
-      "Pecs (Haut)":"Pecs","Pecs (Masse)":"Pecs","Pecs (Bas)":"Pecs","Pecs (Iso)":"Pecs","Finition":"Pecs",Pecs:"Pecs","Pectoraux":"Pecs",
-      "Dos (Largeur)":"Dos","Dos (Épaisseur)":"Dos","Dos (Bas)":"Dos","Dos (Isolation)":"Dos",Dos:"Dos","Lombaires":"Dos",
-      Cuisses:"Jambes",Ischios:"Jambes",Mollets:"Jambes",Jambes:"Jambes",Quadriceps:"Jambes",Adducteurs:"Jambes",Abducteurs:"Jambes",Fessiers:"Jambes",
-      "Épaules (Masse)":"Épaules","Épaules (Latéral)":"Épaules","Arr. Épaules":"Épaules",Épaules:"Épaules",Trapèzes:"Épaules",
-      "Biceps (Long)":"Bras","Biceps (Court)":"Bras",Brachial:"Bras","Triceps (Masse)":"Bras","Triceps (Long)":"Bras","Triceps (Vaste)":"Bras","Avant-Bras":"Bras",Bras:"Bras",Biceps:"Bras",Triceps:"Bras","Avant-bras":"Bras",
-      Abdos:"Abdos","Abdos (Bas)":"Abdos",Obliques:"Abdos",Transverse:"Abdos",Gainage:"Abdos",Taille:"Abdos",
+      "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Finition": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
+      "Dos (Largeur)": "Dos", "Dos (Épaisseur)": "Dos", "Dos (Bas)": "Dos", "Dos (Isolation)": "Dos", "Dos": "Dos",
+      "Lombaires": "Lombaires", "Lombes": "Lombaires",
+      "Cuisses": "Quadriceps", "Quadriceps": "Quadriceps",
+      "Ischios": "Ischios",
+      "Fessiers": "Fessiers",
+      "Adducteurs": "Adducteurs",
+      "Abducteurs": "Abducteurs",
+      "Mollets": "Mollets",
+      "Tibias": "Tibias",
+      "Épaules (Masse)": "Épaules", "Épaules (Latéral)": "Épaules", "Arr. Épaules": "Épaules", "Épaules": "Épaules",
+      "Trapèzes": "Trapèzes",
+      "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
+      "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
+      "Avant-Bras": "Avant-bras", "Avant-bras": "Avant-bras",
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
+      "Cou": "Cou",
+      "Cardio": "Cardio"
     };
     Object.keys(history || {}).forEach(id => {
       const exo = allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
@@ -75,10 +91,10 @@ const Analytics = () => {
       }
     });
     return vol;
-  })();
+  }, [history, allExercises]);
 
   const maxVol = Math.max(...Object.values(weekVolume), 1);
-  const volPecs = weekVolume.Pecs||0, volDos = weekVolume.Dos||0;
+  const volPecs = weekVolume.Pectoraux||0, volDos = weekVolume.Dos||0;
 
   // Aesthetic score
   const aes = (() => {
@@ -320,54 +336,234 @@ const Analytics = () => {
           </div>
         </motion.div>
 
-        {/* ── DONUT CHART — Répartition Volume ── */}
-        {Object.values(weekVolume).some(v => v > 0) && (() => {
+        {/* ── DONUT CHART — Répartition Volume ALL muscles ── */}
+        {(() => {
           const total = Object.values(weekVolume).reduce((a, b) => a + b, 0);
-          const colors = ["#3b82f6","#06b6d4","#10b981","#8b5cf6","#ec4899","#f59e0b"];
-          const labels = Object.keys(weekVolume);
-          let cumulative = 0;
-          const r = 52, cx = 70, cy = 70, circumference = 2 * Math.PI * r;
+          
+          const muscleColorMap = {
+            Pectoraux:  "#3b82f6", // Blue
+            Dos:        "#06b6d4", // Cyan
+            Lombaires:  "#14b8a6", // Teal
+            Quadriceps: "#10b981", // Emerald
+            Ischios:    "#22c55e", // Green
+            Fessiers:   "#84cc16", // Lime
+            Adducteurs: "#eab308", // Yellow
+            Abducteurs: "#f59e0b", // Amber
+            Mollets:    "#f97316", // Orange
+            Tibias:     "#fdba74", // Light Orange
+            Épaules:    "#8b5cf6", // Violet
+            Trapèzes:   "#a855f7", // Purple
+            Biceps:     "#ec4899", // Pink
+            Triceps:    "#f43f5e", // Rose
+            "Avant-bras": "#ef4444", // Red
+            Abdos:      "#6366f1", // Indigo
+            Cou:        "#64748b", // Slate
+            Cardio:     "#0ea5e9", // Sky
+          };
+
+          // Advice engine
+          const advices = [];
+          
+          const p = weekVolume.Pectoraux || 0;
+          const d = weekVolume.Dos || 0;
+          const b = weekVolume.Biceps || 0;
+          const t = weekVolume.Triceps || 0;
+          const q = weekVolume.Quadriceps || 0;
+          const isc = weekVolume.Ischios || 0;
+          const add = weekVolume.Adducteurs || 0;
+          const abd = weekVolume.Abducteurs || 0;
+          
+          // Pecs vs Dos Balance
+          if (p > 0 || d > 0) {
+            if (p > d * 1.2) {
+              advices.push({
+                muscle: "Déséquilibre Pecs/Dos",
+                icon: "⚠️",
+                text: `Volume Pecs (${p} séries) supérieur au Dos (${d} séries). Risque d'arrondissement des épaules (cyphose). Ajoute des exercices de tirage (Rowing, Oiseau) !`,
+                level: "danger"
+              });
+            } else if (d > p * 1.5) {
+              advices.push({
+                muscle: "Dominance Dos",
+                icon: "💡",
+                text: `Ton Dos (${d} séries) est très entraîné par rapport à tes Pecs (${p} séries). C'est excellent pour la posture et la stabilité des épaules.`,
+                level: "ok"
+              });
+            } else {
+              advices.push({
+                muscle: "Équilibre Pecs/Dos",
+                icon: "✅",
+                text: "Parfait équilibre postural antéro-postérieur. Continue à répartir ton volume ainsi !",
+                level: "ok"
+              });
+            }
+          }
+          
+          // Biceps vs Triceps Balance
+          if (b > 0 || t > 0) {
+            if (b > t * 1.3) {
+              advices.push({
+                muscle: "Déséquilibre Bras",
+                icon: "⚠️",
+                text: `Tu effectues plus de séries de Biceps (${b}) que de Triceps (${t}). Rappelle-toi que les triceps représentent 60% de la masse de tes bras !`,
+                level: "warning"
+              });
+            } else if (t > b * 1.5) {
+              advices.push({
+                muscle: "Dominance Triceps",
+                icon: "💡",
+                text: `Excellent volume Triceps (${t} séries). N'oublie pas les Biceps (${b} séries) pour conserver la stabilité des coudes.`,
+                level: "ok"
+              });
+            }
+          }
+          
+          // Quads vs Ischios Balance
+          if (q > 0 || isc > 0) {
+            if (q > isc * 1.5) {
+              advices.push({
+                muscle: "Déséquilibre Cuisse",
+                icon: "⚠️",
+                text: `Tes Quadriceps (${q} séries) reçoivent beaucoup plus de volume que tes Ischios (${isc} séries). Risque accru de blessures aux ligaments du genou. Ajoute du Leg Curl ou SDT Roumain !`,
+                level: "danger"
+              });
+            }
+          }
+
+          // Adducteurs vs Abducteurs Balance
+          if (add > 0 || abd > 0) {
+            if (Math.abs(add - abd) > 6) {
+              advices.push({
+                muscle: "Stabilité Bassin",
+                icon: "⚠️",
+                text: `Écart important entre Adducteurs (${add} séries) et Abducteurs (${abd} séries). Harmonise pour stabiliser ton bassin lors de tes squats lourds.`,
+                level: "warning"
+              });
+            }
+          }
+
+          // Under-trained stabilizers & forgotten muscles
+          const crucialStabilizers = [
+            { name: "Cou", vol: weekVolume.Cou || 0, icon: "🧠", text: "Le Cou a 0 série. Renforcer le cou prévient les tensions cervicales et stabilise le haut du dos." },
+            { name: "Tibias", vol: weekVolume.Tibias || 0, icon: "🦵", text: "Les Tibias ont 0 série. Entraîner le tibial antérieur protège contre les périostites." },
+            { name: "Mollets", vol: weekVolume.Mollets || 0, icon: "👟", text: "Les Mollets ont 0 série. Un mollet fort soutient tes chevilles et ta détente verticale." },
+            { name: "Lombaires", vol: weekVolume.Lombaires || 0, icon: "🪵", text: "Les Lombaires ont 0 série. Le bas du dos doit être solide pour sécuriser tous tes portés de charges." }
+          ];
+
+          crucialStabilizers.forEach(m => {
+            if (m.vol === 0) {
+              advices.push({
+                muscle: `Muscle oublié : ${m.name}`,
+                icon: m.icon,
+                text: m.text,
+                level: "warning"
+              });
+            }
+          });
+
+          // active muscles (sets > 0)
+          const activeMuscles = Object.entries(weekVolume)
+            .filter(([_, sets]) => sets > 0)
+            .map(([muscle, sets]) => ({
+              muscle,
+              sets,
+              color: muscleColorMap[muscle] || "#64748b"
+            }))
+            .sort((a, b) => b.sets - a.sets);
+
+          // Donut segments calculations
+          const r = 50, cx = 68, cy = 68, circumference = 2 * Math.PI * r;
+          let segments = [];
+          if (total === 0) {
+            segments = [{
+              muscle: "Aucun",
+              sets: 0,
+              pct: 1,
+              strokeDashoffset: 0,
+              strokeDasharray: circumference,
+              rotation: -90,
+              color: "rgba(255,255,255,0.06)"
+            }];
+          } else {
+            let cumulative = 0;
+            segments = activeMuscles.map(({ muscle, sets, color }) => {
+              const pct = sets / total;
+              const strokeDasharray = circumference;
+              const strokeDashoffset = circumference * (1 - pct);
+              const rotation = (cumulative / total) * 360 - 90;
+              cumulative += sets;
+              return { muscle, sets, pct, strokeDashoffset, strokeDasharray, rotation, color };
+            });
+          }
+
           return (
             <motion.div variants={item} className="glass-card p-5 mb-5">
               <h3 className="font-bold text-white flex items-center gap-2 mb-4">
                 <BarChart2 size={16} className="text-blue-400" />Répartition du Volume (7j)
+                <span className="ml-auto text-[10px] text-slate-500 font-normal">Total : {total} séries</span>
               </h3>
-              <div className="flex items-center gap-6">
-                <svg width="140" height="140" className="shrink-0">
-                  {labels.map((g, i) => {
-                    const val = weekVolume[g] || 0;
-                    const pct = val / total;
-                    const strokeDasharray = circumference;
-                    const strokeDashoffset = circumference * (1 - pct);
-                    const rotation = (cumulative / total) * 360 - 90;
-                    cumulative += val;
-                    if (val === 0) return null;
-                    return (
-                      <circle key={g} cx={cx} cy={cy} r={r}
-                        fill="none" stroke={colors[i % colors.length]} strokeWidth="18"
+
+              <div className="flex flex-col md:flex-row items-center gap-6 mb-5">
+                {/* Donut SVG */}
+                <div className="relative shrink-0 flex items-center justify-center">
+                  <svg width="136" height="136">
+                    {segments.map(({ muscle, sets, strokeDashoffset, strokeDasharray, rotation, color }) => (
+                      <circle key={muscle} cx={cx} cy={cy} r={r}
+                        fill="none" stroke={color} strokeWidth="15"
                         strokeDasharray={strokeDasharray} strokeDashoffset={strokeDashoffset}
-                        style={{ transform: `rotate(${rotation}deg)`, transformOrigin: `${cx}px ${cy}px` }}
+                        strokeLinecap="butt"
+                        style={{ transform: `rotate(${rotation}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: "all 0.4s ease" }}
                       />
-                    );
-                  })}
-                  <circle cx={cx} cy={cy} r={r - 12} fill="rgba(2,5,9,0.9)" />
-                  <text x={cx} y={cy - 6} textAnchor="middle" fill="white" fontSize="16" fontWeight="900">{total}</text>
-                  <text x={cx} y={cy + 12} textAnchor="middle" fill="#64748b" fontSize="8">séries</text>
-                </svg>
-                <div className="flex-1 space-y-2">
-                  {labels.map((g, i) => {
-                    const val = weekVolume[g] || 0;
-                    if (val === 0) return null;
-                    return (
-                      <div key={g} className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: colors[i % colors.length] }} />
-                          <span className="text-xs text-slate-400 font-medium">{g}</span>
+                    ))}
+                    <circle cx={cx} cy={cy} r={r - 9} fill="rgba(2,5,9,0.92)" />
+                  </svg>
+                  <div className="absolute flex flex-col items-center justify-center">
+                    <span className="text-2xl font-black text-white leading-none">{total}</span>
+                    <span className="text-[8px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">séries</span>
+                  </div>
+                </div>
+
+                {/* Legend - Only active muscles */}
+                <div className="flex-1 w-full">
+                  {activeMuscles.length === 0 ? (
+                    <p className="text-xs text-slate-500 italic text-center py-4">Aucun exercice validé sur les 7 derniers jours.</p>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                      {activeMuscles.map(({ muscle, sets, color }) => (
+                        <div key={muscle} className="flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: color }} />
+                          <span className="text-[10px] font-bold text-slate-400 flex-1 truncate">{muscle}</span>
+                          <span className="text-[10px] font-black text-white shrink-0">
+                            {sets} <span className="text-slate-600 font-bold">({Math.round((sets / total) * 100)}%)</span>
+                          </span>
                         </div>
-                        <span className="text-xs font-black text-white">{val} <span className="text-slate-600 font-normal">({Math.round(val/total*100)}%)</span></span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Advice list */}
+              <div className="space-y-2 pt-4 border-t border-white/5">
+                <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-2 flex items-center gap-1.5">
+                  <Zap size={10} className="text-amber-400" />Moteur d'analyses posturales & cinétiques (Science)
+                </p>
+                <div className="space-y-1.5 max-h-[220px] overflow-y-auto pr-1 scrollbar-hide">
+                  {advices.map(({ muscle, icon, text, level }) => (
+                    <div key={muscle} className={`flex items-start gap-2.5 p-2.5 rounded-xl border transition-all ${
+                      level === "ok"      ? "bg-emerald-950/20 border-emerald-500/12 text-emerald-200" :
+                      level === "warning" ? "bg-amber-950/20 border-amber-500/12 text-amber-200" :
+                                            "bg-red-950/20 border-red-500/12 text-red-200"
+                    }`}>
+                      <span className="text-sm shrink-0 mt-px">{icon}</span>
+                      <div className="text-[10px] leading-relaxed">
+                        <span className={`font-black uppercase tracking-wide mr-1.5 ${
+                          level === "ok" ? "text-emerald-400" : level === "warning" ? "text-amber-400" : "text-red-400"
+                        }`}>{muscle}</span>
+                        <span className="text-slate-300 font-medium">{text}</span>
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>

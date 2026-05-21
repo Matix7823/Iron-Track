@@ -325,6 +325,20 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                 {oneRM > 0 && <span className="text-slate-500">1RM est. : <span className="text-white">{oneRM}kg</span></span>}
               </div>
 
+              {(() => {
+                const lastEntry = prev.length ? prev[prev.length - 1] : null;
+                const prevSetsStr = lastEntry?.setsData
+                  ? lastEntry.setsData.map((s, idx) => `${s.weight}kg × ${s.reps}`).join(" | ")
+                  : null;
+                if (!prevSetsStr) return null;
+                return (
+                  <div className="text-[10px] text-slate-400 font-bold bg-white/5 px-2.5 py-1.5 rounded-lg flex items-center justify-between gap-1.5 mt-1 border border-white/5">
+                    <span className="text-[9px] uppercase tracking-wider text-slate-500 font-black">Précédent</span>
+                    <span className="font-mono text-slate-300">{prevSetsStr}</span>
+                  </div>
+                );
+              })()}
+
               {/* Column labels */}
               <div className="flex gap-1 sm:gap-1.5 text-[8px] sm:text-[9px] text-slate-600 font-bold uppercase text-center px-0.5 sm:px-1">
                 <div className="w-5 sm:w-6">Set</div>

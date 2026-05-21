@@ -472,8 +472,7 @@ export const AppProvider = ({ children }) => {
       const prev = hist[hist.length - 1];
       if (prev && prev.setsData && prev.setsData.length > 0) {
         return Array.from({ length: defaultSetCount }).map((_, i) => {
-          const prevSet = prev.setsData[i];
-          return { weight: prevSet?.weight || "", reps: "", rpe: "", done: false, tag: null, isExtra: false };
+          return { weight: "", reps: "", rpe: "", done: false, tag: null, isExtra: false };
         });
       }
     }

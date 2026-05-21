@@ -37,7 +37,7 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
   
   if (!user) return <Navigate to="/auth" />;
   
-  if (profile?.status?.toLowerCase() !== 'active') {
+  if (profile?.status?.toLowerCase() !== 'active' && profile?.role !== 'admin') {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4">
         <div className="text-center bg-slate-800/50 p-8 rounded-3xl border border-slate-700/50 max-w-md shadow-2xl backdrop-blur-xl">
