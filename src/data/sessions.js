@@ -22,7 +22,7 @@ export const sessions = {
       {
         id: "a1",
         muscle: "Pecs (Haut)",
-        name: "Dev. Incliné Haltères",
+        name: "Développé Incliné Haltères (Incline Dumbbell Press)",
         note: "Banc 30°. Priorité au haut de pec.",
         tempo: "3-0-1-0",
         sets: 4,
@@ -32,7 +32,7 @@ export const sessions = {
       {
         id: "a2",
         muscle: "Pecs (Masse)",
-        name: "Développé Couché",
+        name: "Développé Couché (Bench Press)",
         note: "Barre ou Haltères. Lourd.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -42,7 +42,7 @@ export const sessions = {
       {
         id: "a3",
         muscle: "Pecs (Bas)",
-        name: "Dips Lestés",
+        name: "Dips (Double Bar)",
         note: "Penche le buste en avant.",
         tempo: "3-1-1-0",
         sets: 3,
@@ -52,7 +52,7 @@ export const sessions = {
       {
         id: "a4",
         muscle: "Pecs (Iso)",
-        name: "Écarté Poulie Vis-à-vis",
+        name: "Écartés Poulie Vis-à-vis (Cable Crossovers)",
         note: "Focus contraction fin de mouvement.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -62,7 +62,7 @@ export const sessions = {
       {
         id: "a5",
         muscle: "Finition",
-        name: "Pompes Pieds Surélevés",
+        name: "Pompes Pieds Surélevés (Decline Push-ups)",
         note: "Jusqu'à l'échec.",
         tempo: "2-0-1-0",
         sets: 2,
@@ -81,7 +81,7 @@ export const sessions = {
       {
         id: "b1",
         muscle: "Dos (Largeur)",
-        name: "Tractions (ou Tirage Vertical)",
+        name: "Tractions (Pull-ups)",
         note: "Mains larges. Vise la largeur.",
         tempo: "3-0-1-0",
         sets: 4,
@@ -91,7 +91,7 @@ export const sessions = {
       {
         id: "b2",
         muscle: "Dos (Épaisseur)",
-        name: "Rowing Barre (Yates)",
+        name: "Rowing Barre (Barbell Row)",
         note: "Buste 45°. Supination. Lourd.",
         tempo: "2-0-1-1",
         sets: 4,
@@ -101,7 +101,7 @@ export const sessions = {
       {
         id: "b3",
         muscle: "Dos (Bas)",
-        name: "Tirage Horizontal Neutre",
+        name: "Tirage Horizontal Prise Neutre (Seated Cable Row - Neutral Grip)",
         note: "Tire vers le bas ventre.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -111,7 +111,7 @@ export const sessions = {
       {
         id: "b4",
         muscle: "Dos (Isolation)",
-        name: "Pull Over Poulie",
+        name: "Pull-over Poulie (Cable Pull-over)",
         note: "Bras tendus. Isole le grand dorsal.",
         tempo: "3-0-1-0",
         sets: 3,
@@ -121,7 +121,7 @@ export const sessions = {
       {
         id: "b5",
         muscle: "Arr. Épaules",
-        name: "Oiseau Buste Penché",
+        name: "Oiseau Buste Penché (Reverse Flyes)",
         note: "Cible l'arrière de l'épaule.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -131,7 +131,7 @@ export const sessions = {
       {
         id: "b6",
         muscle: "Lombaires",
-        name: "Extensions Banc",
+        name: "Extensions au Banc (Back Extensions)",
         note: "Renforce le bas du dos.",
         tempo: "2-0-2-0",
         sets: 3,
@@ -170,7 +170,7 @@ export const sessions = {
       {
         id: "c3",
         muscle: "Quadriceps",
-        name: "Leg Extension Machine",
+        name: "Leg Extension Machine (Extension des Jambes)",
         note: "Contraction maximale de 1 seconde en haut.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -218,7 +218,7 @@ export const sessions = {
       {
         id: "d1",
         muscle: "Épaules (Masse)",
-        name: "Développé Haltères Assis",
+        name: "Développé Haltères Assis (Seated Dumbbell Press)",
         note: "Banc à 75°. Rentre légèrement les coudes.",
         tempo: "3-0-1-0",
         sets: 4,
@@ -228,7 +228,7 @@ export const sessions = {
       {
         id: "d2",
         muscle: "Épaules (Latéral)",
-        name: "Élévations Latérales Poulie",
+        name: "Élévations Latérales Poulie (Cable Lateral Raise)",
         note: "Tension continue. Passe le câble derrière le dos.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -238,7 +238,7 @@ export const sessions = {
       {
         id: "d3",
         muscle: "Épaules (Latéral)",
-        name: "Élévations Latérales Haltères",
+        name: "Élévations Latérales (Lateral Raise)",
         note: "Buste légèrement penché en avant (Plan scapulaire).",
         tempo: "2-0-1-0",
         sets: 3,
@@ -248,7 +248,7 @@ export const sessions = {
       {
         id: "d4",
         muscle: "Arr. Épaules",
-        name: "Oiseau Poulie Vis-à-vis",
+        name: "Oiseau Poulie Vis-à-vis (Cable Reverse Fly)",
         note: "Croise les câbles. Isole l'arrière d'épaule.",
         tempo: "2-0-1-1",
         sets: 4,
@@ -258,7 +258,7 @@ export const sessions = {
       {
         id: "d5",
         muscle: "Arr. Épaules",
-        name: "Face Pull",
+        name: "Face Pull (Tirage Visage)",
         note: "Tire vers les yeux. Rotation externe en fin de mouvement.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -268,7 +268,7 @@ export const sessions = {
       {
         id: "d6",
         muscle: "Trapèzes",
-        name: "Shrugs Haltères",
+        name: "Shrugs (Haussements d'épaules)",
         note: "Haussement avec pause de 1s en haut.",
         tempo: "1-0-1-1",
         sets: 3,
@@ -287,7 +287,7 @@ export const sessions = {
       {
         id: "e1",
         muscle: "Biceps (Long)",
-        name: "Curl Incliné Haltères",
+        name: "Curl Incliné (Incline Dumbbell Curl)",
         note: "Banc 45°. Étire bien en bas.",
         tempo: "3-0-1-0",
         sets: 4,
@@ -297,7 +297,7 @@ export const sessions = {
       {
         id: "e2",
         muscle: "Biceps (Court)",
-        name: "Curl Pupitre (Scott)",
+        name: "Curl Pupitre Barre EZ (Preacher Curl EZ-Bar)",
         note: "Bras en avant. Pic de contraction.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -307,7 +307,7 @@ export const sessions = {
       {
         id: "e3",
         muscle: "Brachial",
-        name: "Curl Marteau",
+        name: "Curl Marteau (Hammer Curl)",
         note: "Prise neutre. Donne de l'épaisseur.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -317,7 +317,7 @@ export const sessions = {
       {
         id: "e4",
         muscle: "Triceps (Masse)",
-        name: "Barre au Front",
+        name: "Barre au Front (Skull Crushers)",
         note: "Descends derrière la tête.",
         tempo: "3-0-1-0",
         sets: 4,
@@ -327,7 +327,7 @@ export const sessions = {
       {
         id: "e5",
         muscle: "Triceps (Long)",
-        name: "Extension Nuque",
+        name: "Extension Haltère Nuque (Overhead Tricep Extension)",
         note: "Haltère ou Câble. Étirement max.",
         tempo: "3-0-1-0",
         sets: 3,
@@ -337,7 +337,7 @@ export const sessions = {
       {
         id: "e6",
         muscle: "Triceps (Vaste)",
-        name: "Pushdown Corde",
+        name: "Extension Poulie Corde (Rope Pushdown)",
         note: "Ouvre la corde en bas.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -347,7 +347,7 @@ export const sessions = {
       {
         id: "e7",
         muscle: "Avant-Bras",
-        name: "Curl Inversé",
+        name: "Curl Inversé (Reverse Curl)",
         note: "Barre EZ ou Poulie. Prise en pronation.",
         tempo: "2-0-1-0",
         sets: 3,
@@ -366,7 +366,7 @@ export const sessions = {
       {
         id: "f1",
         muscle: "Pecs",
-        name: "Dev. Couché",
+        name: "Développé Couché (Bench Press)",
         sets: 3,
         reps: "8-10",
         rest: 120,
@@ -374,7 +374,7 @@ export const sessions = {
       {
         id: "f2",
         muscle: "Dos",
-        name: "Rowing Barre",
+        name: "Rowing Barre (Barbell Row)",
         sets: 3,
         reps: "8-10",
         rest: 120,
@@ -382,7 +382,7 @@ export const sessions = {
       {
         id: "f3",
         muscle: "Épaules",
-        name: "Dev. Militaire",
+        name: "Développé Militaire (Military Press)",
         sets: 3,
         reps: "10-12",
         rest: 90,
@@ -390,7 +390,7 @@ export const sessions = {
       {
         id: "f4",
         muscle: "Dos",
-        name: "Tirage Vertical",
+        name: "Tirage Vertical (Lat Pulldown)",
         sets: 3,
         reps: "10-12",
         rest: 90,
@@ -398,7 +398,7 @@ export const sessions = {
       {
         id: "f5",
         muscle: "Pecs",
-        name: "Écarté",
+        name: "Écartés Couché (Dumbbell Flyes)",
         sets: 2,
         reps: "15",
         superset: "s1",
@@ -407,7 +407,7 @@ export const sessions = {
       {
         id: "f6",
         muscle: "Bras",
-        name: "Superset Curl/Ext",
+        name: "Superset Biceps/Triceps (Superset Curl/Extension)",
         sets: 3,
         reps: "12",
         superset: "s1",
@@ -425,7 +425,7 @@ export const sessions = {
       {
         id: "g1",
         muscle: "Jambes",
-        name: "Squat",
+        name: "Squat (Barbell Squat)",
         sets: 3,
         reps: "6-10",
         rest: 180,
@@ -433,7 +433,7 @@ export const sessions = {
       {
         id: "g2",
         muscle: "Ischios",
-        name: "SDT Roumain",
+        name: "Soulevé de Terre Roumain (Romanian Deadlift)",
         sets: 3,
         reps: "8-12",
         rest: 120,
@@ -441,7 +441,7 @@ export const sessions = {
       {
         id: "g3",
         muscle: "Jambes",
-        name: "Presse à Cuisses",
+        name: "Presse à Cuisses (Leg Press 45°)",
         sets: 3,
         reps: "10-12",
         rest: 120,
@@ -449,7 +449,7 @@ export const sessions = {
       {
         id: "g4",
         muscle: "Ischios",
-        name: "Leg Curl",
+        name: "Leg Curl Assis (Seated Leg Curl Machine)",
         sets: 3,
         reps: "12-15",
         rest: 90,
@@ -457,7 +457,7 @@ export const sessions = {
       {
         id: "g5",
         muscle: "Mollets",
-        name: "Extensions",
+        name: "Extensions Mollets Debout (Standing Calf Raise)",
         sets: 4,
         reps: "15-20",
         rest: 60,
@@ -465,7 +465,7 @@ export const sessions = {
       {
         id: "g6",
         muscle: "Abdos",
-        name: "Planche",
+        name: "Planche (Plank)",
         sets: 3,
         reps: "1min",
         unit: "seconds",
@@ -483,7 +483,7 @@ export const sessions = {
       {
         id: "h1",
         muscle: "Abdos",
-        name: "Crunch Poulie Haute",
+        name: "Crunch Poulie Haute (Cable Crunch)",
         note: "Lourd. Enroule le dos.",
         tempo: "2-0-1-1",
         sets: 4,
@@ -493,7 +493,7 @@ export const sessions = {
       {
         id: "h2",
         muscle: "Abdos (Bas)",
-        name: "Relevé Jambes Suspendu",
+        name: "Relevé de Jambes Suspendu (Hanging Leg Raise)",
         note: "Lesté si possible.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -503,7 +503,7 @@ export const sessions = {
       {
         id: "h3",
         muscle: "Abdos",
-        name: "Crunch Décliné Lesté",
+        name: "Crunch Banc Décliné (Decline Crunch)",
         note: "Disque sur le torse.",
         tempo: "2-0-1-0",
         sets: 3,
@@ -522,7 +522,7 @@ export const sessions = {
       {
         id: "i1",
         muscle: "Obliques",
-        name: "Woodchopper Poulie",
+        name: "Woodchopper Poulie (Bûcheron à la Poulie)",
         note: "Rotation buste.",
         tempo: "2-0-1-0",
         sets: 3,
@@ -532,7 +532,7 @@ export const sessions = {
       {
         id: "i2",
         muscle: "Taille",
-        name: "Flexion Latérale",
+        name: "Flexion Latérale (Side Bend)",
         note: "Haltère/Poulie.",
         tempo: "2-0-1-0",
         sets: 3,
@@ -542,7 +542,7 @@ export const sessions = {
       {
         id: "i3",
         muscle: "Transverse",
-        name: "Pallof Press",
+        name: "Pallof Press (Presse Pallof)",
         note: "Anti-rotation.",
         tempo: "ISO",
         sets: 3,
@@ -553,7 +553,7 @@ export const sessions = {
       {
         id: "i4",
         muscle: "Transverse",
-        name: "Stomach Vacuum",
+        name: "Stomach Vacuum (Aspiration Abdominale)",
         note: "Aspire nombril.",
         tempo: "ISO",
         sets: 4,
@@ -573,7 +573,7 @@ export const sessions = {
       {
         id: "j1",
         muscle: "Abdos",
-        name: "Ab Wheel (Roulette)",
+        name: "Roue Abdominale (Ab Wheel)",
         note: "Gainage max.",
         tempo: "3-0-1-0",
         sets: 3,
@@ -583,7 +583,7 @@ export const sessions = {
       {
         id: "j2",
         muscle: "Abdos (Bas)",
-        name: "Toes to Bar",
+        name: "Toes to Bar (Orteils à la Barre)",
         note: "Touche la barre avec les pieds.",
         tempo: "2-0-1-0",
         sets: 3,
@@ -593,7 +593,7 @@ export const sessions = {
       {
         id: "j3",
         muscle: "Obliques",
-        name: "Russian Twist Lesté",
+        name: "Russian Twist (Torsion Russe)",
         note: "Lourd.",
         tempo: "1-0-1-0",
         sets: 3,
@@ -603,7 +603,7 @@ export const sessions = {
       {
         id: "j4",
         muscle: "Gainage",
-        name: "Planche Lestée",
+        name: "Planche (Plank)",
         note: "Disque sur le dos.",
         tempo: "ISO",
         sets: 3,
@@ -623,7 +623,7 @@ export const sessions = {
       {
         id: "k1",
         muscle: "Pecs",
-        name: "Développé Couché",
+        name: "Développé Couché (Bench Press)",
         note: "Exercice polyarticulaire de base pour les pectoraux.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -692,7 +692,7 @@ export const sessions = {
       {
         id: "l1",
         muscle: "Dos",
-        name: "Tractions (ou Tirage Poitrine)",
+        name: "Tractions (Pull-ups)",
         note: "Pour la largeur du dos.",
         tempo: "2-0-1-1",
         sets: 4,
@@ -702,7 +702,7 @@ export const sessions = {
       {
         id: "l2",
         muscle: "Dos (Épaisseur)",
-        name: "Rowing Barre",
+        name: "Rowing Barre (Barbell Row)",
         note: "Construit l'épaisseur du dos.",
         tempo: "2-0-1-0",
         sets: 4,
@@ -712,7 +712,7 @@ export const sessions = {
       {
         id: "l3",
         muscle: "Dos",
-        name: "Tirage Horizontal",
+        name: "Tirage Horizontal (Seated Cable Row)",
         note: "Tire avec les coudes près du corps.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -722,7 +722,7 @@ export const sessions = {
       {
         id: "l4",
         muscle: "Arr. Épaules",
-        name: "Oiseau Buste Penché",
+        name: "Oiseau Buste Penché (Reverse Flyes)",
         note: "Cible le deltoïde postérieur.",
         tempo: "2-0-1-1",
         sets: 3,
@@ -742,7 +742,7 @@ export const sessions = {
       {
         id: "l6",
         muscle: "Biceps",
-        name: "Curl Marteau",
+        name: "Curl Marteau (Hammer Curl)",
         note: "Cible le brachial et donne de l'épaisseur au bras.",
         tempo: "2-0-1-0",
         sets: 3,
