@@ -178,11 +178,33 @@ export const AppProvider = ({ children }) => {
           currentData = { ...currentData, ...oldData, version: CURRENT_APP_VERSION };
         }
 
-        // Merge base sessions to ensure new ones (like K and L) are always available
+        // Force-synchronize default sessions A to L with codebase definitions
         if (currentData.userSessions && typeof currentData.userSessions === 'object') {
           Object.keys(sessions).forEach(key => {
-            if (!currentData.userSessions[key] || currentData.userSessions[key].exercises?.length === 0) {
+            if (['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key)) {
               currentData.userSessions[key] = sessions[key];
+            } else if (!currentData.userSessions[key] || currentData.userSessions[key].exercises?.length === 0) {
+              currentData.userSessions[key] = sessions[key];
+            }
+          });
+        }
+
+        // Dynamically scrub legacy V-suffixes from loaded user state
+        const cleanName = (name) => {
+          if (typeof name !== 'string') return name;
+          return name.replace(/\s*\(V\d+\)/gi, "").trim();
+        };
+
+        if (currentData.userSessions && typeof currentData.userSessions === 'object') {
+          Object.keys(currentData.userSessions).forEach(key => {
+            const session = currentData.userSessions[key];
+            if (session && Array.isArray(session.exercises)) {
+              session.exercises = session.exercises.map(ex => {
+                if (ex && ex.name) {
+                  return { ...ex, name: cleanName(ex.name) };
+                }
+                return ex;
+              });
             }
           });
         }

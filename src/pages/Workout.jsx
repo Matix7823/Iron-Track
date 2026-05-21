@@ -691,7 +691,7 @@ const Workout = () => {
               <span className="text-[9px] uppercase font-bold tracking-wider opacity-80 mt-0.5 max-w-[50px] truncate">{s.category}</span>
             </button>
             {/* Delete button for custom sessions (K and beyond are deletable) */}
-            {!['A','B','C','D','E','F','G','H','I','J'].includes(key) && (
+            {!['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key) && (
               <button
                 onClick={() => { deleteCustomSession(key); if(currentSession===key) setCurrentSession('A'); }}
                 className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 rounded-full hidden group-hover:flex items-center justify-center text-white text-[10px] font-black hover:bg-red-400"
