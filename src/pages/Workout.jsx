@@ -464,6 +464,15 @@ const Workout = () => {
   const [showCreateSession, setShowCreateSession] = useState(false);
   const [showTemplates, setShowTemplates] = useState(false);
   const [newSessionName, setNewSessionName] = useState("");
+  const [sessionStartTime] = useState(Date.now());
+  const [elapsedMin, setElapsedMin] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setElapsedMin(Math.floor((Date.now() - sessionStartTime) / 60000));
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [sessionStartTime]);
 
   const location = useLocation();
   useEffect(() => { 
@@ -472,6 +481,20 @@ const Workout = () => {
   }, [location.state, setCurrentSession]);
 
   const session = userSessions[currentSession] || { category: "Perso", exercises: [], color: "from-indigo-600 to-indigo-800", title: "Séance Personnalisée", focus: "Ta séance sur mesure" };
+
+  // Progress computation
+  const progressPct = useMemo(() => {
+    const total = session.exercises.length;
+    if (total === 0) return 0;
+    let done = 0;
+    session.exercises.forEach(exo => {
+      const sets = currentInput[exo.id] || [];
+      const doneSets = sets.filter(s => s.done).length;
+      const targetSets = parseInt(exo.sets) || 3;
+      if (doneSets >= targetSets) done++;
+    });
+    return Math.round((done / total) * 100);
+  }, [session.exercises, currentInput]);
   const fmt = s => `${Math.floor(s/60)}:${(s%60).toString().padStart(2,"0")}`;
 
   const applyProgram = (prog) => {
@@ -553,6 +576,30 @@ const Workout = () => {
   return (
     <div className="page-container">
       <div className="bg-orbs" />
+
+      {/* ── SESSION PROGRESS BAR (sticky top) ── */}
+      {session.exercises.length > 0 && (
+        <div className="session-progress-bar">
+          <motion.div className="session-progress-fill" style={{ width: 0 }}
+            animate={{ width: `${progressPct}%` }} transition={{ duration: 0.8, ease: "easeOut" }} />
+        </div>
+      )}
+
+      {/* ── SESSION LIVE STATS ── */}
+      {session.exercises.length > 0 && (
+        <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
+          className="flex items-center justify-between mb-4 px-1">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-bold text-slate-400">En cours</span>
+            {elapsedMin > 0 && <span className="badge badge-slate text-[9px]">⏱ {elapsedMin} min</span>}
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] text-slate-500">{progressPct}% complété</span>
+            {sessionTonnage > 0 && <span className="badge badge-blue text-[9px]">⚡ {sessionTonnage}kg</span>}
+          </div>
+        </motion.div>
+      )}
 
 
 
@@ -661,17 +708,29 @@ const Workout = () => {
         {showAddModal && <AddExerciseModal sessionId={currentSession} onClose={() => setShowAddModal(false)} />}
       </AnimatePresence>
 
-      {/* Floating timer */}
+      {/* Floating timer — premium circular style */}
       <AnimatePresence>
         {isTimerRunning && (
           <motion.div className="timer-float"
             initial={{ opacity:0, y:20, scale:.9 }}
             animate={{ opacity:1, y:0, scale:1 }}
             exit={{ opacity:0, y:20, scale:.9 }}>
-            <span className="text-3xl font-black font-mono text-white tracking-wider">{fmt(timerSeconds)}</span>
-            <span className="text-[9px] text-blue-400 uppercase font-bold tracking-wider mt-1 flex items-center gap-1"><Clock size={9}/> Repos</span>
-            <button onClick={() => { stopTimer(); }} className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
-              <X size={11} />
+            {/* Circular progress ring */}
+            <svg width="64" height="64" className="-rotate-90 mb-1">
+              <circle cx="32" cy="32" r="26" strokeWidth="4" fill="none" stroke="rgba(255,255,255,0.07)" />
+              <circle cx="32" cy="32" r="26" strokeWidth="4" fill="none" stroke="#3b82f6"
+                strokeDasharray={2 * Math.PI * 26}
+                strokeDashoffset={2 * Math.PI * 26 * (1 - Math.min(timerSeconds / 120, 1))}
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 6px #3b82f690)', transition: 'stroke-dashoffset 0.5s ease' }}
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="text-lg font-black font-mono text-white leading-none">{fmt(timerSeconds)}</span>
+              <span className="text-[7px] text-blue-400 uppercase font-bold tracking-wider">Repos</span>
+            </div>
+            <button onClick={() => { stopTimer(); }} className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors">
+              <X size={9} />
             </button>
           </motion.div>
         )}

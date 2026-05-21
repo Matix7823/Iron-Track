@@ -307,10 +307,72 @@ const Analytics = () => {
       <div className="bg-orbs" />
       <motion.div variants={container} initial="hidden" animate="visible">
 
-        {/* Title */}
-        <motion.div variants={item} className="section-title mb-6">
-          <Activity size={20} className="text-blue-400" /> Analyses & Statistiques
+        {/* ── PREMIUM HEADER ── */}
+        <motion.div variants={item} className="mb-6">
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <Activity size={20} className="text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-black text-white uppercase tracking-tight">Analyses & Stats</h1>
+              <p className="text-sm text-slate-500">Données scientifiques de progression</p>
+            </div>
+          </div>
         </motion.div>
+
+        {/* ── DONUT CHART — Répartition Volume ── */}
+        {Object.values(weekVolume).some(v => v > 0) && (() => {
+          const total = Object.values(weekVolume).reduce((a, b) => a + b, 0);
+          const colors = ["#3b82f6","#06b6d4","#10b981","#8b5cf6","#ec4899","#f59e0b"];
+          const labels = Object.keys(weekVolume);
+          let cumulative = 0;
+          const r = 52, cx = 70, cy = 70, circumference = 2 * Math.PI * r;
+          return (
+            <motion.div variants={item} className="glass-card p-5 mb-5">
+              <h3 className="font-bold text-white flex items-center gap-2 mb-4">
+                <BarChart2 size={16} className="text-blue-400" />Répartition du Volume (7j)
+              </h3>
+              <div className="flex items-center gap-6">
+                <svg width="140" height="140" className="shrink-0">
+                  {labels.map((g, i) => {
+                    const val = weekVolume[g] || 0;
+                    const pct = val / total;
+                    const strokeDasharray = circumference;
+                    const strokeDashoffset = circumference * (1 - pct);
+                    const rotation = (cumulative / total) * 360 - 90;
+                    cumulative += val;
+                    if (val === 0) return null;
+                    return (
+                      <circle key={g} cx={cx} cy={cy} r={r}
+                        fill="none" stroke={colors[i % colors.length]} strokeWidth="18"
+                        strokeDasharray={strokeDasharray} strokeDashoffset={strokeDashoffset}
+                        style={{ transform: `rotate(${rotation}deg)`, transformOrigin: `${cx}px ${cy}px` }}
+                      />
+                    );
+                  })}
+                  <circle cx={cx} cy={cy} r={r - 12} fill="rgba(2,5,9,0.9)" />
+                  <text x={cx} y={cy - 6} textAnchor="middle" fill="white" fontSize="16" fontWeight="900">{total}</text>
+                  <text x={cx} y={cy + 12} textAnchor="middle" fill="#64748b" fontSize="8">séries</text>
+                </svg>
+                <div className="flex-1 space-y-2">
+                  {labels.map((g, i) => {
+                    const val = weekVolume[g] || 0;
+                    if (val === 0) return null;
+                    return (
+                      <div key={g} className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: colors[i % colors.length] }} />
+                          <span className="text-xs text-slate-400 font-medium">{g}</span>
+                        </div>
+                        <span className="text-xs font-black text-white">{val} <span className="text-slate-600 font-normal">({Math.round(val/total*100)}%)</span></span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })()}
 
         {/* Posture alert */}
         {volPecs > 5 && volPecs > volDos*1.5 && (

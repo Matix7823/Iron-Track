@@ -16,6 +16,7 @@ import ExerciseLibrary from "./pages/ExerciseLibrary";
 import Community from "./pages/Community";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
+import PRTracker from "./pages/PRTracker";
 
 const LoadingScreen = () => (
   <div className="min-h-screen flex flex-col items-center justify-center gap-4">
@@ -103,6 +104,7 @@ const AppInner = () => {
       <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
       <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
       <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
+      <Route path="/pr-tracker" element={<ProtectedRoute><AppLayout><PRTracker /></AppLayout></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
     </Routes>
   );
