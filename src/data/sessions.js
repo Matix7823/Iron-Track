@@ -207,7 +207,6 @@ export const sessions = {
         reps: "15-20",
         rest: 60,
       },
-      cardioExercise,
     ],
   },
   D: {
