@@ -7,10 +7,10 @@ import { normalizeHistory, getPerformanceMetrics, calculate1RM } from "../utils/
 import {
   Save, CheckCircle2, Circle, Timer, PlayCircle, Flame, Zap,
   Target, Activity, AlertTriangle, TrendingDown, Clock,
-  ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2, Play, Check, Calendar, Settings
+  ChevronDown, ChevronUp, Info, Trophy, X, Plus, Search, Share2, Play, Check, Calendar, Settings, Edit2
 } from "lucide-react";
 import { syncWorkoutToAppleHealth } from "../utils/health";
-import { hapticLight, hapticMedium } from "../utils/native";
+import { hapticLight, hapticMedium, hapticSuccess } from "../utils/native";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
 
@@ -471,7 +471,7 @@ const Workout = () => {
     showErrorModal, setShowErrorModal,
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
-    removeExerciseFromSession, createCustomSession, deleteCustomSession,
+    removeExerciseFromSession, createCustomSession, deleteCustomSession, renameCustomSession,
     currentInput, customSchedule, updateCustomSchedule, schedules
   } = useApp();
 
@@ -754,47 +754,80 @@ const Workout = () => {
       </AnimatePresence>
 
       {/* Session selector */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-5 scrollbar-hide snap-x">
-        {Object.entries(userSessions).map(([key, s]) => (
-          <div key={key} className="relative group snap-center shrink-0">
-            <button onClick={() => setCurrentSession(key)}
-              className={`flex flex-col items-center px-4 py-3 rounded-2xl border transition-all duration-200 ${
-                currentSession===key
-                  ? "bg-gradient-to-br from-blue-600 to-blue-700 border-blue-400/50 text-white shadow-xl shadow-blue-500/25 scale-105"
-                  : "glass border-white/8 text-slate-500 hover:border-white/16 hover:text-slate-300"
-              }`}>
-              <span className="text-lg font-black">{key}</span>
-              <span className="text-[9px] uppercase font-bold tracking-wider opacity-80 mt-0.5 max-w-[50px] truncate">{s.category}</span>
-            </button>
-            {/* Delete button for custom sessions (K and beyond are deletable) */}
-            {!['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key) && (
-              <button
-                onClick={() => { deleteCustomSession(key); if(currentSession===key) setCurrentSession('A'); }}
-                className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 rounded-full hidden group-hover:flex items-center justify-center text-white text-[10px] font-black hover:bg-red-400"
-              >×</button>
-            )}
-          </div>
-        ))}
-        {/* Add new session button */}
+      <div className="flex gap-3 overflow-x-auto pb-4 mb-5 scrollbar-hide snap-x px-1">
+        {Object.entries(userSessions).map(([key, s]) => {
+          const isActive = currentSession === key;
+          return (
+            <div key={key} className="relative snap-center shrink-0">
+              <button 
+                onClick={() => setCurrentSession(key)}
+                className={`w-[88px] h-[80px] rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 relative overflow-hidden ${
+                  isActive
+                    ? "bg-gradient-to-br from-blue-600/90 to-indigo-700/90 border-blue-400/50 text-white shadow-lg shadow-blue-500/20 scale-105 ring-2 ring-blue-500/10"
+                    : "bg-white/4 border-white/5 text-slate-400 hover:border-white/12 hover:text-slate-200"
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+                )}
+                <span className="text-base font-black tracking-tight">{key}</span>
+                <span className="text-[8.5px] font-black uppercase tracking-wider mt-1 w-full px-1 text-center truncate">
+                  {s.category}
+                </span>
+              </button>
+              
+              {/* Croix rouge supprimer - visible sur iPhone */}
+              {!['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key) && (
+                <button
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    if (window.confirm(`Supprimer définitivement la séance ${key} ?`)) {
+                      deleteCustomSession(key); 
+                      if(currentSession===key) setCurrentSession('A'); 
+                    }
+                  }}
+                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-xs font-black z-20 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          );
+        })}
+        {/* Bouton Créer */}
         <button
           onClick={() => { setNewSessionName(""); setShowCreateSession(true); }}
-          className="snap-center shrink-0 flex flex-col items-center px-4 py-3 rounded-2xl border border-dashed border-white/20 text-slate-600 hover:text-white hover:border-white/40 transition-all"
+          className="snap-center shrink-0 w-[88px] h-[80px] rounded-2xl border border-dashed border-white/20 text-slate-500 hover:text-white hover:border-white/40 flex flex-col items-center justify-center gap-1 transition-all bg-white/2"
         >
-          <Plus size={20}/>
-          <span className="text-[9px] font-bold mt-0.5">Créer</span>
+          <Plus size={16}/>
+          <span className="text-[8.5px] uppercase tracking-wider font-black">Créer</span>
         </button>
       </div>
 
       {/* Session info banner */}
       <motion.div initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }} key={currentSession}
-        className="glass-card p-4 mb-6 card-accent-blue">
-        <h2 className="text-xl font-black text-white mb-0.5">{session.title}</h2>
-        <p className="text-sm text-blue-400 font-medium">{session.focus}</p>
-        {cnsScore !== null && (
-          <p className="text-xs text-slate-500 mt-2 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            CNS Score : <span className="font-bold text-white">{cnsScore}/100</span>
-          </p>
+        className="glass-card p-4 mb-6 card-accent-blue flex justify-between items-center">
+        <div className="flex-1 min-w-0">
+          <h2 className="text-xl font-black text-white mb-0.5">{session.title}</h2>
+          <p className="text-sm text-blue-400 font-medium">{session.focus}</p>
+          {cnsScore !== null && (
+            <p className="text-xs text-slate-500 mt-2 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              CNS Score : <span className="font-bold text-white">{cnsScore}/100</span>
+            </p>
+          )}
+        </div>
+        {!['A','B','C','D','E','F','G','H','I','J','K','L'].includes(currentSession) && (
+          <button 
+            onClick={() => {
+              const newName = window.prompt("Nouveau nom de la séance :", session.category);
+              if (newName && newName.trim()) renameCustomSession(currentSession, newName.trim());
+            }}
+            className="w-10 h-10 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center hover:bg-blue-500/20 active:scale-95 transition-all shrink-0 ml-2"
+            title="Renommer la séance"
+          >
+            <Edit2 size={16} />
+          </button>
         )}
       </motion.div>
 

@@ -762,8 +762,8 @@ export const schedules = [
     days: [
       { name: "Lun", session: "F", label: "Upper (Lourd)" },
       { name: "Mar", session: "G", label: "Lower (Lourd)" },
-      { name: "Mer", session: "A", label: "Push (Volume)" },
-      { name: "Jeu", session: "B", label: "Pull (Volume)" },
+      { name: "Mer", session: "K", label: "Push (Volume)" },
+      { name: "Jeu", session: "L", label: "Pull (Volume)" },
       { name: "Ven", session: "C", label: "Legs (Volume)" },
       { name: "Sam", session: "-", label: "Repos" },
       { name: "Dim", session: "-", label: "Repos" },

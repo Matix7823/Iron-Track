@@ -1,12 +1,204 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "./AuthContext";
-import { sessions, schedules } from "../data/sessions";
+import { sessions, schedules, cardioExercise } from "../data/sessions";
 import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
 import { sanitizeData } from "../utils/security";
 import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../utils/progression";
 import { scheduleRestNotification, cancelRestNotification } from "../utils/native";
+
+// --- EXERCICES SPECIFIQUES HYPERTROPHIE/VOLUME POUR LE PLANNING 5J (U/L/P/P/L) ---
+const pushVolume5JExercises = [
+  {
+    id: "k_vol_1",
+    muscle: "Pectoraux",
+    name: "Développé Incliné Convergence Machine",
+    note: "Focus haut de pec, contrôle la descente, contraction volontaire en haut.",
+    tempo: "3-0-1-1",
+    sets: 4,
+    reps: "10-12",
+    rest: 90
+  },
+  {
+    id: "k_vol_2",
+    muscle: "Pectoraux",
+    name: "Écartés Couché Haltères (Dumbbell Flyes)",
+    note: "Ouvre grand en contrôlant l'étirement, garde les coudes légèrement fléchis.",
+    tempo: "3-1-1-0",
+    sets: 3,
+    reps: "12-15",
+    rest: 75
+  },
+  {
+    id: "k_vol_3",
+    muscle: "Épaules",
+    name: "Élévations Latérales Haltères",
+    note: "Buste légèrement penché en avant, lève dans le plan de l'omoplate.",
+    tempo: "2-0-1-1",
+    sets: 4,
+    reps: "12-15",
+    rest: 60
+  },
+  {
+    id: "k_vol_4",
+    muscle: "Épaules",
+    name: "Élévations Frontales Poulie Basse",
+    note: "Isole la portion antérieure de l'épaule, tension continue.",
+    tempo: "2-0-1-0",
+    sets: 3,
+    reps: "12-15",
+    rest: 60
+  },
+  {
+    id: "k_vol_5",
+    muscle: "Triceps",
+    name: "Extension Poulie Haute (Barre Droite)",
+    note: "Garde les coudes collés au corps, verrouille bien en bas.",
+    tempo: "2-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 60
+  },
+  {
+    id: "k_vol_6",
+    muscle: "Triceps",
+    name: "Kickbacks à la Poulie (unilatéral)",
+    note: "Buste penché, bras parallèle au sol, extension complète du coude.",
+    tempo: "2-0-1-1",
+    sets: 3,
+    reps: "15",
+    rest: 45
+  },
+  cardioExercise
+];
+
+const pullVolume5JExercises = [
+  {
+    id: "l_vol_1",
+    muscle: "Dos",
+    name: "Tirage Vertical Bras Tendus (Cable Pullover)",
+    note: "Excellente isolation du grand dorsal, étirement complet en haut.",
+    tempo: "3-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 75
+  },
+  {
+    id: "l_vol_2",
+    muscle: "Dos",
+    name: "Tirage Horizontal à la Poulie (Prise Large)",
+    note: "Amène la barre vers le milieu du sternum pour cibler le milieu du dos.",
+    tempo: "2-0-1-1",
+    sets: 4,
+    reps: "10-12",
+    rest: 90
+  },
+  {
+    id: "l_vol_3",
+    muscle: "Dos",
+    name: "Tirage Vertical Unilatéral à la Poulie",
+    note: "Isole chaque côté pour un meilleur étirement et contraction du grand dorsal.",
+    tempo: "3-0-1-1",
+    sets: 3,
+    reps: "10-12",
+    rest: 75
+  },
+  {
+    id: "l_vol_4",
+    muscle: "Épaules",
+    name: "Oiseau Poulie Haute Croisé (Cable Reverse Fly)",
+    note: "Cible le deltoïde postérieur avec une tension constante parfaite.",
+    tempo: "2-0-1-1",
+    sets: 4,
+    reps: "12-15",
+    rest: 60
+  },
+  {
+    id: "l_vol_5",
+    muscle: "Biceps",
+    name: "Curl Marteau Haltères (Hammer Curl)",
+    note: "Développe le brachial antérieur et le long supinateur.",
+    tempo: "2-0-1-0",
+    sets: 3,
+    reps: "10-12",
+    rest: 75
+  },
+  {
+    id: "l_vol_6",
+    muscle: "Biceps",
+    name: "Curl Concentré au Banc",
+    note: "Coude contre l'intérieur de la cuisse, squeeze 1s en haut.",
+    tempo: "2-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 60
+  },
+  cardioExercise
+];
+
+const legsVolume5JExercises = [
+  {
+    id: "c_vol_1",
+    muscle: "Quadriceps",
+    name: "Presse à Cuisses (Leg Press 45°)",
+    note: "Placement des pieds moyen, amplitude complète sans décoller le bassin.",
+    tempo: "3-0-1-0",
+    sets: 4,
+    reps: "10-12",
+    rest: 120
+  },
+  {
+    id: "c_vol_2",
+    muscle: "Quadriceps",
+    name: "Squat Bulgare aux Haltères",
+    note: "Exercice unilatéral redoutable pour le développement des cuisses et fessiers.",
+    tempo: "3-1-1-0",
+    sets: 3,
+    reps: "10-12",
+    rest: 90
+  },
+  {
+    id: "c_vol_3",
+    muscle: "Quadriceps",
+    name: "Leg Extension Machine",
+    note: "Contraction volontaire maximale de 1 seconde en haut.",
+    tempo: "2-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 75
+  },
+  {
+    id: "c_vol_4",
+    muscle: "Ischios",
+    name: "Leg Curl Assis (Seated Leg Curl)",
+    note: "Presse le bas du dos contre le siège, freine bien le retour.",
+    tempo: "3-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 75
+  },
+  {
+    id: "c_vol_5",
+    muscle: "Adducteurs",
+    name: "Adduction Machine",
+    note: "Isole l'intérieur des cuisses avec un contrôle total.",
+    tempo: "2-0-1-1",
+    sets: 3,
+    reps: "12-15",
+    rest: 60
+  },
+  {
+    id: "c_vol_6",
+    muscle: "Mollets",
+    name: "Extensions Mollets Assis",
+    note: "Cible le soléaire, étirement et contraction contrôlés.",
+    tempo: "2-1-1-1",
+    sets: 4,
+    reps: "15-20",
+    rest: 60
+  }
+];
 
 const AppContext = createContext(null);
 
@@ -26,6 +218,9 @@ export const AppProvider = ({ children }) => {
 
   // Session state
   const [currentSession, setCurrentSession] = useState("A");
+  const [activeScheduleName, setActiveScheduleName] = useState(() => {
+    return localStorage.getItem('iron_track_active_schedule_name') || "Aucun";
+  });
   const [currentInput, setCurrentInput] = useState(() => {
     const saved = localStorage.getItem('iron_track_current_input');
     if (saved) {
@@ -109,6 +304,60 @@ export const AppProvider = ({ children }) => {
     });
   }, [user, history, bodyWeightHistory, bodyMeasurements, userSessions, persistData]);
 
+  const applyProgram = useCallback((prog) => {
+    setActiveScheduleName(prog.title);
+    localStorage.setItem('iron_track_active_schedule_name', prog.title);
+
+    const newSchedule = prog.days.map(d => ({
+      session: d.session,
+      label: d.label,
+      status: null
+    }));
+    setCustomSchedule(newSchedule);
+    localStorage.setItem('iron_track_custom_schedule', JSON.stringify(newSchedule));
+
+    setUserSessions(prev => {
+      const newSessions = { ...prev };
+      if (prog.title === "U/L/P/P/L Science (5J)") {
+        newSessions.K = {
+          ...sessions.K,
+          category: "Push (Vol)",
+          title: "Séance K : Push (Volume 5J)",
+          focus: "Pecs / Épaules / Triceps (Volume & Hypertrophie)",
+          exercises: pushVolume5JExercises
+        };
+        newSessions.L = {
+          ...sessions.L,
+          category: "Pull (Vol)",
+          title: "Séance L : Pull (Volume 5J)",
+          focus: "Dos / Arrière Épaule / Biceps (Volume & Hypertrophie)",
+          exercises: pullVolume5JExercises
+        };
+        newSessions.C = {
+          ...sessions.C,
+          category: "Jambes (Vol)",
+          title: "Séance C : Jambes (Volume 5J)",
+          focus: "Quadriceps / Ischios / Mollets (Volume & Hypertrophie)",
+          exercises: legsVolume5JExercises
+        };
+      } else {
+        newSessions.K = sessions.K;
+        newSessions.L = sessions.L;
+        newSessions.C = sessions.C;
+      }
+      persistData({
+        history,
+        bodyWeight: bodyWeightHistory,
+        bodyMeasurements,
+        userSessions: newSessions,
+        customSchedule: newSchedule,
+        userProgression,
+        dailyNutrition
+      });
+      return newSessions;
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, userProgression, dailyNutrition, persistData]);
+
   const [sleepHours, setSleepHours] = useState(7);
   const [stressLevel, setStressLevel] = useState(5);
   const [sorenessLevel, setSorenessLevel] = useState(5);
@@ -180,9 +429,38 @@ export const AppProvider = ({ children }) => {
 
         // Force-synchronize default sessions A to L with codebase definitions
         if (currentData.userSessions && typeof currentData.userSessions === 'object') {
+          const activeSched = localStorage.getItem('iron_track_active_schedule_name') || "Aucun";
           Object.keys(sessions).forEach(key => {
             if (['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key)) {
-              currentData.userSessions[key] = sessions[key];
+              if (activeSched === "U/L/P/P/L Science (5J)" && ['K', 'L', 'C'].includes(key)) {
+                if (key === 'K') {
+                  currentData.userSessions.K = {
+                    ...sessions.K,
+                    category: "Push (Vol)",
+                    title: "Séance K : Push (Volume 5J)",
+                    focus: "Pecs / Épaules / Triceps (Volume & Hypertrophie)",
+                    exercises: pushVolume5JExercises
+                  };
+                } else if (key === 'L') {
+                  currentData.userSessions.L = {
+                    ...sessions.L,
+                    category: "Pull (Vol)",
+                    title: "Séance L : Pull (Volume 5J)",
+                    focus: "Dos / Arrière Épaule / Biceps (Volume & Hypertrophie)",
+                    exercises: pullVolume5JExercises
+                  };
+                } else if (key === 'C') {
+                  currentData.userSessions.C = {
+                    ...sessions.C,
+                    category: "Jambes (Vol)",
+                    title: "Séance C : Jambes (Volume 5J)",
+                    focus: "Quadriceps / Ischios / Mollets (Volume & Hypertrophie)",
+                    exercises: legsVolume5JExercises
+                  };
+                }
+              } else {
+                currentData.userSessions[key] = sessions[key];
+              }
             } else if (!currentData.userSessions[key] || currentData.userSessions[key].exercises?.length === 0) {
               currentData.userSessions[key] = sessions[key];
             }
@@ -674,6 +952,7 @@ export const AppProvider = ({ children }) => {
     history, bodyWeightHistory, bodyMeasurements, userSessions, isDataLoading,
     allExercises, currentBodyWeight,
     currentSession, setCurrentSession,
+    activeScheduleName, applyProgram,
     currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,

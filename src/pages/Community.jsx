@@ -108,20 +108,18 @@ const Community = () => {
           <p className="section-title"><Users size={20} className="text-blue-400"/>Communauté</p>
           <p className="text-sm text-slate-400 -mt-2">Partage tes perfs avec les autres</p>
         </div>
-        {profile?.role === 'admin' && (
-          <button 
-            onClick={async () => {
-              if (window.confirm("Es-tu sûr de vouloir vider toute la conversation ? Cette action est irréversible.")) {
-                const { error } = await supabase.from('messages').delete().not('id', 'is', null);
-                if (!error) setMessages([]);
-                else alert("Erreur (As-tu bien configuré les droits RLS dans Supabase ?) : " + error.message);
-              }
-            }}
-            className="flex items-center gap-2 px-3 py-2 bg-red-500/10 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500/20 transition-colors"
-          >
-            Vider le chat
-          </button>
-        )}
+        <button 
+          onClick={async () => {
+            if (window.confirm("Es-tu sûr de vouloir vider toute la conversation ? Cette action est irréversible.")) {
+              const { error } = await supabase.from('messages').delete().not('id', 'is', null);
+              if (!error) setMessages([]);
+              else alert("Erreur (As-tu bien configuré les droits RLS dans Supabase ?) : " + error.message);
+            }
+          }}
+          className="flex items-center gap-2 px-3 py-2 bg-red-500/10 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500/20 transition-colors"
+        >
+          Vider le chat
+        </button>
       </div>
 
       {/* Chat Messages */}

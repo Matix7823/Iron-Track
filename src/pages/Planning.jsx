@@ -18,7 +18,7 @@ const getSessionColor = (key, userSessions) => {
 };
 
 const Planning = () => {
-  const { setCurrentSession, customSchedule, updateCustomSchedule, userSessions, deleteCustomSession, renameCustomSession } = useApp();
+  const { setCurrentSession, customSchedule, updateCustomSchedule, userSessions, deleteCustomSession, renameCustomSession, applyProgram } = useApp();
   const [editingDay, setEditingDay] = useState(null);
   const [editingDayName, setEditingDayName] = useState(false);
   const [newDayName, setNewDayName] = useState("");
@@ -65,14 +65,9 @@ const Planning = () => {
     updateCustomSchedule(newSchedule);
   };
 
-  const applyProgram = (prog) => {
+  const handleApplyProgram = (prog) => {
     if (window.confirm(`Appliquer le programme "${prog.title}" à ta semaine ? Cela écrasera ton planning actuel.`)) {
-      const newSchedule = prog.days.map(d => ({
-        session: d.session,
-        label: d.label,
-        status: null
-      }));
-      updateCustomSchedule(newSchedule);
+      applyProgram(prog);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -150,11 +145,11 @@ const Planning = () => {
                     </button>
                   )}
 
-                  {/* Remove day button (visible on hover) */}
+                  {/* Remove day button (visible permanently, easy to tap) */}
                   {normalizedSchedule.length > 1 && (
                     <button
                       onClick={() => removeDay(i)}
-                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500/80 rounded-full hidden group-hover:flex items-center justify-center text-white text-[9px] font-black hover:bg-red-400"
+                      className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-[10px] font-black z-10 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
                     >×</button>
                   )}
                 </div>
@@ -226,16 +221,17 @@ const Planning = () => {
                       </button>
                       
                       {isCustom && (
-                        <div className="absolute top-1 right-1 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute top-1.5 right-1.5 flex gap-1 z-10">
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
                               const newName = window.prompt("Nouveau nom de la séance :", s.category);
-                              if (newName) renameCustomSession(k, newName);
+                              if (newName && newName.trim()) renameCustomSession(k, newName.trim());
                             }}
-                            className="w-5 h-5 bg-blue-500 rounded-md flex items-center justify-center text-white hover:bg-blue-400"
+                            className="w-6 h-6 bg-blue-500 hover:bg-blue-400 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-500/20 active:scale-90 transition-transform"
+                            title="Renommer"
                           >
-                            <Edit2 size={10} />
+                            <Edit2 size={11} />
                           </button>
                           <button 
                             onClick={(e) => {
@@ -244,9 +240,10 @@ const Planning = () => {
                                 deleteCustomSession(k);
                               }
                             }}
-                            className="w-5 h-5 bg-red-500 rounded-md flex items-center justify-center text-white hover:bg-red-400"
+                            className="w-6 h-6 bg-red-500 hover:bg-red-400 rounded-lg flex items-center justify-center text-white shadow-lg shadow-red-500/20 active:scale-90 transition-transform"
+                            title="Supprimer"
                           >
-                            <Trash size={10} />
+                            <Trash size={11} />
                           </button>
                         </div>
                       )}
@@ -277,7 +274,7 @@ const Planning = () => {
                 <p className="text-xs text-slate-500 mt-0.5">{prog.desc}</p>
               </div>
               <button 
-                onClick={() => applyProgram(prog)}
+                onClick={() => handleApplyProgram(prog)}
                 className="btn-primary !py-2 !px-4 !text-[10px] !rounded-xl gap-1.5"
               >
                 <Check size={12} /> Appliquer

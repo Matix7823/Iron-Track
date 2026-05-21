@@ -1,25 +1,27 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Dumbbell, LayoutDashboard, Activity, Calendar, BookOpen, LogOut, Users, Trophy, Shield } from "lucide-react";
+import { Dumbbell, LayoutDashboard, Activity, Calendar, BookOpen, LogOut, Users, Trophy, Shield, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import { useApp } from "../../context/AppContext";
 
-// 5 items in bottom nav (mobile)
+// 6 items in bottom nav (mobile)
 const bottomNavItems = [
   { to: "/",           icon: LayoutDashboard, label: "Home",    color: "text-blue-400",    activeBg: "bg-blue-500/15"   },
   { to: "/analytics",  icon: Activity,        label: "Stats",   color: "text-emerald-400", activeBg: "bg-emerald-500/15"},
   { to: "/workout",    icon: Dumbbell,        label: "Séance",  color: "text-cyan-400",    activeBg: "bg-cyan-500/15"   },
   { to: "/pr-tracker", icon: Trophy,          label: "Records", color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
+  { to: "/community",  icon: MessageSquare,   label: "Social",  color: "text-purple-400",  activeBg: "bg-purple-500/15" },
   { to: "/profile",    icon: Users,           label: "Profil",  color: "text-orange-400",  activeBg: "bg-orange-500/15" },
 ];
 
-// Desktop nav — 6 items max to avoid overflow
+// Desktop nav — 7 items max to avoid overflow
 const navItems = [
   { to: "/",           icon: LayoutDashboard, label: "Home",     color: "text-blue-400",    activeBg: "bg-blue-500/15"    },
   { to: "/workout",    icon: Dumbbell,        label: "Séance",   color: "text-cyan-400",    activeBg: "bg-cyan-500/15"    },
   { to: "/analytics",  icon: Activity,        label: "Stats",    color: "text-emerald-400", activeBg: "bg-emerald-500/15" },
   { to: "/pr-tracker", icon: Trophy,          label: "Records",  color: "text-amber-400",   activeBg: "bg-amber-500/15"   },
+  { to: "/community",  icon: MessageSquare,   label: "Social",   color: "text-purple-400",  activeBg: "bg-purple-500/15"  },
   { to: "/planning",   icon: Calendar,        label: "Planning", color: "text-violet-400",  activeBg: "bg-violet-500/15"  },
   { to: "/exercises",  icon: BookOpen,        label: "Encyclo",  color: "text-amber-400",   activeBg: "bg-amber-500/15"   },
 ];
