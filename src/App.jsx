@@ -90,23 +90,32 @@ const AppLayout = ({ children }) => (
   </div>
 );
 
+import GenderOnboardingModal from "./components/layout/GenderOnboardingModal";
+
 const AppInner = () => {
-  const { isDataLoading } = useApp();
+  const { isDataLoading, gender, changeGender } = useApp();
+  const { user, profile } = useAuth();
+  
   if (isDataLoading) return <LoadingScreen />;
   
+  const showOnboarding = user && profile && profile.status?.toLowerCase() === 'active' && !gender;
+  
   return (
-    <Routes>
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
-      <Route path="/workout" element={<ProtectedRoute><AppLayout><Workout /></AppLayout></ProtectedRoute>} />
-      <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
-      <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
-      <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
-      <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
-      <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
-      <Route path="/pr-tracker" element={<ProtectedRoute><AppLayout><PRTracker /></AppLayout></ProtectedRoute>} />
-      <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
+        <Route path="/workout" element={<ProtectedRoute><AppLayout><Workout /></AppLayout></ProtectedRoute>} />
+        <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
+        <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
+        <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
+        <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
+        <Route path="/pr-tracker" element={<ProtectedRoute><AppLayout><PRTracker /></AppLayout></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
+      </Routes>
+      {showOnboarding && <GenderOnboardingModal onSelect={changeGender} />}
+    </>
   );
 };
 

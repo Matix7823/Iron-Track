@@ -21,7 +21,7 @@ const removeAccents = (str) => {
 const Analytics = () => {
   const { 
     history, allExercises, currentBodyWeight, exportToCSV, currentSession,
-    dailyNutrition, logNutrition, userSessions
+    dailyNutrition, logNutrition, userSessions, gender, changeGender
   } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
 
@@ -348,36 +348,42 @@ const Analytics = () => {
     () => parseInt(localStorage.getItem('iron_user_age')) || 25
   );
   const [userGender, setUserGender] = useState(
-    () => localStorage.getItem('iron_user_gender') || 'homme'
+    () => gender || localStorage.getItem('iron_user_gender') || 'homme'
   );
   const [activityLevel, setActivityLevel] = useState(
     () => parseFloat(localStorage.getItem('iron_activity_level')) || 1.55
   );
   const [showNutritionSetup, setShowNutritionSetup] = useState(false);
 
-  const saveNutritionPref = (goal, height, age, gender, activity) => {
+  useEffect(() => {
+    if (gender) {
+      setUserGender(gender);
+    }
+  }, [gender]);
+
+  const saveNutritionPref = (goal, height, age, g, activity) => {
     localStorage.setItem('iron_nutrition_goal', goal);
     localStorage.setItem('iron_user_height', height);
     localStorage.setItem('iron_user_age', age);
-    localStorage.setItem('iron_user_gender', gender);
     localStorage.setItem('iron_activity_level', activity);
-    setNutritionGoal(goal); setUserHeight(height); setUserAge(age); setUserGender(gender); setActivityLevel(activity);
+    setNutritionGoal(goal); setUserHeight(height); setUserAge(age); setActivityLevel(activity);
+    changeGender(g);
     setShowNutritionSetup(false);
   };
 
   const nutri = (() => {
-    const w = currentBodyWeight, h = userHeight, age = userAge, gender = userGender;
-    // Mifflin-St Jeor BMR (plus précis)
+    const w = currentBodyWeight, h = userHeight, age = userAge, genderSelected = userGender;
+    // Mifflin-St Jeor BMR (biological formula)
     let bmr = (10 * w) + (6.25 * h) - (5 * age);
-    bmr = gender === 'homme' ? bmr + 5 : bmr - 161;
+    bmr = genderSelected === 'homme' ? bmr + 5 : bmr - 161;
     
     const tdee = Math.round(bmr * activityLevel);
     const isTrainingDay = ["A","B","C","D","E","F","G","H","I","J","K"].includes(currentSession);
     
     const goals = {
-      seche:    { calMod: -500, protFactor: 2.4, lipFactor: 0.8,  label: 'Sèche',        badge: 'badge-orange', icon: '🔥', color: 'text-orange-400' },
+      seche:    { calMod: -500, protFactor: 2.6, lipFactor: 0.8,  label: 'Sèche Élite',   badge: 'badge-orange', icon: '🔥', color: 'text-orange-400' },
       maintien: { calMod: 0,    protFactor: 2.0, lipFactor: 1.0,  label: 'Maintien',     badge: 'badge-blue',   icon: '⚖️',  color: 'text-blue-400'   },
-      masse:    { calMod: +400, protFactor: 1.8, lipFactor: 1.1,  label: 'Prise de Masse', badge: 'badge-green', icon: '💪', color: 'text-emerald-400' }
+      masse:    { calMod: 300,  protFactor: 2.0, lipFactor: 1.0,  label: 'Masse Contrôlée', badge: 'badge-green', icon: '💪', color: 'text-emerald-400' }
     };
     const g = goals[nutritionGoal] || goals.maintien;
     const baseCal = tdee + g.calMod + (isTrainingDay ? 150 : 0);
@@ -667,7 +673,7 @@ const Analytics = () => {
                 <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-2 flex items-center gap-1.5">
                   <Zap size={10} className="text-amber-400" />Moteur d'analyses posturales & cinétiques (Science)
                 </p>
-                <div className="space-y-1.5 max-h-[220px] overflow-y-auto pr-1 scrollbar-hide">
+                <div className="space-y-2.5">
                   {advices.map(({ muscle, icon, text, level }) => (
                     <div key={muscle} className={`flex items-start gap-2.5 p-2.5 rounded-xl border ${
                       level === "ok"      ? "bg-emerald-950/20 border-emerald-500/12 text-emerald-200" :
@@ -941,31 +947,69 @@ const Analytics = () => {
         </motion.div>
 
         {/* Objectifs Élite - 5% Bodyfat */}
-        <motion.div variants={item} className="glass-card p-5 mb-5 border-blue-500/30 glow-blue overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-4 opacity-5 -rotate-12">
+        <motion.div variants={item} className="glass-card p-5 mb-5 border-blue-500/30 glow-blue overflow-hidden relative shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+          <div className="absolute top-0 right-0 p-4 opacity-5 -rotate-12 pointer-events-none">
             <Trophy size={80} className="text-blue-400" />
           </div>
-          <h3 className="font-bold text-white flex items-center gap-2 mb-3">
-            <Target size={16} className="text-blue-400"/> Objectifs Élite : Road to 5% BF
+          
+          <div className="absolute top-2 right-3 text-[7px] font-mono text-cyan-500/40 uppercase tracking-widest pointer-events-none">
+            SYS.LOC // 5PCT_BF_HUD
+          </div>
+          <div className="absolute bottom-2 left-3 text-[7px] font-mono text-cyan-500/30 uppercase tracking-widest pointer-events-none">
+            ALGORITHME DE CATA-PROTECTION v2.0
+          </div>
+          
+          <h3 className="font-black text-white flex items-center gap-2 mb-3 text-sm tracking-wide uppercase">
+            <Target size={16} className="text-cyan-400 animate-pulse"/> 
+            Télémétrie Cybernétique : Road to 5% BF
           </h3>
           <p className="text-[11px] text-slate-400 mb-4 leading-relaxed">
-            Atteindre 5% de masse grasse est le Graal du bodybuilding. Voici les pré-requis estimés pour y parvenir sans sacrifier ton muscle.
+            Atteindre <strong className="text-cyan-400">5% de masse grasse</strong> représente l'extrême limite de la définition physique humaine. Ce HUD détaille les protocoles physiologiques stricts requis pour préserver chaque gramme de muscle face au catabolisme.
           </p>
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {[
-              { label: "Protéines", val: "2.6 - 3.0g / kg", desc: "Nécessaire pour protéger le muscle en déficit extrême." },
-              { label: "Cardio NEAT", val: "12,000 pas / jour", desc: "Maintien de la dépense calorique hors salle." },
-              { label: "Force", val: "Maintenir 1RM", desc: "Si ta force chute de >10%, tu perds du muscle." },
-              { label: "Patience", val: "12 - 20 semaines", desc: "Une sèche réussie est lente et contrôlée." }
+              { 
+                label: "Protéines de Défense", 
+                val: "2.6 - 3.0g / kg", 
+                desc: "Maintien impératif de la balance azotée positive. Empêche la dégradation des acides aminés musculaires lors du pic de cortisol lié à la restriction calorique extrême.",
+                metric: "N-BALANCE: LOCKED" 
+              },
+              { 
+                label: "NEAT & Thermogenèse", 
+                val: "12k - 15k pas / jour", 
+                desc: "Compensation de la baisse adaptative de l'activité spontanée. Contrecarre le ralentissement métabolique induit par l'effondrement de la leptine et de la T3.",
+                metric: "ENERGY OUT: HIGH" 
+              },
+              { 
+                label: "Signal de Charge 1RM", 
+                val: "Tension Mécanique Max", 
+                desc: "Préservation du signal de force absolue. Si l'intensité de charge baisse de plus de 10% sur les exercices de base, le système nerveux central commence à atrophier le tissu contractile sous-utilisé.",
+                metric: "STIMULUS: STABLE" 
+              },
+              { 
+                label: "Patience Temporale", 
+                val: "12 - 20 semaines", 
+                desc: "Déficit progressif modéré. Évite la chute brutale de la testostérone et protège la thyroïde. Le rythme idéal se situe entre 0.5% et 1% de perte de poids totale par semaine.",
+                metric: "LOSS RATE: OPTIMAL" 
+              }
             ].map((obj, i) => (
-              <div key={i} className="flex gap-3 items-start bg-black/20 p-2.5 rounded-xl border border-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 shadow-[0_0_8px_#3b82f6]" />
-                <div>
-                  <div className="flex justify-between items-center mb-0.5">
-                    <span className="text-[10px] font-black text-white uppercase">{obj.label}</span>
-                    <span className="text-[10px] font-black text-blue-400">{obj.val}</span>
-                  </div>
-                  <p className="text-[9px] text-slate-500 leading-tight">{obj.desc}</p>
+              <div key={i} className="bg-slate-950/60 p-3 rounded-2xl border border-white/5 relative overflow-hidden transition-all duration-300 hover:border-cyan-500/20 hover:bg-[#060c18]/80 group">
+                <div className="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-cyan-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+                <div className="flex justify-between items-start mb-1">
+                  <span className="text-[10px] font-black text-white uppercase tracking-wider group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee] animate-pulse" />
+                    {obj.label}
+                  </span>
+                  <span className="text-[10px] font-bold text-cyan-400 bg-cyan-950/50 border border-cyan-500/20 px-2 py-0.5 rounded-lg font-mono">
+                    {obj.val}
+                  </span>
+                </div>
+                <p className="text-[10px] text-slate-400 leading-normal font-medium mb-1.5">
+                  {obj.desc}
+                </p>
+                <div className="flex justify-between items-center text-[7px] font-mono text-slate-500">
+                  <span>METRIC SCANNER ➔</span>
+                  <span className="text-cyan-500/70 font-black tracking-widest">{obj.metric}</span>
                 </div>
               </div>
             ))}
@@ -1056,31 +1100,6 @@ const Analytics = () => {
           )}
         </motion.div>
 
-        {/* Session history */}
-        <motion.div variants={item} className="mb-6">
-          <h3 className="section-title"><Award size={20} className="text-amber-400"/>Panthéon des Séances</h3>
-          {sessionHistory.length===0
-            ? <p className="text-slate-500 text-sm glass-card p-6 text-center">Aucune séance enregistrée</p>
-            : <div className="space-y-2">
-                {sessionHistory.map((s,i)=>(
-                  <motion.div key={i} initial={{opacity:0,x:-12}} animate={{opacity:1,x:0}} transition={{delay:i*.04}}
-                    className="glass-card p-4 flex justify-between items-center cursor-pointer hover:border-blue-500/30"
-                    onClick={() => setSelectedSession(s)}>
-                    <div>
-                      <p className="text-white font-bold text-sm">{s.sessionTitle}</p>
-                      <p className="text-[10px] text-slate-500 mt-0.5">{s.date} • {s.exos} exercices</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <p className="text-base font-black text-blue-400">{s.tonnage.toLocaleString()} <span className="text-xs text-slate-500 font-normal">kg</span></p>
-                      {s.rank==="super"&&<Trophy size={18} className="text-amber-400"/>}
-                      {s.rank==="medium"&&<Flame size={18} className="text-blue-400"/>}
-                      {s.rank==="bad"&&<TrendingDown size={18} className="text-slate-500"/>}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-          }
-        </motion.div>
 
         {/* Export */}
         <motion.div variants={item}>

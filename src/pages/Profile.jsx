@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
 import EvolutionChart from "../components/charts/EvolutionChart";
-import { motion } from "framer-motion";
-import { Scale, Trophy, TrendingUp, TrendingDown, User, CheckCircle2, Dumbbell, Activity } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Scale, Trophy, TrendingUp, TrendingDown, User, CheckCircle2, Dumbbell, Activity, Sparkles, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { triggerHaptic } from "../utils/haptics";
+import { getXPForLevel, RANKS } from "../utils/progression";
 
 const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{duration:.4,ease:"easeOut"}} };
 const container = { hidden:{}, visible:{transition:{staggerChildren:.09}} };
 
 const Profile = () => {
-  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression, theme, setTheme } = useApp();
+  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression, theme, setTheme, gender, changeGender } = useApp();
   const [weight, setWeight] = useState("");
   const [shoulders, setShoulders] = useState("");
   const [waist, setWaist] = useState("");
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [showLegend, setShowLegend] = useState(false);
 
   const handleSave = async () => {
     if (!weight && !shoulders && !waist) return;
@@ -138,8 +140,49 @@ const Profile = () => {
           </div>
         </motion.div>
 
+        {/* Biological Archetype Selector */}
+        <motion.div variants={item} className="glass-card p-5 mb-6 border-white/5">
+          <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <User size={14} className="text-blue-400" /> Archétype Biologique
+          </h3>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { id: "homme", name: "Homme", sub: "Dieu Grec ⚡", color: "from-blue-600 to-indigo-700", glow: "shadow-[0_0_15px_rgba(59,130,246,0.5)]", border: "border-blue-500/40", icon: <Zap size={14} className="text-blue-400" /> },
+              { id: "femme", name: "Femme", sub: "Déesse Grecque ✨", color: "from-pink-600 to-purple-700", glow: "shadow-[0_0_15px_rgba(236,72,153,0.5)]", border: "border-pink-500/40", icon: <Sparkles size={14} className="text-pink-400" /> }
+            ].map((g) => (
+              <motion.button
+                key={g.id}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  changeGender(g.id);
+                  triggerHaptic([40, 30, 40]);
+                }}
+                className={`relative rounded-xl p-3.5 flex flex-col items-center justify-center text-center gap-1 border bg-slate-900/40 transition-all ${
+                  gender === g.id 
+                    ? `bg-gradient-to-br ${g.color} ${g.border} ${g.glow} text-white` 
+                    : "border-white/5 text-slate-400 hover:border-white/10 hover:text-white"
+                }`}
+              >
+                <div className="flex items-center gap-1.5 font-black uppercase text-[11px] tracking-wide">
+                  {g.icon} {g.name}
+                </div>
+                <span className="text-[9px] font-bold text-slate-400/80">{g.sub}</span>
+                {gender === g.id && (
+                  <motion.div 
+                    layoutId="activeGenderDot" 
+                    className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-white rounded-full flex items-center justify-center border border-black shadow"
+                  >
+                    <CheckCircle2 size={8} className="text-slate-950 stroke-[3]" />
+                  </motion.div>
+                )}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Info montée de niveau */}
-        <motion.div variants={item} className="glass-card p-4 mb-6 border-blue-500/10">
+        <motion.div variants={item} className="glass-card p-5 mb-6 border-blue-500/10">
           <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3 flex items-center gap-2">
             <Trophy size={14} className="text-blue-400" /> Comment monter de niveau ?
           </h3>
@@ -147,8 +190,82 @@ const Profile = () => {
             <p><span className="text-white font-bold">🏋️‍♂️ Entraînement</span> : Gagne de l'XP en validant tes séances (200 XP base + 1 XP par 10kg soulevés).</p>
             <p><span className="text-white font-bold">🔥 Énergie</span> : Plus ton niveau d'énergie est haut (score CNS), plus tu gagnes d'XP (jusqu'à 1.66x).</p>
             <p><span className="text-white font-bold">📉 Inactivité</span> : Attention, après 3 jours sans entraînement, tu perds 1% d'XP par jour.</p>
-            <p><span className="text-white font-bold">⚡ Ultime</span> : Atteins le niveau 27 pour débloquer le rang <span className="text-yellow-400 font-black">Dieu Grec</span>.</p>
+            <p><span className="text-white font-bold">⚡ Ultime</span> : Atteins le niveau 27 pour débloquer le rang <span className="text-yellow-400 font-black">{gender === "femme" ? "Déesse Grecque" : "Dieu Grec"}</span>.</p>
           </div>
+
+          <button
+            onClick={() => {
+              triggerHaptic(15);
+              setShowLegend(!showLegend);
+            }}
+            className="mt-4 w-full flex items-center justify-between p-3 rounded-xl border border-white/5 bg-slate-900/40 text-xs font-bold text-slate-300 hover:text-white hover:border-white/10 transition-colors"
+          >
+            <span>{showLegend ? "Masquer la Légende des Rangs" : "Afficher la Légende des Rangs"}</span>
+            {showLegend ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+
+          <AnimatePresence>
+            {showLegend && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="mt-3 pt-3 border-t border-white/5 space-y-2 max-h-72 overflow-y-auto scrollbar-hide pr-1">
+                  {RANKS.map((r, idx) => {
+                    const startLvl = idx * 3 + 1;
+                    const endLvl = idx === RANKS.length - 1 ? 27 : startLvl + 2;
+                    const reqXP = getXPForLevel(startLvl);
+                    
+                    let mascName = r.name;
+                    let femName = r.name;
+                    if (r.name === "Dieu Grec") femName = "Déesse Grecque";
+                    else if (r.name === "Maître") femName = "Maîtresse";
+                    else if (r.name === "Grand Maître") femName = "Grande Maîtresse";
+
+                    const isCurrentRank = progression.rankName === mascName || progression.rankName === femName;
+
+                    return (
+                      <div 
+                        key={r.name} 
+                        className={`flex items-center justify-between p-2.5 rounded-xl border transition-all ${
+                          isCurrentRank 
+                            ? "bg-slate-800/40 border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.1)]" 
+                            : "bg-slate-950/20 border-white/5"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${r.color} flex items-center justify-center text-sm shadow-md`}>
+                            {r.icon}
+                          </div>
+                          <div className="text-left">
+                            <p className="text-xs font-black text-white">
+                              {gender === "femme" ? femName : mascName}
+                            </p>
+                            <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">
+                              Niveaux {startLvl} - {endLvl}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[10px] font-black text-slate-400">
+                            {reqXP.toLocaleString()} XP
+                          </p>
+                          {isCurrentRank && (
+                            <span className="text-[8px] font-black text-cyan-400 uppercase tracking-widest">
+                              Rang Actuel
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Hero stats */}

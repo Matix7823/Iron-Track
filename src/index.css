@@ -740,3 +740,20 @@ body.theme-orange .bg-orbs::after { background: radial-gradient(circle at center
 .glow-green { box-shadow: 0 0 20px rgba(16,185,129,.18), inset 0 1px 0 rgba(255,255,255,.05); }
 .glow-orange { box-shadow: 0 0 20px rgba(245,158,11,.18), inset 0 1px 0 rgba(255,255,255,.05); }
 
+/* ============================
+   FIXED SAVE BAR (iOS ADJUSTMENTS)
+   ============================ */
+.fixed-save-bar {
+  position: fixed;
+  bottom: calc(53px + env(safe-area-inset-bottom, 0px));
+  left: 0;
+  right: 0;
+  z-index: 30;
+}
+@media (min-width: 640px) {
+  .fixed-save-bar {
+    bottom: 0;
+  }
+}
+
+

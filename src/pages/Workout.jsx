@@ -1316,7 +1316,7 @@ const Workout = () => {
 
 
       {/* Save button */}
-      <div className="fixed bottom-[64px] sm:bottom-0 left-0 right-0 glass-dark border-t border-white/5 p-4 pb-4 sm:pb-safe flex justify-center z-30">
+      <div className="fixed-save-bar glass-dark border-t border-white/5 p-4 pb-4 sm:pb-safe flex justify-center">
         <motion.button
           whileTap={{ scale:.97 }}
           onClick={handlePreSave}

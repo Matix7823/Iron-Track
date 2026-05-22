@@ -125,65 +125,87 @@ const MuscleMap = ({
     ));
   };
 
-  // Highly-precise, beautiful symmetric HUD geometric paths for coordinates 0-100 x 0-220
+  // Highly-precise, anatomically realistic vector paths for coordinates 0-100 x 0-220
   const musclesPaths = {
     // FRONT
     Pectoraux: [
-      "M 39 48 L 49 48 L 49 60 L 39 57 Z", // Left chest
-      "M 51 48 L 61 48 L 61 57 L 51 60 Z"  // Right chest
+      // Left Pec: sculpted pectoralis major sweeping from sternum to armpit
+      "M 49 45 C 44 45, 38 43, 35 48 C 34 50, 33 53, 31 55 C 33 59, 39 61, 43 62 C 46 62, 49 61, 49 45 Z",
+      // Right Pec: sculpted pectoralis major sweeping from sternum to armpit
+      "M 51 45 C 56 45, 62 43, 65 48 C 66 50, 67 53, 69 55 C 67 59, 61 61, 57 62 C 54 62, 51 61, 51 45 Z"
     ],
     Abdos: [
-      "M 41 62 L 59 62 L 57 88 L 43 88 Z"  // Centered core grid
+      // Detailed six-pack with central linea alba and sculpted abdominal intersections
+      "M 43 64 C 46 64, 49 64, 49 70 C 49 70, 46 70, 43 70 Z M 51 64 C 54 64, 57 64, 57 70 C 57 70, 54 70, 51 70 Z M 43 72 C 46 72, 49 72, 49 78 C 49 78, 46 78, 43 78 Z M 51 72 C 54 72, 57 72, 57 78 C 57 78, 54 78, 51 78 Z M 44 80 C 46 80, 49 80, 49 87 C 49 87, 46 87, 44 87 Z M 51 80 C 54 80, 56 80, 56 87 C 56 87, 54 87, 51 87 Z"
     ],
     Epaules: [
-      // Deltoids Front
-      "M 32 40 L 38 43 L 38 52 L 31 49 Z", // Left Front Deltoid
-      "M 68 40 L 62 43 L 62 52 L 69 49 Z", // Right Front Deltoid
-      // Deltoids Back
-      "M 31 41 L 37 44 L 37 53 L 30 50 Z", // Left Back Deltoid
-      "M 69 41 L 63 44 L 63 53 L 70 50 Z"  // Right Back Deltoid
+      // Deltoids Front (Left & Right): rounded caps wrapping the shoulder joint
+      "M 34 38 C 31 38, 28 42, 28 47 C 28 51, 30 54, 32 55 C 34 53, 35 50, 35 46 C 35 43, 35 40, 34 38 Z",
+      "M 66 38 C 69 38, 72 42, 72 47 C 72 51, 70 54, 68 55 C 66 53, 65 50, 65 46 C 65 43, 65 40, 66 38 Z",
+      // Deltoids Back (Left & Right)
+      "M 34 38 C 31 38, 28 42, 28 47 C 28 51, 30 54, 32 55 C 34 53, 35 50, 35 46 C 35 43, 35 40, 34 38 Z",
+      "M 66 38 C 69 38, 72 42, 72 47 C 72 51, 70 54, 68 55 C 66 53, 65 50, 65 46 C 65 43, 65 40, 66 38 Z"
     ],
     Biceps: [
-      "M 28 51 L 35 53 L 34 71 L 28 66 Z", // Left biceps front
-      "M 72 51 L 65 53 L 66 71 L 72 66 Z"  // Right biceps front
+      // Left Bicep: fusiform biceps brachii running down upper arm
+      "M 29 55 C 28 59, 27 63, 26 66 C 28 68, 30 67, 32 65 C 33 62, 33 58, 31 55 Z",
+      // Right Bicep: fusiform biceps brachii running down upper arm
+      "M 71 55 C 72 59, 73 63, 74 66 C 72 68, 70 67, 68 65 C 67 62, 67 58, 69 55 Z"
     ],
     AvantBras: [
-      "M 27 68 L 33 72 L 28 100 L 23 94 Z", // Left forearm front
-      "M 73 68 L 67 72 L 72 100 L 77 94 Z", // Right forearm front
-      "M 26 69 L 32 73 L 27 101 L 22 95 Z", // Left forearm back
-      "M 74 69 L 68 73 L 73 101 L 78 95 Z"  // Right forearm back
+      // Left Forearm: beautiful brachioradialis tapering to the wrist
+      "M 26 67 C 25 73, 23 80, 20 88 C 22 90, 24 88, 26 84 C 28 79, 29 73, 28 67 Z",
+      // Right Forearm: beautiful brachioradialis tapering to the wrist
+      "M 74 67 C 75 73, 77 80, 80 88 C 78 90, 76 88, 74 84 C 72 79, 71 73, 72 67 Z",
+      // Left Forearm Back
+      "M 26 67 C 25 73, 23 80, 20 88 C 22 90, 24 88, 26 84 C 28 79, 29 73, 28 67 Z",
+      // Right Forearm Back
+      "M 74 67 C 75 73, 77 80, 80 88 C 78 90, 76 88, 74 84 C 72 79, 71 73, 72 67 Z"
     ],
     Quadriceps: [
-      "M 35 102 L 48 102 L 45 152 L 36 150 Z", // Left quad
-      "M 65 102 L 52 102 L 55 152 L 64 150 Z"  // Right quad
+      // Left Quad: sweeping vastus lateralis & teardrop vastus medialis
+      "M 33 100 C 31 112, 30 126, 32 140 C 35 144, 38 145, 41 145 C 44 140, 46 126, 47 112 C 44 104, 39 100, 33 100 Z",
+      // Right Quad: sweeping vastus lateralis & teardrop vastus medialis
+      "M 67 100 C 69 112, 70 126, 68 140 C 65 144, 62 145, 59 145 C 56 140, 54 126, 53 112 C 56 104, 61 100, 67 100 Z"
     ],
     Mollets: [
-      "M 35 159 L 43 159 L 41 202 L 36 202 Z", // Left calf front
-      "M 65 159 L 57 159 L 59 202 L 64 202 Z", // Right calf front
-      "M 35 160 L 43 160 L 41 203 L 36 203 Z", // Left calf back
-      "M 65 160 L 57 160 L 59 203 L 64 203 Z"  // Right calf back
+      // Left Calf: bulging gastrocnemius heads tapering down
+      "M 34 152 C 32 163, 31 174, 33 186 C 35 188, 37 187, 38 184 C 39 175, 40 164, 38 152 Z",
+      // Right Calf: bulging gastrocnemius heads tapering down
+      "M 66 152 C 68 163, 69 174, 67 186 C 65 188, 63 187, 62 184 C 61 175, 60 164, 62 152 Z",
+      // Left Calf Back
+      "M 34 152 C 32 163, 31 174, 33 186 C 35 188, 37 187, 38 184 C 39 175, 40 164, 38 152 Z",
+      // Right Calf Back
+      "M 66 152 C 68 163, 69 174, 67 186 C 65 188, 63 187, 62 184 C 61 175, 60 164, 62 152 Z"
     ],
-
     // BACK
     Dos: [
-      // Trapezius & Lats (Dorsaux)
-      "M 37 46 L 49 43 L 49 76 L 38 68 Z", // Left Lat
-      "M 63 46 L 51 43 L 51 76 L 62 68 Z"  // Right Lat
+      // Left Lat & Trap: majestic wing sweep of the latissimus dorsi
+      "M 49 38 C 45 38, 40 42, 35 47 C 33 52, 33 59, 35 65 C 38 69, 43 71, 49 72 Z",
+      // Right Lat & Trap: majestic wing sweep of the latissimus dorsi
+      "M 51 38 C 55 38, 60 42, 65 47 C 67 52, 67 59, 65 65 C 62 69, 57 71, 51 72 Z"
     ],
     Lombaires: [
-      "M 42 77 L 58 77 L 57 93 L 43 93 Z"  // Lower Back lumbar spine
+      // Lower Back: deep lumbar columns (erector spinae)
+      "M 43 73 C 43 78, 44 83, 45 89 C 47 90, 53 90, 55 89 C 56 83, 57 78, 57 73 Z"
     ],
     Triceps: [
-      "M 27 52 L 34 54 L 33 70 L 27 65 Z", // Left triceps
-      "M 73 52 L 66 54 L 67 70 L 73 65 Z"  // Right triceps
+      // Left Tricep: horseshoe lateral/long head sweeps
+      "M 29 55 C 28 58, 27 61, 26 64 C 28 66, 30 65, 31 63 C 32 60, 31 57, 30 55 Z",
+      // Right Tricep: horseshoe lateral/long head sweeps
+      "M 71 55 C 72 58, 73 61, 74 64 C 72 66, 70 65, 69 63 C 68 60, 69 57, 70 55 Z"
     ],
     Fessiers: [
-      "M 35 95 L 49 95 L 48 116 L 36 114 Z", // Left glute
-      "M 65 95 L 51 95 L 52 116 L 64 114 Z"  // Right glute
+      // Left Glute: full rounded athletic sweep of gluteus maximus
+      "M 33 92 C 31 99, 32 106, 35 111 C 38 114, 44 114, 48 111 C 49 105, 47 99, 45 92 Z",
+      // Right Glute: full rounded athletic sweep of gluteus maximus
+      "M 67 92 C 69 99, 68 106, 65 111 C 62 114, 56 114, 52 111 C 51 105, 53 99, 55 92 Z"
     ],
     Ischios: [
-      "M 35 118 L 47 118 L 45 155 L 36 153 Z", // Left hamstring
-      "M 65 118 L 53 118 L 55 155 L 64 153 Z"  // Right hamstring
+      // Left Hamstring: long running sweeping cords of the back thigh
+      "M 33 112 C 32 122, 32 132, 34 142 C 36 144, 41 144, 43 142 C 44 132, 44 122, 43 112 Z",
+      // Right Hamstring: long running sweeping cords of the back thigh
+      "M 67 112 C 68 122, 68 132, 66 142 C 64 144, 59 144, 57 142 C 56 132, 56 122, 57 112 Z"
     ]
   };
 

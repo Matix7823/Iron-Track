@@ -217,6 +217,11 @@ export const AppProvider = ({ children }) => {
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const { user } = useAuth();
 
+  // Gender biological state
+  const [gender, setGender] = useState(() => {
+    return localStorage.getItem("iron_user_gender") || null;
+  });
+
   // Theme state
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("iron_track_theme") || "blue";
@@ -322,7 +327,7 @@ export const AppProvider = ({ children }) => {
 
   // --- PERSISTENCE ---
   const persistData = useCallback(async (dataToSave) => {
-    const safeData = sanitizeData({ ...dataToSave, version: CURRENT_APP_VERSION });
+    const safeData = sanitizeData({ ...dataToSave, version: CURRENT_APP_VERSION, gender });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(safeData));
 
     if (!user) return;
@@ -334,7 +339,7 @@ export const AppProvider = ({ children }) => {
     } catch (err) {
       console.error("Erreur sauvegarde Supabase", err);
     }
-  }, [user]);
+  }, [user, gender]);
 
   useEffect(() => {
     const handleOnline = () => {
@@ -455,6 +460,7 @@ export const AppProvider = ({ children }) => {
           dailyNutrition: {},
           customSchedule: defaultSchedule,
           userProgression: { xp: 0, lastDate: formatDateFR() },
+          gender: null,
           version: CURRENT_APP_VERSION
         };
 
@@ -601,6 +607,7 @@ export const AppProvider = ({ children }) => {
         setUserSessions(currentData.userSessions && typeof currentData.userSessions === 'object' ? currentData.userSessions : sessions);
         setDailyNutrition(currentData.dailyNutrition && typeof currentData.dailyNutrition === 'object' ? currentData.dailyNutrition : {});
         setCustomSchedule(Array.isArray(currentData.customSchedule) ? currentData.customSchedule : defaultSchedule);
+        setGender(currentData.gender || localStorage.getItem("iron_user_gender") || null);
 
         // --- XP DECAY & PROGRESSION ---
         if (currentData.userProgression) {
@@ -1073,12 +1080,28 @@ export const AppProvider = ({ children }) => {
     document.body.removeChild(link);
   }, [allExercises, history]);
 
+  const changeGender = useCallback((newGender) => {
+    setGender(newGender);
+    localStorage.setItem("iron_user_gender", newGender || "");
+    persistData({
+      history,
+      bodyWeight: bodyWeightHistory,
+      bodyMeasurements,
+      userSessions,
+      customSchedule,
+      userProgression,
+      dailyNutrition,
+      gender: newGender
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, customSchedule, userProgression, dailyNutrition, persistData]);
+
   const value = {
     history, bodyWeightHistory, bodyMeasurements, userSessions, isDataLoading,
     allExercises, currentBodyWeight,
     currentSession, setCurrentSession,
     activeScheduleName, applyProgram,
     theme, setTheme, getThemeClasses,
+    gender, changeGender,
     currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
@@ -1092,7 +1115,7 @@ export const AppProvider = ({ children }) => {
     dailyNutrition, logNutrition, logWater, isOffline,
     schedules,
     userProgression,
-    progression: getProgressionDetails(userProgression.xp)
+    progression: getProgressionDetails(userProgression.xp, gender || "homme")
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

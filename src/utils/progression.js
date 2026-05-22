@@ -29,7 +29,7 @@ export const getXPForLevel = (level) => {
 /**
  * Retourne les détails du rang actuel en fonction de l'XP
  */
-export const getProgressionDetails = (xp) => {
+export const getProgressionDetails = (xp, gender = "homme") => {
   let level = 1;
   while (level < MAX_LEVEL && xp >= getXPForLevel(level + 1)) {
     level++;
@@ -45,9 +45,16 @@ export const getProgressionDetails = (xp) => {
   const step = ((level - 1) % 3) + 1;
   const rank = RANKS[rankIdx] || RANKS[0];
 
+  let rankName = rank.name;
+  if (gender === "femme") {
+    if (rankName === "Dieu Grec") rankName = "Déesse Grecque";
+    else if (rankName === "Maître") rankName = "Maîtresse";
+    else if (rankName === "Grand Maître") rankName = "Grande Maîtresse";
+  }
+
   return {
     level,
-    rankName: rank.name,
+    rankName,
     step,
     rankColor: rank.color,
     rankTextColor: rank.textColor,

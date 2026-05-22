@@ -100,7 +100,7 @@ const Community = () => {
   };
 
   return (
-    <div className="page-container flex flex-col h-[calc(100vh-60px)] sm:h-[calc(100vh-80px)] !pb-[76px] sm:!pb-4">
+    <div className="page-container flex flex-col h-[calc(100dvh-60px)] sm:h-[calc(100dvh-80px)] !pb-[76px] sm:!pb-4">
       <div className="bg-orbs" />
       
       <div className="mb-4 shrink-0 flex items-center justify-between">

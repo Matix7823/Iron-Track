@@ -50,27 +50,28 @@ export const calculate1RM = (weight, reps) => {
   return Math.round(weight * (1 + reps / 30));
 };
 
-export const getStrengthStandard = (exerciseType, rm, bw) => {
+export const getStrengthStandard = (exerciseType, rm, bw, gender = "homme") => {
   if (rm === 0 || bw === 0) return { rank: "-", color: "text-slate-500" };
   const ratio = rm / bw;
+  const ultimateRank = gender === "femme" ? "Déesse Grecque" : "Dieu Grec";
   if (exerciseType === "bench") {
     if (ratio < 1.0) return { rank: "Novice", color: "text-slate-400" };
     if (ratio < 1.3) return { rank: "Intermédiaire", color: "text-blue-400" };
     if (ratio < 1.6) return { rank: "Avancé", color: "text-purple-400" };
-    return { rank: "Dieu Grec", color: "text-yellow-400" };
+    return { rank: ultimateRank, color: "text-yellow-400" };
   }
   if (exerciseType === "squat") {
     if (ratio < 1.2) return { rank: "Novice", color: "text-slate-400" };
     if (ratio < 1.5) return { rank: "Intermédiaire", color: "text-blue-400" };
     if (ratio < 2.0) return { rank: "Avancé", color: "text-purple-400" };
-    return { rank: "Dieu Grec", color: "text-yellow-400" };
+    return { rank: ultimateRank, color: "text-yellow-400" };
   }
   if (exerciseType === "pullup") {
     const ratioPull = (bw + rm) / bw;
     if (ratioPull < 1.1) return { rank: "Novice", color: "text-slate-400" };
     if (ratioPull < 1.3) return { rank: "Intermédiaire", color: "text-blue-400" };
     if (ratioPull < 1.5) return { rank: "Avancé", color: "text-purple-400" };
-    return { rank: "Dieu Grec", color: "text-yellow-400" };
+    return { rank: ultimateRank, color: "text-yellow-400" };
   }
   return { rank: "-", color: "text-slate-500" };
 };

@@ -5,9 +5,11 @@ import { exerciseLibrary } from "../data/exerciseLibrary";
 import { calculate1RM } from "../utils/metrics";
 import {
   Trophy, Dumbbell, ArrowUp, Crown, Star, Clock,
-  ChevronDown, ChevronUp, Search, X, Calendar, TrendingUp, Zap, Sparkles, Flame, History, Award, BookOpen, ChevronRight
+  ChevronDown, ChevronUp, Search, X, Calendar, TrendingUp, Zap, Sparkles, Flame, History, Award, BookOpen, ChevronRight,
+  Share2, Download
 } from "lucide-react";
 import { parseDate } from "../utils/date";
+import { triggerHaptic } from "../utils/haptics";
 
 // ─── Color Map (18 fine-grained muscles) ───────────────────────────
 const muscleColors = {
@@ -243,8 +245,35 @@ const PRTracker = () => {
   const { history, allExercises } = useApp();
   const [search, setSearch] = useState("");
   const [muscleFilter, setMuscleFilter] = useState("Tous");
-  const [sortBy, setSortBy] = useState("best1RM");
   const [selectedSessionIndex, setSelectedSessionIndex] = useState(null);
+  const [sortBy, setSortBy] = useState("best1RM");
+
+  const handleExportCSV = () => {
+    triggerHaptic(15);
+    // BOM UTF-8 for Excel compatibility with accents
+    let csv = "\ufeffDate,Catégorie Muscle,Exercice,Série,Poids (kg),Répétitions,RPE,Intensité\n";
+    
+    practicedExercises.forEach((exo) => {
+      if (exo.historyFeed) {
+        exo.historyFeed.forEach((h) => {
+          h.sets.forEach((s, idx) => {
+            const cleanExoName = exo.name.replace(/"/g, '""');
+            const cleanMuscle = exo.muscle.replace(/"/g, '""');
+            csv += `${h.date},"${cleanMuscle}","${cleanExoName}",${idx + 1},${s.weight},${s.reps},${s.rpe || "-"},${s.tag || "-"}\n`;
+          });
+        });
+      }
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "iron_track_performance_history.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Compute all sessions grouped by date with total tonnage and exercise detail
   const allSessions = useMemo(() => {
@@ -318,7 +347,7 @@ const PRTracker = () => {
             const w = +s.weight;
             const r = +s.reps || 1;
             const rpe = s.rpe || "";
-            setsList.push({ weight: w, reps: r, rpe });
+            setsList.push({ weight: w, reps: r, rpe, tag: s.tag || "" });
             if (w > entryMaxWeight) entryMaxWeight = w;
             const rm = calculate1RM(w, r);
             if (rm > entryBest1RM) entryBest1RM = rm;
@@ -799,6 +828,18 @@ const PRTracker = () => {
               )}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* CSV Export Action Button */}
+      {allSessions.length > 0 && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleExportCSV}
+            className="flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-400/80 text-amber-400 hover:text-amber-300 text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.04)] hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] w-full max-w-sm sm:w-auto"
+          >
+            <Download size={14} /> Export des Records (CSV UTF-8 Excel)
+          </button>
         </div>
       )}
 
