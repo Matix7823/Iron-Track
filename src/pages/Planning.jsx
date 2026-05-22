@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X, Zap, Brain, Dumbbell, Timer } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -24,6 +24,107 @@ const Planning = () => {
   const [newDayName, setNewDayName] = useState("");
   const [previewSession, setPreviewSession] = useState(null);
 
+  // â”€â”€ Smart Planning Wizard â”€â”€
+  const [showSmartPlanning, setShowSmartPlanning] = useState(false);
+  const [smartPlanStep, setSmartPlanStep] = useState(1);
+  const [smartPlanType, setSmartPlanType] = useState("ppl");
+  const [smartPlanDays, setSmartPlanDays] = useState(4);
+
+  const generateSmartPlan = () => {
+    const restDay = { session: "-", label: "Repos", status: null };
+    let plan = [];
+
+    if (smartPlanType === "ppl") {
+      // Push / Pull / Legs
+      const base = [
+        { session: "A", label: "Push" },
+        { session: "B", label: "Pull" },
+        { session: "C", label: "Jambes" },
+        { ...restDay },
+        { session: "A", label: "Push" },
+        { session: "B", label: "Pull" },
+        { ...restDay }
+      ];
+      plan = smartPlanDays >= 6
+        ? [{ session: "A", label: "Push" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { session: "D", label: "Ã‰paules" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { ...restDay }]
+        : base;
+    } else if (smartPlanType === "ul") {
+      // Upper / Lower
+      const ul = [
+        { session: "F", label: "Upper" },
+        { session: "G", label: "Lower" },
+        { ...restDay },
+        { session: "F", label: "Upper" },
+        { session: "G", label: "Lower" },
+        { ...restDay },
+        { ...restDay }
+      ];
+      plan = ul;
+    } else if (smartPlanType === "fullbody") {
+      // Full Body 3-4j
+      if (smartPlanDays <= 3) {
+        plan = [
+          { session: "A", label: "Full Body" },
+          { ...restDay },
+          { session: "A", label: "Full Body" },
+          { ...restDay },
+          { session: "A", label: "Full Body" },
+          { ...restDay },
+          { ...restDay }
+        ];
+      } else {
+        plan = [
+          { session: "A", label: "Full Body" },
+          { ...restDay },
+          { session: "B", label: "Full Body B" },
+          { ...restDay },
+          { session: "A", label: "Full Body" },
+          { ...restDay },
+          { session: "B", label: "Full Body B" }
+        ];
+      }
+    } else if (smartPlanType === "bro") {
+      // Bro Split (muscles groupes)
+      plan = [
+        { session: "A", label: "Pecs" },
+        { session: "B", label: "Dos" },
+        { session: "D", label: "Ã‰paules" },
+        { session: "E", label: "Bras" },
+        { session: "C", label: "Jambes" },
+        { ...restDay },
+        { ...restDay }
+      ];
+    } else if (smartPlanType === "Arnold") {
+      // Arnold Split
+      plan = [
+        { session: "A", label: "Pecs & Dos" },
+        { session: "D", label: "Ã‰paules & Bras" },
+        { session: "C", label: "Jambes" },
+        { session: "A", label: "Pecs & Dos" },
+        { session: "D", label: "Ã‰paules & Bras" },
+        { session: "C", label: "Jambes" },
+        { ...restDay }
+      ];
+    }
+
+    // Adapt number of rest days to smartPlanDays
+    const trainingDays = smartPlanDays;
+    let trainCount = 0;
+    const finalPlan = plan.map(d => {
+      if (d.session !== "-" && trainCount < trainingDays) {
+        trainCount++;
+        return d;
+      } else if (d.session !== "-") {
+        return { ...restDay };
+      }
+      return d;
+    });
+
+    updateCustomSchedule(finalPlan);
+    setShowSmartPlanning(false);
+    setSmartPlanStep(1);
+  };
+
   const days = ["L","M","M","J","V","S","D"];
 
   // customSchedule is now an array of {session, label, status} objects or old string format
@@ -31,7 +132,7 @@ const Planning = () => {
     typeof d === 'string' ? { session: d, label: '', status: null } : { session: d?.session || '-', label: d?.label || '', status: d?.status || null }
   ) : Array.from({length:7}).map(() => ({ session: '-', label: '', status: null }));
 
-  const STATUS_ICONS = { super: '🏆', good: '✅', rest: '😴', none: null };
+  const STATUS_ICONS = { super: 'ðŸ†', good: 'âœ…', rest: 'ðŸ˜´', none: null };
   const STATUS_LABELS = { super: 'Super', good: 'Bonne', rest: 'Repos', none: '' };
 
   const handleSelectSession = (sessionKey) => {
@@ -66,7 +167,7 @@ const Planning = () => {
   };
 
   const handleApplyProgram = (prog) => {
-    if (window.confirm(`Appliquer le programme "${prog.title}" à ta semaine ? Cela écrasera ton planning actuel.`)) {
+    if (window.confirm(`Appliquer le programme "${prog.title}" Ã  ta semaine ? Cela Ã©crasera ton planning actuel.`)) {
       applyProgram(prog);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -82,11 +183,11 @@ const Planning = () => {
     <div className="page-container">
       <div className="bg-orbs"/>
       <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} className="mb-8">
-        <p className="section-title"><Calendar size={20} className="text-blue-400"/>Programmes d'Entraînement</p>
-        <p className="text-sm text-slate-400 -mt-2">Choisis un programme ou crée le tien</p>
+        <p className="section-title"><Calendar size={20} className="text-blue-400"/>Programmes d'EntraÃ®nement</p>
+        <p className="text-sm text-slate-400 -mt-2">Choisis un programme ou crÃ©e le tien</p>
       </motion.div>
 
-      {/* Mon Programme Personnalisé */}
+      {/* Mon Programme PersonnalisÃ© */}
       <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="glass-card overflow-hidden mb-8 border-indigo-500/30 glow-purple">
         <div className="p-5 border-b border-white/5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -94,7 +195,7 @@ const Planning = () => {
               <Settings size={20} />
             </div>
             <div>
-              <h3 className="font-black text-white text-base">Programme Personnalisé</h3>
+              <h3 className="font-black text-white text-base">Programme PersonnalisÃ©</h3>
               <p className="text-xs text-indigo-400 font-medium mt-0.5">Clique sur un jour pour modifier</p>
             </div>
           </div>
@@ -102,7 +203,7 @@ const Planning = () => {
             onClick={() => document.getElementById('programs-lib')?.scrollIntoView({ behavior: 'smooth' })}
             className="btn-glass !py-1.5 !px-3 !text-[10px] !rounded-lg gap-1.5 border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/10"
           >
-            <Settings size={12}/> Modèles
+            <Settings size={12}/> ModÃ¨les
           </button>
         </div>
 
@@ -145,7 +246,7 @@ const Planning = () => {
                     )}
                   </div>
                   
-                  {/* Status icon — click to cycle */}
+                  {/* Status icon â€” click to cycle */}
                   <button
                     onClick={() => cycleStatus(i)}
                     title="Cliquer pour changer le statut"
@@ -187,7 +288,15 @@ const Planning = () => {
             )}
           </div>
           
-          <div className="mt-4 flex items-center justify-end">
+          <div className="mt-4 flex items-center justify-between gap-3">
+            {/* Smart Planning Button */}
+            <button
+              onClick={() => { setSmartPlanStep(1); setShowSmartPlanning(true); }}
+              className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-violet-600/20 to-indigo-600/20 border border-violet-500/40 text-violet-300 rounded-xl text-xs font-black hover:from-violet-600/30 hover:to-indigo-600/30 transition-all group"
+            >
+              <Zap size={13} className="text-violet-400 group-hover:animate-bounce" />
+              Smart Plan âš¡
+            </button>
             <Link to="/workout" state={{session:normalizedSchedule.find(d=>d.session!=="-")?.session}}
               onClick={()=>{const first=normalizedSchedule.find(d=>d.session!=="-");if(first)setCurrentSession(first.session);}}
               className={`btn-primary text-xs gap-1.5 ${normalizedSchedule.every(d=>d.session==="-") ? "opacity-50 pointer-events-none" : ""}`}>
@@ -203,12 +312,12 @@ const Planning = () => {
           <div className="modal-overlay" onClick={() => setEditingDay(null)}>
             <motion.div className="modal-card !p-0 overflow-hidden flex flex-col max-h-[80vh]" initial={{ y:50, opacity:0 }} animate={{ y:0, opacity:1 }} exit={{ y:50, opacity:0 }} onClick={e=>e.stopPropagation()}>
               <div className="p-5 border-b border-white/5">
-                <h3 className="font-black text-white">Séance du {getDayLabel(normalizedSchedule[editingDay] || {}, editingDay)}</h3>
-                <p className="text-xs text-slate-400">Choisis la séance à effectuer ce jour-là.</p>
+                <h3 className="font-black text-white">SÃ©ance du {getDayLabel(normalizedSchedule[editingDay] || {}, editingDay)}</h3>
+                <p className="text-xs text-slate-400">Choisis la sÃ©ance Ã  effectuer ce jour-lÃ .</p>
               </div>
               <div className="p-4 overflow-y-auto grid grid-cols-2 gap-2">
                 <button onClick={() => handleSelectSession("-")} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-slate-500/50">
-                  <span className="text-xl">😴</span>
+                  <span className="text-xl">ðŸ˜´</span>
                   <span className="text-xs font-bold text-slate-400">Repos</span>
                 </button>
                 {Object.entries(userSessions).map(([k, s]) => {
@@ -228,7 +337,7 @@ const Planning = () => {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              const newName = window.prompt("Nouveau nom de la séance :", s.category);
+                              const newName = window.prompt("Nouveau nom de la sÃ©ance :", s.category);
                               if (newName && newName.trim()) renameCustomSession(k, newName.trim());
                             }}
                             className="w-6 h-6 bg-blue-500 hover:bg-blue-400 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-500/20 active:scale-90 transition-transform"
@@ -239,7 +348,7 @@ const Planning = () => {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (window.confirm(`Supprimer définitivement la séance ${k} ?`)) {
+                              if (window.confirm(`Supprimer dÃ©finitivement la sÃ©ance ${k} ?`)) {
                                 deleteCustomSession(k);
                               }
                             }}
@@ -261,10 +370,10 @@ const Planning = () => {
 
       <div className="space-y-5" id="programs-lib">
         <div className="flex justify-between items-center px-1">
-          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Bibliothèque de Programmes</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">BibliothÃ¨que de Programmes</p>
           <button onClick={() => updateCustomSchedule(Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })))}
             className="text-[10px] font-bold text-red-400/70 hover:text-red-400 transition-colors uppercase">
-            Réinitialiser tout
+            RÃ©initialiser tout
           </button>
         </div>
 
@@ -342,7 +451,7 @@ const Planning = () => {
                         <span className="px-2 py-0.5 bg-white/20 rounded text-[10px] font-black text-white uppercase tracking-wider">{previewSession}</span>
                         <h3 className="text-xl font-black text-white">{s.title || s.category}</h3>
                       </div>
-                      <p className="text-white/70 text-xs font-medium">{s.focus || "Séance d'entraînement"}</p>
+                      <p className="text-white/70 text-xs font-medium">{s.focus || "SÃ©ance d'entraÃ®nement"}</p>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 scrollbar-hide">
@@ -374,12 +483,150 @@ const Planning = () => {
                         }}
                         className="btn-primary flex-1 py-3 text-xs gap-2"
                       >
-                        <Play size={12} fill="currentColor" /> S'entraîner
+                        <Play size={12} fill="currentColor" /> S'entraÃ®ner
                       </Link>
                     </div>
                   </>
                 );
               })()}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* â”€â”€ Smart Planning Wizard Modal â”€â”€ */}
+      <AnimatePresence>
+        {showSmartPlanning && (
+          <div className="modal-overlay" onClick={() => setShowSmartPlanning(false)}>
+            <motion.div
+              className="glass-dark w-[95%] sm:w-full max-w-lg rounded-3xl overflow-hidden border border-violet-500/25 flex flex-col max-h-[90vh] shadow-2xl shadow-violet-500/10"
+              initial={{ y: 60, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 60, opacity: 0, scale: 0.95 }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="p-5 border-b border-white/6 relative">
+                <div className="flex items-center gap-3 mb-1">
+                  <div className="w-9 h-9 rounded-xl bg-violet-500/20 flex items-center justify-center border border-violet-500/30">
+                    <Zap size={18} className="text-violet-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-black text-white">Smart Plan âš¡</h3>
+                    <p className="text-[10px] text-slate-500">GÃ©nÃ¨re ton planning optimal en 2 Ã©tapes</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mt-4">
+                  {[1, 2].map(step => (
+                    <div key={step} className="flex items-center gap-1.5 flex-1">
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black border transition-all ${
+                        smartPlanStep >= step ? "bg-violet-500 border-violet-400 text-white" : "bg-transparent border-slate-700 text-slate-600"
+                      }`}>{step}</div>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider ${smartPlanStep >= step ? "text-violet-400" : "text-slate-600"}`}>
+                        {step === 1 ? "Programme" : "FrÃ©quence"}
+                      </span>
+                      {step < 2 && <div className="flex-1 h-px bg-slate-800 mx-1"/>}
+                    </div>
+                  ))}
+                </div>
+                <button onClick={() => setShowSmartPlanning(false)} className="absolute top-4 right-4 w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center text-slate-400 hover:text-white transition-all">
+                  <X size={15} />
+                </button>
+              </div>
+
+              {/* Step 1 â€” Type de programme */}
+              {smartPlanStep === 1 && (
+                <div className="p-5 flex-1 overflow-y-auto">
+                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Type de split</p>
+                  <div className="grid grid-cols-1 gap-2.5">
+                    {[
+                      { id: "ppl",     label: "Push / Pull / Legs",  desc: "La mÃ©thode scientifique Ã©lite. Pecs+Tri / Dos+Bi / Jambes.", icon: "ðŸ”±" },
+                      { id: "ul",      label: "Upper / Lower",        desc: "4 sÃ©ances alternÃ©es Haut / Bas du corps.", icon: "âš¡" },
+                      { id: "fullbody",label: "Full Body",            desc: "3-4 sÃ©ances. IdÃ©al dÃ©butants et intermÃ©diaires.", icon: "ðŸŒ€" },
+                      { id: "bro",     label: "Bro Split",            desc: "5j classique : chaque muscle par jour.", icon: "ðŸ’ª" },
+                      { id: "Arnold",  label: "Arnold Split",         desc: "6j en 3 paires : Pecs/Dos â€” Ã‰paules/Bras â€” Jambes.", icon: "ðŸ†" },
+                    ].map(opt => (
+                      <button
+                        key={opt.id}
+                        onClick={() => setSmartPlanType(opt.id)}
+                        className={`w-full flex items-center gap-3 p-3 rounded-2xl border transition-all text-left ${
+                          smartPlanType === opt.id
+                            ? "bg-violet-600/20 border-violet-400/70"
+                            : "border-white/10 bg-white/3 hover:bg-white/5 hover:border-white/18"
+                        }`}
+                      >
+                        <span className="text-2xl shrink-0">{opt.icon}</span>
+                        <div className="flex-1">
+                          <p className="text-sm font-black text-white">{opt.label}</p>
+                          <p className="text-[10px] text-slate-500">{opt.desc}</p>
+                        </div>
+                        {smartPlanType === opt.id && <Check size={16} className="text-violet-400 shrink-0" />}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 2 â€” Jours par semaine */}
+              {smartPlanStep === 2 && (
+                <div className="p-5 flex-1 overflow-y-auto">
+                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Jours d'entraÃ®nement / semaine</p>
+                  <div className="flex gap-2 mb-6">
+                    {[2, 3, 4, 5, 6].map(n => (
+                      <button
+                        key={n}
+                        onClick={() => setSmartPlanDays(n)}
+                        className={`flex-1 py-5 rounded-2xl text-xl font-black border transition-all ${
+                          smartPlanDays === n
+                            ? "bg-violet-600/25 border-violet-400/70 text-violet-200 shadow-lg shadow-violet-500/15"
+                            : "bg-white/3 border-white/10 text-slate-500 hover:border-white/20 hover:text-white"
+                        }`}
+                      >
+                        {n}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="glass rounded-2xl p-4 border border-violet-500/15">
+                    <p className="text-[10px] text-violet-400 font-black uppercase tracking-widest mb-1">AperÃ§u</p>
+                    <p className="text-xs text-slate-400">
+                      {smartPlanDays} sÃ©ance{smartPlanDays > 1 ? "s" : ""} d'entraÃ®nement + {7 - smartPlanDays} jour{7 - smartPlanDays > 1 ? "s" : ""} de rÃ©cupÃ©ration / semaine.
+                    </p>
+                    <p className="text-[10px] text-slate-600 mt-1">
+                      Split : <span className="text-violet-400 font-bold">{
+                        smartPlanType === "ppl" ? "Push / Pull / Legs" :
+                        smartPlanType === "ul" ? "Upper / Lower" :
+                        smartPlanType === "fullbody" ? "Full Body" :
+                        smartPlanType === "bro" ? "Bro Split" : "Arnold Split"
+                      }</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Footer */}
+              <div className="p-4 border-t border-white/6 flex gap-3">
+                {smartPlanStep > 1 ? (
+                  <button onClick={() => setSmartPlanStep(s => s - 1)} className="btn-glass flex-1 py-3 text-xs">
+                    â† Retour
+                  </button>
+                ) : (
+                  <button onClick={() => setShowSmartPlanning(false)} className="btn-glass flex-1 py-3 text-xs">
+                    Annuler
+                  </button>
+                )}
+                {smartPlanStep < 2 ? (
+                  <button onClick={() => setSmartPlanStep(s => s + 1)} className="btn-primary flex-1 py-3 text-xs gap-1.5">
+                    Suivant <ChevronRight size={14} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={generateSmartPlan}
+                    className="flex-1 py-3 text-xs font-black text-white rounded-xl flex items-center justify-center gap-1.5 transition-all bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-500/25"
+                  >
+                    <Zap size={14} /> GÃ©nÃ©rer le planning
+                  </button>
+                )}
+              </div>
             </motion.div>
           </div>
         )}

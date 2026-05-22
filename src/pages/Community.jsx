@@ -122,10 +122,10 @@ const Community = () => {
         </button>
       </div>
 
-      {/* Chat Messages */}
+      {/* Chat Messages — iOS scroll fix: overflow-y-scroll + overscrollBehavior:contain */}
       <div 
-        className="flex-1 overflow-y-auto glass-card border-white/5 p-4 mb-4 space-y-4"
-        style={{ WebkitOverflowScrolling: "touch" }}
+        className="flex-1 overflow-y-scroll glass-card border-white/5 p-4 mb-4 space-y-4"
+        style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", minHeight: 0 }}
       >
         {messages.map((msg, idx) => {
           const isMe = msg.user_id === user?.id;

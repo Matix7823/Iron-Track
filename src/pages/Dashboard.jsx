@@ -32,6 +32,21 @@ const DAILY_TIPS = [
   { icon: "📊", tip: "Le volume hebdomadaire optimal : 10-20 séries par groupe musculaire pour l'hypertrophie.", tag: "Volume" },
   { icon: "🛌", tip: "La fenêtre anabolique post-entraînement dure 24h, pas 30 min. Mange bien toute la journée.", tag: "Mythe brisé" },
   { icon: "⚡", tip: "Les Drop Sets sur la dernière série augmentent le volume sans allonger le temps de séance.", tag: "Technique" },
+  { icon: "🧬", tip: "La GH (hormone de croissance) est libérée massivement pendant le sommeil profond. Couche-toi avant 23h.", tag: "Science" },
+  { icon: "🍌", tip: "Avant l'entraînement, 30-40g de glucides rapides (banane, riz blanc) boostent ta puissance de 7-12%.", tag: "Nutrition" },
+  { icon: "🏋️", tip: "Le tempo 3-1-1-0 (3s descente, 1s bas, 1s montée) maximise la tension mécanique et active plus de fibres.", tag: "Technique" },
+  { icon: "🔄", tip: "Alterner exercices compound et isolation dans la même séance améliore le stimulus métabolique global.", tag: "Programmation" },
+  { icon: "🦶", tip: "Renforcer les mollets améliore l'explosivité, la stabilité des chevilles et prévient les blessures au genou.", tag: "Exercice" },
+  { icon: "😤", tip: "La respiration Valsalva (bloquer l'air) pendant les levées lourdes protège la colonne et augmente la force de 10-15%.", tag: "Technique" },
+  { icon: "☕", tip: "200mg de caféine 45min avant l'entraînement améliore la force max et la résistance à la douleur musculaire.", tag: "Nutrition" },
+  { icon: "🌿", tip: "Les Oméga-3 (3g/j) réduisent l'inflammation musculaire et accélèrent la récupération entre les séances.", tag: "Nutrition" },
+  { icon: "📐", tip: "Dans le développé couché, une prise légèrement plus large que les épaules maximise l'activation des pectoraux.", tag: "Biomécanique" },
+  { icon: "🧊", tip: "Le bain froid (10-15°C, 10 min) réduit les courbatures de 30%. À ne pas utiliser après chaque séance.", tag: "Récupération" },
+  { icon: "🎵", tip: "Écouter de la musique motivante augmente les performances de 15% et réduit la perception de l'effort.", tag: "Mental" },
+  { icon: "📉", tip: "La décharge (Deload Week) toutes les 4-8 semaines prévient le plateau et permet une supercompensation maximale.", tag: "Programmation" },
+  { icon: "🦴", tip: "Les tendons et ligaments s'adaptent 2-3x plus lentement que les muscles. Augmente les charges progressivement !", tag: "Science" },
+  { icon: "⚖️", tip: "Le stress chronique élève le cortisol, qui catabolise le muscle. Mindfulness et repos = gains préservés.", tag: "Mental" },
+  { icon: "🌅", tip: "10 min de marche post-repas améliorent la sensibilité à l'insuline et favorisent le partitionnement vers les muscles.", tag: "Récupération" },
 ];
 
 // ─── Animated counter ────────────────────────────────────────────

@@ -30,24 +30,30 @@ const Analytics = () => {
     const d4 = new Date(now - 4 * 24 * 60 * 60 * 1000); // last 4 days
     const setsCount = {
       Pectoraux: 0, Dos: 0, Lombaires: 0, Epaules: 0, Biceps: 0, Triceps: 0,
-      AvantBras: 0, Abdos: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0, Mollets: 0
+      AvantBras: 0, Abdos: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0, Mollets: 0,
+      Adducteurs: 0, Abducteurs: 0, Tibias: 0, Cou: 0, Cardio: 0
     };
     
-    // Map exercise muscle categories in history to the 12 keys
+    // Map exercise muscle categories in history to SVG muscle keys (17 groups)
     const MAP_TO_SVG_KEY = {
-      "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
+      "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux", "Finition": "Pectoraux",
       "Dos (Largeur)": "Dos", "Dos (Épaisseur)": "Dos", "Dos (Bas)": "Dos", "Dos (Isolation)": "Dos", "Dos": "Dos",
       "Lombaires": "Lombaires", "Lombes": "Lombaires",
       "Cuisses": "Quadriceps", "Quadriceps": "Quadriceps",
       "Ischios": "Ischios",
       "Fessiers": "Fessiers",
+      "Adducteurs": "Adducteurs",
+      "Abducteurs": "Abducteurs",
       "Mollets": "Mollets",
+      "Tibias": "Tibias",
       "Épaules (Masse)": "Epaules", "Épaules (Latéral)": "Epaules", "Arr. Épaules": "Epaules", "Épaules": "Epaules", "Epaules": "Epaules",
-      "Trapèzes": "Dos", // Count traps towards back
+      "Trapèzes": "Cou",
+      "Cou": "Cou",
       "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
       "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
       "Avant-Bras": "AvantBras", "Avant-bras": "AvantBras",
-      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos"
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
+      "Cardio": "Cardio",
     };
 
     Object.keys(history || {}).forEach(id => {
@@ -446,7 +452,9 @@ const Analytics = () => {
                       Pectoraux: "Pectoraux", Dos: "Dorsaux", Lombaires: "Lombaires",
                       Epaules: "Épaules", Biceps: "Biceps", Triceps: "Triceps",
                       AvantBras: "Avant-bras", Abdos: "Abdos", Quadriceps: "Quadriceps",
-                      Ischios: "Ischios", Fessiers: "Fessiers", Mollets: "Mollets"
+                      Ischios: "Ischios", Fessiers: "Fessiers", Mollets: "Mollets",
+                      Adducteurs: "Adducteurs", Abducteurs: "Abducteurs", Tibias: "Tibias",
+                      Cou: "Cou / Trapèzes", Cardio: "Cardio"
                     };
                     return french[k];
                   });
@@ -1100,13 +1108,6 @@ const Analytics = () => {
           )}
         </motion.div>
 
-
-        {/* Export */}
-        <motion.div variants={item}>
-          <button onClick={exportToCSV} className="btn-glass w-full py-4">
-            <Download size={16}/> Exporter les données (CSV)
-          </button>
-        </motion.div>
 
         <AnimatePresence>
           {selectedSession && (
