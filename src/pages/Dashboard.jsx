@@ -462,22 +462,20 @@ const Dashboard = () => {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }} className="glass-card p-5 mb-6">
         <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
         
-        <div className="flex flex-col lg:flex-row gap-6 items-center">
-          <div className="w-full lg:w-1/2 space-y-3">
-            {recovery.map(({ group, label, pct, color, desc }) => (
-              <div key={group} className="pb-2 border-b border-white/5 last:border-b-0 last:pb-0">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold text-slate-300">{group}</span>
-                  <span className="text-[10px] font-black uppercase tracking-wider" style={{ color }}>{label}</span>
-                </div>
-                <div className="progress-track h-1.5 mb-1 bg-white/5">
-                  <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})`, filter: `drop-shadow(0 0 4px ${color}60)` }}
-                    animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
-                </div>
-                <p className="text-[9px] text-slate-500 leading-relaxed">{desc}</p>
+        <div className="space-y-4">
+          {recovery.map(({ group, label, pct, color, desc }) => (
+            <div key={group} className="pb-3 border-b border-white/5 last:border-b-0 last:pb-0">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-bold text-slate-300">{group}</span>
+                <span className="text-xs font-black uppercase tracking-wider" style={{ color }}>{label}</span>
               </div>
-            ))}
-          </div>
+              <div className="progress-track h-2 mb-2 bg-white/5">
+                <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})`, filter: `drop-shadow(0 0 4px ${color}60)` }}
+                  animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
+            </div>
+          ))}
         </div>
       </motion.div>
 

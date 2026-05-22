@@ -976,6 +976,12 @@ const Workout = () => {
         {isTimerRunning && (
           <motion.div className="timer-float cursor-grab active:cursor-grabbing"
             drag
+            dragConstraints={{ 
+              left: -(typeof window !== 'undefined' ? window.innerWidth - 80 : 300), 
+              right: 0, 
+              top: -(typeof window !== 'undefined' ? window.innerHeight - 100 : 500), 
+              bottom: 0 
+            }}
             dragMomentum={false}
             dragElastic={0.2}
             whileDrag={{ scale: 1.05 }}
