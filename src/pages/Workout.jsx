@@ -481,7 +481,7 @@ const Workout = () => {
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
     removeExerciseFromSession, createCustomSession, createCustomSessionWithExercises, deleteCustomSession, renameCustomSession,
-    currentInput, customSchedule, updateCustomSchedule, schedules
+    currentInput, updateCustomSchedule, schedules
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -490,7 +490,7 @@ const Workout = () => {
   const [showCreateSession, setShowCreateSession] = useState(false);
   const [showTemplates, setShowTemplates] = useState(false);
   const [newSessionName, setNewSessionName] = useState("");
-  const [sessionStartTime] = useState(Date.now());
+  const [sessionStartTime] = useState(() => Date.now());
   const [elapsedMin, setElapsedMin] = useState(0);
 
   // Smart Session Builder Wizard State
@@ -509,8 +509,11 @@ const Workout = () => {
 
   const location = useLocation();
   useEffect(() => { 
-    if (location.state?.session) setCurrentSession(location.state.session); 
-    setHasShared(false); 
+    if (location.state?.session) {
+      setCurrentSession(location.state.session); 
+      // eslint-disable-next-line
+      setHasShared(false); 
+    }
   }, [location.state, setCurrentSession]);
 
   const session = userSessions[currentSession] || { category: "Perso", exercises: [], color: "from-indigo-600 to-indigo-800", title: "Séance Personnalisée", focus: "Ta séance sur mesure" };
@@ -620,6 +623,7 @@ const Workout = () => {
     // Sélectionner les exercices de manière équilibrée
     const selected = [];
     const targetCompounds = Math.ceil(numExercises / 2);
+    // eslint-disable-next-line no-unused-vars
     const targetIsolations = numExercises - targetCompounds;
 
     const shuffleArray = (arr) => [...arr].sort(() => 0.5 - Math.random());
