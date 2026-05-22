@@ -14,7 +14,6 @@ import {
   Star, PlayCircle
 } from "lucide-react";
 import Heatmap from "../components/charts/Heatmap";
-import MuscleMap3D from "../components/dashboard/Model3D";
 import OverloadTracker from "../components/dashboard/OverloadTracker";
 
 // ─── Daily Tips ────────────────────────────────────────────────────
@@ -462,10 +461,7 @@ const Dashboard = () => {
         <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
         
         <div className="flex flex-col sm:flex-row gap-6 items-center">
-          <div className="w-full sm:w-1/3 flex-shrink-0">
-            <MuscleMap3D recoveryData={recovery} />
-          </div>
-          <div className="w-full sm:w-2/3 space-y-3">
+          <div className="w-full space-y-3">
             {recovery.map(({ group, label, pct, color, desc }) => (
               <div key={group} className="pb-2 border-b border-white/5 last:border-b-0 last:pb-0">
                 <div className="flex items-center justify-between mb-1">

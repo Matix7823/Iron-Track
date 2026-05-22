@@ -87,6 +87,7 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
               strokeWidth={3}
               fillOpacity={1} 
               fill={`url(#colorValue-${metric})`} 
+              dot={{r: 4, fill: color, stroke: '#fff', strokeWidth: 2}}
               activeDot={{r: 6, fill: '#fff', stroke: color, strokeWidth: 3, boxShadow: `0 0 10px ${color}`}}
               style={{ filter: `url(#glow-${metric})` }}
             />

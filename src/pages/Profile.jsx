@@ -67,14 +67,14 @@ const Profile = () => {
               </div>
               <div className="text-right">
                 <p className="text-[10px] font-bold text-white/60 uppercase">Total XP</p>
-                <p className="text-xl font-black text-white">{progression.xp.toLocaleString()}</p>
+                <p className="text-xl font-black text-white">{(Number(progression?.xp) || Number(userProgression?.xp) || 0).toLocaleString()}</p>
               </div>
             </div>
 
             <div className="mt-6 relative z-10">
               <div className="flex justify-between text-[10px] font-bold text-white/80 mb-2 uppercase tracking-wider">
                 <span>Progression</span>
-                {progression.isMax ? <span>Niveau Max atteint</span> : <span>{progression.xpToNext.toLocaleString()} XP avant {progression.step === 3 ? "le rang suivant" : `le palier ${progression.step + 1}`}</span>}
+                {progression.isMax ? <span>Niveau Max atteint</span> : <span>{(Number(progression?.xpToNext) || 0).toLocaleString()} XP avant {progression.step === 3 ? "le rang suivant" : `le palier ${progression.step + 1}`}</span>}
               </div>
               <div className="h-3 w-full bg-black/30 rounded-full overflow-hidden backdrop-blur-sm border border-white/10 shadow-inner">
                 <motion.div 
@@ -106,7 +106,7 @@ const Profile = () => {
             </div>
             <div className="border-x border-white/5">
               <p className="text-[9px] text-slate-500 uppercase font-bold tracking-wider mb-1">Prochain Palier</p>
-              <p className="text-sm font-black text-amber-400">{progression.xpToNext.toLocaleString()}</p>
+              <p className="text-sm font-black text-amber-400">{(Number(progression?.xpToNext) || 0).toLocaleString()}</p>
             </div>
             <div>
               <p className="text-[9px] text-slate-500 uppercase font-bold tracking-wider mb-1">XP du Jour</p>
@@ -115,29 +115,7 @@ const Profile = () => {
           </div>
         </motion.div>
 
-        {/* Badges / Hauts Faits */}
-        {(() => {
-          const unlocked = checkAchievements(history);
-          return (
-            <motion.div variants={item} className="glass-card p-5 mb-6 border-white/5">
-              <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Trophy size={14} className="text-blue-400" /> Hauts Faits & Badges
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {BADGES_DATA.map(b => {
-                  const isUnlocked = unlocked.includes(b.id);
-                  return (
-                    <div key={b.id} className={`p-3 rounded-xl border flex flex-col items-center justify-center text-center transition-all ${isUnlocked ? 'bg-slate-900/40 border-white/10 shadow-lg' : 'bg-black/20 border-white/5 opacity-50 grayscale'}`}>
-                      <div className="text-3xl mb-2 drop-shadow-md">{b.icon}</div>
-                      <p className={`text-[10px] font-black uppercase mb-1 ${isUnlocked ? b.color : 'text-slate-400'}`}>{b.title}</p>
-                      <p className="text-[8px] text-slate-500 leading-tight">{b.desc}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          );
-        })()}
+
 
         {/* Cyber Neon Themes Selector */}
         <motion.div variants={item} className="glass-card p-5 mb-6 border-white/5">

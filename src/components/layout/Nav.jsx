@@ -142,23 +142,23 @@ export const BottomNav = () => {
         {bottomNavItems.map(({ to, icon: Icon, label, color, activeBg }) => (
           <NavLink key={to} to={to} end={to === "/"}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 px-1.5 py-1.5 rounded-xl transition-all duration-200 min-w-[38px] ${
+              `flex flex-col items-center gap-0.5 px-1 py-1 rounded-xl transition-all duration-200 min-w-[32px] ${
                 isActive ? color : "text-slate-600 hover:text-slate-400"
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <div className="relative flex items-center justify-center w-8 h-8">
-                  <Icon size={20} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
+                <div className="relative flex items-center justify-center w-7 h-7">
+                  <Icon size={18} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
                   {isActive && (
                     <motion.div layoutId="bottom-indicator"
-                      className={`absolute -inset-1 ${activeBg} rounded-xl -z-10`}
+                      className={`absolute -inset-0.5 ${activeBg} rounded-lg -z-10`}
                       transition={{ type: "spring", bounce: 0.25, duration: 0.35 }}
                     />
                   )}
                 </div>
-                <span className={`text-[7px] font-bold uppercase tracking-wider ${isActive ? color : ""}`}>{label}</span>
+                <span className={`text-[6.5px] font-bold uppercase tracking-wider ${isActive ? color : ""}`}>{label}</span>
               </>
             )}
           </NavLink>
