@@ -210,7 +210,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 
 // ─── ExerciseCard ────────────────────────────────────────────────
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
-  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises } = useApp();
+  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight } = useApp();
   const [open, setOpen] = useState(true);
 
   const sets = getSetsForExo(exo.id);
@@ -240,7 +240,26 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const targetReps = parseInt(repsPlaceholder) || 10;
   const prevMetricsForLoad = prevMetrics || currentMetrics;
   const prev1RM = prevMetricsForLoad?.maxWeight && !isCardio ? calculate1RM(prevMetricsForLoad.maxWeight, prevMetricsForLoad.avgRepsAtMax) : 0;
-  const suggestedLoad = prev1RM > 0 ? predictLoad(prev1RM, targetReps) : 0;
+  
+  let suggestedLoad = prev1RM > 0 ? predictLoad(prev1RM, targetReps) : 0;
+  
+  const userAge = parseInt(age) || 30;
+  let adaptedRest = parseInt(exo.rest) || 60;
+  if (userAge >= 50) adaptedRest += 30; // +30s pour récupération système nerveux après 50 ans
+  
+  if (suggestedLoad === 0 && currentBodyWeight > 0 && !isCardio && !isTime) {
+    const isFemale = gender === 'femme';
+    let pct = 0.2;
+    const nameLo = exo.name.toLowerCase();
+    if (nameLo.includes('squat') || nameLo.includes('presse')) pct = isFemale ? 0.35 : 0.6;
+    else if (nameLo.includes('deadlift') || nameLo.includes('soulevé')) pct = isFemale ? 0.4 : 0.7;
+    else if (nameLo.includes('couché') || nameLo.includes('bench')) pct = isFemale ? 0.15 : 0.4;
+    else if (exo.muscle === 'Dos') pct = isFemale ? 0.2 : 0.3;
+    else if (exo.muscle === 'Biceps' || exo.muscle === 'Triceps') pct = 0.05;
+    
+    suggestedLoad = Math.round((currentBodyWeight * pct * (userAge > 50 ? 0.8 : 1)) / 2.5) * 2.5;
+    if (suggestedLoad < 2.5) suggestedLoad = 2.5;
+  }
 
   return (
     <motion.div
@@ -279,7 +298,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
             <Play size={14} fill="currentColor" />
           </button>
           {exo.rest > 0 && (
-            <button onClick={() => startTimer(exo.rest)}
+            <button onClick={() => startTimer(adaptedRest)}
               className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 active:scale-90 transition-all">
               <Timer size={14} />
             </button>
@@ -407,7 +426,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                       onClick={() => {
                         if (!isJunk) {
                           const isCurrentlyDone = set.done;
-                          toggleSetDone(exo.id, si, exo.rest);
+                          toggleSetDone(exo.id, si, adaptedRest);
                           if (!isCurrentlyDone) {
                             hapticMedium();
                           } else {

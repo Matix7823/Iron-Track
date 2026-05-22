@@ -16,7 +16,7 @@ import {
 import Heatmap from "../components/charts/Heatmap";
 import OverloadTracker from "../components/dashboard/OverloadTracker";
 import OnboardingModal from "../components/dashboard/OnboardingModal";
-import MuscleMap3D from "../components/dashboard/Model3D";
+
 
 // ─── Daily Tips ────────────────────────────────────────────────────
 const DAILY_TIPS = [
@@ -477,10 +477,6 @@ const Dashboard = () => {
                 <p className="text-[9px] text-slate-500 leading-relaxed">{desc}</p>
               </div>
             ))}
-          </div>
-          
-          <div className="w-full lg:w-1/2 h-64 lg:h-80 bg-slate-900/50 rounded-2xl border border-white/5 relative overflow-hidden">
-             <MuscleMap3D recoveryData={recovery} />
           </div>
         </div>
       </motion.div>
