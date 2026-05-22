@@ -92,8 +92,8 @@ export const Navbar = () => {
             >
               {({ isActive }) => (
                 <>
-                  <Icon size={13} />
-                  <span className="hidden xl:block">{label}</span>
+                  <Icon size={14} />
+                  <span className={`transition-all duration-300 overflow-hidden whitespace-nowrap ${isActive ? "max-w-[100px] opacity-100 ml-1" : "max-w-0 opacity-0 xl:max-w-[100px] xl:opacity-100 xl:ml-1"}`}>{label}</span>
                   {isActive && (
                     <motion.div layoutId="nav-indicator"
                       className={`absolute inset-0 ${activeBg} rounded-xl -z-10`}

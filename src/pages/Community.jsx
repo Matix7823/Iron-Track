@@ -173,7 +173,8 @@ const Community = () => {
   };
 
   return (
-    <div className="flex flex-col h-[100dvh] pt-4 sm:pt-6 pb-[80px] sm:pb-4 px-3 sm:px-4 max-w-3xl mx-auto w-full relative z-10">
+    <div className="fixed top-0 left-0 right-0 bottom-[80px] sm:bottom-0 overflow-hidden flex flex-col items-center z-10 pt-safe">
+      <div className="flex flex-col w-full max-w-3xl h-full px-3 sm:px-4 pt-4 sm:pt-6">
       
       
       <div className="mb-4 shrink-0 flex items-center justify-between">
@@ -310,6 +311,7 @@ const Community = () => {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

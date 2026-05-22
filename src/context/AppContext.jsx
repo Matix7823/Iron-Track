@@ -613,7 +613,7 @@ export const AppProvider = ({ children }) => {
         if (currentData.userProgression) {
           let baseXP = currentData.userProgression.xp || 0;
           
-          if (baseXP === 0 && validatedHistory) {
+          if (validatedHistory) {
             let totalTonnage = 0;
             let dates = new Set();
             Object.values(validatedHistory).forEach(entries => {
@@ -631,7 +631,11 @@ export const AppProvider = ({ children }) => {
               }
             });
             if (dates.size > 0) {
-              baseXP = (dates.size * 200) + Math.floor(totalTonnage / 10);
+              const trueXP = (dates.size * 200) + Math.floor(totalTonnage / 10);
+              if (baseXP < trueXP) {
+                baseXP = trueXP;
+                currentData.userProgression.lastDate = formatDateFR();
+              }
             }
           }
 
