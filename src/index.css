@@ -569,8 +569,39 @@ input[type="range"].accent-purple { accent-color: #8b5cf6; }
 /* ============================
    SCROLLBAR HIDE + SAFE AREA
    ============================ */
-.scrollbar-hide { -ms-overflow-style:none; scrollbar-width:none; }
-.scrollbar-hide::-webkit-scrollbar { display:none; }
+/* Custom scrollbar-hide that shows a beautiful, ultra-thin sleek scrollbar only on PC (pointer: fine),
+   while keeping it completely hidden on touch devices (pointer: coarse) for a perfect mobile UI. */
+@media (pointer: coarse) {
+  .scrollbar-hide { -ms-overflow-style:none; scrollbar-width:none; }
+  .scrollbar-hide::-webkit-scrollbar { display:none; }
+}
+@media (pointer: fine) {
+  .scrollbar-hide {
+    -ms-overflow-style: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 130, 246, 0.25) transparent;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: block;
+  }
+  .scrollbar-hide::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 99px;
+  }
+  .scrollbar-hide::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.25);
+    border-radius: 99px;
+    border: 1.5px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.25s ease;
+  }
+  .scrollbar-hide::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.65);
+    background-clip: padding-box;
+  }
+}
 .pb-safe { padding-bottom:max(8px, env(safe-area-inset-bottom)); }
 
 /* ============================
