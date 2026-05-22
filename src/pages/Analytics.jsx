@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useApp } from "../context/AppContext";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { parseDate, formatDateFR } from "../utils/date";
@@ -28,6 +28,18 @@ const Analytics = () => {
   
   const [searchExo, setSearchExo] = useState("");
   const [showExoList, setShowExoList] = useState(false);
+
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (listRef.current && !listRef.current.contains(event.target)) {
+        setShowExoList(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Unify the exercises from sessions and the library
   const unifiedCatalog = useMemo(() => {
@@ -854,10 +866,10 @@ const Analytics = () => {
         </motion.div>
 
         {/* Exercise progression */}
-        <motion.div variants={item} className="glass-card p-5 mb-5">
+        <motion.div variants={item} className="glass-card p-5 mb-5 !overflow-visible">
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><BarChart2 size={16} className="text-blue-400"/>Progression par Exercice</h3>
           {/* Searchable Custom Select */}
-          <div className="relative mb-4">
+          <div className="relative mb-4" ref={listRef}>
             <div className="flex items-center bg-slate-900/80 border border-slate-700/60 rounded-2xl px-4 py-3.5 focus-within:ring-2 focus-within:ring-blue-500/50">
               <Search size={16} className="text-slate-500 mr-2" />
               <input
@@ -884,7 +896,7 @@ const Analytics = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-2xl shadow-xl shadow-black/50 z-50 max-h-60 overflow-y-auto"
+                  className="relative mt-2 w-full bg-[#0f172a]/95 border border-slate-700/60 rounded-2xl shadow-xl z-50 max-h-60 overflow-y-auto backdrop-blur-xl"
                 >
                   {filteredExos.length === 0 ? (
                     <div className="p-4 text-center text-slate-500 text-sm">Aucun exercice trouvé</div>
@@ -897,10 +909,10 @@ const Analytics = () => {
                           setSearchExo(exo.name);
                           setShowExoList(false);
                         }}
-                        className="w-full text-left px-4 py-3 border-b border-white/5 hover:bg-slate-700 transition-colors flex items-center justify-between"
+                        className="w-full text-left px-4 py-3 border-b border-white/5 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between gap-3"
                       >
-                        <span className="text-white text-sm font-medium">{exo.name}</span>
-                        <span className="text-[10px] uppercase font-bold text-slate-500 px-2 py-1 bg-black/20 rounded-lg">{exo.muscle}</span>
+                        <span className="text-white text-sm font-medium truncate flex-1">{exo.name}</span>
+                        <span className="text-[10px] uppercase font-bold text-slate-500 px-2 py-1 bg-black/20 rounded-lg shrink-0">{exo.muscle}</span>
                       </button>
                     ))
                   )}

@@ -100,7 +100,7 @@ const Community = () => {
   };
 
   return (
-    <div className="page-container flex flex-col h-[calc(100vh-60px)] sm:h-[calc(100vh-80px)]">
+    <div className="page-container flex flex-col h-[calc(100vh-60px)] sm:h-[calc(100vh-80px)] !pb-[76px] sm:!pb-4">
       <div className="bg-orbs" />
       
       <div className="mb-4 shrink-0 flex items-center justify-between">
@@ -123,7 +123,10 @@ const Community = () => {
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto glass-card border-white/5 p-4 mb-4 space-y-4 scrollbar-hide">
+      <div 
+        className="flex-1 overflow-y-auto glass-card border-white/5 p-4 mb-4 space-y-4"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         {messages.map((msg, idx) => {
           const isMe = msg.user_id === user?.id;
           return (
@@ -162,7 +165,6 @@ const Community = () => {
           <Send size={18} />
         </button>
       </form>
-      <div className="h-24 sm:h-0" />
     </div>
   );
 };

@@ -136,7 +136,7 @@ export const Navbar = () => {
 export const BottomNav = () => {
   return (
     <nav className="sm:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark border-t border-white/5 shadow-2xl">
-      <div className="flex items-center justify-between px-1 py-1.5 pb-safe relative">
+      <div className="flex flex-nowrap items-center justify-between px-1 py-1.5 pb-safe relative overflow-x-auto scrollbar-hide">
         {bottomNavItems.map(({ to, icon: Icon, label, color, activeBg }) => (
           <NavLink key={to} to={to} end={to === "/"}
             className={({ isActive }) =>

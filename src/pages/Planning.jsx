@@ -107,13 +107,13 @@ const Planning = () => {
         </div>
 
         <div className="p-5">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pt-3 pb-2">
             {normalizedSchedule.map((d, i) => {
               const isRest = d.session === "-";
               const s = !isRest ? (sessions[d.session] || userSessions?.[d.session]) : null;
               return (
-                <div key={i} className="flex flex-col items-center gap-1.5 shrink-0 group relative">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500">{getDayLabel(d, i)}</span>
+                <div key={i} className="flex flex-col items-center gap-2 shrink-0 group relative">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">{getDayLabel(d, i)}</span>
                   
                   <div className="relative">
                     <button
@@ -138,8 +138,10 @@ const Planning = () => {
                     {normalizedSchedule.length > 1 && (
                       <button
                         onClick={() => removeDay(i)}
-                        className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-[10px] font-black z-10 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
-                      >×</button>
+                        className="absolute -top-1 -right-1 w-4 h-4 bg-red-500/90 hover:bg-red-500 rounded-full flex items-center justify-center text-white z-10 shadow-md shadow-red-500/30 hover:scale-110 active:scale-90 transition-all"
+                      >
+                        <X size={10} strokeWidth={3.5} />
+                      </button>
                     )}
                   </div>
                   
@@ -283,7 +285,7 @@ const Planning = () => {
             </div>
             
             <div className="p-5 bg-black/20">
-              <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-1">
+              <div className="flex gap-4 overflow-x-auto scrollbar-hide pt-1 pb-3 px-1.5">
                 {prog.days.map((d, i) => {
                   const isRest = d.session === "-";
                   const s = !isRest ? sessions[d.session] : null;

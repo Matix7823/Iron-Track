@@ -754,16 +754,16 @@ const Workout = () => {
       </AnimatePresence>
 
       {/* Session selector */}
-      <div className="flex gap-3 overflow-x-auto pb-4 mb-5 scrollbar-hide snap-x px-1">
+      <div className="flex gap-3 overflow-x-auto pt-3 pb-4 mb-5 scrollbar-hide snap-x px-1">
         {Object.entries(userSessions).map(([key, s]) => {
           const isActive = currentSession === key;
           return (
-            <div key={key} className="relative snap-center shrink-0">
+            <div key={key} className={`relative snap-center shrink-0 transition-all duration-300 ${isActive ? "scale-[1.02]" : "hover:scale-[1.01]"}`}>
               <button 
                 onClick={() => setCurrentSession(key)}
                 className={`w-[88px] h-[80px] rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 relative overflow-hidden ${
                   isActive
-                    ? "bg-gradient-to-br from-blue-600/90 to-indigo-700/90 border-blue-400/50 text-white shadow-lg shadow-blue-500/20 scale-105 ring-2 ring-blue-500/10"
+                    ? "bg-gradient-to-br from-blue-600/90 to-indigo-700/90 border-blue-400/50 text-white shadow-lg shadow-blue-500/20 ring-2 ring-blue-500/10"
                     : "bg-white/4 border-white/5 text-slate-400 hover:border-white/12 hover:text-slate-200"
                 }`}
               >
@@ -786,9 +786,9 @@ const Workout = () => {
                       if(currentSession===key) setCurrentSession('A'); 
                     }
                   }}
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-xs font-black z-20 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white z-20 shadow-md shadow-red-500/30 hover:scale-110 active:scale-90 transition-all"
                 >
-                  ×
+                  <X size={10} strokeWidth={3} />
                 </button>
               )}
             </div>
