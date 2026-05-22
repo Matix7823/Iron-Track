@@ -217,9 +217,12 @@ export const AppProvider = ({ children }) => {
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const { user } = useAuth();
 
-  // Gender biological state
+  // Gender and Age biological state
   const [gender, setGender] = useState(() => {
     return localStorage.getItem("iron_user_gender") || null;
+  });
+  const [age, setAge] = useState(() => {
+    return localStorage.getItem("iron_user_age") || null;
   });
 
   // Theme state
@@ -327,7 +330,7 @@ export const AppProvider = ({ children }) => {
 
   // --- PERSISTENCE ---
   const persistData = useCallback(async (dataToSave) => {
-    const safeData = sanitizeData({ ...dataToSave, version: CURRENT_APP_VERSION, gender });
+    const safeData = sanitizeData({ ...dataToSave, version: CURRENT_APP_VERSION, gender, age });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(safeData));
 
     if (!user) return;
@@ -339,7 +342,7 @@ export const AppProvider = ({ children }) => {
     } catch (err) {
       console.error("Erreur sauvegarde Supabase", err);
     }
-  }, [user, gender]);
+  }, [user, gender, age]);
 
   useEffect(() => {
     const handleOnline = () => {
@@ -460,7 +463,9 @@ export const AppProvider = ({ children }) => {
           dailyNutrition: {},
           customSchedule: defaultSchedule,
           userProgression: { xp: 0, lastDate: formatDateFR() },
+          settings: {},
           gender: null,
+          age: null,
           version: CURRENT_APP_VERSION
         };
 
@@ -608,6 +613,7 @@ export const AppProvider = ({ children }) => {
         setDailyNutrition(currentData.dailyNutrition && typeof currentData.dailyNutrition === 'object' ? currentData.dailyNutrition : {});
         setCustomSchedule(Array.isArray(currentData.customSchedule) ? currentData.customSchedule : defaultSchedule);
         setGender(currentData.gender || localStorage.getItem("iron_user_gender") || null);
+        setAge(currentData.age || localStorage.getItem("iron_user_age") || null);
 
         // --- XP DECAY & PROGRESSION ---
         if (currentData.userProgression) {
@@ -1126,9 +1132,26 @@ export const AppProvider = ({ children }) => {
       customSchedule,
       userProgression,
       dailyNutrition,
-      gender: newGender
+      gender: newGender,
+      age
     });
-  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, customSchedule, userProgression, dailyNutrition, persistData]);
+  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, customSchedule, userProgression, dailyNutrition, persistData, age]);
+
+  const changeAge = useCallback((newAge) => {
+    setAge(newAge);
+    localStorage.setItem("iron_user_age", newAge || "");
+    persistData({
+      history,
+      bodyWeight: bodyWeightHistory,
+      bodyMeasurements,
+      userSessions,
+      customSchedule,
+      userProgression,
+      dailyNutrition,
+      gender,
+      age: newAge
+    });
+  }, [history, bodyWeightHistory, bodyMeasurements, userSessions, customSchedule, userProgression, dailyNutrition, persistData, gender]);
 
   const value = {
     history, bodyWeightHistory, bodyMeasurements, userSessions, isDataLoading,
@@ -1137,6 +1160,7 @@ export const AppProvider = ({ children }) => {
     activeScheduleName, applyProgram,
     theme, setTheme, getThemeClasses,
     gender, changeGender,
+    age, changeAge,
     currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,

@@ -481,7 +481,7 @@ const Workout = () => {
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
     removeExerciseFromSession, createCustomSession, createCustomSessionWithExercises, deleteCustomSession, renameCustomSession,
-    currentInput, updateCustomSchedule, schedules
+    currentInput, updateCustomSchedule, schedules, gender, age
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -531,7 +531,12 @@ const Workout = () => {
     });
     return Math.round((done / total) * 100);
   }, [session.exercises, currentInput]);
+
   const generateSmartSession = () => {
+    // Adapter selon le profil (âge, genre)
+    const isFemale = gender === "femme";
+    const userAge = parseInt(age) || 30;
+    const isOlder = userAge >= 50;
     // 1. Durée / Nombre d'exercices
     let numExercises = 5;
     if (smartDuration === "express") numExercises = 3;
@@ -623,8 +628,6 @@ const Workout = () => {
     // Sélectionner les exercices de manière équilibrée
     const selected = [];
     const targetCompounds = Math.ceil(numExercises / 2);
-    // eslint-disable-next-line no-unused-vars
-    const targetIsolations = numExercises - targetCompounds;
 
     const shuffleArray = (arr) => [...arr].sort(() => 0.5 - Math.random());
     const shuffledCompounds = shuffleArray(compounds.length > 0 ? compounds : pool);
@@ -640,6 +643,16 @@ const Workout = () => {
       if (!selected.some(s => s.id === shuffledIsolations[i].id)) {
         selected.push(shuffledIsolations[i]);
       }
+    }
+
+    // --- Adaptation par Genre : pour femme, favoriser les fessiers si jambes sont ciblées
+    if (isFemale && muscles.includes("Fessiers")) {
+      const glutesExos = pool.filter(e => e.muscle === "Fessiers");
+      glutesExos.forEach(gEx => {
+        if (!selected.some(s => s.id === gEx.id) && selected.length < numExercises) {
+           selected.push(gEx); // Remplacer ou forcer l'ajout
+        }
+      });
     }
 
     // Si on n'a toujours pas assez d'exercices, on pioche au hasard dans le pool global de départ
@@ -662,7 +675,6 @@ const Workout = () => {
       return 0;
     });
 
-    // Formater le titre de la séance
     let titleStr = "";
     if (smartTarget === "pecs_triceps") titleStr += "Pecs & Tri";
     else if (smartTarget === "dos_biceps") titleStr += "Dos & Bi";
@@ -682,7 +694,35 @@ const Workout = () => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     // Créer la séance
-    const nextKey = createCustomSessionWithExercises(titleStr, selected, randomColor);
+    const adaptedExercises = selected.map((exo, idx) => {
+      let sets = 3;
+      let reps = "8-12";
+      const isCompound = compounds.some(c => c.id === exo.id);
+      
+      // Adapter le volume et les répétitions pour les séniors (prévention blessures / santé articulaire)
+      if (isOlder) {
+        sets = 3;
+        reps = "10-15"; 
+      } else {
+        if (isCompound) {
+           sets = 4;
+           reps = "5-8";
+        } else {
+           sets = 3;
+           reps = "10-15";
+        }
+      }
+
+      return {
+        ...exo,
+        sets: String(sets),
+        reps: reps,
+        rest: isOlder ? "120s" : (isCompound ? "120s" : "90s"),
+        notes: isOlder ? "Privilégie l'exécution à la charge. Temps sous tension lent." : (idx === 0 ? "Exercice principal. Surcharge progressive." : "Concentration sur la contraction (mind-muscle connection).")
+      };
+    });
+
+    const nextKey = createCustomSessionWithExercises(titleStr, adaptedExercises, randomColor);
     if (nextKey) {
       setCurrentSession(nextKey);
       triggerHaptic([60, 50, 60]);
@@ -909,7 +949,9 @@ const Workout = () => {
       {/* Floating timer — premium circular style */}
       <AnimatePresence>
         {isTimerRunning && (
-          <motion.div className="timer-float"
+          <motion.div className="timer-float cursor-grab active:cursor-grabbing"
+            drag
+            dragMomentum={false}
             initial={{ opacity:0, y:20, scale:.9 }}
             animate={{ opacity:1, y:0, scale:1 }}
             exit={{ opacity:0, y:20, scale:.9 }}>

@@ -36,7 +36,11 @@ const Heatmap = ({ history }) => {
     // Add real days
     for (let d = 1; d <= numDays; d++) {
       const dateObj = new Date(year, month, d);
-      const dateStr = dateObj.toLocaleDateString('fr-FR');
+      const dateStr = dateObj.toLocaleDateString('fr-FR', {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
       
       // Check if any exercise was completed on this day
       let workedOut = false;

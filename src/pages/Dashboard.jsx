@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import Heatmap from "../components/charts/Heatmap";
 import OverloadTracker from "../components/dashboard/OverloadTracker";
+import OnboardingModal from "../components/dashboard/OnboardingModal";
+import MuscleMap3D from "../components/dashboard/Model3D";
 
 // ─── Daily Tips ────────────────────────────────────────────────────
 const DAILY_TIPS = [
@@ -124,10 +126,10 @@ const Dashboard = () => {
     if (!sorted.length) return 0;
     const msDay = 864e5;
     const now = new Date(); now.setHours(0,0,0,0);
-    if (Math.floor((now - sorted[0]) / msDay) > 1) return 0;
+    if (Math.round((now - sorted[0]) / msDay) > 1) return 0;
     let s = 1;
     for (let i = 1; i < sorted.length; i++) {
-      if (Math.floor((sorted[i-1] - sorted[i]) / msDay) === 1) s++;
+      if (Math.round((sorted[i-1] - sorted[i]) / msDay) === 1) s++;
       else break;
     }
     return s;
@@ -227,7 +229,7 @@ const Dashboard = () => {
 
   return (
     <div className="page-container">
-      
+      <OnboardingModal />
 
       {/* ── OFFLINE BANNER ── */}
       <AnimatePresence>
@@ -460,8 +462,8 @@ const Dashboard = () => {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }} className="glass-card p-5 mb-6">
         <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
         
-        <div className="flex flex-col sm:flex-row gap-6 items-center">
-          <div className="w-full space-y-3">
+        <div className="flex flex-col lg:flex-row gap-6 items-center">
+          <div className="w-full lg:w-1/2 space-y-3">
             {recovery.map(({ group, label, pct, color, desc }) => (
               <div key={group} className="pb-2 border-b border-white/5 last:border-b-0 last:pb-0">
                 <div className="flex items-center justify-between mb-1">
@@ -475,6 +477,10 @@ const Dashboard = () => {
                 <p className="text-[9px] text-slate-500 leading-relaxed">{desc}</p>
               </div>
             ))}
+          </div>
+          
+          <div className="w-full lg:w-1/2 h-64 lg:h-80 bg-slate-900/50 rounded-2xl border border-white/5 relative overflow-hidden">
+             <MuscleMap3D recoveryData={recovery} />
           </div>
         </div>
       </motion.div>
