@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
@@ -334,7 +334,7 @@ const Planning = () => {
                   <>
                     <div className={`p-6 bg-gradient-to-br ${s.color || 'from-slate-800 to-slate-900'} relative`}>
                       <button onClick={() => setPreviewSession(null)} className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 rounded-full text-white transition-colors">
-                        <Trash size={16} className="rotate-45" />
+                        <X size={16} />
                       </button>
                       <div className="flex items-center gap-3 mb-2">
                         <span className="px-2 py-0.5 bg-white/20 rounded text-[10px] font-black text-white uppercase tracking-wider">{previewSession}</span>

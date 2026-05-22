@@ -293,7 +293,7 @@ const Dashboard = () => {
           { label: "Total",      value: totalSessions,      icon: Calendar, color: "text-violet-400", bg: "bg-violet-500/12", border: "border-violet-500/15" },
           { label: "Tonnage 7j", value: weekStats.tonnage >= 1000 ? `${(weekStats.tonnage/1000).toFixed(1)}t` : `${weekStats.tonnage}kg`, icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/12", border: "border-emerald-500/15" },
         ].map(({ label, value, suffix = "", icon: Icon, color, bg, border }) => (
-          <motion.div key={label} variants={item} className={`stat-card text-center py-3 px-2 border ${border}`}>
+          <motion.div key={label} variants={item} className={`stat-card text-center border ${border}`}>
             <div className={`w-7 h-7 rounded-xl ${bg} flex items-center justify-center mx-auto mb-2`}>
               <Icon size={14} className={color} />
             </div>
