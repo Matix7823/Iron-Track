@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 import { exerciseLibrary } from "../data/exerciseLibrary";
-import { normalizeHistory, getPerformanceMetrics, calculate1RM } from "../utils/metrics";
+import { normalizeHistory, getPerformanceMetrics, calculate1RM, predictLoad } from "../utils/metrics";
 import {
   Save, CheckCircle2, Circle, Timer, PlayCircle, Flame, Zap,
   Target, Activity, AlertTriangle, TrendingDown, Clock,
@@ -236,6 +236,11 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const currentMetrics = getPerformanceMetrics(sets.filter(s => s.done));
   const oneRM = currentMetrics?.maxWeight && !isCardio ? calculate1RM(currentMetrics.maxWeight, currentMetrics.avgRepsAtMax) : 0;
   const repsPlaceholder = exo.reps ? (exo.reps.includes("-") ? exo.reps.split("-")[1] : exo.reps.replace(/\D/g,"")) : "—";
+  
+  const targetReps = parseInt(repsPlaceholder) || 10;
+  const prevMetricsForLoad = prevMetrics || currentMetrics;
+  const prev1RM = prevMetricsForLoad?.maxWeight && !isCardio ? calculate1RM(prevMetricsForLoad.maxWeight, prevMetricsForLoad.avgRepsAtMax) : 0;
+  const suggestedLoad = prev1RM > 0 ? predictLoad(prev1RM, targetReps) : 0;
 
   return (
     <motion.div
@@ -323,7 +328,10 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
               {/* Header row */}
               <div className="flex items-center justify-between text-[10px] font-bold text-blue-400 px-1">
                 <span className="flex items-center gap-1"><Activity size={10} /> Obj: {exo.sets} × {exo.reps} {isTime ? (exo.unit==="minutes"?"min":"sec") : "reps"}</span>
-                {oneRM > 0 && <span className="text-slate-500">1RM est. : <span className="text-white">{oneRM}kg</span></span>}
+                <div className="flex gap-2">
+                  {suggestedLoad > 0 && <span className="text-emerald-400">Sug. : {suggestedLoad}kg</span>}
+                  {oneRM > 0 && <span className="text-slate-500">1RM est. : <span className="text-white">{oneRM}kg</span></span>}
+                </div>
               </div>
 
               {(() => {
@@ -761,7 +769,7 @@ const Workout = () => {
 
   return (
     <div className="page-container">
-      <div className="bg-orbs" />
+      
 
       {/* ── SESSION PROGRESS BAR (sticky top) ── */}
       {session.exercises.length > 0 && (

@@ -54,10 +54,24 @@
 }
 
 /* ============================
-   ANIMATED BACKGROUND ORBS
+   ANIMATED BACKGROUND ORBS & PARTICLES
    ============================ */
 .bg-orbs {
   position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+}
+.bg-orbs-particles {
+  position: absolute; inset: 0;
+  background-image: 
+    radial-gradient(circle at center, rgba(255,255,255,0.03) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(255,255,255,0.015) 2px, transparent 2px);
+  background-size: 60px 60px, 120px 120px;
+  background-position: 0 0, 30px 30px;
+  animation: particles-drift 60s linear infinite;
+  opacity: 0.6;
+}
+@keyframes particles-drift {
+  0% { background-position: 0 0, 30px 30px; }
+  100% { background-position: 60px 60px, 150px 150px; }
 }
 .bg-orbs::before {
   content: '';
@@ -91,8 +105,13 @@
 }
 
 /* ============================
-   GLASS SYSTEM
+   GLASS SYSTEM & NOISE
    ============================ */
+.glass-noise::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.12; pointer-events: none; border-radius: inherit; z-index: 0; mix-blend-mode: overlay;
+}
 .glass {
   background: rgba(255,255,255,.038);
   backdrop-filter: blur(20px) saturate(180%);
@@ -400,6 +419,16 @@ input[type="range"].accent-purple { accent-color: #8b5cf6; }
 .animate-pop-in       { animation:pop-in .5s cubic-bezier(.34,1.56,.64,1) both; }
 .animate-slide-up     { animation:slide-up-fade .4s ease both; }
 .animate-glow-pulse   { animation:glow-pulse 2s ease-in-out infinite; }
+.animate-glitch       { animation:glitch .3s cubic-bezier(.25,.46,.45,.94) both; }
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
 
 .skeleton {
   background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.04) 75%);

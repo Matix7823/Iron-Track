@@ -24,6 +24,34 @@ export const hapticMedium = async () => {
 };
 
 /**
+ * Play a beep sound when the timer ends
+ */
+export const playTimerEndSound = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime); // 880Hz
+    osc.frequency.setValueAtTime(1200, ctx.currentTime + 0.1);
+    
+    osc.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    
+    osc.start();
+    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.5);
+    osc.stop(ctx.currentTime + 0.5);
+  } catch (e) {
+    console.error("Audio error:", e);
+  }
+};
+
+/**
  * Trigger a success vibration
  */
 export const hapticSuccess = async () => {

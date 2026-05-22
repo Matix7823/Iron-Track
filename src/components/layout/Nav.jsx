@@ -26,6 +26,7 @@ const navItems = [
   { to: "/community",  icon: MessageSquare,   label: "Social",   color: "text-purple-400",  activeBg: "bg-purple-500/15"  },
   { to: "/planning",   icon: Calendar,        label: "Planning", color: "text-violet-400",  activeBg: "bg-violet-500/15"  },
   { to: "/exercises",  icon: BookOpen,        label: "Encyclo",  color: "text-amber-400",   activeBg: "bg-amber-500/15"   },
+  { to: "/profile",    icon: Users,           label: "Profil",   color: "text-orange-400",  activeBg: "bg-orange-500/15"  },
 ];
 
 const useStreak = (history) => React.useMemo(() => {

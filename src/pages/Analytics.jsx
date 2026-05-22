@@ -401,7 +401,7 @@ const Analytics = () => {
 
   return (
     <div className="page-container">
-      <div className="bg-orbs" />
+      
       <motion.div variants={container} initial="hidden" animate="visible">
 
         {/* ── PREMIUM HEADER ── */}

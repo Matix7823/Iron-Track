@@ -3,12 +3,15 @@ import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
 import { showNotification } from "../utils/native";
 import { motion } from "framer-motion";
-import { Send, Trophy, Clock, Dumbbell, Flame, Target, Users } from "lucide-react";
+import { Send, Trophy, Clock, Dumbbell, Flame, Target, Users, ImagePlus, X, Loader2 } from "lucide-react";
 
 const Community = () => {
   const { user, profile } = useAuth();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
@@ -72,20 +75,66 @@ const Community = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleImageSelect = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert("L'image est trop lourde (max 5 Mo)");
+        return;
+      }
+      setSelectedImage(file);
+    }
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const sendMessage = async (e) => {
     e?.preventDefault();
-    if (!newMessage.trim() || !user) return;
+    if ((!newMessage.trim() && !selectedImage) || !user || isUploading) return;
 
-    const messageText = newMessage;
-    setNewMessage("");
+    setIsUploading(true);
+    let imageUrl = null;
 
-    await supabase.from('messages').insert([
-      {
-        user_id: user.id,
-        user_email: capitalizedName,
-        content: messageText,
+    try {
+      if (selectedImage) {
+        const fileExt = selectedImage.name.split('.').pop();
+        const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+        const filePath = `${user.id}/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from('chat-photos')
+          .upload(filePath, selectedImage);
+
+        if (uploadError) throw uploadError;
+
+        const { data: { publicUrl } } = supabase.storage
+          .from('chat-photos')
+          .getPublicUrl(filePath);
+
+        imageUrl = publicUrl;
       }
-    ]);
+
+      const messageText = newMessage;
+      setNewMessage("");
+      removeImage();
+
+      await supabase.from('messages').insert([
+        {
+          user_id: user.id,
+          user_email: capitalizedName,
+          content: messageText,
+          image_url: imageUrl
+        }
+      ]);
+    } catch (err) {
+      console.error("Erreur lors de l'envoi :", err);
+      alert("Erreur lors de l'envoi de l'image. As-tu bien configuré le bucket 'chat-photos' ?");
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const renderWorkoutCard = (workoutData) => {
@@ -125,7 +174,7 @@ const Community = () => {
 
   return (
     <div className="page-container flex flex-col h-[calc(100dvh-60px)] sm:h-[calc(100dvh-80px)] !pb-[76px] sm:!pb-4">
-      <div className="bg-orbs" />
+      
       
       <div className="mb-4 shrink-0 flex items-center justify-between">
         <div>
@@ -155,19 +204,55 @@ const Community = () => {
       >
         {messages.map((msg, idx) => {
           const isMe = msg.user_id === user?.id;
+          const showAvatarAndName = idx === 0 || messages[idx - 1].user_id !== msg.user_id;
+          const initial = msg.user_email ? msg.user_email.charAt(0).toUpperCase() : "U";
+          
           return (
             <motion.div 
               key={msg.id || idx}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
+              className={`flex w-full ${isMe ? 'justify-end' : 'justify-start'} ${showAvatarAndName ? 'mt-4' : 'mt-1'}`}
             >
-              <span className="text-[10px] text-slate-500 mb-1 ml-1 font-bold">{isMe ? 'Moi' : msg.user_email}</span>
-              <div className={`max-w-[85%] rounded-2xl p-3 ${isMe ? 'bg-blue-600/20 border border-blue-500/30 text-white rounded-tr-sm' : 'bg-slate-800/50 border border-slate-700/50 text-slate-200 rounded-tl-sm'}`}>
-                {msg.content && <p className="text-sm whitespace-pre-wrap">{msg.content}</p>}
-                {msg.workout_data && renderWorkoutCard(msg.workout_data)}
+              {!isMe && (
+                <div className="flex flex-col items-center mr-2 shrink-0 w-8">
+                  {showAvatarAndName ? (
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md text-xs">
+                      {initial}
+                    </div>
+                  ) : (
+                    <div className="w-8" />
+                  )}
+                </div>
+              )}
+              
+              <div className={`flex flex-col max-w-[75%] sm:max-w-[65%] ${isMe ? 'items-end' : 'items-start'}`}>
+                {showAvatarAndName && (
+                  <span className={`text-[10px] text-slate-500 mb-1 font-bold ${isMe ? 'mr-1' : 'ml-1'}`}>
+                    {isMe ? 'Moi' : msg.user_email}
+                  </span>
+                )}
+                
+                <div 
+                  className={`p-3 relative ${isMe 
+                    ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-[0_4px_15px_rgba(37,99,235,0.2)]' 
+                    : 'bg-slate-800 border border-white/5 text-slate-100 shadow-[0_4px_15px_rgba(0,0,0,0.2)]'} 
+                  ${showAvatarAndName && isMe ? 'rounded-2xl rounded-tr-sm' : ''}
+                  ${showAvatarAndName && !isMe ? 'rounded-2xl rounded-tl-sm' : ''}
+                  ${!showAvatarAndName ? 'rounded-2xl' : ''}`}
+                >
+                  {msg.image_url && (
+                    <div className="mb-2 rounded-xl overflow-hidden bg-black/40 border border-white/10 relative group">
+                      <img src={msg.image_url} alt="Uploaded" className="w-full h-auto max-h-64 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => window.open(msg.image_url, '_blank')} />
+                    </div>
+                  )}
+                  {msg.content && <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>}
+                  {msg.workout_data && renderWorkoutCard(msg.workout_data)}
+                </div>
+                <span className={`text-[8px] text-slate-600 mt-1 ${isMe ? 'mr-1' : 'ml-1'}`}>
+                  {new Date(msg.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}
+                </span>
               </div>
-              <span className="text-[8px] text-slate-600 mt-1 mr-1">{new Date(msg.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}</span>
             </motion.div>
           );
         })}
@@ -175,21 +260,55 @@ const Community = () => {
       </div>
 
       {/* Input Area */}
-      <form onSubmit={sendMessage} className="shrink-0 flex gap-2">
-        <input 
-          type="text" 
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Écris un message..."
-          className="input-premium flex-1"
-        />
-        <button 
-          type="submit" 
-          disabled={!newMessage.trim()}
-          className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white disabled:opacity-50 disabled:bg-slate-700 transition-colors shrink-0"
-        >
-          <Send size={18} />
-        </button>
+      <form onSubmit={sendMessage} className="shrink-0 flex flex-col gap-2">
+        {selectedImage && (
+          <div className="relative self-start mb-1 ml-1">
+            <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-blue-500 relative">
+              <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/20" />
+            </div>
+            <button 
+              type="button" 
+              onClick={removeImage}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-transform shadow-lg"
+            >
+              <X size={12} />
+            </button>
+          </div>
+        )}
+        
+        <div className="flex gap-2">
+          <input 
+            type="file" 
+            accept="image/*" 
+            ref={fileInputRef} 
+            onChange={handleImageSelect} 
+            className="hidden" 
+          />
+          <button 
+            type="button" 
+            onClick={() => fileInputRef.current?.click()}
+            className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors shrink-0 ${selectedImage ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-slate-800/50 text-slate-400 hover:text-white hover:bg-slate-700/50 border border-transparent hover:border-slate-600'}`}
+          >
+            <ImagePlus size={20} />
+          </button>
+          
+          <input 
+            type="text" 
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder={selectedImage ? "Ajouter une description..." : "Écris un message..."}
+            className="input-premium flex-1"
+          />
+          
+          <button 
+            type="submit" 
+            disabled={(!newMessage.trim() && !selectedImage) || isUploading}
+            className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white disabled:opacity-50 disabled:bg-slate-700 transition-colors shrink-0"
+          >
+            {isUploading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,6 +1,19 @@
 import React from "react";
 import { BarChart2 } from "lucide-react";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { getPerformanceMetrics } from "../../utils/metrics";
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="glass-dark border border-white/10 p-2 rounded-xl shadow-2xl">
+        <p className="text-[10px] text-slate-400 font-bold mb-1">{label}</p>
+        <p className="text-sm font-black text-white">{payload[0].value} <span className="text-[10px] text-slate-500 font-normal">pts</span></p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
   if (!data || data.length === 0) {
@@ -13,37 +26,21 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
     );
   }
 
-  const height = 240;
-  const paddingTop = 36;
-  const paddingBottom = 50;
-  const paddingX = 24;
-  const chartWidth = 300;
-
-  const values = data.map((d) => {
-    if (metric === "bodyweight") return parseFloat(d.value || 0);
-    const metrics = getPerformanceMetrics(d.setsData);
-    if (!metrics) return 0;
-    if (metric === "weight") return metrics.maxWeight;
-    if (metric === "reps") return metrics.avgRepsAtMax;
-    if (metric === "sets") return metrics.topSetsCount;
-    return 0;
+  const chartData = data.map((d) => {
+    let val = 0;
+    if (metric === "bodyweight") val = parseFloat(d.value || 0);
+    else {
+      const metrics = getPerformanceMetrics(d.setsData);
+      if (metrics) {
+        if (metric === "weight") val = metrics.maxWeight;
+        if (metric === "reps") val = metrics.avgRepsAtMax;
+        if (metric === "sets") val = metrics.topSetsCount;
+      }
+    }
+    const dateStr = String(d.date || '');
+    const shortDate = dateStr.length >= 5 ? dateStr.slice(0,5) : dateStr;
+    return { name: shortDate, value: Math.round(val * 10) / 10 };
   });
-
-  const minVal = Math.min(...values) * 0.93;
-  const maxVal = Math.max(...values) * 1.07;
-  const range = maxVal - minVal || 1;
-
-  const getY = (val) =>
-    height - paddingBottom - ((val - minVal) / range) * (height - paddingBottom - paddingTop);
-  const getX = (index) => {
-    if (data.length === 1) return chartWidth / 2;
-    return paddingX + (index / (data.length - 1)) * (chartWidth - paddingX * 2);
-  };
-
-  const points = data.map((d, i) => `${getX(i)},${getY(values[i])}`).join(" ");
-
-  // Area fill gradient
-  const areaPoints = `${getX(0)},${height - paddingBottom} ${points} ${getX(data.length - 1)},${height - paddingBottom}`;
 
   const legendLabel =
     metric === "weight" ? "Charge Max (kg)" :
@@ -51,83 +48,50 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
     metric === "bodyweight" ? "Poids Corps (kg)" :
     "Séries au Max";
 
+  const minVal = Math.min(...chartData.map(d => d.value));
+  const domainMin = minVal > 10 ? minVal * 0.9 : 0;
+
   return (
     <div className="w-full glass rounded-2xl border border-white/5 shadow-xl relative overflow-hidden">
-      <div className="px-4 pt-4 pb-1 flex justify-between items-center">
+      <div className="px-4 pt-4 pb-2 flex justify-between items-center z-10 relative">
         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Progression</span>
         <div className="flex items-center gap-2 bg-black/30 px-3 py-1 rounded-full border border-white/10">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }} />
           <span className="text-xs font-bold text-slate-300">{legendLabel}</span>
         </div>
       </div>
-      <div className="overflow-x-auto overflow-y-hidden">
-        <svg viewBox={`0 0 ${chartWidth} ${height}`} className="w-full overflow-visible min-w-[300px]" style={{ height: `${height}px` }}>
-          <defs>
-            <linearGradient id={`areaGrad-${metric}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity="0.25" />
-              <stop offset="100%" stopColor={color} stopOpacity="0.01" />
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-              <feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-
-          {/* Grid lines */}
-          {[0, 0.25, 0.5, 0.75, 1].map((pos, i) => (
-            <line key={i}
-              x1="0" y1={paddingTop + (height - paddingBottom - paddingTop) * pos}
-              x2={chartWidth} y2={paddingTop + (height - paddingBottom - paddingTop) * pos}
-              stroke="rgba(255,255,255,0.05)" strokeWidth="1"
+      
+      <div className="h-[220px] w-full -ml-3 -mb-2 mt-2">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+            <defs>
+              <linearGradient id={`colorValue-${metric}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={color} stopOpacity={0.6}/>
+                <stop offset="95%" stopColor={color} stopOpacity={0}/>
+              </linearGradient>
+              <filter id={`glow-${metric}`}>
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 10, fontWeight: 'bold'}} dy={5} />
+            <YAxis hide={true} domain={[domainMin, 'auto']} />
+            <Tooltip content={<CustomTooltip />} cursor={{stroke: 'rgba(255,255,255,0.1)', strokeWidth: 1, strokeDasharray: '4 4'}} />
+            <Area 
+              type="monotone" 
+              dataKey="value" 
+              stroke={color} 
+              strokeWidth={3}
+              fillOpacity={1} 
+              fill={`url(#colorValue-${metric})`} 
+              activeDot={{r: 6, fill: '#fff', stroke: color, strokeWidth: 3, boxShadow: `0 0 10px ${color}`}}
+              style={{ filter: `url(#glow-${metric})` }}
             />
-          ))}
-
-          {/* Area fill */}
-          {data.length > 1 && (
-            <polygon
-              fill={`url(#areaGrad-${metric})`}
-              points={areaPoints}
-            />
-          )}
-
-          {/* Line */}
-          {data.length > 1 && (
-            <polyline
-              fill="none"
-              stroke={color}
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              points={points}
-              filter="url(#glow)"
-            />
-          )}
-
-          {/* Data points */}
-          {data.map((d, i) => {
-            const xPos = getX(i);
-            const yPos = getY(values[i]);
-            const dateStr = String(d.date || '');
-            // Show short date: "30/04" instead of full date
-            const shortDate = dateStr.length >= 5 ? dateStr.slice(0,5) : dateStr;
-            return (
-              <g key={i}>
-                <circle cx={xPos} cy={yPos} r="8" fill={color} opacity="0.1" />
-                <circle cx={xPos} cy={yPos} r="4" fill="#0d1117" stroke={color} strokeWidth="2" />
-                <text x={xPos} y={yPos - 13} textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="800">
-                  {Math.round(values[i] * 10) / 10}
-                </text>
-                <text
-                  x={xPos} y={height - 10}
-                  textAnchor="middle" fill="#94a3b8" fontSize="9"
-                  fontFamily="monospace" fontWeight="bold"
-                >
-                  {shortDate}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

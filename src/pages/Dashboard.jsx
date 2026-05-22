@@ -14,6 +14,8 @@ import {
   Star, PlayCircle
 } from "lucide-react";
 import Heatmap from "../components/charts/Heatmap";
+import MuscleMap3D from "../components/dashboard/Model3D";
+import OverloadTracker from "../components/dashboard/OverloadTracker";
 
 // ─── Daily Tips ────────────────────────────────────────────────────
 const DAILY_TIPS = [
@@ -226,7 +228,7 @@ const Dashboard = () => {
 
   return (
     <div className="page-container">
-      <div className="bg-orbs" />
+      
 
       {/* ── OFFLINE BANNER ── */}
       <AnimatePresence>
@@ -301,7 +303,7 @@ const Dashboard = () => {
       </AnimatePresence>
 
       {/* ── STATS ROW ── */}
-      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-4 gap-2 mb-6">
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-4 gap-2 mb-4">
         {[
           { label: "Séances 7j", value: weekStats.sessions, icon: Dumbbell, color: "text-blue-400", bg: "bg-blue-500/12", border: "border-blue-500/15" },
           { label: "Streak",     value: streak,             icon: Flame,   color: "text-orange-400", bg: "bg-orange-500/12", border: "border-orange-500/15", suffix: streak > 0 ? "🔥" : "" },
@@ -316,6 +318,11 @@ const Dashboard = () => {
             <p className="text-[8px] text-slate-600 uppercase tracking-wider">{label}</p>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* ── PROGRESSIVE OVERLOAD ── */}
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }} className="mb-6">
+        <OverloadTracker history={history} />
       </motion.div>
 
       {/* ── CONSEIL DU JOUR ── */}
@@ -453,20 +460,26 @@ const Dashboard = () => {
       {/* ── RÉCUPÉRATION MUSCULAIRE ── */}
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }} className="glass-card p-5 mb-6">
         <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
-        <div className="space-y-4">
-          {recovery.map(({ group, label, pct, color, desc }) => (
-            <div key={group} className="pb-3 border-b border-white/5 last:border-b-0 last:pb-0">
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs font-bold text-slate-300">{group}</span>
-                <span className="text-xs font-black" style={{ color }}>{label} — {pct}%</span>
+        
+        <div className="flex flex-col sm:flex-row gap-6 items-center">
+          <div className="w-full sm:w-1/3 flex-shrink-0">
+            <MuscleMap3D recoveryData={recovery} />
+          </div>
+          <div className="w-full sm:w-2/3 space-y-3">
+            {recovery.map(({ group, label, pct, color, desc }) => (
+              <div key={group} className="pb-2 border-b border-white/5 last:border-b-0 last:pb-0">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-bold text-slate-300">{group}</span>
+                  <span className="text-[10px] font-black uppercase tracking-wider" style={{ color }}>{label}</span>
+                </div>
+                <div className="progress-track h-1.5 mb-1 bg-white/5">
+                  <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})`, filter: `drop-shadow(0 0 4px ${color}60)` }}
+                    animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
+                </div>
+                <p className="text-[9px] text-slate-500 leading-relaxed">{desc}</p>
               </div>
-              <div className="progress-track h-2 mb-1.5">
-                <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})` }}
-                  animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
-              </div>
-              <p className="text-[10px] text-slate-500 leading-relaxed">{desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </motion.div>
 

@@ -6,7 +6,7 @@ import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../utils/metrics";
 import { sanitizeData } from "../utils/security";
 import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../utils/progression";
-import { scheduleRestNotification, cancelRestNotification } from "../utils/native";
+import { scheduleRestNotification, cancelRestNotification, playTimerEndSound } from "../utils/native";
 import { triggerHaptic } from "../utils/haptics";
 
 // --- EXERCICES SPECIFIQUES HYPERTROPHIE/VOLUME POUR LE PLANNING 5J (U/L/P/P/L) ---
@@ -612,7 +612,11 @@ export const AppProvider = ({ children }) => {
         // --- XP DECAY & PROGRESSION ---
         if (currentData.userProgression) {
           const decayedXP = calculateXPDecay(currentData.userProgression.xp, currentData.userProgression.lastDate);
-          const updatedProgression = { ...currentData.userProgression, xp: decayedXP };
+          let todayXP = currentData.userProgression.todayXP || 0;
+          if (currentData.userProgression.lastDate !== formatDateFR()) {
+            todayXP = 0; // reset if it's a new day
+          }
+          const updatedProgression = { ...currentData.userProgression, xp: decayedXP, todayXP };
           setUserProgression(updatedProgression);
           currentData.userProgression = updatedProgression;
         } else {
@@ -845,6 +849,7 @@ export const AppProvider = ({ children }) => {
             if (remaining <= 0) {
               setIsTimerRunning(false);
               localStorage.removeItem('iron_track_timer_end_time');
+              playTimerEndSound();
             }
           } else {
             setIsTimerRunning(false);
@@ -1004,8 +1009,10 @@ export const AppProvider = ({ children }) => {
     // --- XP GAIN ---
     const gainedXP = calculateSessionXP(totalTonnage, energyLevel);
     setUserProgression(prev => {
+      const isToday = prev.lastDate === date;
+      const todayXP = (isToday ? (prev.todayXP || 0) : 0) + gainedXP;
       const newXP = prev.xp + gainedXP;
-      const newProg = { xp: newXP, lastDate: date };
+      const newProg = { ...prev, xp: newXP, lastDate: date, lastSessionXP: gainedXP, todayXP };
       persistData({ ...dataToSave, userProgression: newProg });
       return newProg;
     });

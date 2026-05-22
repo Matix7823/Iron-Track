@@ -50,6 +50,11 @@ export const calculate1RM = (weight, reps) => {
   return Math.round(weight * (1 + reps / 30));
 };
 
+export const predictLoad = (oneRM, targetReps) => {
+  if (!oneRM || !targetReps) return 0;
+  return Math.round(oneRM / (1 + targetReps / 30));
+};
+
 export const getStrengthStandard = (exerciseType, rm, bw, gender = "homme") => {
   if (rm === 0 || bw === 0) return { rank: "-", color: "text-slate-500" };
   const ratio = rm / bw;

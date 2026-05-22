@@ -83,9 +83,12 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
 };
 
 const AppLayout = ({ children }) => (
-  <div className="min-h-screen">
+  <div className="min-h-screen relative">
+    <div className="bg-orbs">
+      <div className="bg-orbs-particles"></div>
+    </div>
     <Navbar />
-    <main>{children}</main>
+    <main className="relative z-10">{children}</main>
     <BottomNav />
   </div>
 );
@@ -96,10 +99,10 @@ import GenderOnboardingModal from "./components/layout/GenderOnboardingModal";
 
 const AnimatedPage = ({ children }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.98, y: 10 }}
-    animate={{ opacity: 1, scale: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 1.02, y: -10 }}
-    transition={{ duration: 0.25, ease: "easeInOut" }}
+    initial={{ opacity: 0, x: 15 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -15 }}
+    transition={{ duration: 0.3, ease: "circOut" }}
     className="w-full h-full"
   >
     {children}

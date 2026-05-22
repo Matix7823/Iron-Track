@@ -252,7 +252,7 @@ const ExerciseLibrary = () => {
 
   return (
     <div className="page-container">
-      <div className="bg-orbs" />
+      
 
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
