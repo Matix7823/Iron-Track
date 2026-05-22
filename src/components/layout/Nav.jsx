@@ -5,15 +5,16 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import { useApp } from "../../context/AppContext";
 
-// 7 items in bottom nav (mobile)
+// 8 items in bottom nav (mobile)
 const bottomNavItems = [
-  { to: "/",           icon: LayoutDashboard, label: "Home",    color: "text-blue-400",    activeBg: "bg-blue-500/15"   },
-  { to: "/workout",    icon: Dumbbell,        label: "Séance",  color: "text-cyan-400",    activeBg: "bg-cyan-500/15"   },
-  { to: "/exercises",  icon: BookOpen,        label: "Encyclo", color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
-  { to: "/analytics",  icon: Activity,        label: "Stats",   color: "text-emerald-400", activeBg: "bg-emerald-500/15"},
-  { to: "/pr-tracker", icon: Trophy,          label: "Records", color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
-  { to: "/community",  icon: MessageSquare,   label: "Social",  color: "text-purple-400",  activeBg: "bg-purple-500/15" },
-  { to: "/profile",    icon: Users,           label: "Profil",  color: "text-orange-400",  activeBg: "bg-orange-500/15" },
+  { to: "/",           icon: LayoutDashboard, label: "Home",     color: "text-blue-400",    activeBg: "bg-blue-500/15"   },
+  { to: "/workout",    icon: Dumbbell,        label: "Séance",   color: "text-cyan-400",    activeBg: "bg-cyan-500/15"   },
+  { to: "/planning",   icon: Calendar,        label: "Planning", color: "text-violet-400",  activeBg: "bg-violet-500/15" },
+  { to: "/exercises",  icon: BookOpen,        label: "Encyclo",  color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
+  { to: "/analytics",  icon: Activity,        label: "Stats",    color: "text-emerald-400", activeBg: "bg-emerald-500/15"},
+  { to: "/pr-tracker", icon: Trophy,          label: "Records",  color: "text-amber-400",   activeBg: "bg-amber-500/15"  },
+  { to: "/community",  icon: MessageSquare,   label: "Social",   color: "text-purple-400",  activeBg: "bg-purple-500/15" },
+  { to: "/profile",    icon: Users,           label: "Profil",   color: "text-orange-400",  activeBg: "bg-orange-500/15" },
 ];
 
 // Desktop nav — 7 items max to avoid overflow
@@ -136,19 +137,19 @@ export const Navbar = () => {
 export const BottomNav = () => {
   return (
     <nav className="sm:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark border-t border-white/5 shadow-2xl">
-      <div className="flex flex-nowrap items-center justify-between px-1 py-1.5 pb-safe relative overflow-x-auto scrollbar-hide">
+      <div className="flex flex-nowrap items-center justify-between px-0.5 pt-1.5 pb-safe relative overflow-x-auto scrollbar-hide" style={{ paddingBottom: `calc(max(10px, env(safe-area-inset-bottom)) + 6px)` }}>
         {bottomNavItems.map(({ to, icon: Icon, label, color, activeBg }) => (
           <NavLink key={to} to={to} end={to === "/"}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-1 py-1 rounded-xl transition-all duration-200 min-w-[42px] xs:min-w-[46px] ${
+              `flex flex-col items-center gap-1 px-1.5 py-1.5 rounded-xl transition-all duration-200 min-w-[38px] ${
                 isActive ? color : "text-slate-600 hover:text-slate-400"
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <div className="relative flex items-center justify-center">
-                  <Icon size={17} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
+                <div className="relative flex items-center justify-center w-8 h-8">
+                  <Icon size={20} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
                   {isActive && (
                     <motion.div layoutId="bottom-indicator"
                       className={`absolute -inset-1 ${activeBg} rounded-xl -z-10`}
@@ -156,7 +157,7 @@ export const BottomNav = () => {
                     />
                   )}
                 </div>
-                <span className={`text-[6px] xs:text-[6.5px] font-bold uppercase tracking-wider ${isActive ? color : ""}`}>{label}</span>
+                <span className={`text-[7px] font-bold uppercase tracking-wider ${isActive ? color : ""}`}>{label}</span>
               </>
             )}
           </NavLink>
