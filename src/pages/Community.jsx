@@ -193,7 +193,7 @@ const Community = () => {
   };
 
   return (
-    <div className="fixed inset-0 pt-safe pb-[80px] sm:pb-[20px] flex flex-col items-center z-10 overflow-hidden bg-[#020617]">
+    <div className="fixed inset-0 pt-[60px] pb-[80px] sm:pb-[20px] flex flex-col items-center z-10 overflow-hidden bg-[#020617]">
       {/* Dynamic Background */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
