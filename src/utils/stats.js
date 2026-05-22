@@ -21,12 +21,12 @@ export const getWorkoutStreak = (history) => {
 
   // Allow today or yesterday to start streak
   const msPerDay = 24 * 60 * 60 * 1000;
-  const dayDiff = Math.floor((current - sorted[0]) / msPerDay);
+  const dayDiff = Math.round((current - sorted[0]) / msPerDay);
   if (dayDiff > 1) return 0;
 
   streak = 1;
   for (let i = 1; i < sorted.length; i++) {
-    const diff = Math.floor((sorted[i - 1] - sorted[i]) / msPerDay);
+    const diff = Math.round((sorted[i - 1] - sorted[i]) / msPerDay);
     if (diff === 1) streak++;
     else break;
   }

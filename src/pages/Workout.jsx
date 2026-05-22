@@ -952,6 +952,8 @@ const Workout = () => {
           <motion.div className="timer-float cursor-grab active:cursor-grabbing"
             drag
             dragMomentum={false}
+            dragElastic={0.2}
+            whileDrag={{ scale: 1.05 }}
             initial={{ opacity:0, y:20, scale:.9 }}
             animate={{ opacity:1, y:0, scale:1 }}
             exit={{ opacity:0, y:20, scale:.9 }}>

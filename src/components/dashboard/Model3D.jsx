@@ -198,30 +198,32 @@ export const MuscleMap3D = ({ recoveryData = [] }) => {
   return (
     <div className="w-full h-full relative" style={{ minHeight: '300px' }}>
       <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-        <color attach="background" args={['transparent']} />
-        
-        <ambientLight intensity={0.4} />
-        <spotLight position={[5, 10, 5]} angle={0.3} penumbra={1} intensity={2} color="#0ea5e9" />
-        <spotLight position={[-5, -10, -5]} angle={0.3} penumbra={1} intensity={2} color="#f43f5e" />
-        
-        <Environment preset="city" />
-        
-        <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-          <HumanoidModel recoveryData={recoveryData} />
-        </Float>
-        
-        <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={10} blur={2} far={4} />
-        
-        <OrbitControls 
-          enablePan={false}
-          enableZoom={true}
-          minDistance={3}
-          maxDistance={8}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 1.5}
-          autoRotate
-          autoRotateSpeed={1}
-        />
+        <React.Suspense fallback={null}>
+          <color attach="background" args={['transparent']} />
+          
+          <ambientLight intensity={0.4} />
+          <spotLight position={[5, 10, 5]} angle={0.3} penumbra={1} intensity={2} color="#0ea5e9" />
+          <spotLight position={[-5, -10, -5]} angle={0.3} penumbra={1} intensity={2} color="#f43f5e" />
+          
+          <Environment preset="city" />
+          
+          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
+            <HumanoidModel recoveryData={recoveryData} />
+          </Float>
+          
+          <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={10} blur={2} far={4} />
+          
+          <OrbitControls 
+            enablePan={false}
+            enableZoom={true}
+            minDistance={3}
+            maxDistance={8}
+            minPolarAngle={Math.PI / 4}
+            maxPolarAngle={Math.PI / 1.5}
+            autoRotate
+            autoRotateSpeed={1}
+          />
+        </React.Suspense>
       </Canvas>
       <div className="absolute top-2 left-2 pointer-events-none">
         <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest bg-black/40 px-2 py-1 rounded-lg backdrop-blur-md border border-white/5">
