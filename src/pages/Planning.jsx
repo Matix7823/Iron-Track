@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
 import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X, Zap, Brain, Dumbbell, Timer } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -24,7 +24,7 @@ const Planning = () => {
   const [newDayName, setNewDayName] = useState("");
   const [previewSession, setPreviewSession] = useState(null);
 
-  // â”€â”€ Smart Planning Wizard â”€â”€
+  // ── Smart Planning Wizard ──
   const [showSmartPlanning, setShowSmartPlanning] = useState(false);
   const [smartPlanStep, setSmartPlanStep] = useState(1);
   const [smartPlanType, setSmartPlanType] = useState("ppl");
@@ -46,11 +46,11 @@ const Planning = () => {
         { ...restDay }
       ];
       plan = smartPlanDays >= 6
-        ? [{ session: "A", label: "Push" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { session: "D", label: "Ã‰paules" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { ...restDay }]
+        ? [{ session: "A", label: "Push" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { session: "D", label: "Épaules" }, { session: "B", label: "Pull" }, { session: "C", label: "Jambes" }, { ...restDay }]
         : base;
     } else if (smartPlanType === "ul") {
       // Upper / Lower
-      const ul = [
+      plan = [
         { session: "F", label: "Upper" },
         { session: "G", label: "Lower" },
         { ...restDay },
@@ -59,9 +59,8 @@ const Planning = () => {
         { ...restDay },
         { ...restDay }
       ];
-      plan = ul;
     } else if (smartPlanType === "fullbody") {
-      // Full Body 3-4j
+      // Full Body
       if (smartPlanDays <= 3) {
         plan = [
           { session: "A", label: "Full Body" },
@@ -84,11 +83,11 @@ const Planning = () => {
         ];
       }
     } else if (smartPlanType === "bro") {
-      // Bro Split (muscles groupes)
+      // Bro Split
       plan = [
         { session: "A", label: "Pecs" },
         { session: "B", label: "Dos" },
-        { session: "D", label: "Ã‰paules" },
+        { session: "D", label: "Épaules" },
         { session: "E", label: "Bras" },
         { session: "C", label: "Jambes" },
         { ...restDay },
@@ -98,11 +97,55 @@ const Planning = () => {
       // Arnold Split
       plan = [
         { session: "A", label: "Pecs & Dos" },
-        { session: "D", label: "Ã‰paules & Bras" },
+        { session: "D", label: "Épaules & Bras" },
         { session: "C", label: "Jambes" },
         { session: "A", label: "Pecs & Dos" },
-        { session: "D", label: "Ã‰paules & Bras" },
+        { session: "D", label: "Épaules & Bras" },
         { session: "C", label: "Jambes" },
+        { ...restDay }
+      ];
+    } else if (smartPlanType === "phul") {
+      // PHUL (Power Hypertrophy Upper Lower)
+      plan = [
+        { session: "F", label: "Upper Power" },
+        { session: "G", label: "Lower Power" },
+        { ...restDay },
+        { session: "F", label: "Upper Hyper" },
+        { session: "G", label: "Lower Hyper" },
+        { ...restDay },
+        { ...restDay }
+      ];
+    } else if (smartPlanType === "phat") {
+      // PHAT (Power Hypertrophy Adaptive Training)
+      plan = [
+        { session: "F", label: "Upper Power" },
+        { session: "G", label: "Lower Power" },
+        { ...restDay },
+        { session: "B", label: "Back/Shoulder" },
+        { session: "G", label: "Lower Hyper" },
+        { session: "A", label: "Chest/Arms" },
+        { ...restDay }
+      ];
+    } else if (smartPlanType === "pushpull") {
+      // Push / Pull
+      plan = [
+        { session: "A", label: "Push" },
+        { session: "B", label: "Pull" },
+        { ...restDay },
+        { session: "A", label: "Push" },
+        { session: "B", label: "Pull" },
+        { ...restDay },
+        { ...restDay }
+      ];
+    } else if (smartPlanType === "bw") {
+      // Bodyweight
+      plan = [
+        { session: "A", label: "Poids de corps" },
+        { ...restDay },
+        { session: "A", label: "Poids de corps" },
+        { ...restDay },
+        { session: "A", label: "Poids de corps" },
+        { ...restDay },
         { ...restDay }
       ];
     }
@@ -167,7 +210,7 @@ const Planning = () => {
   };
 
   const handleApplyProgram = (prog) => {
-    if (window.confirm(`Appliquer le programme "${prog.title}" Ã  ta semaine ? Cela Ã©crasera ton planning actuel.`)) {
+    if (window.confirm(`Appliquer le programme "${prog.title}" à ta semaine ? Cela écrasera ton planning actuel.`)) {
       applyProgram(prog);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -183,11 +226,11 @@ const Planning = () => {
     <div className="page-container">
       <div className="bg-orbs"/>
       <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} className="mb-8">
-        <p className="section-title"><Calendar size={20} className="text-blue-400"/>Programmes d'EntraÃ®nement</p>
-        <p className="text-sm text-slate-400 -mt-2">Choisis un programme ou crÃ©e le tien</p>
+        <p className="section-title"><Calendar size={20} className="text-blue-400"/>Programmes d'Entraînement</p>
+        <p className="text-sm text-slate-400 -mt-2">Choisis un programme ou crée le tien</p>
       </motion.div>
 
-      {/* Mon Programme PersonnalisÃ© */}
+      {/* Mon Programme Personnalisé */}
       <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="glass-card overflow-hidden mb-8 border-indigo-500/30 glow-purple">
         <div className="p-5 border-b border-white/5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -195,7 +238,7 @@ const Planning = () => {
               <Settings size={20} />
             </div>
             <div>
-              <h3 className="font-black text-white text-base">Programme PersonnalisÃ©</h3>
+              <h3 className="font-black text-white text-base">Programme Personnalisé</h3>
               <p className="text-xs text-indigo-400 font-medium mt-0.5">Clique sur un jour pour modifier</p>
             </div>
           </div>
@@ -203,7 +246,7 @@ const Planning = () => {
             onClick={() => document.getElementById('programs-lib')?.scrollIntoView({ behavior: 'smooth' })}
             className="btn-glass !py-1.5 !px-3 !text-[10px] !rounded-lg gap-1.5 border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/10"
           >
-            <Settings size={12}/> ModÃ¨les
+            <Settings size={12}/> Modèles
           </button>
         </div>
 
@@ -295,7 +338,7 @@ const Planning = () => {
               className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-violet-600/20 to-indigo-600/20 border border-violet-500/40 text-violet-300 rounded-xl text-xs font-black hover:from-violet-600/30 hover:to-indigo-600/30 transition-all group"
             >
               <Zap size={13} className="text-violet-400 group-hover:animate-bounce" />
-              Smart Plan âš¡
+              Smart Plan ⚡
             </button>
             <Link to="/workout" state={{session:normalizedSchedule.find(d=>d.session!=="-")?.session}}
               onClick={()=>{const first=normalizedSchedule.find(d=>d.session!=="-");if(first)setCurrentSession(first.session);}}
@@ -312,8 +355,8 @@ const Planning = () => {
           <div className="modal-overlay" onClick={() => setEditingDay(null)}>
             <motion.div className="modal-card !p-0 overflow-hidden flex flex-col max-h-[80vh]" initial={{ y:50, opacity:0 }} animate={{ y:0, opacity:1 }} exit={{ y:50, opacity:0 }} onClick={e=>e.stopPropagation()}>
               <div className="p-5 border-b border-white/5">
-                <h3 className="font-black text-white">SÃ©ance du {getDayLabel(normalizedSchedule[editingDay] || {}, editingDay)}</h3>
-                <p className="text-xs text-slate-400">Choisis la sÃ©ance Ã  effectuer ce jour-lÃ .</p>
+                <h3 className="font-black text-white">Séance du {getDayLabel(normalizedSchedule[editingDay] || {}, editingDay)}</h3>
+                <p className="text-xs text-slate-400">Choisis la séance à effectuer ce jour-là.</p>
               </div>
               <div className="p-4 overflow-y-auto grid grid-cols-2 gap-2">
                 <button onClick={() => handleSelectSession("-")} className="glass-card p-3 flex flex-col items-center justify-center gap-1 hover:border-slate-500/50">
@@ -337,7 +380,7 @@ const Planning = () => {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              const newName = window.prompt("Nouveau nom de la sÃ©ance :", s.category);
+                              const newName = window.prompt("Nouveau nom de la séance :", s.category);
                               if (newName && newName.trim()) renameCustomSession(k, newName.trim());
                             }}
                             className="w-6 h-6 bg-blue-500 hover:bg-blue-400 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-500/20 active:scale-90 transition-transform"
@@ -348,7 +391,7 @@ const Planning = () => {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (window.confirm(`Supprimer dÃ©finitivement la sÃ©ance ${k} ?`)) {
+                              if (window.confirm(`Supprimer définitivement la séance ${k} ?`)) {
                                 deleteCustomSession(k);
                               }
                             }}
@@ -370,10 +413,10 @@ const Planning = () => {
 
       <div className="space-y-5" id="programs-lib">
         <div className="flex justify-between items-center px-1">
-          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">BibliothÃ¨que de Programmes</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Bibliothèque de Programmes</p>
           <button onClick={() => updateCustomSchedule(Array.from({length:7}).map(() => ({ session: '-', label: '', status: null })))}
             className="text-[10px] font-bold text-red-400/70 hover:text-red-400 transition-colors uppercase">
-            RÃ©initialiser tout
+            Réinitialiser tout
           </button>
         </div>
 
@@ -451,7 +494,7 @@ const Planning = () => {
                         <span className="px-2 py-0.5 bg-white/20 rounded text-[10px] font-black text-white uppercase tracking-wider">{previewSession}</span>
                         <h3 className="text-xl font-black text-white">{s.title || s.category}</h3>
                       </div>
-                      <p className="text-white/70 text-xs font-medium">{s.focus || "SÃ©ance d'entraÃ®nement"}</p>
+                      <p className="text-white/70 text-xs font-medium">{s.focus || "Séance d'entraînement"}</p>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 scrollbar-hide">
@@ -483,7 +526,7 @@ const Planning = () => {
                         }}
                         className="btn-primary flex-1 py-3 text-xs gap-2"
                       >
-                        <Play size={12} fill="currentColor" /> S'entraÃ®ner
+                        <Play size={12} fill="currentColor" /> S'entraîner
                       </Link>
                     </div>
                   </>
@@ -494,7 +537,7 @@ const Planning = () => {
         )}
       </AnimatePresence>
 
-      {/* â”€â”€ Smart Planning Wizard Modal â”€â”€ */}
+      {/* ── Smart Planning Wizard Modal ── */}
       <AnimatePresence>
         {showSmartPlanning && (
           <div className="modal-overlay" onClick={() => setShowSmartPlanning(false)}>
@@ -512,8 +555,8 @@ const Planning = () => {
                     <Zap size={18} className="text-violet-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-black text-white">Smart Plan âš¡</h3>
-                    <p className="text-[10px] text-slate-500">GÃ©nÃ¨re ton planning optimal en 2 Ã©tapes</p>
+                    <h3 className="text-lg font-black text-white">Smart Plan ⚡</h3>
+                    <p className="text-[10px] text-slate-500">Génère ton planning optimal en 2 étapes</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 mt-4">
@@ -523,7 +566,7 @@ const Planning = () => {
                         smartPlanStep >= step ? "bg-violet-500 border-violet-400 text-white" : "bg-transparent border-slate-700 text-slate-600"
                       }`}>{step}</div>
                       <span className={`text-[9px] font-bold uppercase tracking-wider ${smartPlanStep >= step ? "text-violet-400" : "text-slate-600"}`}>
-                        {step === 1 ? "Programme" : "FrÃ©quence"}
+                        {step === 1 ? "Programme" : "Fréquence"}
                       </span>
                       {step < 2 && <div className="flex-1 h-px bg-slate-800 mx-1"/>}
                     </div>
@@ -534,17 +577,21 @@ const Planning = () => {
                 </button>
               </div>
 
-              {/* Step 1 â€” Type de programme */}
+              {/* Step 1 — Type de programme */}
               {smartPlanStep === 1 && (
                 <div className="p-5 flex-1 overflow-y-auto">
                   <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Type de split</p>
                   <div className="grid grid-cols-1 gap-2.5">
                     {[
-                      { id: "ppl",     label: "Push / Pull / Legs",  desc: "La mÃ©thode scientifique Ã©lite. Pecs+Tri / Dos+Bi / Jambes.", icon: "ðŸ”±" },
-                      { id: "ul",      label: "Upper / Lower",        desc: "4 sÃ©ances alternÃ©es Haut / Bas du corps.", icon: "âš¡" },
-                      { id: "fullbody",label: "Full Body",            desc: "3-4 sÃ©ances. IdÃ©al dÃ©butants et intermÃ©diaires.", icon: "ðŸŒ€" },
-                      { id: "bro",     label: "Bro Split",            desc: "5j classique : chaque muscle par jour.", icon: "ðŸ’ª" },
-                      { id: "Arnold",  label: "Arnold Split",         desc: "6j en 3 paires : Pecs/Dos â€” Ã‰paules/Bras â€” Jambes.", icon: "ðŸ†" },
+                      { id: "ppl",     label: "Push / Pull / Legs",  desc: "La méthode scientifique élite. Pecs+Tri / Dos+Bi / Jambes.", icon: "🔱" },
+                      { id: "ul",      label: "Upper / Lower",        desc: "4 séances alternées Haut / Bas du corps.", icon: "⚡" },
+                      { id: "fullbody",label: "Full Body",            desc: "3-4 séances. Idéal débutants et intermédiaires.", icon: "🌀" },
+                      { id: "bro",     label: "Bro Split",            desc: "5j classique : chaque muscle par jour.", icon: "💪" },
+                      { id: "Arnold",  label: "Arnold Split",         desc: "6j en 3 paires : Pecs/Dos — Épaules/Bras — Jambes.", icon: "🏆" },
+                      { id: "phul",    label: "PHUL",                 desc: "Power Hypertrophy Upper Lower sur 4 jours.", icon: "🏋️" },
+                      { id: "phat",    label: "PHAT",                 desc: "Force et Hypertrophie adaptative sur 5 jours.", icon: "🔥" },
+                      { id: "pushpull",label: "Push / Pull",          desc: "Alternance poussée et tirage.", icon: "⚖️" },
+                      { id: "bw",      label: "Poids du corps",       desc: "Entraînement au poids du corps / Calisthenics.", icon: "🤸" },
                     ].map(opt => (
                       <button
                         key={opt.id}
@@ -570,7 +617,7 @@ const Planning = () => {
               {/* Step 2 â€” Jours par semaine */}
               {smartPlanStep === 2 && (
                 <div className="p-5 flex-1 overflow-y-auto">
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Jours d'entraÃ®nement / semaine</p>
+                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Jours d'entraînement / semaine</p>
                   <div className="flex gap-2 mb-6">
                     {[2, 3, 4, 5, 6].map(n => (
                       <button
@@ -587,16 +634,21 @@ const Planning = () => {
                     ))}
                   </div>
                   <div className="glass rounded-2xl p-4 border border-violet-500/15">
-                    <p className="text-[10px] text-violet-400 font-black uppercase tracking-widest mb-1">AperÃ§u</p>
+                    <p className="text-[10px] text-violet-400 font-black uppercase tracking-widest mb-1">Aperçu</p>
                     <p className="text-xs text-slate-400">
-                      {smartPlanDays} sÃ©ance{smartPlanDays > 1 ? "s" : ""} d'entraÃ®nement + {7 - smartPlanDays} jour{7 - smartPlanDays > 1 ? "s" : ""} de rÃ©cupÃ©ration / semaine.
+                      {smartPlanDays} séance{smartPlanDays > 1 ? "s" : ""} d'entraînement + {7 - smartPlanDays} jour{7 - smartPlanDays > 1 ? "s" : ""} de récupération / semaine.
                     </p>
                     <p className="text-[10px] text-slate-600 mt-1">
                       Split : <span className="text-violet-400 font-bold">{
                         smartPlanType === "ppl" ? "Push / Pull / Legs" :
                         smartPlanType === "ul" ? "Upper / Lower" :
                         smartPlanType === "fullbody" ? "Full Body" :
-                        smartPlanType === "bro" ? "Bro Split" : "Arnold Split"
+                        smartPlanType === "bro" ? "Bro Split" :
+                        smartPlanType === "Arnold" ? "Arnold Split" :
+                        smartPlanType === "phul" ? "PHUL" :
+                        smartPlanType === "phat" ? "PHAT" :
+                        smartPlanType === "pushpull" ? "Push / Pull" :
+                        "Poids du corps"
                       }</span>
                     </p>
                   </div>
@@ -623,7 +675,7 @@ const Planning = () => {
                     onClick={generateSmartPlan}
                     className="flex-1 py-3 text-xs font-black text-white rounded-xl flex items-center justify-center gap-1.5 transition-all bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-500/25"
                   >
-                    <Zap size={14} /> GÃ©nÃ©rer le planning
+                    <Zap size={14} /> Générer le planning
                   </button>
                 )}
               </div>

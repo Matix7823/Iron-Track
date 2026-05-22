@@ -146,24 +146,13 @@ const Community = () => {
         </button>
       </div>
 
-      {/* Chat Messages — iOS scroll fix: overflow-y-scroll + overscrollBehavior:contain */}
+      {/* Chat Messages — iOS scroll fix: overflow-y-auto + overscrollBehavior:auto */}
       <div 
         ref={chatContainerRef}
-        className="flex-1 overflow-y-scroll glass-card border-white/5 p-4 mb-4 space-y-4 relative"
-        style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", minHeight: 0 }}
+        className="flex-1 overflow-y-auto glass-card border-white/5 p-4 mb-4 space-y-4 relative"
+        style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "auto", minHeight: 0 }}
         onScroll={handleScroll}
       >
-        {/* Scroll to top button */}
-        {showScrollTop && (
-          <div className="sticky top-0 flex justify-center z-10 mb-2 pointer-events-none">
-            <button
-              onClick={scrollToTop}
-              className="pointer-events-auto bg-slate-800/90 border border-slate-600/60 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm hover:bg-slate-700 transition-all flex items-center gap-1.5"
-            >
-              ↑ Remonter
-            </button>
-          </div>
-        )}
         {messages.map((msg, idx) => {
           const isMe = msg.user_id === user?.id;
           return (
@@ -184,18 +173,6 @@ const Community = () => {
         })}
         <div ref={messagesEndRef} />
       </div>
-
-      {/* Scroll-to-bottom button when not at bottom */}
-      {!isAtBottom && (
-        <div className="flex justify-center mb-2">
-          <button
-            onClick={scrollToBottom}
-            className="bg-blue-600/80 border border-blue-500/50 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm hover:bg-blue-600 transition-all flex items-center gap-1.5"
-          >
-            ↓ Nouveau message
-          </button>
-        </div>
-      )}
 
       {/* Input Area */}
       <form onSubmit={sendMessage} className="shrink-0 flex gap-2">
