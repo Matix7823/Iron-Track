@@ -210,7 +210,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 
 // ─── ExerciseCard ────────────────────────────────────────────────
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
-  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight } = useApp();
+  const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight, height } = useApp();
   const [open, setOpen] = useState(true);
 
   const sets = getSetsForExo(exo.id);
@@ -257,7 +257,13 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
     else if (exo.muscle === 'Dos') pct = isFemale ? 0.2 : 0.3;
     else if (exo.muscle === 'Biceps' || exo.muscle === 'Triceps') pct = 0.05;
     
-    suggestedLoad = Math.round((currentBodyWeight * pct * (userAge > 50 ? 0.8 : 1)) / 2.5) * 2.5;
+    // Levier biomécanique : les personnes plus grandes ont des bras de levier plus longs (difficile sur le couché/squat)
+    const userHeight = parseInt(height) || 175;
+    let heightFactor = 1;
+    if (userHeight > 185 && (nameLo.includes('squat') || nameLo.includes('couché'))) heightFactor = 0.9;
+    else if (userHeight < 170 && (nameLo.includes('squat') || nameLo.includes('couché'))) heightFactor = 1.1;
+
+    suggestedLoad = Math.round((currentBodyWeight * pct * (userAge > 50 ? 0.8 : 1) * heightFactor) / 2.5) * 2.5;
     if (suggestedLoad < 2.5) suggestedLoad = 2.5;
   }
 

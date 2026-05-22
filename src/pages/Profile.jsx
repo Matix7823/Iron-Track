@@ -11,7 +11,7 @@ const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{durat
 const container = { hidden:{}, visible:{transition:{staggerChildren:.09}} };
 
 const Profile = () => {
-  const { history, bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression, userProgression, theme, setTheme, gender, changeGender } = useApp();
+  const { history, bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression, userProgression, theme, setTheme, gender, changeGender, age, changeAge, height, changeHeight } = useApp();
   const [weight, setWeight] = useState("");
   const [shoulders, setShoulders] = useState("");
   const [waist, setWaist] = useState("");
@@ -371,6 +371,24 @@ const Profile = () => {
               </div>
             </div>
           )}
+        </motion.div>
+
+        {/* Basic Info (Age, Height) */}
+        <motion.div variants={item} className="glass-card p-5 mb-6 border-white/5">
+          <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <User size={14} className="text-blue-400" /> Informations Personnelles
+          </h3>
+          <div className="grid grid-cols-2 gap-3 mb-2">
+            <div>
+              <label className="text-[10px] text-slate-500 font-bold uppercase block mb-1.5">Âge (années)</label>
+              <input type="number" placeholder="ex: 25" value={age || ""} onChange={e=>changeAge(e.target.value)} className="input-premium text-center font-bold"/>
+            </div>
+            <div>
+              <label className="text-[10px] text-slate-500 font-bold uppercase block mb-1.5">Taille (cm)</label>
+              <input type="number" placeholder="ex: 180" value={height || ""} onChange={e=>changeHeight(e.target.value)} className="input-premium text-center font-bold"/>
+            </div>
+          </div>
+          <p className="text-[9px] text-slate-500 text-center">Ces données permettent à l'IA d'adapter les exercices et temps de repos à ta morphologie.</p>
         </motion.div>
 
         {/* Add weight form */}
