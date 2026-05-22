@@ -1,19 +1,19 @@
 import React from "react";
 import { BarChart2 } from "lucide-react";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getPerformanceMetrics } from "../../utils/metrics";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="glass-dark border border-white/10 p-2 rounded-xl shadow-2xl">
+      <div className="glass-dark border border-white/10 p-3 rounded-xl shadow-2xl">
         <p className="text-[10px] text-slate-400 font-bold mb-1">{label}</p>
         <p className="text-sm font-black text-white">{payload[0].value} <span className="text-[10px] text-slate-500 font-normal">pts</span></p>
       </div>
     );
   }
   return null;
-};
+}
 
 const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
   if (!data || data.length === 0) {
@@ -49,11 +49,13 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
     "Séries au Max";
 
   const minVal = Math.min(...chartData.map(d => d.value));
-  const domainMin = minVal > 10 ? minVal * 0.9 : 0;
+  const maxVal = Math.max(...chartData.map(d => d.value));
+  const domainMin = Math.max(0, Math.floor(minVal - (maxVal - minVal) * 0.1));
+  const domainMax = Math.ceil(maxVal + (maxVal - minVal) * 0.1);
 
   return (
-    <div className="w-full glass rounded-2xl border border-white/5 shadow-xl relative overflow-hidden">
-      <div className="px-4 pt-4 pb-2 flex justify-between items-center z-10 relative">
+    <div className="w-full glass rounded-2xl border border-white/5 shadow-xl p-4">
+      <div className="flex justify-between items-center mb-6">
         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Progression</span>
         <div className="flex items-center gap-2 bg-black/30 px-3 py-1 rounded-full border border-white/10">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }} />
@@ -61,37 +63,22 @@ const EvolutionChart = ({ data, metric = "weight", color = "#3b82f6" }) => {
         </div>
       </div>
       
-      <div className="h-[220px] w-full -ml-3 -mb-2 mt-2">
+      <div className="h-[220px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-            <defs>
-              <linearGradient id={`colorValue-${metric}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={color} stopOpacity={0.6}/>
-                <stop offset="95%" stopColor={color} stopOpacity={0}/>
-              </linearGradient>
-              <filter id={`glow-${metric}`}>
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 10, fontWeight: 'bold'}} dy={5} />
-            <YAxis hide={true} domain={[domainMin, 'auto']} />
+          <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+            <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" tick={{fill: '#64748b', fontSize: 10}} dy={10} />
+            <YAxis stroke="rgba(255,255,255,0.2)" tick={{fill: '#64748b', fontSize: 10}} domain={[domainMin, domainMax]} />
             <Tooltip content={<CustomTooltip />} cursor={{stroke: 'rgba(255,255,255,0.1)', strokeWidth: 1, strokeDasharray: '4 4'}} />
-            <Area 
+            <Line 
               type="monotone" 
               dataKey="value" 
               stroke={color} 
               strokeWidth={3}
-              fillOpacity={1} 
-              fill={`url(#colorValue-${metric})`} 
-              dot={{r: 4, fill: color, stroke: '#fff', strokeWidth: 2}}
-              activeDot={{r: 6, fill: '#fff', stroke: color, strokeWidth: 3, boxShadow: `0 0 10px ${color}`}}
-              style={{ filter: `url(#glow-${metric})` }}
+              dot={{r: 4, fill: '#0f172a', stroke: color, strokeWidth: 2}}
+              activeDot={{r: 6, fill: color, stroke: '#fff', strokeWidth: 2, boxShadow: `0 0 10px ${color}`}}
             />
-          </AreaChart>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

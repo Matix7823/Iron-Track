@@ -611,7 +611,31 @@ export const AppProvider = ({ children }) => {
 
         // --- XP DECAY & PROGRESSION ---
         if (currentData.userProgression) {
-          const decayedXP = calculateXPDecay(currentData.userProgression.xp, currentData.userProgression.lastDate);
+          let baseXP = currentData.userProgression.xp || 0;
+          
+          if (baseXP === 0 && validatedHistory) {
+            let totalTonnage = 0;
+            let dates = new Set();
+            Object.values(validatedHistory).forEach(entries => {
+              if (Array.isArray(entries)) {
+                entries.forEach(entry => {
+                  if (entry.date) dates.add(entry.date);
+                  if (Array.isArray(entry.setsData)) {
+                    entry.setsData.forEach(s => {
+                      if (parseFloat(s.weight) > 0 && parseFloat(s.reps) > 0 && s.done !== false) {
+                        totalTonnage += parseFloat(s.weight) * parseFloat(s.reps);
+                      }
+                    });
+                  }
+                });
+              }
+            });
+            if (dates.size > 0) {
+              baseXP = (dates.size * 200) + Math.floor(totalTonnage / 10);
+            }
+          }
+
+          const decayedXP = calculateXPDecay(baseXP, currentData.userProgression.lastDate);
           let todayXP = currentData.userProgression.todayXP || 0;
           if (currentData.userProgression.lastDate !== formatDateFR()) {
             todayXP = 0; // reset if it's a new day

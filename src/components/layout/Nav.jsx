@@ -149,11 +149,11 @@ export const BottomNav = () => {
           >
             {({ isActive }) => (
               <>
-                <div className="relative flex items-center justify-center w-7 h-7">
+                <div className="relative flex items-center justify-center w-[34px] h-[34px]">
                   <Icon size={18} className={isActive ? `${color} drop-shadow-[0_0_6px_currentColor]` : ""} />
                   {isActive && (
                     <motion.div layoutId="bottom-indicator"
-                      className={`absolute -inset-0.5 ${activeBg} rounded-lg -z-10`}
+                      className={`absolute inset-0 ${activeBg} rounded-xl -z-10`}
                       transition={{ type: "spring", bounce: 0.25, duration: 0.35 }}
                     />
                   )}
