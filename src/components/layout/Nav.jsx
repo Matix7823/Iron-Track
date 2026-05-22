@@ -85,8 +85,8 @@ export const Navbar = () => {
           {navItems.map(({ to, icon: Icon, label, color, activeBg }) => (
             <NavLink key={to} to={to} end={to === "/"}
               className={({ isActive }) =>
-                `relative flex items-center gap-1 px-1.5 lg:px-2 xl:px-3 py-1.5 lg:py-2 rounded-xl text-[9px] lg:text-[10px] xl:text-[11px] font-bold transition-all duration-200 whitespace-nowrap ${
-                  isActive ? `${activeBg} ${color}` : "text-slate-500 hover:text-slate-300 hover:bg-white/5"
+                `relative flex items-center gap-1 px-3 lg:px-4 xl:px-5 py-2 rounded-xl text-[9px] lg:text-[10px] xl:text-[11px] font-bold transition-all duration-300 whitespace-nowrap ${
+                  isActive ? `${color}` : "text-slate-500 hover:text-slate-300 hover:bg-white/5"
                 }`
               }
             >
