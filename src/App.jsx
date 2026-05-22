@@ -114,6 +114,24 @@ const AppInner = () => {
   const { user, profile } = useAuth();
   const location = useLocation();
   
+  // Forcer le rafraîchissement si l'app sort de veille (garantit la dernière version)
+  React.useEffect(() => {
+    let lastActiveTime = Date.now();
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        const timeIdle = Date.now() - lastActiveTime;
+        // Si inactif pendant plus de 2 heures (7200000 ms) ou nouvelle version
+        if (timeIdle > 7200000) {
+          window.location.reload(true);
+        }
+      } else {
+        lastActiveTime = Date.now();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+  
   if (isDataLoading) return <LoadingScreen />;
   
   const showOnboarding = user && profile && profile.status?.toLowerCase() === 'active' && !gender;
