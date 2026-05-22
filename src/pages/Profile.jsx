@@ -3,12 +3,13 @@ import { useApp } from "../context/AppContext";
 import EvolutionChart from "../components/charts/EvolutionChart";
 import { motion } from "framer-motion";
 import { Scale, Trophy, TrendingUp, TrendingDown, User, CheckCircle2, Dumbbell, Activity } from "lucide-react";
+import { triggerHaptic } from "../utils/haptics";
 
 const item = { hidden:{opacity:0,y:18}, visible:{opacity:1,y:0,transition:{duration:.4,ease:"easeOut"}} };
 const container = { hidden:{}, visible:{transition:{staggerChildren:.09}} };
 
 const Profile = () => {
-  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression } = useApp();
+  const { bodyWeightHistory, bodyMeasurements, currentBodyWeight, saveBodyData, progression, theme, setTheme } = useApp();
   const [weight, setWeight] = useState("");
   const [shoulders, setShoulders] = useState("");
   const [waist, setWaist] = useState("");
@@ -93,6 +94,47 @@ const Profile = () => {
               <Trophy size={12} className="text-slate-500" />
               <span className="text-[10px] text-slate-400 font-medium">Objectif: <span className="text-amber-400 font-bold">Dieu Grec</span></span>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Cyber Neon Themes Selector */}
+        <motion.div variants={item} className="glass-card p-5 mb-6 border-white/5">
+          <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <Activity size={14} className="text-blue-400" /> Ambiance Lumineuse Cyber
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { id: "blue", name: "Cyan Saphir", color: "from-blue-600 to-indigo-700", glow: "shadow-[0_0_15px_rgba(59,130,246,0.5)]", border: "border-blue-500/40" },
+              { id: "pink", name: "Cyberpunk Pink", color: "from-pink-600 to-purple-700", glow: "shadow-[0_0_15px_rgba(236,72,153,0.5)]", border: "border-pink-500/40" },
+              { id: "green", name: "Vert Volt", color: "from-emerald-600 to-cyan-700", glow: "shadow-[0_0_15px_rgba(16,185,129,0.5)]", border: "border-emerald-500/40" },
+              { id: "orange", name: "Orange Ambre", color: "from-amber-600 to-red-700", glow: "shadow-[0_0_15px_rgba(245,158,11,0.5)]", border: "border-amber-500/40" }
+            ].map((t) => (
+              <motion.button
+                key={t.id}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  setTheme(t.id);
+                  triggerHaptic(15);
+                }}
+                className={`relative rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 border bg-slate-900/40 transition-all ${
+                  theme === t.id 
+                    ? `bg-gradient-to-br ${t.color} ${t.border} ${t.glow} text-white` 
+                    : "border-white/5 text-slate-400 hover:border-white/10 hover:text-white"
+                }`}
+              >
+                <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${t.color} border border-white/20`} />
+                <span className="text-[10px] font-black tracking-wide uppercase">{t.name}</span>
+                {theme === t.id && (
+                  <motion.div 
+                    layoutId="activeThemeDot" 
+                    className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-white rounded-full flex items-center justify-center border border-black shadow"
+                  >
+                    <CheckCircle2 size={8} className="text-slate-950 stroke-[3]" />
+                  </motion.div>
+                )}
+              </motion.button>
+            ))}
           </div>
         </motion.div>
 

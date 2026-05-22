@@ -7,6 +7,7 @@ import { normalizeHistory, getPerformanceMetrics, calculateCNSScore } from "../u
 import { sanitizeData } from "../utils/security";
 import { calculateSessionXP, calculateXPDecay, getProgressionDetails } from "../utils/progression";
 import { scheduleRestNotification, cancelRestNotification } from "../utils/native";
+import { triggerHaptic } from "../utils/haptics";
 
 // --- EXERCICES SPECIFIQUES HYPERTROPHIE/VOLUME POUR LE PLANNING 5J (U/L/P/P/L) ---
 const pushVolume5JExercises = [
@@ -215,6 +216,75 @@ export const AppProvider = ({ children }) => {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const { user } = useAuth();
+
+  // Theme state
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("iron_track_theme") || "blue";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("iron_track_theme", theme);
+    document.body.classList.remove("theme-blue", "theme-pink", "theme-green", "theme-orange");
+    document.body.classList.add(`theme-${theme}`);
+  }, [theme]);
+
+  const getThemeClasses = useCallback(() => {
+    switch (theme) {
+      case "pink":
+        return {
+          text: "text-pink-400",
+          bg: "bg-pink-500",
+          border: "border-pink-500/30",
+          ring: "focus:ring-pink-500/50",
+          glow: "glow-pink border-pink-500/10",
+          accent: "card-accent-pink",
+          gradient: "from-pink-600/90 to-purple-700/90",
+          btnPrimary: "bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 border-pink-400/20 shadow-pink-500/20 text-white",
+          iconColor: "text-pink-400",
+          chartColor: "#ec4899",
+        };
+      case "green":
+        return {
+          text: "text-emerald-400",
+          bg: "bg-emerald-500",
+          border: "border-emerald-500/30",
+          ring: "focus:ring-emerald-500/50",
+          glow: "glow-green border-emerald-500/10",
+          accent: "card-accent-green",
+          gradient: "from-emerald-600/90 to-cyan-700/90",
+          btnPrimary: "bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 border-emerald-400/20 shadow-emerald-500/20 text-white",
+          iconColor: "text-emerald-400",
+          chartColor: "#10b981",
+        };
+      case "orange":
+        return {
+          text: "text-amber-400",
+          bg: "bg-amber-500",
+          border: "border-amber-500/30",
+          ring: "focus:ring-amber-500/50",
+          glow: "glow-orange border-amber-500/10",
+          accent: "card-accent-orange",
+          gradient: "from-amber-600/90 to-red-700/90",
+          btnPrimary: "bg-gradient-to-r from-amber-500 to-red-600 hover:from-amber-400 hover:to-red-500 border-amber-400/20 shadow-amber-500/20 text-white",
+          iconColor: "text-amber-400",
+          chartColor: "#f59e0b",
+        };
+      case "blue":
+      default:
+        return {
+          text: "text-blue-400",
+          bg: "bg-blue-500",
+          border: "border-blue-500/30",
+          ring: "focus:ring-blue-500/50",
+          glow: "glow-blue border-blue-500/10",
+          accent: "card-accent-blue",
+          gradient: "from-blue-600/90 to-indigo-700/90",
+          btnPrimary: "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 border-blue-400/20 shadow-blue-500/20 text-white",
+          iconColor: "text-blue-400",
+          chartColor: "#3b82f6",
+        };
+    }
+  }, [theme]);
 
   // Session state
   const [currentSession, setCurrentSession] = useState("A");
@@ -639,6 +709,49 @@ export const AppProvider = ({ children }) => {
     });
   }, [history, bodyWeightHistory, bodyMeasurements, persistData]);
 
+  const createCustomSessionWithExercises = useCallback((name, exercises = [], color = "from-indigo-600 to-indigo-800") => {
+    const usedKeys = Object.keys(userSessions);
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let nextKey = null;
+    for (let i = 0; i < alphabet.length; i++) {
+      if (!usedKeys.includes(alphabet[i])) { nextKey = alphabet[i]; break; }
+    }
+    if (!nextKey) {
+      for (let i = 0; i < alphabet.length; i++) {
+        for (let j = 0; j < alphabet.length; j++) {
+          const key = alphabet[i] + alphabet[j];
+          if (!usedKeys.includes(key)) { nextKey = key; break; }
+        }
+        if (nextKey) break;
+      }
+    }
+    if (!nextKey) return null;
+
+    const exercisesWithIds = exercises.map((exo, idx) => ({
+      ...exo,
+      id: `${exo.id}_${Date.now()}_${idx}`
+    }));
+
+    setUserSessions((prev) => {
+      const newSessions = {
+        ...prev,
+        [nextKey]: {
+          category: name || `Séance ${nextKey}`,
+          title: `Séance ${nextKey} : ${name || 'Personnalisée'}`,
+          focus: 'Séance intelligente générée',
+          color,
+          exercises: exercisesWithIds
+        }
+      };
+      const dataToSave = { history, bodyWeight: bodyWeightHistory, bodyMeasurements, userSessions: newSessions };
+      persistData(dataToSave);
+      return newSessions;
+    });
+
+    return nextKey;
+  }, [userSessions, history, bodyWeightHistory, bodyMeasurements, persistData]);
+
+
   const deleteCustomSession = useCallback((sessionId) => {
     const defaultKeys = Object.keys(sessions);
     if (defaultKeys.includes(sessionId)) return; // don't delete built-in sessions
@@ -778,6 +891,7 @@ export const AppProvider = ({ children }) => {
   }, [getSetsForExo]);
 
   const toggleSetDone = useCallback((exoId, index, restTime) => {
+    triggerHaptic(15);
     setCurrentInput((prev) => {
       const exoSets = prev[exoId] ? [...prev[exoId]] : getSetsForExo(exoId);
       const isCurrentlyDone = exoSets[index].done;
@@ -831,6 +945,7 @@ export const AppProvider = ({ children }) => {
   }, [currentInput]);
 
   const saveWorkout = useCallback(() => {
+    triggerHaptic([60, 50, 60]);
     const newHistory = { ...history };
     const date = formatDateFR();
     let totalTonnage = 0;
@@ -963,10 +1078,11 @@ export const AppProvider = ({ children }) => {
     allExercises, currentBodyWeight,
     currentSession, setCurrentSession,
     activeScheduleName, applyProgram,
+    theme, setTheme, getThemeClasses,
     currentInput, customSchedule, updateCustomSchedule, updateDayStatus,
     getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag,
     addExerciseToSession, removeExerciseFromSession,
-    createCustomSession, deleteCustomSession, renameCustomSession,
+    createCustomSession, createCustomSessionWithExercises, deleteCustomSession, renameCustomSession,
     sleepHours, setSleepHours, stressLevel, setStressLevel, sorenessLevel, setSorenessLevel,
     cnsScore, energyLevel, calculateCNS, resetCNS,
     timerSeconds, isTimerRunning, startTimer, stopTimer,

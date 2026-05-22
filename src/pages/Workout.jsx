@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { syncWorkoutToAppleHealth } from "../utils/health";
 import { hapticLight, hapticMedium, hapticSuccess } from "../utils/native";
+import { triggerHaptic } from "../utils/haptics";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
 
@@ -471,7 +472,7 @@ const Workout = () => {
     showErrorModal, setShowErrorModal,
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
-    removeExerciseFromSession, createCustomSession, deleteCustomSession, renameCustomSession,
+    removeExerciseFromSession, createCustomSession, createCustomSessionWithExercises, deleteCustomSession, renameCustomSession,
     currentInput, customSchedule, updateCustomSchedule, schedules
   } = useApp();
 
@@ -483,6 +484,13 @@ const Workout = () => {
   const [newSessionName, setNewSessionName] = useState("");
   const [sessionStartTime] = useState(Date.now());
   const [elapsedMin, setElapsedMin] = useState(0);
+
+  // Smart Session Builder Wizard State
+  const [showSmartBuilder, setShowSmartBuilder] = useState(false);
+  const [smartStep, setSmartStep] = useState(1);
+  const [smartDuration, setSmartDuration] = useState("standard");
+  const [smartEquipment, setSmartEquipment] = useState("salle");
+  const [smartTarget, setSmartTarget] = useState("fullbody");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -512,6 +520,167 @@ const Workout = () => {
     });
     return Math.round((done / total) * 100);
   }, [session.exercises, currentInput]);
+  const generateSmartSession = () => {
+    // 1. Durée / Nombre d'exercices
+    let numExercises = 5;
+    if (smartDuration === "express") numExercises = 3;
+    if (smartDuration === "standard") numExercises = 5;
+    if (smartDuration === "extreme") numExercises = 7;
+
+    // 2. Muscles ciblés
+    let muscles = [];
+    if (smartTarget === "pecs_triceps") muscles = ["Pectoraux", "Triceps"];
+    else if (smartTarget === "dos_biceps") muscles = ["Dos", "Lombaires", "Biceps"];
+    else if (smartTarget === "jambes") muscles = ["Quadriceps", "Ischios", "Fessiers", "Mollets"];
+    else if (smartTarget === "bras_epaules") muscles = ["Épaules", "Biceps", "Triceps", "Avant-bras"];
+    else if (smartTarget === "fullbody") muscles = ["Pectoraux", "Dos", "Quadriceps", "Ischios", "Épaules", "Biceps", "Triceps", "Abdos"];
+    else if (smartTarget === "upper") muscles = ["Pectoraux", "Dos", "Épaules", "Biceps", "Triceps"];
+    else if (smartTarget === "lower") muscles = ["Quadriceps", "Ischios", "Fessiers", "Mollets"];
+
+    // 3. Filtrer la bibliothèque
+    let pool = exerciseLibrary.filter(exo => muscles.includes(exo.muscle));
+
+    // Filtrer par équipement
+    if (smartEquipment === "halteres") {
+      pool = pool.filter(exo => 
+        exo.name.toLowerCase().includes("haltère") || 
+        exo.name.toLowerCase().includes("dumbbell") || 
+        exo.name.toLowerCase().includes("écarté") ||
+        exo.name.toLowerCase().includes("fentes") ||
+        exo.name.toLowerCase().includes("bulgare")
+      );
+    } else if (smartEquipment === "barre") {
+      pool = pool.filter(exo => 
+        exo.name.toLowerCase().includes("barre") || 
+        exo.name.toLowerCase().includes("barbell") || 
+        exo.name.toLowerCase().includes("guidé") || 
+        exo.name.toLowerCase().includes("smith")
+      );
+    } else if (smartEquipment === "poulies") {
+      pool = pool.filter(exo => 
+        exo.name.toLowerCase().includes("poulie") || 
+        exo.name.toLowerCase().includes("cable") || 
+        exo.name.toLowerCase().includes("vis-à-vis") || 
+        exo.name.toLowerCase().includes("haltère") || 
+        exo.name.toLowerCase().includes("dumbbell") ||
+        exo.name.toLowerCase().includes("écarté")
+      );
+    } else if (smartEquipment === "bodyweight") {
+      pool = pool.filter(exo => 
+        exo.name.toLowerCase().includes("pompes") || 
+        exo.name.toLowerCase().includes("push-up") || 
+        exo.name.toLowerCase().includes("tractions") || 
+        exo.name.toLowerCase().includes("pull-up") || 
+        exo.name.toLowerCase().includes("chin-up") || 
+        exo.name.toLowerCase().includes("dips") || 
+        exo.name.toLowerCase().includes("sissy") || 
+        exo.name.toLowerCase().includes("nordic") || 
+        exo.name.toLowerCase().includes("crunch") || 
+        exo.name.toLowerCase().includes("gainage") || 
+        exo.name.toLowerCase().includes("squat poids du corps") ||
+        exo.name.toLowerCase().includes("fentes")
+      );
+    }
+
+    // fallback si aucun match n'est trouvé pour assurer une séance magnifique et robuste
+    if (pool.length === 0) {
+      const allPool = exerciseLibrary.filter(exo => muscles.includes(exo.muscle));
+      pool = allPool.slice(0, 15);
+    }
+
+    // 4. Classer en polyarticulaires (compounds) et isolation pour un entraînement scientifique équilibré
+    const compounds = pool.filter(exo => 
+      exo.name.toLowerCase().includes("squat") || 
+      exo.name.toLowerCase().includes("presse") || 
+      exo.name.toLowerCase().includes("couché") || 
+      exo.name.toLowerCase().includes("bench") || 
+      exo.name.toLowerCase().includes("incliné") || 
+      exo.name.toLowerCase().includes("deadlift") || 
+      exo.name.toLowerCase().includes("soulevé de terre") || 
+      exo.name.toLowerCase().includes("rowing") || 
+      exo.name.toLowerCase().includes("tirage vertical") || 
+      exo.name.toLowerCase().includes("tirage poitrine") || 
+      exo.name.toLowerCase().includes("développé militaire") || 
+      exo.name.toLowerCase().includes("military press") || 
+      exo.name.toLowerCase().includes("tractions") || 
+      exo.name.toLowerCase().includes("pull-up") || 
+      exo.name.toLowerCase().includes("dips")
+    );
+
+    const isolations = pool.filter(exo => !compounds.some(c => c.id === exo.id));
+
+    // Sélectionner les exercices de manière équilibrée
+    const selected = [];
+    const targetCompounds = Math.ceil(numExercises / 2);
+    const targetIsolations = numExercises - targetCompounds;
+
+    const shuffleArray = (arr) => [...arr].sort(() => 0.5 - Math.random());
+    const shuffledCompounds = shuffleArray(compounds.length > 0 ? compounds : pool);
+    const shuffledIsolations = shuffleArray(isolations.length > 0 ? isolations : pool);
+
+    // Sélectionner les compounds
+    for (let i = 0; i < Math.min(targetCompounds, shuffledCompounds.length); i++) {
+      selected.push(shuffledCompounds[i]);
+    }
+    // Sélectionner les isolations (sans doublons)
+    for (let i = 0; i < shuffledIsolations.length; i++) {
+      if (selected.length >= numExercises) break;
+      if (!selected.some(s => s.id === shuffledIsolations[i].id)) {
+        selected.push(shuffledIsolations[i]);
+      }
+    }
+
+    // Si on n'a toujours pas assez d'exercices, on pioche au hasard dans le pool global de départ
+    if (selected.length < numExercises) {
+      const shuffledPool = shuffleArray(pool);
+      for (let i = 0; i < shuffledPool.length; i++) {
+        if (selected.length >= numExercises) break;
+        if (!selected.some(s => s.id === shuffledPool[i].id)) {
+          selected.push(shuffledPool[i]);
+        }
+      }
+    }
+
+    // Assurer un ordre logique : Compounds d'abord, Isolation ensuite
+    selected.sort((a, b) => {
+      const aIsCompound = compounds.some(c => c.id === a.id);
+      const bIsCompound = compounds.some(c => c.id === b.id);
+      if (aIsCompound && !bIsCompound) return -1;
+      if (!aIsCompound && bIsCompound) return 1;
+      return 0;
+    });
+
+    // Formater le titre de la séance
+    let titleStr = "";
+    if (smartTarget === "pecs_triceps") titleStr += "Pecs & Tri";
+    else if (smartTarget === "dos_biceps") titleStr += "Dos & Bi";
+    else if (smartTarget === "jambes") titleStr += "Jambes";
+    else if (smartTarget === "bras_epaules") titleStr += "Bras & Épaules";
+    else if (smartTarget === "fullbody") titleStr += "Full Body";
+    else if (smartTarget === "upper") titleStr += "Upper Body";
+    else if (smartTarget === "lower") titleStr += "Lower Body";
+
+    // Couleur assortie thématique
+    const colors = [
+      "from-blue-600 to-indigo-800",
+      "from-pink-600 to-purple-800",
+      "from-emerald-600 to-cyan-800",
+      "from-amber-600 to-red-800"
+    ];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    // Créer la séance
+    const nextKey = createCustomSessionWithExercises(titleStr, selected, randomColor);
+    if (nextKey) {
+      setCurrentSession(nextKey);
+      triggerHaptic([60, 50, 60]);
+    }
+
+    // Réinitialiser les états
+    setShowSmartBuilder(false);
+    setSmartStep(1);
+  };
+
   const fmt = s => `${Math.floor(s/60)}:${(s%60).toString().padStart(2,"0")}`;
 
   const applyProgram = (prog) => {
@@ -802,6 +971,19 @@ const Workout = () => {
           <Plus size={16}/>
           <span className="text-[8.5px] uppercase tracking-wider font-black">Créer</span>
         </button>
+
+        {/* Bouton Smart Builder */}
+        <button
+          onClick={() => {
+            setSmartStep(1);
+            setShowSmartBuilder(true);
+            triggerHaptic(15);
+          }}
+          className="snap-center shrink-0 w-[88px] h-[80px] rounded-2xl border border-dashed border-cyan-500/30 hover:border-cyan-400 text-cyan-400 hover:text-cyan-300 flex flex-col items-center justify-center gap-1 transition-all bg-cyan-950/20 hover:bg-cyan-950/40 glow-blue/20"
+        >
+          <Zap size={16} className="animate-pulse text-cyan-400" />
+          <span className="text-[8.5px] uppercase tracking-wider font-black">Smart ⚡</span>
+        </button>
       </div>
 
       {/* Session info banner */}
@@ -855,6 +1037,234 @@ const Workout = () => {
                   disabled={!newSessionName.trim()}
                   className="btn-primary flex-1 disabled:opacity-50"
                 >Créer ✓</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Smart Builder Modal */}
+      <AnimatePresence>
+        {showSmartBuilder && (
+          <div className="modal-overlay" onClick={() => setShowSmartBuilder(false)}>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }} 
+              animate={{ scale: 1, opacity: 1 }} 
+              exit={{ scale: 0.9, opacity: 0 }} 
+              onClick={e => e.stopPropagation()}
+              className="glass-dark w-[95%] sm:w-full max-w-lg rounded-3xl p-5 border border-cyan-500/20 shadow-2xl flex flex-col relative overflow-hidden"
+            >
+              {/* Background decorative orbs for wizard */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Wizard header */}
+              <div className="flex justify-between items-center mb-4 relative z-10">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-cyan-500/15 flex items-center justify-center border border-cyan-500/30">
+                    <Zap size={16} className="text-cyan-400 animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-black text-white">Smart Builder</h3>
+                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Algorithme Scientifique</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setShowSmartBuilder(false)} 
+                  className="p-2 hover:bg-white/5 rounded-full text-slate-400 hover:text-white transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Dynamic steps indicator */}
+              <div className="flex items-center gap-2 mb-6 relative z-10">
+                {[1, 2, 3].map(step => (
+                  <div key={step} className="flex-1 flex flex-col gap-1.5">
+                    <div className={`h-1.5 rounded-full transition-all duration-300 ${
+                      smartStep >= step 
+                        ? "bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_8px_rgba(34,211,238,0.5)]" 
+                        : "bg-slate-800"
+                    }`} />
+                    <span className={`text-[8.5px] font-black uppercase tracking-wider text-center ${
+                      smartStep === step ? "text-cyan-400" : "text-slate-600"
+                    }`}>
+                      {step === 1 ? "1. Durée" : step === 2 ? "2. Matériel" : "3. Cible"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Wizard steps content */}
+              <div className="flex-1 min-h-[220px] mb-6 relative z-10">
+                {/* STEP 1: DURATION */}
+                {smartStep === 1 && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    exit={{ opacity: 0, x: -20 }}
+                    className="space-y-3"
+                  >
+                    <p className="text-sm font-bold text-slate-300 mb-2">Sélectionne la durée souhaitée :</p>
+                    {[
+                      { id: "express", name: "Séance Express ⚡", desc: "30 min • 3 exercices intenses ciblés", color: "border-amber-500/25 bg-amber-500/5 hover:border-amber-400" },
+                      { id: "standard", name: "Séance Standard 🏋️‍♂️", desc: "60 min • 5 exercices • Idéal pour l'hypertrophie", color: "border-blue-500/25 bg-blue-500/5 hover:border-blue-400" },
+                      { id: "extreme", name: "Séance Extrême 🔥", desc: "90 min • 7 exercices • Volume & Intensité max", color: "border-red-500/25 bg-red-500/5 hover:border-red-400" }
+                    ].map(opt => {
+                      const isSelected = smartDuration === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          onClick={() => {
+                            setSmartDuration(opt.id);
+                            triggerHaptic(15);
+                          }}
+                          className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                            isSelected 
+                              ? "bg-slate-900 border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.15)]" 
+                              : "bg-slate-950/40 border-white/5 hover:bg-slate-900/60"
+                          }`}
+                        >
+                          <div>
+                            <p className={`text-sm font-black ${isSelected ? "text-cyan-400" : "text-white"}`}>{opt.name}</p>
+                            <p className="text-xs text-slate-400 mt-0.5">{opt.desc}</p>
+                          </div>
+                          <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                            isSelected ? "border-cyan-400 bg-cyan-400/20" : "border-slate-700"
+                          }`}>
+                            {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
+
+                {/* STEP 2: EQUIPMENT */}
+                {smartStep === 2 && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    exit={{ opacity: 0, x: -20 }}
+                    className="space-y-2.5"
+                  >
+                    <p className="text-sm font-bold text-slate-300 mb-2">Équipement disponible :</p>
+                    {[
+                      { id: "salle", name: "Salle Complète 🏢", desc: "Accès à toutes les machines, barres & poulies" },
+                      { id: "halteres", name: "Haltères Uniquement 🧴", desc: "Parfait pour s'entraîner à la maison ou en voyage" },
+                      { id: "poulies", name: "Poulies + Haltères 🔌", desc: "Idéal pour une tension continue et isolation" },
+                      { id: "barre", name: "Barre Libre & Guidée 🏋️", desc: "Focus sur les mouvements de force fondamentaux" },
+                      { id: "bodyweight", name: "Poids du Corps 🤸", desc: "Calisthénie et exercices au poids de corps" }
+                    ].map(opt => {
+                      const isSelected = smartEquipment === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          onClick={() => {
+                            setSmartEquipment(opt.id);
+                            triggerHaptic(15);
+                          }}
+                          className={`w-full px-4 py-3 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                            isSelected 
+                              ? "bg-slate-900 border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.15)]" 
+                              : "bg-slate-950/40 border-white/5 hover:bg-slate-900/60"
+                          }`}
+                        >
+                          <div>
+                            <p className={`text-xs font-black ${isSelected ? "text-cyan-400" : "text-white"}`}>{opt.name}</p>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{opt.desc}</p>
+                          </div>
+                          <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
+                            isSelected ? "border-cyan-400 bg-cyan-400/20" : "border-slate-700"
+                          }`}>
+                            {isSelected && <div className="w-1.2 h-1.2 rounded-full bg-cyan-400" />}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
+
+                {/* STEP 3: TARGET MUSCLES */}
+                {smartStep === 3 && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    exit={{ opacity: 0, x: -20 }}
+                    className="grid grid-cols-2 gap-2"
+                  >
+                    <p className="text-sm font-bold text-slate-300 col-span-2 mb-1">Cible anatomique :</p>
+                    {[
+                      { id: "fullbody", name: "Full Body 🌍", desc: "Corps Complet" },
+                      { id: "upper", name: "Upper Body 🔼", desc: "Haut du Corps" },
+                      { id: "lower", name: "Lower Body 🔽", desc: "Bas du Corps" },
+                      { id: "pecs_triceps", name: "Pecs & Tri 🦖", desc: "Push Ciblé" },
+                      { id: "dos_biceps", name: "Dos & Bi 🦅", desc: "Pull Ciblé" },
+                      { id: "bras_epaules", name: "Bras & Épaules ⚡", desc: "Focus Esthétique" },
+                      { id: "jambes", name: "Jambes 🦾", desc: "Focus Bas" }
+                    ].map(opt => {
+                      const isSelected = smartTarget === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          onClick={() => {
+                            setSmartTarget(opt.id);
+                            triggerHaptic(15);
+                          }}
+                          className={`p-3 rounded-2xl border text-center flex flex-col items-center justify-center gap-1 transition-all ${
+                            isSelected 
+                              ? "bg-slate-900 border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.15)] col-span-2" 
+                              : "bg-slate-950/40 border-white/5 hover:bg-slate-900/60"
+                          }`}
+                        >
+                          <span className={`text-xs font-black ${isSelected ? "text-cyan-400" : "text-white"}`}>{opt.name}</span>
+                          <span className="text-[9px] text-slate-500">{opt.desc}</span>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Wizard footer action buttons */}
+              <div className="flex gap-3 relative z-10 border-t border-white/5 pt-4">
+                {smartStep > 1 ? (
+                  <button 
+                    onClick={() => {
+                      setSmartStep(prev => prev - 1);
+                      triggerHaptic(15);
+                    }}
+                    className="btn-glass flex-1 py-3 text-xs"
+                  >
+                    Retour
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => setShowSmartBuilder(false)} 
+                    className="btn-glass flex-1 py-3 text-xs"
+                  >
+                    Annuler
+                  </button>
+                )}
+
+                {smartStep < 3 ? (
+                  <button 
+                    onClick={() => {
+                      setSmartStep(prev => prev + 1);
+                      triggerHaptic(15);
+                    }}
+                    className="btn-primary flex-1 py-3 text-xs !bg-gradient-to-r !from-cyan-500 !to-blue-600 !border-cyan-400/30"
+                  >
+                    Suivant
+                  </button>
+                ) : (
+                  <button 
+                    onClick={generateSmartSession}
+                    className="btn-primary flex-1 py-3 text-xs !bg-gradient-to-r !from-cyan-500 !to-indigo-600 !border-cyan-400/40 shadow-[0_0_15px_rgba(34,211,238,0.35)] animate-pulse"
+                  >
+                    Générer Séance ✓
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>

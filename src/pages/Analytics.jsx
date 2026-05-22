@@ -5,6 +5,7 @@ import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard } from "../utils/metrics";
 import EvolutionChart from "../components/charts/EvolutionChart";
 import { motion, AnimatePresence } from "framer-motion";
+import { MuscleMap } from "../components/layout/MuscleMap";
 import {
   Activity, BarChart2, Award, Star, Target, Zap, Download,
   TrendingDown, ArrowRightLeft, AlertTriangle, Trophy, Flame, Search, X
@@ -23,6 +24,62 @@ const Analytics = () => {
     dailyNutrition, logNutrition, userSessions
   } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
+
+  const fatigueLevels = useMemo(() => {
+    const now = new Date();
+    const d4 = new Date(now - 4 * 24 * 60 * 60 * 1000); // last 4 days
+    const setsCount = {
+      Pectoraux: 0, Dos: 0, Lombaires: 0, Epaules: 0, Biceps: 0, Triceps: 0,
+      AvantBras: 0, Abdos: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0, Mollets: 0
+    };
+    
+    // Map exercise muscle categories in history to the 12 keys
+    const MAP_TO_SVG_KEY = {
+      "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
+      "Dos (Largeur)": "Dos", "Dos (Épaisseur)": "Dos", "Dos (Bas)": "Dos", "Dos (Isolation)": "Dos", "Dos": "Dos",
+      "Lombaires": "Lombaires", "Lombes": "Lombaires",
+      "Cuisses": "Quadriceps", "Quadriceps": "Quadriceps",
+      "Ischios": "Ischios",
+      "Fessiers": "Fessiers",
+      "Mollets": "Mollets",
+      "Épaules (Masse)": "Epaules", "Épaules (Latéral)": "Epaules", "Arr. Épaules": "Epaules", "Épaules": "Epaules", "Epaules": "Epaules",
+      "Trapèzes": "Dos", // Count traps towards back
+      "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
+      "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
+      "Avant-Bras": "AvantBras", "Avant-bras": "AvantBras",
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos"
+    };
+
+    Object.keys(history || {}).forEach(id => {
+      const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
+      if (!exo) return;
+      const key = MAP_TO_SVG_KEY[exo.muscle];
+      if (!key) return;
+      const entries = history[id];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry => {
+          if (!entry || !entry.date) return;
+          const d = parseDate(entry.date);
+          if (d >= d4 && d <= now) {
+            setsCount[key] += (entry.setsData || []).filter(s => s.done && +s.weight > 0 && !s.isExtra).length;
+          }
+        });
+      }
+    });
+
+    // Translate sets count to percentage (0 - 100)
+    const levels = {};
+    Object.keys(setsCount).forEach(k => {
+      const count = setsCount[k];
+      if (count === 0) levels[k] = 0;
+      else if (count <= 3) levels[k] = 25;
+      else if (count <= 6) levels[k] = 55;
+      else if (count <= 9) levels[k] = 85;
+      else levels[k] = 100;
+    });
+
+    return levels;
+  }, [history, allExercises]);
   const [selectedSession, setSelectedSession] = useState(null);
   const [metric, setMetric] = useState("weight");
   
@@ -345,6 +402,56 @@ const Analytics = () => {
               <h1 className="text-2xl font-black text-white uppercase tracking-tight">Analyses & Stats</h1>
               <p className="text-sm text-slate-500">Données scientifiques de progression</p>
             </div>
+          </div>
+        </motion.div>
+
+        {/* ── DIAGNOSTIC DE RÉCUPÉRATION (MUSCLE MAP) ── */}
+        <motion.div variants={item} className="glass-card p-5 mb-5 border-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.06)]">
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <h3 className="font-bold text-white flex items-center gap-2">
+                <Activity size={16} className="text-cyan-400" />
+                Statut de Fatigue & Récupération
+              </h3>
+              <p className="text-[10px] text-slate-500 mt-0.5">Basé sur le volume d'entraînement des 4 derniers jours</p>
+            </div>
+            <div className="flex gap-1">
+              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Frais</span>
+              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-amber-400 px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">Actif</span>
+              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-red-400 px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20">Fatigué</span>
+            </div>
+          </div>
+
+          <MuscleMap 
+            fatigueLevels={fatigueLevels}
+            interactive={true}
+          />
+
+          <div className="mt-4 pt-4 border-t border-white/5 space-y-2">
+            <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest flex items-center gap-1">
+              🧠 Recommandation Physiologique
+            </p>
+            <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
+              {(() => {
+                const tiredMuscles = Object.entries(fatigueLevels)
+                  .filter(([_, level]) => level >= 75)
+                  .map(([k]) => {
+                    const french = {
+                      Pectoraux: "Pectoraux", Dos: "Dorsaux", Lombaires: "Lombaires",
+                      Epaules: "Épaules", Biceps: "Biceps", Triceps: "Triceps",
+                      AvantBras: "Avant-bras", Abdos: "Abdos", Quadriceps: "Quadriceps",
+                      Ischios: "Ischios", Fessiers: "Fessiers", Mollets: "Mollets"
+                    };
+                    return french[k];
+                  });
+
+                if (tiredMuscles.length > 0) {
+                  return `⚠️ Attention : Vos muscles suivants sont très fatigués : ${tiredMuscles.join(", ")}. Nous vous recommandons d'éviter de les solliciter aujourd'hui et d'orienter vos efforts vers d'autres zones musculaires pour optimiser votre croissance et prévenir le surentraînement.`;
+                } else {
+                  return "✅ Excellent état général. Vos muscles sont parfaitement régénérés et prêts à encaisser une séance à haute intensité. Foncez !";
+                }
+              })()}
+            </p>
           </div>
         </motion.div>
 

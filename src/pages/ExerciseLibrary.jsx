@@ -2,6 +2,9 @@ import React, { useState, useMemo } from "react";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Dumbbell, Activity, Play, Grid, List, ChevronDown, ChevronUp, X, Filter } from "lucide-react";
+import { MuscleMap } from "../components/layout/MuscleMap";
+import { triggerHaptic } from "../utils/haptics";
+
 
 const muscleColors = {
   "Machine":    { bg: "bg-fuchsia-500/12", text: "text-fuchsia-400", border: "border-fuchsia-500/30" },
@@ -174,9 +177,55 @@ const ExerciseLibrary = () => {
   const [diffFilter, setDiffFilter] = useState("Tous");
   const [viewMode, setViewMode] = useState("grid"); // grid | list
   const [visibleCount, setVisibleCount] = useState(50);
+  const [showMap, setShowMap] = useState(false);
+
+  const activeMuscleOnMap = useMemo(() => {
+    const LIB_TO_SVG = {
+      "Pectoraux": "Pectoraux",
+      "Dos": "Dos",
+      "Lombaires": "Lombaires",
+      "Épaules": "Epaules",
+      "Biceps": "Biceps",
+      "Triceps": "Triceps",
+      "Avant-bras": "AvantBras",
+      "Abdos": "Abdos",
+      "Quadriceps": "Quadriceps",
+      "Ischios": "Ischios",
+      "Fessiers": "Fessiers",
+      "Mollets": "Mollets"
+    };
+    return LIB_TO_SVG[muscleFilter] || null;
+  }, [muscleFilter]);
+
+  const handleMuscleMapClick = (muscleKey) => {
+    const SVG_TO_LIB = {
+      Pectoraux: "Pectoraux",
+      Dos: "Dos",
+      Lombaires: "Lombaires",
+      Epaules: "Épaules",
+      Biceps: "Biceps",
+      Triceps: "Triceps",
+      AvantBras: "Avant-bras",
+      Abdos: "Abdos",
+      Quadriceps: "Quadriceps",
+      Ischios: "Ischios",
+      Fessiers: "Fessiers",
+      Mollets: "Mollets"
+    };
+    const targetMuscle = SVG_TO_LIB[muscleKey];
+    if (targetMuscle) {
+      triggerHaptic(15);
+      if (muscleFilter === targetMuscle) {
+        setMuscleFilter("Tous"); // deselect
+      } else {
+        setMuscleFilter(targetMuscle);
+      }
+    }
+  };
 
   const muscles = useMemo(() => ["Tous", ...Object.keys(muscleColors).filter(m => m !== "Machine")], []);
   const difficulties = ["Tous", "Débutant", "Intermédiaire", "Avancé"];
+
 
   const filtered = useMemo(() => exerciseLibrary.filter(e => {
     const q = removeAccents(search.toLowerCase());
@@ -219,6 +268,12 @@ const ExerciseLibrary = () => {
           </div>
           {/* View toggle */}
           <div className="flex items-center gap-1 glass rounded-xl p-1 border border-white/10">
+            <button onClick={() => { setShowMap(!showMap); triggerHaptic(15); }}
+              className={`p-2 rounded-lg transition-all flex items-center gap-1.5 text-[10px] font-bold ${showMap ? "bg-amber-500/25 text-amber-400 border border-amber-500/20" : "text-slate-500 hover:text-white"}`}>
+              <Activity size={12} />
+              <span className="hidden sm:inline">Carte Muscles</span>
+            </button>
+            <div className="w-px h-4 bg-white/10 mx-0.5" />
             <button onClick={() => setViewMode("grid")}
               className={`p-2 rounded-lg transition-all ${viewMode === "grid" ? "bg-amber-500/15 text-amber-400" : "text-slate-500 hover:text-white"}`}>
               <Grid size={15} />
@@ -230,6 +285,40 @@ const ExerciseLibrary = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* Interactive Muscle Map */}
+      <AnimatePresence>
+        {showMap && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden mb-4 glass-card p-4 border-amber-500/10 shadow-lg"
+          >
+            <div className="flex justify-between items-center mb-2 px-1">
+              <span className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
+                <Activity size={13} className="text-amber-500" />
+                Sélection Visuelle Par Muscle
+              </span>
+              <button 
+                onClick={() => { setMuscleFilter("Tous"); triggerHaptic(10); }}
+                className="text-[9px] font-black uppercase text-slate-500 hover:text-white px-2 py-1 rounded bg-slate-900 border border-white/5"
+              >
+                Réinitialiser
+              </button>
+            </div>
+            <p className="text-[10px] text-slate-500 mb-3 px-1">
+              Clique sur un muscle pour filtrer les exercices correspondants.
+            </p>
+            <MuscleMap 
+              selectedMuscle={activeMuscleOnMap}
+              onMuscleClick={handleMuscleMapClick}
+              interactive={true}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Sticky filter bar */}
       <div className="sticky top-16 sm:top-20 z-20 -mx-4 px-4 pb-4 pt-3 mb-4 bg-[#020509]/95 backdrop-blur-xl border-b border-white/5 shadow-xl shadow-black/50">
