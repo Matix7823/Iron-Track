@@ -85,9 +85,22 @@ export const calculateSessionXP = (tonnage, energyLevel) => {
  * Calcule le decay d'XP après inactivité
  */
 export const calculateXPDecay = (xp, lastDate) => {
-  if (!lastDate || !xp) return xp;
+  if (!lastDate || !xp || isNaN(xp)) return xp || 0;
   
-  const last = new Date(lastDate);
+  let last;
+  if (lastDate.includes('/')) {
+    const parts = lastDate.split('/');
+    if (parts.length === 3) {
+      last = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]);
+    } else {
+      last = new Date(lastDate);
+    }
+  } else {
+    last = new Date(lastDate);
+  }
+  
+  if (isNaN(last.getTime())) return xp;
+
   const now = new Date();
   const diffTime = Math.abs(now - last);
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));

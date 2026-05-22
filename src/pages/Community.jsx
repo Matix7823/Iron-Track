@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
 import { showNotification } from "../utils/native";
-import { motion } from "framer-motion";
-import { Send, Trophy, Clock, Dumbbell, Flame, Target, Users, ImagePlus, X, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, Trophy, Dumbbell, Users, ImagePlus, X, Loader2, Sparkles, MessageCircle, ChevronDown, Flame } from "lucide-react";
 
 const Community = () => {
   const { user, profile } = useAuth();
@@ -11,9 +11,11 @@ const Community = () => {
   const [newMessage, setNewMessage] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
+  
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const isAtBottomRef = useRef(true);
@@ -28,9 +30,7 @@ const Community = () => {
       .order('created_at', { ascending: true })
       .limit(50);
       
-    if (!error && data) {
-      setMessages(data);
-    }
+    if (!error && data) setMessages(data);
   };
 
   useEffect(() => {
@@ -39,9 +39,13 @@ const Community = () => {
     const channel = supabase
       .channel('public:messages')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
-        setMessages(current => [...current, payload.new]);
+        setMessages(current => {
+          // Eviter les doublons potentiels liés au websocket
+          if (current.some(m => m.id === payload.new.id)) return current;
+          return [...current, payload.new];
+        });
         if (payload.new.user_id !== user?.id) {
-          showNotification(`Message de ${payload.new.user_email}`, payload.new.content);
+          showNotification(`Message de ${payload.new.user_email}`, payload.new.content || "Nouveau partage");
         }
       })
       .subscribe();
@@ -49,9 +53,9 @@ const Community = () => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [user]);
 
-  // Scroll down only if already at the bottom when a new message arrives
+  // Autoscroll intelligent
   useEffect(() => {
     if (isAtBottomRef.current) {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -65,10 +69,6 @@ const Community = () => {
     isAtBottomRef.current = atBottom;
     setIsAtBottom(atBottom);
     setShowScrollTop(el.scrollTop > 120);
-  };
-
-  const scrollToTop = () => {
-    chatContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToBottom = () => {
@@ -121,17 +121,19 @@ const Community = () => {
       setNewMessage("");
       removeImage();
 
-      await supabase.from('messages').insert([
-        {
-          user_id: user.id,
-          user_email: capitalizedName,
-          content: messageText,
-          image_url: imageUrl
-        }
-      ]);
+      // On simule l'insertion optimiste pour la fluidité (optionnel mais recommandé pour les chats)
+      // Ici on attend la confirmation Supabase.
+      await supabase.from('messages').insert([{
+        user_id: user.id,
+        user_email: capitalizedName,
+        content: messageText,
+        image_url: imageUrl
+      }]);
+      
+      scrollToBottom();
     } catch (err) {
       console.error("Erreur lors de l'envoi :", err);
-      alert("Erreur lors de l'envoi de l'image. As-tu bien configuré le bucket 'chat-photos' ?");
+      alert("Erreur lors de l'envoi du message.");
     } finally {
       setIsUploading(false);
     }
@@ -140,177 +142,255 @@ const Community = () => {
   const renderWorkoutCard = (workoutData) => {
     if (!workoutData) return null;
     return (
-      <div className="mt-2 glass-card p-3 border-blue-500/30 glow-blue text-left w-full sm:w-80">
-        <div className="flex items-center gap-2 mb-2">
-          <Trophy size={16} className="text-amber-400" />
-          <span className="text-xs font-black text-white uppercase tracking-wider">{workoutData.sessionTitle || "Séance"}</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2 mb-3">
-          <div className="bg-black/20 rounded-xl p-2 text-center">
-            <p className="text-[10px] text-slate-500 uppercase font-bold">Tonnage</p>
-            <p className="text-sm font-black text-blue-400">{workoutData.tonnage} kg</p>
+      <div className="mt-3 relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-black border border-white/10 shadow-2xl w-[260px] sm:w-[300px]">
+        {/* Decorative background flare */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[50px] -z-10 rounded-full" />
+        
+        <div className="p-4 border-b border-white/5 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+              <Trophy size={14} className="text-blue-400" />
+            </div>
+            <div>
+              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none">Séance Validée</p>
+              <p className="text-sm font-black text-white truncate max-w-[150px]">{workoutData.sessionTitle || "Entraînement"}</p>
+            </div>
           </div>
-          <div className="bg-black/20 rounded-xl p-2 text-center">
-            <p className="text-[10px] text-slate-500 uppercase font-bold">Rang</p>
+          <Flame size={20} className={workoutData.rank === 'super' ? 'text-amber-500' : workoutData.rank === 'medium' ? 'text-blue-500' : 'text-slate-500'} />
+        </div>
+        
+        <div className="p-4 grid grid-cols-2 gap-3">
+          <div className="bg-white/5 rounded-xl p-3 text-center border border-white/5">
+            <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1">Tonnage</p>
+            <p className="text-sm font-black text-white">{workoutData.tonnage} <span className="text-[10px] text-slate-400 font-normal">kg</span></p>
+          </div>
+          <div className="bg-white/5 rounded-xl p-3 text-center border border-white/5">
+            <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1">Performance</p>
             <p className={`text-sm font-black ${workoutData.rank === 'super' ? 'text-amber-400' : workoutData.rank === 'medium' ? 'text-blue-400' : 'text-slate-400'}`}>
               {workoutData.rank === 'super' ? 'Légendaire' : workoutData.rank === 'medium' ? 'Solide' : 'Normal'}
             </p>
           </div>
         </div>
-        <div className="space-y-1">
-          {workoutData.exercises?.slice(0,3).map((exo, i) => (
-            <p key={i} className="text-[10px] text-slate-300 flex items-center gap-1.5 truncate">
-              <Dumbbell size={10} className="text-slate-500 shrink-0" />
-              {exo.name} <span className="text-slate-500 ml-auto">{exo.sets} séries</span>
-            </p>
-          ))}
-          {workoutData.exercises?.length > 3 && (
-            <p className="text-[9px] text-slate-500 italic text-center mt-1">+ {workoutData.exercises.length - 3} autres exercices</p>
-          )}
-        </div>
+        
+        {workoutData.exercises && workoutData.exercises.length > 0 && (
+          <div className="px-4 pb-4 space-y-2">
+            {workoutData.exercises.slice(0,3).map((exo, i) => (
+              <div key={i} className="flex justify-between items-center text-[11px]">
+                <div className="flex items-center gap-1.5 text-slate-300 truncate pr-2">
+                  <Dumbbell size={10} className="text-blue-400 shrink-0" />
+                  <span className="truncate font-semibold">{exo.name}</span>
+                </div>
+                <span className="text-slate-500 font-bold whitespace-nowrap bg-white/5 px-2 py-0.5 rounded-full">{exo.sets} séries</span>
+              </div>
+            ))}
+            {workoutData.exercises.length > 3 && (
+              <p className="text-[10px] text-slate-500 font-bold italic text-center pt-1">+ {workoutData.exercises.length - 3} autres exos</p>
+            )}
+          </div>
+        )}
       </div>
     );
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-[80px] sm:bottom-0 overflow-hidden flex flex-col items-center z-10 pt-safe">
-      <div className="flex flex-col w-full max-w-3xl h-full px-3 sm:px-4 pt-4 sm:pt-6">
-      
-      
-      <div className="mb-4 shrink-0 flex items-center justify-between">
-        <div>
-          <p className="section-title"><Users size={20} className="text-blue-400"/>Communauté</p>
-          <p className="text-sm text-slate-400 -mt-2">Partage tes perfs avec les autres</p>
-        </div>
-        <button 
-          onClick={async () => {
-            if (window.confirm("Es-tu sûr de vouloir vider toute la conversation ? Cette action est irréversible.")) {
-              const { error } = await supabase.from('messages').delete().not('id', 'is', null);
-              if (!error) setMessages([]);
-              else alert("Erreur (As-tu bien configuré les droits RLS dans Supabase ?) : " + error.message);
-            }
-          }}
-          className="flex items-center gap-2 px-3 py-2 bg-red-500/10 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500/20 transition-colors"
-        >
-          Vider le chat
-        </button>
-      </div>
+    <div className="fixed inset-0 pt-safe pb-[80px] sm:pb-[20px] flex flex-col items-center z-10 overflow-hidden bg-[#020617]">
+      {/* Dynamic Background */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Chat Messages — iOS scroll fix: overflow-y-auto + overscrollBehavior:auto */}
-      <div 
-        ref={chatContainerRef}
-        className="flex-1 overflow-y-auto glass-card border-white/5 p-4 mb-4 space-y-4 relative"
-        style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "auto", minHeight: 0 }}
-        onScroll={handleScroll}
-      >
-        {messages.map((msg, idx) => {
-          const isMe = msg.user_id === user?.id;
-          const showAvatarAndName = idx === 0 || messages[idx - 1].user_id !== msg.user_id;
-          const initial = msg.user_email ? msg.user_email.charAt(0).toUpperCase() : "U";
-          
-          return (
-            <motion.div 
-              key={msg.id || idx}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`flex w-full ${isMe ? 'justify-end' : 'justify-start'} ${showAvatarAndName ? 'mt-4' : 'mt-1'}`}
-            >
-              {!isMe && (
-                <div className="flex flex-col items-center mr-2 shrink-0 w-8">
-                  {showAvatarAndName ? (
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md text-xs">
-                      {initial}
-                    </div>
-                  ) : (
-                    <div className="w-8" />
-                  )}
-                </div>
-              )}
-              
-              <div className={`flex flex-col max-w-[75%] sm:max-w-[65%] ${isMe ? 'items-end' : 'items-start'}`}>
-                {showAvatarAndName && (
-                  <span className={`text-[10px] text-slate-500 mb-1 font-bold ${isMe ? 'mr-1' : 'ml-1'}`}>
-                    {isMe ? 'Moi' : msg.user_email}
-                  </span>
-                )}
-                
-                <div 
-                  className={`p-3 relative ${isMe 
-                    ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-[0_4px_15px_rgba(37,99,235,0.2)]' 
-                    : 'bg-slate-800 border border-white/5 text-slate-100 shadow-[0_4px_15px_rgba(0,0,0,0.2)]'} 
-                  ${showAvatarAndName && isMe ? 'rounded-2xl rounded-tr-sm' : ''}
-                  ${showAvatarAndName && !isMe ? 'rounded-2xl rounded-tl-sm' : ''}
-                  ${!showAvatarAndName ? 'rounded-2xl' : ''}`}
-                >
-                  {msg.image_url && (
-                    <div className="mb-2 rounded-xl overflow-hidden bg-black/40 border border-white/10 relative group">
-                      <img src={msg.image_url} alt="Uploaded" className="w-full h-auto max-h-64 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => window.open(msg.image_url, '_blank')} />
-                    </div>
-                  )}
-                  {msg.content && <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>}
-                  {msg.workout_data && renderWorkoutCard(msg.workout_data)}
-                </div>
-                <span className={`text-[8px] text-slate-600 mt-1 ${isMe ? 'mr-1' : 'ml-1'}`}>
-                  {new Date(msg.created_at).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}
-                </span>
-              </div>
-            </motion.div>
-          );
-        })}
-        <div ref={messagesEndRef} />
-      </div>
-
-      {/* Input Area */}
-      <form onSubmit={sendMessage} className="shrink-0 flex flex-col gap-2">
-        {selectedImage && (
-          <div className="relative self-start mb-1 ml-1">
-            <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-blue-500 relative">
-              <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/20" />
-            </div>
-            <button 
-              type="button" 
-              onClick={removeImage}
-              className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-transform shadow-lg"
-            >
-              <X size={12} />
-            </button>
-          </div>
-        )}
+      <div className="flex flex-col w-full max-w-4xl h-full relative">
         
-        <div className="flex gap-2">
-          <input 
-            type="file" 
-            accept="image/*" 
-            ref={fileInputRef} 
-            onChange={handleImageSelect} 
-            className="hidden" 
-          />
-          <button 
-            type="button" 
-            onClick={() => fileInputRef.current?.click()}
-            className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors shrink-0 ${selectedImage ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-slate-800/50 text-slate-400 hover:text-white hover:bg-slate-700/50 border border-transparent hover:border-slate-600'}`}
-          >
-            <ImagePlus size={20} />
-          </button>
+        {/* PREMIUM HEADER */}
+        <header className="px-4 sm:px-6 pt-5 pb-4 shrink-0 flex items-center justify-between border-b border-white/5 bg-slate-950/50 backdrop-blur-xl z-20">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 border border-white/10">
+                <Users size={20} className="text-white" />
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#020617] animate-pulse" />
+            </div>
+            <div>
+              <h1 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 tracking-tight flex items-center gap-1.5">
+                Le Repaire <Sparkles size={14} className="text-amber-400" />
+              </h1>
+              <p className="text-[11px] text-slate-500 font-semibold">Live Social Feed</p>
+            </div>
+          </div>
           
-          <input 
-            type="text" 
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder={selectedImage ? "Ajouter une description..." : "Écris un message..."}
-            className="input-premium flex-1"
-          />
-          
-          <button 
-            type="submit" 
-            disabled={(!newMessage.trim() && !selectedImage) || isUploading}
-            className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white disabled:opacity-50 disabled:bg-slate-700 transition-colors shrink-0"
-          >
-            {isUploading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-          </button>
+          {profile?.role === 'admin' && (
+            <button 
+              onClick={async () => {
+                if (window.confirm("Vider toute la conversation ? Action irréversible.")) {
+                  await supabase.from('messages').delete().not('id', 'is', null);
+                  setMessages([]);
+                }
+              }}
+              className="px-3 py-1.5 bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 rounded-xl text-[10px] font-black uppercase tracking-wider transition-colors border border-red-500/20"
+            >
+              Vider
+            </button>
+          )}
+        </header>
+
+        {/* CHAT MESSAGES AREA */}
+        <div 
+          ref={chatContainerRef}
+          className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 relative min-h-0 custom-scrollbar"
+          style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "auto" }}
+          onScroll={handleScroll}
+        >
+          {messages.length === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center opacity-50">
+              <MessageCircle size={48} className="text-slate-600 mb-3" />
+              <p className="text-slate-400 font-bold text-sm">Aucun message pour le moment</p>
+              <p className="text-slate-500 text-xs">Sois le premier à briser la glace !</p>
+            </div>
+          ) : (
+            <AnimatePresence initial={false}>
+              {messages.map((msg, idx) => {
+                const isMe = msg.user_id === user?.id;
+                const showAvatar = idx === 0 || messages[idx - 1].user_id !== msg.user_id;
+                const initial = msg.user_email ? msg.user_email.charAt(0).toUpperCase() : "U";
+                const time = new Date(msg.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                
+                return (
+                  <motion.div 
+                    key={msg.id}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className={`flex flex-col ${isMe ? 'items-end' : 'items-start'} ${showAvatar ? 'mt-6' : 'mt-1'}`}
+                  >
+                    {showAvatar && (
+                      <div className={`flex items-center gap-2 mb-1.5 ${isMe ? 'flex-row-reverse' : ''}`}>
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white shadow-md ${isMe ? 'bg-gradient-to-br from-blue-500 to-indigo-600' : 'bg-gradient-to-br from-slate-600 to-slate-800 border border-white/10'}`}>
+                          {initial}
+                        </div>
+                        <span className="text-[10px] font-bold text-slate-400">{isMe ? 'Moi' : msg.user_email}</span>
+                        <span className="text-[9px] text-slate-600 font-medium">{time}</span>
+                      </div>
+                    )}
+                    
+                    <div className={`relative max-w-[85%] sm:max-w-[75%] rounded-2xl ${isMe ? 'rounded-tr-sm bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20' : 'rounded-tl-sm bg-slate-800/80 backdrop-blur-md border border-white/5 text-slate-200'}`}>
+                      
+                      {msg.content && (
+                        <p className="px-4 py-2.5 text-[13px] sm:text-sm leading-relaxed whitespace-pre-wrap font-medium">
+                          {msg.content}
+                        </p>
+                      )}
+                      
+                      {msg.image_url && (
+                        <div className="p-1">
+                          <img 
+                            src={msg.image_url} 
+                            alt="Upload" 
+                            className="rounded-xl max-w-full h-auto max-h-[300px] object-cover cursor-pointer hover:opacity-90 transition-opacity border border-white/10"
+                            onClick={() => window.open(msg.image_url, '_blank')}
+                          />
+                        </div>
+                      )}
+                      
+                      {msg.workout_data && (
+                        <div className="px-1 pb-1">
+                          {renderWorkoutCard(msg.workout_data)}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          )}
+          <div ref={messagesEndRef} className="h-2 w-full" />
         </div>
-      </form>
+
+        {/* FLOATING ACTION BOTTOM AREA */}
+        <div className="shrink-0 p-3 sm:p-4 bg-gradient-to-t from-[#020617] via-[#020617]/95 to-transparent relative z-20">
+          
+          <AnimatePresence>
+            {!isAtBottom && messages.length > 0 && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                onClick={scrollToBottom}
+                className="absolute -top-12 left-1/2 -translate-x-1/2 bg-blue-500/20 backdrop-blur-xl border border-blue-500/40 text-blue-400 p-2 rounded-full shadow-xl hover:bg-blue-500/30 transition-colors"
+              >
+                <ChevronDown size={18} />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <div className="glass-card rounded-3xl p-1.5 border border-white/10 shadow-2xl flex flex-col bg-slate-900/60 backdrop-blur-2xl">
+            {/* Image Preview */}
+            <AnimatePresence>
+              {selectedImage && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }} 
+                  animate={{ opacity: 1, height: 'auto' }} 
+                  exit={{ opacity: 0, height: 0 }}
+                  className="px-3 pt-3 pb-1"
+                >
+                  <div className="relative inline-block">
+                    <img 
+                      src={URL.createObjectURL(selectedImage)} 
+                      alt="Preview" 
+                      className="h-20 w-auto rounded-xl object-cover border border-white/10 shadow-lg" 
+                    />
+                    <button 
+                      type="button" 
+                      onClick={removeImage} 
+                      className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow-lg hover:scale-110 transition-transform"
+                    >
+                      <X size={12} />
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form onSubmit={sendMessage} className="flex items-end gap-2 relative">
+              
+              <button 
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="p-3 text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-2xl transition-all shrink-0"
+              >
+                <ImagePlus size={20} />
+              </button>
+              
+              <input 
+                type="file" 
+                ref={fileInputRef} 
+                onChange={handleImageSelect} 
+                accept="image/*" 
+                className="hidden" 
+              />
+              
+              <textarea
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage(e);
+                  }
+                }}
+                placeholder="Écris un message..."
+                className="flex-1 bg-transparent text-sm text-white placeholder-slate-500 py-3 px-2 focus:outline-none resize-none max-h-32 min-h-[44px]"
+                rows={1}
+                style={{ scrollbarWidth: 'none' }}
+              />
+              
+              <button 
+                type="submit"
+                disabled={(!newMessage.trim() && !selectedImage) || isUploading}
+                className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl text-white shadow-lg shadow-blue-500/25 disabled:opacity-50 disabled:grayscale transition-all shrink-0 hover:scale-105 active:scale-95"
+              >
+                {isUploading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} className="ml-0.5" />}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

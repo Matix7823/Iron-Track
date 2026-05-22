@@ -81,7 +81,7 @@ export const Navbar = () => {
         </div>
 
         {/* Desktop nav — icon-only on sm, icon+label on xl */}
-        <nav className="hidden sm:flex items-center gap-0.5 glass rounded-2xl p-1 border border-white/10 flex-1 justify-center max-w-xl">
+        <nav className="hidden sm:flex items-center gap-1 glass rounded-2xl p-1 border border-white/10 flex-1 justify-center max-w-4xl mx-auto">
           {navItems.map(({ to, icon: Icon, label, color, activeBg }) => (
             <NavLink key={to} to={to} end={to === "/"}
               className={({ isActive }) =>
