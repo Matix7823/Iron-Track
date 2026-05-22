@@ -3848,5 +3848,27 @@ export const exerciseLibrary = [
     "rest": 60,
     "note": "Flexion latérale debout avec sangle à la poulie basse, incluant une pause de 2 secondes en étirement maximal pour forcer les obliques profonds à réagir.",
     "id": "exo_350"
+  },
+  {
+    "muscle": "Biceps",
+    "name": "Curl Bayésien (Bayesian Cable Curl)",
+    "sets": 3,
+    "reps": "10-12",
+    "tempo": "3-0-1-1",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Dos à la poulie basse, bras en arrière. Tension continue et étirement extrême du long chef du biceps.",
+    "id": "exo_351"
+  },
+  {
+    "muscle": "Biceps",
+    "name": "Curl Spider (Spider Curl sur Banc Incliné)",
+    "sets": 3,
+    "reps": "12-15",
+    "tempo": "2-0-1-1",
+    "unit": "reps",
+    "rest": 75,
+    "note": "Buste en appui ventral sur un banc incliné à 30°, bras ballants. Isole le biceps et élimine toute triche pour un pic de contraction maximal.",
+    "id": "exo_352"
   }
 ];

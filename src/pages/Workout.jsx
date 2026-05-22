@@ -914,7 +914,7 @@ const Workout = () => {
           <Save size={20} /> Valider la Séance
         </motion.button>
       </div>
-      <div className="h-24" />
+      <div className="h-44" />
     </div>
   );
 };

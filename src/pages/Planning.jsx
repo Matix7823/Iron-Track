@@ -115,12 +115,33 @@ const Planning = () => {
                 <div key={i} className="flex flex-col items-center gap-1.5 shrink-0 group relative">
                   <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500">{getDayLabel(d, i)}</span>
                   
-                  <button
-                    onClick={() => setEditingDay(i)}
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all ${isRest ? "bg-white/5 border border-dashed border-white/20 text-slate-500 hover:text-white" : "text-white bg-gradient-to-br " + getSessionColor(d.session, userSessions)}`}
-                  >
-                    {isRest ? "+" : d.session}
-                  </button>
+                  <div className="relative">
+                    <button
+                      onClick={() => setEditingDay(i)}
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-lg hover:scale-110 active:scale-95 transition-all ${isRest ? "bg-white/5 border border-dashed border-white/20 text-slate-500 hover:text-white" : "text-white bg-gradient-to-br " + getSessionColor(d.session, userSessions)}`}
+                    >
+                      {isRest ? "+" : d.session}
+                    </button>
+                    
+                    {!isRest && (sessions[d.session] || userSessions?.[d.session]) && (
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setPreviewSession(d.session);
+                        }}
+                        className="absolute -bottom-1 -left-1 w-5 h-5 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-all backdrop-blur-sm border border-white/10 shadow-md"
+                      >
+                        <Play size={8} fill="currentColor" />
+                      </button>
+                    )}
+
+                    {normalizedSchedule.length > 1 && (
+                      <button
+                        onClick={() => removeDay(i)}
+                        className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-[10px] font-black z-10 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
+                      >×</button>
+                    )}
+                  </div>
                   
                   {/* Status icon — click to cycle */}
                   <button
@@ -132,26 +153,6 @@ const Planning = () => {
                       <span className="w-4 h-1 rounded-full bg-white/10 block mt-0.5" />
                     )}
                   </button>
-
-                  {!isRest && (sessions[d.session] || userSessions?.[d.session]) && (
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setPreviewSession(d.session);
-                      }}
-                      className="absolute -bottom-1 -left-1 w-5 h-5 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/40 hover:text-white transition-all backdrop-blur-sm border border-white/5"
-                    >
-                      <Play size={8} fill="currentColor" />
-                    </button>
-                  )}
-
-                  {/* Remove day button (visible permanently, easy to tap) */}
-                  {normalizedSchedule.length > 1 && (
-                    <button
-                      onClick={() => removeDay(i)}
-                      className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-white text-[10px] font-black z-10 shadow-lg shadow-red-500/30 active:scale-90 transition-transform"
-                    >×</button>
-                  )}
                 </div>
               );
             })}

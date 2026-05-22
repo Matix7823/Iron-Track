@@ -427,41 +427,51 @@ export const AppProvider = ({ children }) => {
           currentData = { ...currentData, ...oldData, version: CURRENT_APP_VERSION };
         }
 
-        // Force-synchronize default sessions A to L with codebase definitions
+        // Force-synchronize default sessions A to L with codebase definitions ONLY if they don't exist, are empty, or if Séance E needs a scientific update
         if (currentData.userSessions && typeof currentData.userSessions === 'object') {
+          // If Séance E is the old one (or doesn't have the new scientific Bayesian curl), update it to the new one
+          const E = currentData.userSessions.E;
+          if (E && (E.title === "Séance E : Bras (Volume Max)" || !E.exercises?.some(ex => ex.name?.includes("Bayésien")))) {
+            currentData.userSessions.E = sessions.E;
+          }
+
           const activeSched = localStorage.getItem('iron_track_active_schedule_name') || "Aucun";
           Object.keys(sessions).forEach(key => {
             if (['A','B','C','D','E','F','G','H','I','J','K','L'].includes(key)) {
               if (activeSched === "U/L/P/P/L Science (5J)" && ['K', 'L', 'C'].includes(key)) {
-                if (key === 'K') {
-                  currentData.userSessions.K = {
-                    ...sessions.K,
-                    category: "Push (Vol)",
-                    title: "Séance K : Push (Volume 5J)",
-                    focus: "Pecs / Épaules / Triceps (Volume & Hypertrophie)",
-                    exercises: pushVolume5JExercises
-                  };
-                } else if (key === 'L') {
-                  currentData.userSessions.L = {
-                    ...sessions.L,
-                    category: "Pull (Vol)",
-                    title: "Séance L : Pull (Volume 5J)",
-                    focus: "Dos / Arrière Épaule / Biceps (Volume & Hypertrophie)",
-                    exercises: pullVolume5JExercises
-                  };
-                } else if (key === 'C') {
-                  currentData.userSessions.C = {
-                    ...sessions.C,
-                    category: "Jambes (Vol)",
-                    title: "Séance C : Jambes (Volume 5J)",
-                    focus: "Quadriceps / Ischios / Mollets (Volume & Hypertrophie)",
-                    exercises: legsVolume5JExercises
-                  };
+                if (!currentData.userSessions[key] || !Array.isArray(currentData.userSessions[key].exercises) || currentData.userSessions[key].exercises.length === 0) {
+                  if (key === 'K') {
+                    currentData.userSessions.K = {
+                      ...sessions.K,
+                      category: "Push (Vol)",
+                      title: "Séance K : Push (Volume 5J)",
+                      focus: "Pecs / Épaules / Triceps (Volume & Hypertrophie)",
+                      exercises: pushVolume5JExercises
+                    };
+                  } else if (key === 'L') {
+                    currentData.userSessions.L = {
+                      ...sessions.L,
+                      category: "Pull (Vol)",
+                      title: "Séance L : Pull (Volume 5J)",
+                      focus: "Dos / Arrière Épaule / Biceps (Volume & Hypertrophie)",
+                      exercises: pullVolume5JExercises
+                    };
+                  } else if (key === 'C') {
+                    currentData.userSessions.C = {
+                      ...sessions.C,
+                      category: "Jambes (Vol)",
+                      title: "Séance C : Jambes (Volume 5J)",
+                      focus: "Quadriceps / Ischios / Mollets (Volume & Hypertrophie)",
+                      exercises: legsVolume5JExercises
+                    };
+                  }
                 }
               } else {
-                currentData.userSessions[key] = sessions[key];
+                if (!currentData.userSessions[key] || !Array.isArray(currentData.userSessions[key].exercises) || currentData.userSessions[key].exercises.length === 0) {
+                  currentData.userSessions[key] = sessions[key];
+                }
               }
-            } else if (!currentData.userSessions[key] || currentData.userSessions[key].exercises?.length === 0) {
+            } else if (!currentData.userSessions[key] || !Array.isArray(currentData.userSessions[key].exercises) || currentData.userSessions[key].exercises.length === 0) {
               currentData.userSessions[key] = sessions[key];
             }
           });
