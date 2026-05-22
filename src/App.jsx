@@ -90,11 +90,26 @@ const AppLayout = ({ children }) => (
   </div>
 );
 
+import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import GenderOnboardingModal from "./components/layout/GenderOnboardingModal";
+
+const AnimatedPage = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.98, y: 10 }}
+    animate={{ opacity: 1, scale: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 1.02, y: -10 }}
+    transition={{ duration: 0.25, ease: "easeInOut" }}
+    className="w-full h-full"
+  >
+    {children}
+  </motion.div>
+);
 
 const AppInner = () => {
   const { isDataLoading, gender, changeGender } = useApp();
   const { user, profile } = useAuth();
+  const location = useLocation();
   
   if (isDataLoading) return <LoadingScreen />;
   
@@ -102,18 +117,20 @@ const AppInner = () => {
   
   return (
     <>
-      <Routes>
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/" element={<ProtectedRoute><AppLayout><Dashboard /></AppLayout></ProtectedRoute>} />
-        <Route path="/workout" element={<ProtectedRoute><AppLayout><Workout /></AppLayout></ProtectedRoute>} />
-        <Route path="/analytics" element={<ProtectedRoute><AppLayout><Analytics /></AppLayout></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><AppLayout><Profile /></AppLayout></ProtectedRoute>} />
-        <Route path="/planning" element={<ProtectedRoute><AppLayout><Planning /></AppLayout></ProtectedRoute>} />
-        <Route path="/exercises" element={<ProtectedRoute><AppLayout><ExerciseLibrary /></AppLayout></ProtectedRoute>} />
-        <Route path="/community" element={<ProtectedRoute><AppLayout><Community /></AppLayout></ProtectedRoute>} />
-        <Route path="/pr-tracker" element={<ProtectedRoute><AppLayout><PRTracker /></AppLayout></ProtectedRoute>} />
-        <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AdminDashboard /></AppLayout></ProtectedRoute>} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/auth" element={<AnimatedPage><Auth /></AnimatedPage>} />
+          <Route path="/" element={<ProtectedRoute><AppLayout><AnimatedPage><Dashboard /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/workout" element={<ProtectedRoute><AppLayout><AnimatedPage><Workout /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/analytics" element={<ProtectedRoute><AppLayout><AnimatedPage><Analytics /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><AppLayout><AnimatedPage><Profile /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/planning" element={<ProtectedRoute><AppLayout><AnimatedPage><Planning /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/exercises" element={<ProtectedRoute><AppLayout><AnimatedPage><ExerciseLibrary /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/community" element={<ProtectedRoute><AppLayout><AnimatedPage><Community /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/pr-tracker" element={<ProtectedRoute><AppLayout><AnimatedPage><PRTracker /></AnimatedPage></AppLayout></ProtectedRoute>} />
+          <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><AppLayout><AnimatedPage><AdminDashboard /></AnimatedPage></AppLayout></ProtectedRoute>} />
+        </Routes>
+      </AnimatePresence>
       {showOnboarding && <GenderOnboardingModal onSelect={changeGender} />}
     </>
   );
