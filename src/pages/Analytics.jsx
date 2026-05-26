@@ -131,7 +131,7 @@ const Analytics = () => {
     const vol = {
       Pectoraux: 0, Dos: 0, Lombaires: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0,
       Adducteurs: 0, Abducteurs: 0, Mollets: 0, Tibias: 0, Épaules: 0, Trapèzes: 0,
-      Biceps: 0, Triceps: 0, "Avant-bras": 0, Abdos: 0, Cou: 0, Cardio: 0
+      Biceps: 0, Triceps: 0, "Avant-bras": 0, Abdos: 0, Obliques: 0, Cou: 0, Cardio: 0
     };
     const map = {
       "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Finition": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
@@ -149,13 +149,17 @@ const Analytics = () => {
       "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
       "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
       "Avant-Bras": "Avant-bras", "Avant-bras": "Avant-bras",
-      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Obliques", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
       "Cou": "Cou",
       "Cardio": "Cardio"
     };
     Object.keys(history || {}).forEach(id => {
       const exo = allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
-      const g = map[exo.muscle]; if(!g) return;
+      let g = map[exo.muscle]; 
+      if (exo.subMuscle && exo.subMuscle.toLowerCase().includes("oblique")) g = "Obliques";
+      else if (exo.name.toLowerCase().includes("oblique")) g = "Obliques";
+      if(!g) return;
+      
       const entries = history[id];
       if (Array.isArray(entries)) {
         entries.forEach(entry => {
@@ -188,13 +192,17 @@ const Analytics = () => {
       "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
       "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
       "Avant-Bras": "Avant-bras", "Avant-bras": "Avant-bras",
-      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Obliques", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
       "Cou": "Cou",
       "Cardio": "Cardio"
     };
     Object.keys(history || {}).forEach(id => {
       const exo = allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
-      const g = map[exo.muscle]; if(!g) return;
+      let g = map[exo.muscle]; 
+      if (exo.subMuscle && exo.subMuscle.toLowerCase().includes("oblique")) g = "Obliques";
+      else if (exo.name.toLowerCase().includes("oblique")) g = "Obliques";
+      if(!g) return;
+      
       if (!intensity[g]) intensity[g] = { sumRPE: 0, count: 0 };
       const entries = history[id];
       if (Array.isArray(entries)) {
@@ -541,6 +549,7 @@ const Analytics = () => {
             Triceps:    "#f43f5e", // Rose
             "Avant-bras": "#ef4444", // Red
             Abdos:      "#6366f1", // Indigo
+            Obliques:   "#818cf8", // Indigo light
             Cou:        "#64748b", // Slate
             Cardio:     "#0ea5e9", // Sky
           };
