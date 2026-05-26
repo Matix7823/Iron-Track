@@ -8,7 +8,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_2",
@@ -19,7 +20,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "id": "exo_3",
@@ -30,7 +32,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau abdominal (Bas)"
   },
   {
     "id": "exo_4",
@@ -41,7 +44,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_5",
@@ -52,7 +56,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "id": "exo_6",
@@ -63,7 +68,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_7",
@@ -74,7 +80,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_8",
@@ -85,7 +92,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_9",
@@ -96,7 +104,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_10",
@@ -107,7 +116,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_11",
@@ -118,7 +128,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_12",
@@ -129,7 +140,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "id": "exo_13",
@@ -140,7 +152,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau abdominal (Bas)"
   },
   {
     "id": "exo_14",
@@ -151,7 +164,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_15",
@@ -162,7 +176,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "id": "exo_16",
@@ -173,7 +188,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_17",
@@ -184,7 +200,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "id": "exo_18",
@@ -195,7 +212,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_19",
@@ -206,7 +224,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Pectoraux"
+    "note": "Exercice de référence pour Pectoraux",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "id": "exo_20",
@@ -217,7 +236,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_21",
@@ -228,7 +248,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_22",
@@ -239,7 +260,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_23",
@@ -250,7 +272,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_24",
@@ -261,7 +284,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_25",
@@ -272,7 +296,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_26",
@@ -283,7 +308,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_27",
@@ -294,7 +320,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_28",
@@ -305,7 +332,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Dos (Global)"
   },
   {
     "id": "exo_29",
@@ -316,7 +344,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_30",
@@ -327,7 +356,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_31",
@@ -338,7 +368,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Trapèzes supérieurs"
   },
   {
     "id": "exo_32",
@@ -349,7 +380,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_33",
@@ -360,7 +392,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_34",
@@ -371,7 +404,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "id": "exo_35",
@@ -382,7 +416,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "id": "exo_36",
@@ -393,7 +428,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Dos (Global)"
   },
   {
     "id": "exo_37",
@@ -404,7 +440,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Dos (Global)"
   },
   {
     "id": "exo_38",
@@ -415,7 +452,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Dos"
+    "note": "Exercice de référence pour Dos",
+    "subMuscle": "Grand Dorsal"
   },
   {
     "id": "exo_39",
@@ -426,7 +464,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_40",
@@ -437,7 +476,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_41",
@@ -448,7 +488,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_42",
@@ -459,7 +500,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_43",
@@ -470,7 +512,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_44",
@@ -481,7 +524,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Lombaires"
+    "note": "Exercice de référence pour Lombaires",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "id": "exo_45",
@@ -492,7 +536,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_46",
@@ -503,7 +548,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_47",
@@ -514,7 +560,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_48",
@@ -525,7 +572,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Droit fémoral / Vaste"
   },
   {
     "id": "exo_49",
@@ -536,7 +584,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_50",
@@ -547,7 +596,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_51",
@@ -558,7 +608,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_52",
@@ -569,7 +620,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_53",
@@ -580,7 +632,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_54",
@@ -591,7 +644,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_55",
@@ -602,7 +656,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_56",
@@ -613,7 +668,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Droit fémoral / Vaste"
   },
   {
     "id": "exo_57",
@@ -624,7 +680,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_58",
@@ -635,7 +692,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Quadriceps"
+    "note": "Exercice de référence pour Quadriceps",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "id": "exo_59",
@@ -646,7 +704,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "id": "exo_60",
@@ -657,7 +716,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "id": "exo_61",
@@ -668,7 +728,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "id": "exo_62",
@@ -679,7 +740,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Étirement)"
   },
   {
     "id": "exo_63",
@@ -690,7 +752,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Global)"
   },
   {
     "id": "exo_64",
@@ -701,7 +764,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Ischios"
+    "note": "Exercice de référence pour Ischios",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "id": "exo_65",
@@ -712,7 +776,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_66",
@@ -723,7 +788,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_67",
@@ -734,7 +800,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_68",
@@ -745,7 +812,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_69",
@@ -756,7 +824,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_70",
@@ -767,7 +836,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_71",
@@ -778,7 +848,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Moyen fessier"
   },
   {
     "id": "exo_72",
@@ -789,7 +860,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_73",
@@ -800,7 +872,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Fessiers"
+    "note": "Exercice de référence pour Fessiers",
+    "subMuscle": "Grand fessier"
   },
   {
     "id": "exo_74",
@@ -811,7 +884,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Mollets"
+    "note": "Exercice de référence pour Mollets",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "id": "exo_75",
@@ -822,7 +896,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Mollets"
+    "note": "Exercice de référence pour Mollets",
+    "subMuscle": "Soléaire"
   },
   {
     "id": "exo_76",
@@ -833,7 +908,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Mollets"
+    "note": "Exercice de référence pour Mollets",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "id": "exo_77",
@@ -844,7 +920,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Mollets"
+    "note": "Exercice de référence pour Mollets",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "id": "exo_78",
@@ -855,7 +932,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Mollets"
+    "note": "Exercice de référence pour Mollets",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "id": "exo_79",
@@ -866,7 +944,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_80",
@@ -877,7 +956,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_81",
@@ -888,7 +968,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_82",
@@ -899,7 +980,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "id": "exo_83",
@@ -910,7 +992,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_84",
@@ -921,7 +1004,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau postérieur"
   },
   {
     "id": "exo_85",
@@ -932,7 +1016,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau postérieur"
   },
   {
     "id": "exo_86",
@@ -943,7 +1028,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_87",
@@ -954,7 +1040,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "id": "exo_88",
@@ -965,7 +1052,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "id": "exo_89",
@@ -976,7 +1064,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_90",
@@ -987,7 +1076,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "id": "exo_91",
@@ -998,7 +1088,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Épaules"
+    "note": "Exercice de référence pour Épaules",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "id": "exo_92",
@@ -1009,7 +1100,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_93",
@@ -1020,7 +1112,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_94",
@@ -1031,7 +1124,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_95",
@@ -1042,7 +1136,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Brachial / Brachio-radial"
   },
   {
     "id": "exo_96",
@@ -1053,7 +1148,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Chef court (Intérieur)"
   },
   {
     "id": "exo_97",
@@ -1064,7 +1160,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Chef court (Intérieur)"
   },
   {
     "id": "exo_98",
@@ -1075,7 +1172,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_99",
@@ -1086,7 +1184,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Chef long (Extérieur)"
   },
   {
     "id": "exo_100",
@@ -1097,7 +1196,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_101",
@@ -1108,7 +1208,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Chef court (Intérieur)"
   },
   {
     "id": "exo_102",
@@ -1119,7 +1220,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Biceps"
+    "note": "Exercice de référence pour Biceps",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "id": "exo_103",
@@ -1130,7 +1232,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef long"
   },
   {
     "id": "exo_104",
@@ -1141,7 +1244,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "id": "exo_105",
@@ -1152,7 +1256,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "id": "exo_106",
@@ -1163,7 +1268,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "id": "exo_107",
@@ -1174,7 +1280,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef long"
   },
   {
     "id": "exo_108",
@@ -1185,7 +1292,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "id": "exo_109",
@@ -1196,7 +1304,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "id": "exo_110",
@@ -1207,7 +1316,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "id": "exo_111",
@@ -1218,7 +1328,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Triceps"
+    "note": "Exercice de référence pour Triceps",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "id": "exo_112",
@@ -1229,7 +1340,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Avant-bras"
+    "note": "Exercice de référence pour Avant-bras",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "id": "exo_113",
@@ -1240,7 +1352,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Avant-bras"
+    "note": "Exercice de référence pour Avant-bras",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "id": "exo_114",
@@ -1251,7 +1364,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Avant-bras"
+    "note": "Exercice de référence pour Avant-bras",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "id": "exo_115",
@@ -1262,7 +1376,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Avant-bras"
+    "note": "Exercice de référence pour Avant-bras",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "id": "exo_116",
@@ -1273,7 +1388,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Avant-bras"
+    "note": "Exercice de référence pour Avant-bras",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "id": "exo_117",
@@ -1284,7 +1400,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_118",
@@ -1295,7 +1412,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit (Bas)"
   },
   {
     "id": "exo_119",
@@ -1306,7 +1424,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit (Bas)"
   },
   {
     "id": "exo_120",
@@ -1317,7 +1436,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Transverse"
   },
   {
     "id": "exo_121",
@@ -1328,7 +1448,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_122",
@@ -1339,7 +1460,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_123",
@@ -1350,7 +1472,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_124",
@@ -1361,7 +1484,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_125",
@@ -1372,7 +1496,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Obliques"
   },
   {
     "id": "exo_126",
@@ -1383,7 +1508,8 @@ export const exerciseLibrary = [
     "tempo": "2-0-1-0",
     "unit": "reps",
     "rest": 90,
-    "note": "Exercice de référence pour Abdos"
+    "note": "Exercice de référence pour Abdos",
+    "subMuscle": "Grand droit"
   },
   {
     "id": "exo_127",
@@ -1394,7 +1520,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_128",
@@ -1405,7 +1532,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_129",
@@ -1416,7 +1544,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_130",
@@ -1427,7 +1556,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_131",
@@ -1438,7 +1568,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_132",
@@ -1449,7 +1580,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "id": "exo_133",
@@ -1460,7 +1592,8 @@ export const exerciseLibrary = [
     "tempo": "N/A",
     "unit": "minutes",
     "rest": 0,
-    "note": "Exercice de référence pour Cardio"
+    "note": "Exercice de référence pour Cardio",
+    "subMuscle": ""
   },
   {
     "muscle": "Pectoraux",
@@ -1471,7 +1604,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Excellent exercice au poids du corps ciblant l'intérieur des pectoraux et les triceps. Idéal à la maison.",
-    "id": "exo_134"
+    "id": "exo_134",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Pectoraux",
@@ -1482,7 +1616,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Exercice de calisthénie avancé pour surcharger un pectoral à la fois. Idéal à la maison.",
-    "id": "exo_135"
+    "id": "exo_135",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Pectoraux",
@@ -1493,7 +1628,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice au poids du corps avec un banc ou une chaise pour cibler le bas des pectoraux et les triceps. Maison et salle.",
-    "id": "exo_136"
+    "id": "exo_136",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Dos",
@@ -1504,7 +1640,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Exercice au poids du corps idéal sous une table ou une barre basse pour renforcer l'épaisseur du dos à la maison.",
-    "id": "exo_137"
+    "id": "exo_137",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Dos",
@@ -1515,7 +1652,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Tirage vertical à l'aide d'une bande élastique ancrée en hauteur. Idéal pour l'entraînement à la maison.",
-    "id": "exo_138"
+    "id": "exo_138",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Dos",
@@ -1526,7 +1664,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice de rowing avec bandes élastiques placées sous les pieds pour renforcer le dos à la maison.",
-    "id": "exo_139"
+    "id": "exo_139",
+    "subMuscle": "Dos (Global)"
   },
   {
     "muscle": "Dos",
@@ -1537,7 +1676,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Machine mythique de musculation pour isoler le grand dorsal en éliminant l'intervention des bras. En salle.",
-    "id": "exo_140"
+    "id": "exo_140",
+    "subMuscle": "Grand Dorsal"
   },
   {
     "muscle": "Épaules",
@@ -1548,7 +1688,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Exercice poids du corps avec le buste incliné pour cibler principalement le deltoïde antérieur. Maison et salle.",
-    "id": "exo_141"
+    "id": "exo_141",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Épaules",
@@ -1559,7 +1700,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice d'isolation des épaules avec bandes élastiques sous les pieds pour une tension continue. Maison.",
-    "id": "exo_142"
+    "id": "exo_142",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "muscle": "Biceps",
@@ -1570,7 +1712,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Curl pour biceps avec bandes élastiques, tension progressive très efficace. Idéal à la maison.",
-    "id": "exo_143"
+    "id": "exo_143",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Triceps",
@@ -1581,7 +1724,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Extension triceps au-dessus de la tête avec bande élastique. Idéal à la maison.",
-    "id": "exo_144"
+    "id": "exo_144",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "muscle": "Triceps",
@@ -1592,7 +1736,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Extension triceps au sol en position de planche haute en poussant sur les coudes. Idéal à la maison.",
-    "id": "exo_145"
+    "id": "exo_145",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -1603,7 +1748,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Squat classique sans charge additionnelle pour le renforcement ou l'échauffement à la maison.",
-    "id": "exo_146"
+    "id": "exo_146",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -1614,7 +1760,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 120,
     "note": "Squat machine avec poids suspendu à une ceinture abdominale. Élimine toute compression sur la colonne. En salle.",
-    "id": "exo_147"
+    "id": "exo_147",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Fessiers",
@@ -1625,7 +1772,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Extension de hanche au sol sur le dos pour isoler et activer les fessiers. Idéal à la maison.",
-    "id": "exo_148"
+    "id": "exo_148",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Abdos",
@@ -1636,7 +1784,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice cardio et de gainage total combinant pompe et squat sauté. Idéal à la maison.",
-    "id": "exo_149"
+    "id": "exo_149",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Abdos",
@@ -1647,7 +1796,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 45,
     "note": "Mouvement de flexion rapide des genoux en position de planche haute pour cibler le cœur et la sangle abdominale. Maison.",
-    "id": "exo_150"
+    "id": "exo_150",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Abdos",
@@ -1658,7 +1808,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 45,
     "note": "Gainage statique sur un coude pour cibler prioritairement les obliques et la stabilité abdominale. Maison et salle.",
-    "id": "exo_151"
+    "id": "exo_151",
+    "subMuscle": "Transverse"
   },
   {
     "muscle": "Cardio",
@@ -1669,7 +1820,8 @@ export const exerciseLibrary = [
     "unit": "minutes",
     "rest": 60,
     "note": "Exercice de coordination et d'endurance cardiovasculaire excellent pour brûler les graisses à la maison.",
-    "id": "exo_152"
+    "id": "exo_152",
+    "subMuscle": ""
   },
   {
     "muscle": "Cardio",
@@ -1680,7 +1832,8 @@ export const exerciseLibrary = [
     "unit": "minutes",
     "rest": 0,
     "note": "Cardio en extérieur pour développer le système cardiorespiratoire et l'endurance fondamentale.",
-    "id": "exo_153"
+    "id": "exo_153",
+    "subMuscle": ""
   },
   {
     "muscle": "Cardio",
@@ -1691,7 +1844,8 @@ export const exerciseLibrary = [
     "unit": "minutes",
     "rest": 0,
     "note": "Cardio complet à faible impact articulaire travaillant le haut et le bas du corps en même temps. En salle.",
-    "id": "exo_154"
+    "id": "exo_154",
+    "subMuscle": ""
   },
   {
     "muscle": "Tibias",
@@ -1702,7 +1856,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice de référence au poids du corps pour renforcer la loge antérieure de la jambe, idéal à la maison pour prévenir les périostites.",
-    "id": "exo_155"
+    "id": "exo_155",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1713,7 +1868,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Exercice de renforcement à l'aide d'une bande élastique pour une résistance progressive à l'extension du pied. Maison.",
-    "id": "exo_156"
+    "id": "exo_156",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1724,7 +1880,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Surcharge progressive optimale en salle de sport avec une barre tibia spécifique chargée de disques de fonte.",
-    "id": "exo_157"
+    "id": "exo_157",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1735,7 +1892,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Variante unilatérale exigeante pour cibler et corriger les déséquilibres de force entre les deux jambes à la maison.",
-    "id": "exo_158"
+    "id": "exo_158",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1746,7 +1904,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Marche dynamique sur les talons en gardant les pointes de pieds levées au maximum pour travailler l'endurance musculaire locale.",
-    "id": "exo_159"
+    "id": "exo_159",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1757,7 +1916,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Assis sur un banc, un haltère serré entre les pieds pour charger la flexion de la cheville. Pratique à la maison.",
-    "id": "exo_160"
+    "id": "exo_160",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -1768,7 +1928,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Flexion de la cheville face à une poulie basse avec sangle fixée au pied. Permet une tension continue de haute qualité en salle.",
-    "id": "exo_161"
+    "id": "exo_161",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Cou",
@@ -1779,7 +1940,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le ventre, tête dans le vide, avec un disque léger ou poids du corps pour renforcer la chaîne postérieure du cou.",
-    "id": "exo_162"
+    "id": "exo_162",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1790,7 +1952,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le dos, tête dans le vide, effectuer des flexions de tête contrôlées pour renforcer les muscles fléchisseurs antérieurs.",
-    "id": "exo_163"
+    "id": "exo_163",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1801,7 +1964,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté, effectuer des inclinaisons latérales de la tête pour renforcer les sterno-cléido-mastoïdiens. Unilatéral.",
-    "id": "exo_164"
+    "id": "exo_164",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1812,7 +1976,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Harnais de tête connecté à une charge ou une poulie pour travailler l'extension cervicale de manière sûre et progressive en salle.",
-    "id": "exo_165"
+    "id": "exo_165",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1823,7 +1988,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Élastique ancré à hauteur de tête offrant une résistance progressive lors des mouvements de rotation latérale du cou.",
-    "id": "exo_166"
+    "id": "exo_166",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1834,7 +2000,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur le ventre sur banc incliné, hausser les épaules pour engager puissamment les trapèzes supérieurs et le haut du cou.",
-    "id": "exo_167"
+    "id": "exo_167",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -1845,7 +2012,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Presser la tête de manière statique contre un ballon de gymnastique appuyé au mur. Excellent pour la stabilité et la sécurité.",
-    "id": "exo_168"
+    "id": "exo_168",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Adducteurs",
@@ -1856,7 +2024,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté, jambe du dessus fléchie au sol, soulever la jambe du dessous pour isoler les adducteurs sans matériel.",
-    "id": "exo_169"
+    "id": "exo_169",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1867,7 +2036,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Travail unilatéral à la poulie basse avec une sangle de cheville pour étirer et contracter l'adducteur avec précision en salle.",
-    "id": "exo_170"
+    "id": "exo_170",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1878,7 +2048,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Presser un ballon de stabilité ou un coussin ferme fermement entre les genoux en position couchée ou assise. Idéal à la maison.",
-    "id": "exo_171"
+    "id": "exo_171",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1889,7 +2060,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Squat avec un écartement de pieds large et des pointes orientées vers l'extérieur pour recruter les adducteurs et fessiers.",
-    "id": "exo_172"
+    "id": "exo_172",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1900,7 +2072,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Sangle élastique attachée à un point fixe bas, ramener la jambe vers l'intérieur pour renforcer la loge interne à la maison.",
-    "id": "exo_173"
+    "id": "exo_173",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1911,7 +2084,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 90,
     "note": "Gainage latéral avec le pied de la jambe supérieure appuyé sur un banc pour un recrutement intense et fonctionnel des adducteurs.",
-    "id": "exo_174"
+    "id": "exo_174",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1922,7 +2096,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Machine d'isolation de référence en salle de sport offrant une résistance stable et guidée sur l'adduction de hanche.",
-    "id": "exo_175"
+    "id": "exo_175",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -1933,7 +2108,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Fentes sur le côté qui permettent un étirement dynamique intense et un renforcement fonctionnel de la loge interne des cuisses.",
-    "id": "exo_176"
+    "id": "exo_176",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Abducteurs",
@@ -1944,7 +2120,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté, élever la jambe supérieure vers le haut pour isoler le moyen fessier sans matériel à la maison.",
-    "id": "exo_177"
+    "id": "exo_177",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -1955,7 +2132,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Poulie basse avec sangle de cheville, tirer la jambe vers l'extérieur pour isoler la portion latérale du fessier en salle.",
-    "id": "exo_178"
+    "id": "exo_178",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -1966,7 +2144,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Bande élastique de résistance autour des cuisses ou des chevilles, écarter les jambes pour solliciter les abducteurs à la maison.",
-    "id": "exo_179"
+    "id": "exo_179",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -1977,7 +2156,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Marche latérale semi-fléchie avec une bande élastique autour des genoux ou chevilles pour activer intensément le moyen fessier.",
-    "id": "exo_180"
+    "id": "exo_180",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -1988,7 +2168,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté, genoux fléchis, ouvrir les genoux comme un coquillage en gardant les pieds collés. Excellent pour la hanche.",
-    "id": "exo_181"
+    "id": "exo_181",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -1999,7 +2180,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "À quatre pattes, lever la jambe sur le côté en gardant le genou plié à 90 degrés. Excellent exercice d'activation fessière.",
-    "id": "exo_182"
+    "id": "exo_182",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -2010,7 +2192,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Machine d'isolation de référence en salle de sport offrant une résistance stable et guidée sur l'abduction de hanche.",
-    "id": "exo_183"
+    "id": "exo_183",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -2021,7 +2204,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Couché sur le côté sur un banc légèrement incliné pour modifier la ligne de tirage, en tenant un haltère léger sur la cuisse.",
-    "id": "exo_184"
+    "id": "exo_184",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Pectoraux",
@@ -2032,7 +2216,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Les mains surélevées sur un support (banc, chaise) pour cibler préférentiellement la partie inférieure du grand pectoral à la maison.",
-    "id": "exo_185"
+    "id": "exo_185",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "muscle": "Pectoraux",
@@ -2043,7 +2228,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Les pieds surélevés sur un support pour surcharger le haut de la poitrine (portion claviculaire) au poids du corps à la maison.",
-    "id": "exo_186"
+    "id": "exo_186",
+    "subMuscle": "Faisceau abdominal (Bas)"
   },
   {
     "muscle": "Pectoraux",
@@ -2054,7 +2240,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Allongé au sol pour limiter mécaniquement l'amplitude arrière, idéal pour surcharger les triceps et pectoraux sans forcer l'épaule.",
-    "id": "exo_187"
+    "id": "exo_187",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Pectoraux",
@@ -2065,7 +2252,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Élastique ancré derrière soi, étreindre vers l'avant pour solliciter les pectoraux avec une tension continue incomparable.",
-    "id": "exo_188"
+    "id": "exo_188",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Dos",
@@ -2076,7 +2264,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Tractions avec les paumes face à face, plus respectueuses des épaules et favorisant le travail du grand dorsal et du brachial.",
-    "id": "exo_189"
+    "id": "exo_189",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Dos",
@@ -2087,7 +2276,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Buste appuyé sur un banc incliné à 30-45 degrés, élimine le travail de stabilisation lombaire pour se concentrer uniquement sur le dos.",
-    "id": "exo_190"
+    "id": "exo_190",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Dos",
@@ -2098,7 +2288,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage horizontal unilatéral offrant une liberté de rotation du poignet et une excellente amplitude de contraction du grand dorsal.",
-    "id": "exo_191"
+    "id": "exo_191",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Dos",
@@ -2109,7 +2300,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage inversé au poids du corps avec les paumes vers soi pour solliciter intensément l'épaisseur du dos et les biceps à la maison.",
-    "id": "exo_192"
+    "id": "exo_192",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Lombaires",
@@ -2120,7 +2312,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le ventre au sol, lever simultanément les bras et les jambes. Parfait pour la chaîne postérieure profonde à la maison.",
-    "id": "exo_193"
+    "id": "exo_193",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Lombaires",
@@ -2131,7 +2324,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 45,
     "note": "À quatre pattes, tendre le bras opposé à la jambe. Excellent exercice de stabilisation lombaire et de réhabilitation.",
-    "id": "exo_194"
+    "id": "exo_194",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Lombaires",
@@ -2142,7 +2336,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Flexion et extension contrôlées de la colonne vertèbre par vertèbre surélevé sur un banc avec une charge légère. Salle.",
-    "id": "exo_195"
+    "id": "exo_195",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Quadriceps",
@@ -2153,7 +2348,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Squat complet sur une seule jambe. Demande une force unilatérale, une flexibilité et un équilibre exceptionnels à la maison.",
-    "id": "exo_196"
+    "id": "exo_196",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -2164,7 +2360,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Descente latérale alternée profonde pour développer la mobilité de hanche et renforcer les quadriceps sous un angle différent.",
-    "id": "exo_197"
+    "id": "exo_197",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -2175,7 +2372,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Exercice isométrique avec le dos au mur et cuisses parallèles au sol pour générer une brûlure métabolique intense à la maison.",
-    "id": "exo_198"
+    "id": "exo_198",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -2186,7 +2384,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Montée sur banc ou boîte stable avec des haltères pour développer la force unilatérale et l'équilibre général.",
-    "id": "exo_199"
+    "id": "exo_199",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Ischios",
@@ -2197,7 +2396,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le dos, pieds sur le ballon, ramener le ballon vers soi en soulevant le bassin. Formidable flexion de genou à la maison.",
-    "id": "exo_200"
+    "id": "exo_200",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "muscle": "Ischios",
@@ -2208,7 +2408,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis sur une chaise, sangle élastique ancrée derrière soi, ramener les talons sous la chaise pour recruter les ischios à la maison.",
-    "id": "exo_201"
+    "id": "exo_201",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "muscle": "Ischios",
@@ -2219,7 +2420,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Flexion de hanches debout avec des haltères proches des jambes, offrant une grande liberté articulaire et un étirement intense.",
-    "id": "exo_202"
+    "id": "exo_202",
+    "subMuscle": "Ischios (Étirement)"
   },
   {
     "muscle": "Fessiers",
@@ -2230,7 +2432,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Moyen fessier sollicité de manière dynamique en faisant des pas de côté avec élastique autour des genoux à la maison.",
-    "id": "exo_203"
+    "id": "exo_203",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Fessiers",
@@ -2241,7 +2444,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté, rotation externe contrôlée de la hanche pour activer et isoler le moyen fessier sans matériel.",
-    "id": "exo_204"
+    "id": "exo_204",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Fessiers",
@@ -2252,7 +2456,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Couché sur le dos, plantes de pieds collées l'une contre l'autre, élever les fesses pour isoler le grand fessier à la maison.",
-    "id": "exo_205"
+    "id": "exo_205",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Mollets",
@@ -2263,7 +2468,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Debout sur une marche, extension unilatérale contrôlée en insistant sur la position basse étirée. Idéal à la maison.",
-    "id": "exo_206"
+    "id": "exo_206",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "muscle": "Mollets",
@@ -2274,7 +2480,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis, genoux fléchis à 90°, poser des haltères sur les cuisses pour cibler sélectivement le soléaire à la maison.",
-    "id": "exo_207"
+    "id": "exo_207",
+    "subMuscle": "Soléaire"
   },
   {
     "muscle": "Épaules",
@@ -2285,7 +2492,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Développé vertical debout sollicitant fortement les deltoïdes antérieurs et demandant un excellent gainage abdominal.",
-    "id": "exo_208"
+    "id": "exo_208",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Épaules",
@@ -2296,7 +2504,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Câbles croisés en poulie haute sans poignées pour isoler le deltoïde postérieur avec une tension parfaite sur toute l'amplitude.",
-    "id": "exo_209"
+    "id": "exo_209",
+    "subMuscle": "Faisceau postérieur"
   },
   {
     "muscle": "Épaules",
@@ -2307,7 +2516,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Câble passant derrière le dos pour maximiser la tension dans la position de départ étirée du deltoïde moyen. En salle.",
-    "id": "exo_210"
+    "id": "exo_210",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "muscle": "Biceps",
@@ -2318,7 +2528,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Montée en supination et descente en pronation. Idéal pour solliciter à la fois le biceps brachial et le brachio-radial.",
-    "id": "exo_211"
+    "id": "exo_211",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Biceps",
@@ -2329,7 +2540,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Prise neutre à la poulie basse avec corde offrant une tension continue fantastique pour surcharger le long supinateur et brachial.",
-    "id": "exo_212"
+    "id": "exo_212",
+    "subMuscle": "Brachial / Brachio-radial"
   },
   {
     "muscle": "Biceps",
@@ -2340,7 +2552,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Curl marteau alterné en ramenant l'haltère vers l'épaule opposée pour isoler la portion externe du biceps et le brachial.",
-    "id": "exo_213"
+    "id": "exo_213",
+    "subMuscle": "Brachial / Brachio-radial"
   },
   {
     "muscle": "Triceps",
@@ -2351,7 +2564,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Extensions de coudes couché avec haltères pour éliminer les tensions sur le poignet et isoler les chefs du triceps.",
-    "id": "exo_214"
+    "id": "exo_214",
+    "subMuscle": "Chef long"
   },
   {
     "muscle": "Triceps",
@@ -2362,7 +2576,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Extension de coude unilatérale sans poignée (directement sur le câble) pour un alignement articulaire parfait.",
-    "id": "exo_215"
+    "id": "exo_215",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Triceps",
@@ -2373,7 +2588,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Tirage au-dessus de l'épaule opposée face à la poulie pour aligner parfaitement la trajectoire avec la longue portion du triceps.",
-    "id": "exo_216"
+    "id": "exo_216",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Avant-bras",
@@ -2384,7 +2600,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Rester suspendu de manière passive à une barre fixe. Développe une endurance de préhension (grip) phénoménale.",
-    "id": "exo_217"
+    "id": "exo_217",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -2395,7 +2612,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Pincer deux disques de fonte lisses l'un contre l'autre du bout des doigts pour développer la force de préhension.",
-    "id": "exo_218"
+    "id": "exo_218",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Abdos",
@@ -2406,7 +2624,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Flexions de buste alternées avec rotation coude-genou opposé pour recruter intensément les abdominaux et obliques.",
-    "id": "exo_219"
+    "id": "exo_219",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Abdos",
@@ -2417,7 +2636,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 45,
     "note": "Allongé sur le dos, extension croisée contrôlée bras/jambe opposés en gardant le bas du dos scotché au sol. Gainage profond.",
-    "id": "exo_220"
+    "id": "exo_220",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Abdos",
@@ -2428,7 +2648,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Suspendu à la barre fixe, effectuer des rotations latérales jambes tendues pour solliciter la sangle abdominale de niveau expert.",
-    "id": "exo_221"
+    "id": "exo_221",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Cardio",
@@ -2439,7 +2660,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 45,
     "note": "Exercice cardio rythmique pour élever la fréquence cardiaque, augmenter la dépense calorique et s'échauffer sans matériel.",
-    "id": "exo_222"
+    "id": "exo_222",
+    "subMuscle": ""
   },
   {
     "muscle": "Cardio",
@@ -2450,7 +2672,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Mouvement d'extension de hanche balistique avec kettlebell, exceptionnel pour l'endurance cardiovasculaire et la puissance postérieure.",
-    "id": "exo_223"
+    "id": "exo_223",
+    "subMuscle": ""
   },
   {
     "muscle": "Biceps",
@@ -2461,7 +2684,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Le câble est placé derrière le corps pour placer le biceps chef long dans un étirement extrême grâce à l'hyperextension de l'épaule. Fournit une tension maximale en étirement.",
-    "id": "exo_224"
+    "id": "exo_224",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Triceps",
@@ -2472,7 +2696,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Poulies hautes croisées sans poignées (en saisissant les boules du câble) pour aligner précisément le tirage avec l'axe anatomique des fibres des chefs latéral et médial.",
-    "id": "exo_225"
+    "id": "exo_225",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Dos",
@@ -2483,7 +2708,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Tirage orienté à 30 degrés vers l'avant pour suivre précisément le plan scapulaire, minimisant le stress articulaire et optimisant le recrutement du grand dorsal.",
-    "id": "exo_226"
+    "id": "exo_226",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Épaules",
@@ -2494,7 +2720,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Élévation à la poulie basse inclinée de 30° vers l'avant. Aligne le deltoïde moyen dans le plan de l'omoplate pour maximiser l'hypertrophie.",
-    "id": "exo_227"
+    "id": "exo_227",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "muscle": "Fessiers",
@@ -2505,7 +2732,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Amplitude délibérément courte sur le haut du mouvement, en gardant les tibias verticaux. Isole presque totalement le grand fessier en contraction maximale.",
-    "id": "exo_228"
+    "id": "exo_228",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Épaules",
@@ -2516,7 +2744,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Élévation latérale haltère complète montant au-dessus de la tête avec rotation externe (pouces vers le haut), sollicitant le deltoïde et les trapèzes sur l'ensemble de l'amplitude.",
-    "id": "exo_229"
+    "id": "exo_229",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Ischios",
@@ -2527,7 +2756,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 120,
     "note": "Effectué debout sur une petite plateforme pour augmenter le débattement vers le bas, maximisant l'amplitude d'étirement sous charge lourde.",
-    "id": "exo_230"
+    "id": "exo_230",
+    "subMuscle": "Ischios (Étirement)"
   },
   {
     "muscle": "Pectoraux",
@@ -2538,7 +2768,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "On effectue un écarté en bas pour bénéficier de l'étirement maximal, et on remonte en développant serré pour maximiser la tension sans stresser inutilement l'articulation.",
-    "id": "exo_231"
+    "id": "exo_231",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "muscle": "Dos",
@@ -2549,7 +2780,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage horizontal unilatéral serré avec buste légèrement incliné du côté qui travaille, bloquant le bras à hauteur de hanche pour recruter les fibres inférieures du grand dorsal.",
-    "id": "exo_232"
+    "id": "exo_232",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Mollets",
@@ -2560,7 +2792,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Marquer une pause de 3 secondes en étirement complet au bas de chaque répétition pour éliminer l'aide élastique du tendon d'Achille et forcer les fibres du mollet à travailler.",
-    "id": "exo_233"
+    "id": "exo_233",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "muscle": "Biceps",
@@ -2571,7 +2804,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Curl sur banc incliné à plat ventre, en effectuant exclusivement des demi-répétitions inférieures (du bas jusqu'à mi-parcours) pour surcharger le biceps en position étirée.",
-    "id": "exo_234"
+    "id": "exo_234",
+    "subMuscle": "Chef court (Intérieur)"
   },
   {
     "muscle": "Triceps",
@@ -2582,7 +2816,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "En position de pompe serrée, poser les coudes au sol puis repousser uniquement par la force des triceps. Étirement phénoménal de la longue portion à la maison.",
-    "id": "exo_235"
+    "id": "exo_235",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "muscle": "Fessiers",
@@ -2593,7 +2828,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Incliner fermement le buste vers l'avant à 45° lors de la descente pour étirer intensément le grand fessier sous charge. Idéal avec haltères.",
-    "id": "exo_236"
+    "id": "exo_236",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Pectoraux",
@@ -2604,7 +2840,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Incliner le buste à 45° et descendre délibérément bas pour étirer au maximum les grands pectoraux dans le bas du mouvement.",
-    "id": "exo_237"
+    "id": "exo_237",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Abdos",
@@ -2615,7 +2852,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Marquer un arrêt de 2 secondes complètes à chaque coude-genou opposé pour recruter au maximum les obliques profonds sans tricher.",
-    "id": "exo_238"
+    "id": "exo_238",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Cou",
@@ -2626,7 +2864,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 45,
     "note": "Utilisation des mains pour appliquer une pression contrôlée de face, de dos et sur les côtés pour renforcer les stabilisateurs cervicaux sans matériel. Idéal à la maison.",
-    "id": "exo_239"
+    "id": "exo_239",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -2637,7 +2876,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Bande élastique attachée à un point fixe et passée derrière la tête, effectuer un mouvement d'extension cervicale contrôlé pour renforcer la musculature occipitale à la maison.",
-    "id": "exo_240"
+    "id": "exo_240",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -2648,7 +2888,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le côté sur un banc plat, élever latéralement la tête au poids du corps ou avec un disque léger pour cibler les muscles rotateurs et latéraux du cou. Unilatéral.",
-    "id": "exo_241"
+    "id": "exo_241",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Tibias",
@@ -2659,7 +2900,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Porter des haltères ou une charge additionnelle tout en marchant exclusivement sur les talons pour accentuer l'intensité de la surcharge sur le tibias antérieur.",
-    "id": "exo_242"
+    "id": "exo_242",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -2670,7 +2912,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Placer l'arrière du pied sur le rebord d'une marche ou plateforme pour obtenir un étirement de cheville beaucoup plus profond en descente qu'au sol plat. Idéal à la maison.",
-    "id": "exo_243"
+    "id": "exo_243",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -2681,7 +2924,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Assis sur la presse à cuisses, caler uniquement les talons sur le rebord bas de la plateforme pour ramener les pointes de pieds vers soi sous charge. Surcharge progressive optimale en salle.",
-    "id": "exo_244"
+    "id": "exo_244",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Adducteurs",
@@ -2692,7 +2936,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 75,
     "note": "Variante plus accessible où le genou (et non le pied) de la jambe supérieure est en appui sur le banc pour un renforcement progressif des adducteurs à la maison.",
-    "id": "exo_245"
+    "id": "exo_245",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -2703,7 +2948,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Câble de poulie haute attaché à la cheville pour travailler l'adduction avec une ligne de force descendante modifiant le pic de tension musculaire en fin de mouvement. Salle.",
-    "id": "exo_246"
+    "id": "exo_246",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -2714,7 +2960,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Fente latérale dynamique combinée à une pression active du pied d'appui pour solliciter intensément l'intérieur des cuisses et la stabilité fonctionnelle à la maison.",
-    "id": "exo_247"
+    "id": "exo_247",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Abducteurs",
@@ -2725,7 +2972,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Couché sur le côté avec des lests de cheville pour surcharger l'élévation latérale de la jambe et renforcer spécifiquement le moyen fessier à la maison.",
-    "id": "exo_248"
+    "id": "exo_248",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -2736,7 +2984,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis avec bande élastique autour des cuisses, buste incliné à 45° vers l'avant pour maximiser l'étirement et le recrutement des fibres postérieures du moyen fessier.",
-    "id": "exo_249"
+    "id": "exo_249",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -2747,7 +2996,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Debout, bande élastique de résistance autour des chevilles, éloigner latéralement la jambe pour travailler la stabilité d'appui et la force des abducteurs à la maison.",
-    "id": "exo_250"
+    "id": "exo_250",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Avant-bras",
@@ -2758,7 +3008,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Enrouler et dérouler une corde lestée autour d'un cylindre à bout de bras. Génère une brûlure musculaire et une congestion extrêmes pour les fléchisseurs et extenseurs des poignets.",
-    "id": "exo_251"
+    "id": "exo_251",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -2769,7 +3020,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Mains en pronation, avant-bras posés sur un banc plat ou les cuisses, effectuer des extensions de poignet pour isoler les muscles extenseurs de l'avant-bras.",
-    "id": "exo_252"
+    "id": "exo_252",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -2780,7 +3032,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Debout, barre tenue derrière les fessiers, effectuer des flexions de poignets pour cibler le volume interne et l'épaisseur des fléchisseurs de l'avant-bras.",
-    "id": "exo_253"
+    "id": "exo_253",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -2791,7 +3044,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 90,
     "note": "Marcher sur une distance ou un temps donné avec des charges très lourdes (haltères, trap bar) pour surcharger la poigne, les trapèzes et le gainage général.",
-    "id": "exo_254"
+    "id": "exo_254",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -2802,7 +3056,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Saisir un haltère par l'extrémité et effectuer des rotations alternées internes et externes du poignet pour renforcer les muscles rotateurs de l'avant-bras. Idéal à la maison.",
-    "id": "exo_255"
+    "id": "exo_255",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Pectoraux",
@@ -2813,7 +3068,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Pieds surélevés sur une chaise et mains serrées en diamant pour surcharger le haut de la poitrine et solliciter plus intensément les triceps au poids du corps. Maison.",
-    "id": "exo_256"
+    "id": "exo_256",
+    "subMuscle": "Faisceau abdominal (Bas)"
   },
   {
     "muscle": "Pectoraux",
@@ -2824,7 +3080,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur un ballon de gym, effectuer des écartés haltères pour solliciter le recrutement des pectoraux tout en développant l'équilibre profond et les abdominaux. Maison.",
-    "id": "exo_257"
+    "id": "exo_257",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Dos",
@@ -2835,7 +3092,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Rowing avec poitrine appuyée sur un support rembourré. Permet d'éliminer la fatigue lombaire pour isoler totalement les muscles du haut et du milieu du dos sous charge lourde.",
-    "id": "exo_258"
+    "id": "exo_258",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Dos",
@@ -2846,7 +3104,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Tirage vertical à la poulie haute en supination pour maximiser l'étirement du grand dorsal en haut du mouvement tout en recrutant fortement les biceps.",
-    "id": "exo_259"
+    "id": "exo_259",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Lombaires",
@@ -2857,7 +3116,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Lever le torse et les jambes au sol puis effectuer de légères torsions de buste contrôlées pour solliciter les lombaires et les carrés des lombes. Maison.",
-    "id": "exo_260"
+    "id": "exo_260",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Lombaires",
@@ -2868,7 +3128,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Prendre appui sur les talons et les paumes de mains, monter le bassin vers le haut pour former une ligne droite. Excellent travail isométrique de la chaîne postérieure.",
-    "id": "exo_261"
+    "id": "exo_261",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Quadriceps",
@@ -2879,7 +3140,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Placer une cale stable ou un disque sous les talons pour accentuer l'inclinaison des tibias, maximisant la flexion du genou et isolant le recrutement des quadriceps.",
-    "id": "exo_262"
+    "id": "exo_262",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -2890,7 +3152,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Se tenir fermement à une barre ou un poteau stable, s'incliner vers l'arrière en poussant les genoux loin devant. Étirement fantastique et surcharge pour les quadriceps.",
-    "id": "exo_263"
+    "id": "exo_263",
+    "subMuscle": "Droit fémoral / Vaste"
   },
   {
     "muscle": "Ischios",
@@ -2901,7 +3164,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Debout face à un mur, sangle élastique ancrée basse et attachée à la cheville, fléchir le genou pour ramener le talon vers la fesse. Idéal à la maison.",
-    "id": "exo_264"
+    "id": "exo_264",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "muscle": "Ischios",
@@ -2912,7 +3176,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Descendre la barre en gardant les genoux presque complètement verrouillés et le dos parfaitement plat, ciblant un étirement exceptionnel de la chaîne postérieure.",
-    "id": "exo_265"
+    "id": "exo_265",
+    "subMuscle": "Ischios (Étirement)"
   },
   {
     "muscle": "Fessiers",
@@ -2923,7 +3188,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Version avancée du coquillage où les pieds sont décollés du sol pour augmenter le débattement articulaire et la tension sur le moyen fessier. Maison.",
-    "id": "exo_266"
+    "id": "exo_266",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Fessiers",
@@ -2934,7 +3200,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "À quatre pattes au sol, élever la plante du pied vers le ciel en maintenant un angle de genou à 90°. Exercice d'activation fessière ciblé. Maison.",
-    "id": "exo_267"
+    "id": "exo_267",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Mollets",
@@ -2945,7 +3212,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Machine assis avec support sur les genoux fléchis pour court-circuiter les jumeaux et isoler sélectivement le recrutement du muscle soléaire. Salle.",
-    "id": "exo_268"
+    "id": "exo_268",
+    "subMuscle": "Soléaire"
   },
   {
     "muscle": "Mollets",
@@ -2956,7 +3224,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Buste penché à 90°, pieds sur une marche, effectuer des extensions de mollets avec une charge placée sur les hanches/bas du dos pour un étirement optimal.",
-    "id": "exo_269"
+    "id": "exo_269",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "muscle": "Épaules",
@@ -2967,7 +3236,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Développé assis initié avec les paumes face à soi, en effectuant une rotation à 180° à la montée pour recruter intensément les deltoïdes antérieurs et latéraux.",
-    "id": "exo_270"
+    "id": "exo_270",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Épaules",
@@ -2978,7 +3248,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage vertical le long du buste à la poulie basse avec barre courte pour une tension continue très ergonomique sur les deltoïdes moyens et les trapèzes.",
-    "id": "exo_271"
+    "id": "exo_271",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Biceps",
@@ -2989,7 +3260,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 65,
     "note": "Assis, coude calé contre l'intérieur de la cuisse pour éliminer toute triche et oscillation du corps, isolant totalement le pic du biceps.",
-    "id": "exo_272"
+    "id": "exo_272",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Biceps",
@@ -3000,7 +3272,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Câbles de poulies hautes croisés, debout au centre, ramener les poignées vers les tempes pour contracter les biceps avec les bras placés en abduction complète.",
-    "id": "exo_273"
+    "id": "exo_273",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Triceps",
@@ -3011,7 +3284,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Dos à la poulie basse, étirer les coudes vers l'arrière et pousser la corde vers le haut au-dessus de la tête pour cibler la longue portion des triceps sous étirement.",
-    "id": "exo_274"
+    "id": "exo_274",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Triceps",
@@ -3022,7 +3296,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Dips assis sur une machine à contrepoids ou à charge sélective, permettant d'isoler parfaitement la force des triceps et pectoraux bas de manière contrôlée.",
-    "id": "exo_275"
+    "id": "exo_275",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Abdos",
@@ -3033,7 +3308,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 45,
     "note": "En position de planche haute sur les mains, toucher alternativement l'épaule opposée sans laisser osciller le bassin. Travail anti-rotation intense. Maison.",
-    "id": "exo_276"
+    "id": "exo_276",
+    "subMuscle": "Transverse"
   },
   {
     "muscle": "Abdos",
@@ -3044,7 +3320,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé sur le dos au sol, soulever les jambes tendues à la verticale puis décoller volontairement le bas du dos en enroulant le bassin pour cibler le bas des abdominaux.",
-    "id": "exo_277"
+    "id": "exo_277",
+    "subMuscle": "Grand droit (Bas)"
   },
   {
     "muscle": "Cardio",
@@ -3055,7 +3332,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 45,
     "note": "Fentes alternées sautées hyper dynamiques pour développer la puissance explosive des cuisses et propulser instantanément le rythme cardiaque à la maison.",
-    "id": "exo_278"
+    "id": "exo_278",
+    "subMuscle": ""
   },
   {
     "muscle": "Cardio",
@@ -3066,7 +3344,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Prendre un ballon lourd non rebondissant au-dessus de la tête et le projeter au sol avec force en engageant l'ensemble du corps. Puissance et cardio exceptionnels.",
-    "id": "exo_279"
+    "id": "exo_279",
+    "subMuscle": ""
   },
   {
     "muscle": "Pectoraux",
@@ -3077,7 +3356,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Effectuer un écarté incliné ou couché en pivotant les haltères en pronation complète dans la position basse étirée pour aligner la résistance avec la trajectoire du grand pectoral.",
-    "id": "exo_280"
+    "id": "exo_280",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Triceps",
@@ -3088,7 +3368,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "À genoux face ou dos à la poulie haute, buste incliné vers l'avant à 45°, pour placer la longue portion du triceps sous un étirement anatomique optimal de départ.",
-    "id": "exo_281"
+    "id": "exo_281",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Quadriceps",
@@ -3099,7 +3380,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Step-up unilatéral effectué avec une cale sous l'avant-pied et une descente profonde où le genou voyage loin en avant des orteils pour surcharger le quadriceps étiré.",
-    "id": "exo_282"
+    "id": "exo_282",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Fessiers",
@@ -3110,7 +3392,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Buste à l'horizontale en bas du mouvement, bassin ancré loin en arrière. Se concentrer sur l'extension active de hanche pour recruter les fessiers sous tension d'étirement.",
-    "id": "exo_283"
+    "id": "exo_283",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Quadriceps",
@@ -3121,7 +3404,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 120,
     "note": "Descendre complètement, remonter à la moitié, redescendre tout en bas, puis remonter complètement. Surcharge intensément la portion basse étirée pour maximiser l'hypertrophie.",
-    "id": "exo_284"
+    "id": "exo_284",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Pectoraux",
@@ -3132,7 +3416,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Câbles de poulie basse tirés dans un angle incliné de 30° vers l'avant, alignant la trajectoire de résistance dans le plan de l'omoplate pour protéger les épaules et cibler le haut de poitrine.",
-    "id": "exo_285"
+    "id": "exo_285",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "muscle": "Dos",
@@ -3143,7 +3428,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage horizontal unilatéral autorisant une légère rotation du buste en avant à l'étirement, puis une contraction ultra-serrée en arrière pour engager 100% des fibres du grand dorsal.",
-    "id": "exo_286"
+    "id": "exo_286",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Cou",
@@ -3154,7 +3440,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Haltères ou barre tenus au-dessus de la tête bras tendus, hausser activement les épaules vers le haut. Recrute le trapèze supérieur dans son amplitude fonctionnelle d'abduction.",
-    "id": "exo_287"
+    "id": "exo_287",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Biceps",
@@ -3165,7 +3452,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Assis à l'envers sur le pupitre de biceps (les bras tendus vers l'arrière), face à la poulie placée derrière pour maintenir une tension continue maximale en position d'étirement.",
-    "id": "exo_288"
+    "id": "exo_288",
+    "subMuscle": "Chef long (Extérieur)"
   },
   {
     "muscle": "Tibias",
@@ -3176,7 +3464,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Poids du corps, talons surélevés sur bloc pour un étirement maximal. Permet de renforcer la loge antérieure en profondeur à la maison ou à la salle.",
-    "id": "exo_289"
+    "id": "exo_289",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -3187,7 +3476,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis sur un banc haut, le kettlebell suspendu aux orteils, effectuer des flexions de cheville contrôlées pour une surcharge progressive simple.",
-    "id": "exo_290"
+    "id": "exo_290",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -3198,7 +3488,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis face à la poulie basse, sangle attachée aux orteils, effectuer des flexions pour bénéficier d'une tension continue sur le tibial antérieur.",
-    "id": "exo_291"
+    "id": "exo_291",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Tibias",
@@ -3209,7 +3500,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Marcher activement uniquement sur les talons en tenant des haltères lourds le long du corps, idéal pour l'endurance et la prévention des blessures.",
-    "id": "exo_292"
+    "id": "exo_292",
+    "subMuscle": "Tibial antérieur"
   },
   {
     "muscle": "Cou",
@@ -3220,7 +3512,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur le ventre sur banc, hausser les épaules vers l'arrière en maintenant le cou gainé dans l'axe. Renforce les trapèzes et extenseurs cervicaux.",
-    "id": "exo_293"
+    "id": "exo_293",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -3231,7 +3524,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Auto-résistance en posant les mains sur le front ou l'arrière du crâne, offrant une force opposée pour un travail isométrique et dynamique sécurisé.",
-    "id": "exo_294"
+    "id": "exo_294",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -3242,7 +3536,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "En position quadruped, bande élastique placée autour de la tête et ancrée en bas, effectuer des extensions cervicales douces et contrôlées.",
-    "id": "exo_295"
+    "id": "exo_295",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Cou",
@@ -3253,7 +3548,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Assis, harnais de tête connecté à la poulie moyenne, fléchir la tête vers l'avant. Permet une surcharge progressive ultra-précise et sécurisée en salle.",
-    "id": "exo_296"
+    "id": "exo_296",
+    "subMuscle": "Muscles cervicaux"
   },
   {
     "muscle": "Adducteurs",
@@ -3264,7 +3560,8 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 60,
     "note": "Genou fléchi surélevé sur banc (bras au sol en planche latérale) pour réduire le bras de levier. Alternative parfaite pour construire de la force.",
-    "id": "exo_297"
+    "id": "exo_297",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -3275,7 +3572,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "En appui, un pied sur un disque glisseur (slider) écartant latéralement puis refermant avec la force de l'adducteur pour ramener la jambe au centre.",
-    "id": "exo_298"
+    "id": "exo_298",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -3286,7 +3584,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Écartement ultra-large des pieds avec pointes ouvertes, descendre profondément en tenant un haltère vertical pour étirer intensément les adducteurs.",
-    "id": "exo_299"
+    "id": "exo_299",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Adducteurs",
@@ -3297,7 +3596,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Squat effectué au poids du corps avec une rotation externe maximale des hanches et buste vertical, ciblant sélectivement les adducteurs profonds.",
-    "id": "exo_300"
+    "id": "exo_300",
+    "subMuscle": "Adducteurs"
   },
   {
     "muscle": "Abducteurs",
@@ -3308,7 +3608,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Sangle à la poulie basse, effectuer un trajet de jambe à 45° vers l'arrière et l'extérieur pour cibler parfaitement le moyen fessier et le haut du grand fessier.",
-    "id": "exo_301"
+    "id": "exo_301",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -3319,7 +3620,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Placer une bande élastique au-dessus des genoux, effectuer le squat en maintenant une tension constante vers l'extérieur pour recruter les abducteurs.",
-    "id": "exo_302"
+    "id": "exo_302",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -3330,7 +3632,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Bande élastique autour des genoux, monter en pont fessier et effectuer une ouverture forcée de 2s en position haute avant de redescendre.",
-    "id": "exo_303"
+    "id": "exo_303",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Abducteurs",
@@ -3341,7 +3644,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Mouvement lent d'isolation unilatérale. Lever la jambe sur le côté en se tenant à un support, idéal pour l'endurance et l'alignement articulaire.",
-    "id": "exo_304"
+    "id": "exo_304",
+    "subMuscle": "Moyen fessier"
   },
   {
     "muscle": "Pectoraux",
@@ -3352,7 +3656,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Mains serrées en diamant sur un banc ou un support surélevé. Cible le bas des pectoraux (partie interne) et sollicite fortement les triceps.",
-    "id": "exo_305"
+    "id": "exo_305",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "muscle": "Pectoraux",
@@ -3363,7 +3668,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Allongé sur le dos, prise en supination sur la barre. Cette variante anatomique unique permet de cibler en priorité la portion claviculaire haute du pectoral.",
-    "id": "exo_306"
+    "id": "exo_306",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Pectoraux",
@@ -3374,7 +3680,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur un banc plat placé entre deux poulies basses. Offre une tension continue incomparable qui surcharge le pectoral en position d'étirement.",
-    "id": "exo_307"
+    "id": "exo_307",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Pectoraux",
@@ -3385,7 +3692,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Presser un seul haltère à la fois. Ce travail asymétrique force un gainage intense du buste tout en corrigeant les déséquilibres de force.",
-    "id": "exo_308"
+    "id": "exo_308",
+    "subMuscle": "Faisceau sterno-costal (Milieu)"
   },
   {
     "muscle": "Dos",
@@ -3396,7 +3704,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Allongé face contre terre sur un banc plat surélevé, tirer les haltères vers les hanches. Élimine totalement l'élan lombaire pour isoler le haut du dos.",
-    "id": "exo_309"
+    "id": "exo_309",
+    "subMuscle": "Dos (Global)"
   },
   {
     "muscle": "Dos",
@@ -3407,7 +3716,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Debout face à la poulie haute, bras presque tendus, tirer la barre vers les cuisses en se concentrant sur le grand dorsal. Excellente tension continue.",
-    "id": "exo_310"
+    "id": "exo_310",
+    "subMuscle": "Grand Dorsal"
   },
   {
     "muscle": "Dos",
@@ -3418,7 +3728,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Rowing guidé avec un coussin sous le buste pour soulager la charnière lombaire et pouvoir se concentrer à 100% sur l'épaisseur du dos en salle.",
-    "id": "exo_311"
+    "id": "exo_311",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Dos",
@@ -3429,7 +3740,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tirage horizontal unilatéral au poids du corps sous une barre basse. Force unilatérale extrême et travail de gainage rotatoire intense.",
-    "id": "exo_312"
+    "id": "exo_312",
+    "subMuscle": "Grand Dorsal (Largeur)"
   },
   {
     "muscle": "Lombaires",
@@ -3440,7 +3752,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Buste allongé sur le banc, lever les jambes tendues vers l'arrière à l'horizontale en contractant fessiers et lombaires profondément.",
-    "id": "exo_313"
+    "id": "exo_313",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Lombaires",
@@ -3451,7 +3764,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Faire glisser les haltères le long des jambes, genoux fixes et dos plat. Cible l'étirement maximal de toute la chaîne postérieure (ischios, fessiers, lombaires).",
-    "id": "exo_314"
+    "id": "exo_314",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Lombaires",
@@ -3462,7 +3776,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "En position de planche classique au sol, lever alternativement une jambe tendue pour engager les fessiers et la zone lombaire basse de façon sécuritaire.",
-    "id": "exo_315"
+    "id": "exo_315",
+    "subMuscle": "Érecteurs du rachis"
   },
   {
     "muscle": "Quadriceps",
@@ -3473,7 +3788,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "En se tenant à un support, fléchir les genoux en les projetant vers l'avant tout en penchant le buste en arrière. Étirement extrême du droit fémoral.",
-    "id": "exo_316"
+    "id": "exo_316",
+    "subMuscle": "Droit fémoral / Vaste"
   },
   {
     "muscle": "Quadriceps",
@@ -3484,7 +3800,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Placer les pieds bas sur le plateau de la presse. Accentue la flexion du genou pour cibler massivement les quadriceps, en particulier le vaste interne.",
-    "id": "exo_317"
+    "id": "exo_317",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -3495,7 +3812,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Tenir un haltère vertical contre la poitrine. Permet de garder le buste très droit à la descente pour un excellent recrutement des quadriceps.",
-    "id": "exo_318"
+    "id": "exo_318",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Quadriceps",
@@ -3506,7 +3824,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Effectuer des fentes en avançant pas à pas, haltères aux mains. Excellent travail dynamique unilatéral pour les cuisses et l'équilibre général.",
-    "id": "exo_319"
+    "id": "exo_319",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Ischios",
@@ -3517,7 +3836,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Profiter du guidage de la barre pour reculer les hanches au maximum sans se soucier de l'équilibre. Focus mental parfait sur l'étirement des ischios.",
-    "id": "exo_320"
+    "id": "exo_320",
+    "subMuscle": "Ischios (Étirement)"
   },
   {
     "muscle": "Ischios",
@@ -3528,7 +3848,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Sur le banc GHR spécifique, genoux fléchis, descendre le buste en contrôlant le mouvement avec la force des ischios-jambiers. Mouvement d'élite.",
-    "id": "exo_321"
+    "id": "exo_321",
+    "subMuscle": "Ischios (Global)"
   },
   {
     "muscle": "Ischios",
@@ -3539,7 +3860,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Debout face à la poulie basse, sangle à la cheville, fléchir la jambe pour ramener le talon vers le fessier. Isole parfaitement le recrutement d'un ischios.",
-    "id": "exo_322"
+    "id": "exo_322",
+    "subMuscle": "Ischios (Contraction)"
   },
   {
     "muscle": "Fessiers",
@@ -3550,7 +3872,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Allongé au sol, une jambe tendue en l'air, pousser sur le talon opposé pour monter le bassin. Travail d'isolation et stabilité unilatérale pure.",
-    "id": "exo_323"
+    "id": "exo_323",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Fessiers",
@@ -3561,7 +3884,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Pieds très écartés et pointes ouvertes, descendre les fesses en tenant un haltère lourd pour recruter avec force la base du grand fessier.",
-    "id": "exo_324"
+    "id": "exo_324",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Fessiers",
@@ -3572,7 +3896,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Debout face à la poulie basse, sangle à la cheville, renvoyer le talon vers l'arrière bras tendu. Isole le grand fessier en contraction maximale.",
-    "id": "exo_325"
+    "id": "exo_325",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Mollets",
@@ -3583,7 +3908,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Assis, un haltère lourd posé sur un seul genou (pied sur une cale/marche), effectuer des extensions unilatérales pour le soléaire à la maison.",
-    "id": "exo_326"
+    "id": "exo_326",
+    "subMuscle": "Soléaire"
   },
   {
     "muscle": "Mollets",
@@ -3594,7 +3920,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Barre sur le dos, pieds sur une cale, effectuer des extensions de chevilles contrôlées pour une surcharge progressive lourde sur les gastrocnémiens.",
-    "id": "exo_327"
+    "id": "exo_327",
+    "subMuscle": "Gastrocnémien"
   },
   {
     "muscle": "Épaules",
@@ -3605,7 +3932,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Debout, élever les haltères devant soi jusqu'à l'horizontale en gardant le buste gainé. Isole parfaitement le deltoïde antérieur.",
-    "id": "exo_328"
+    "id": "exo_328",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Épaules",
@@ -3616,7 +3944,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Buste soutenu face contre terre sur un banc incliné à 30°. Élimine l'élan du corps pour cibler avec précision les deltoïdes postérieurs.",
-    "id": "exo_329"
+    "id": "exo_329",
+    "subMuscle": "Faisceau postérieur"
   },
   {
     "muscle": "Épaules",
@@ -3627,7 +3956,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Debout, presser la barre au-dessus de la tête. Mouvement de force polyarticulaire de base pour les deltoïdes antérieurs et les triceps.",
-    "id": "exo_330"
+    "id": "exo_330",
+    "subMuscle": "Faisceau antérieur"
   },
   {
     "muscle": "Biceps",
@@ -3638,7 +3968,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Couché face sur un banc incliné, bras pendants verticalement, effectuer le curl sans bouger les coudes pour éliminer tout élan d'épaules.",
-    "id": "exo_331"
+    "id": "exo_331",
+    "subMuscle": "Chef court (Intérieur)"
   },
   {
     "muscle": "Biceps",
@@ -3649,7 +3980,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Barre tenue avec paumes vers le bas (pronation). Cible le muscle brachial et le brachio-radial pour épaissir visiblement le haut de l'avant-bras.",
-    "id": "exo_332"
+    "id": "exo_332",
+    "subMuscle": "Biceps (Global)"
   },
   {
     "muscle": "Biceps",
@@ -3660,7 +3992,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Sur banc incliné face à l'opposé de la poulie basse, effectuer des curls. L'angle étire fortement le biceps et maintient une tension continue parfaite.",
-    "id": "exo_333"
+    "id": "exo_333",
+    "subMuscle": "Chef long (Extérieur)"
   },
   {
     "muscle": "Triceps",
@@ -3671,7 +4004,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Mains posées sur un banc et pieds sur un autre, descendre le bassin de façon contrôlée. Surcharge facile à appliquer avec un disque sur les cuisses.",
-    "id": "exo_334"
+    "id": "exo_334",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Triceps",
@@ -3682,7 +4016,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Assis, un haltère lourd tenu à deux mains au-dessus de la tête, fléchir les coudes vers l'arrière pour étirer et recruter le chef long du triceps.",
-    "id": "exo_335"
+    "id": "exo_335",
+    "subMuscle": "Chef long"
   },
   {
     "muscle": "Triceps",
@@ -3693,7 +4028,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Pompes au sol, mains rapprochées formant un diamant sous le plexus. Variante excellente au poids du corps axée sur les triceps et la partie interne des pecs.",
-    "id": "exo_336"
+    "id": "exo_336",
+    "subMuscle": "Triceps (Global)"
   },
   {
     "muscle": "Avant-bras",
@@ -3704,7 +4040,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Avant-bras posés sur le banc, paumes vers le haut, effectuer des flexions de poignets contrôlées pour isoler la face interne de l'avant-bras.",
-    "id": "exo_337"
+    "id": "exo_337",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Avant-bras",
@@ -3715,7 +4052,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Avant-bras en appui, paumes vers le bas, effectuer des extensions de poignets pour renforcer les muscles extenseurs et stabiliser les articulations.",
-    "id": "exo_338"
+    "id": "exo_338",
+    "subMuscle": "Fléchisseurs / Extenseurs"
   },
   {
     "muscle": "Abdos",
@@ -3726,7 +4064,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Suspendu à la barre fixe, enrouler lentement le bassin pour amener les genoux ou les pointes de pieds vers le haut sans utiliser d'élan.",
-    "id": "exo_339"
+    "id": "exo_339",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Abdos",
@@ -3737,7 +4076,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "À genoux avec la corde derrière la nuque face à la poulie, enrouler le haut du dos pour rapprocher les coudes des cuisses sous tension continue.",
-    "id": "exo_340"
+    "id": "exo_340",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Cardio",
@@ -3748,7 +4088,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Enchaînement dynamique : flexion, planche, pompe, retour accroupi et saut explosif. Un des exercices métaboliques les plus intenses.",
-    "id": "exo_341"
+    "id": "exo_341",
+    "subMuscle": ""
   },
   {
     "muscle": "Cardio",
@@ -3759,7 +4100,8 @@ export const exerciseLibrary = [
     "unit": "minutes",
     "rest": 65,
     "note": "Sauts rapides et coordonnés. Idéal à la maison ou à la salle pour développer la pliométrie des mollets, la vitesse de pied et le souffle.",
-    "id": "exo_342"
+    "id": "exo_342",
+    "subMuscle": ""
   },
   {
     "muscle": "Biceps",
@@ -3770,7 +4112,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Buste orienté à 45° face au câble, bras en extension totale arrière. Effectuer un curl marteau (prise neutre) en étirant le brachial en profondeur.",
-    "id": "exo_343"
+    "id": "exo_343",
+    "subMuscle": "Brachial / Brachio-radial"
   },
   {
     "muscle": "Pectoraux",
@@ -3781,7 +4124,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur banc incliné, effectuer uniquement le premier tiers de l'amplitude (l'étirement maximal) sous la haute tension continue de la poulie basse.",
-    "id": "exo_344"
+    "id": "exo_344",
+    "subMuscle": "Faisceau claviculaire (Haut)"
   },
   {
     "muscle": "Dos",
@@ -3792,7 +4136,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Ajuster la poulie pour que le câble s'aligne exactement dans la trajectoire anatomique des fibres du grand dorsal pour supprimer les compensations du trapèze.",
-    "id": "exo_345"
+    "id": "exo_345",
+    "subMuscle": "Grand Rond / Trapèzes (Épaisseur)"
   },
   {
     "muscle": "Fessiers",
@@ -3803,7 +4148,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Allongé sur le côté sur le plateau de la presse, presser d'un pied. Place le grand fessier sous un étirement extrême combiné à une rotation externe.",
-    "id": "exo_346"
+    "id": "exo_346",
+    "subMuscle": "Grand fessier"
   },
   {
     "muscle": "Épaules",
@@ -3814,7 +4160,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur le flanc, l'haltère offre une résistance maximale dès le début du mouvement, pile là où le deltoïde moyen est le plus étiré.",
-    "id": "exo_347"
+    "id": "exo_347",
+    "subMuscle": "Faisceau latéral"
   },
   {
     "muscle": "Triceps",
@@ -3825,7 +4172,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Allongé sur un banc, le câble tirant depuis l'arrière de la tête vers le bas. Surcharge intensément la longue portion des triceps sous étirement complet.",
-    "id": "exo_348"
+    "id": "exo_348",
+    "subMuscle": "Chef latéral / médial"
   },
   {
     "muscle": "Quadriceps",
@@ -3836,7 +4184,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Stabilisé par le cadre guidé, un pied surélevé à l'arrière, talon avant sur cale. Permet une flexion maximale du genou sans restriction de cheville.",
-    "id": "exo_349"
+    "id": "exo_349",
+    "subMuscle": "Quadriceps (Global)"
   },
   {
     "muscle": "Abdos",
@@ -3847,7 +4196,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 60,
     "note": "Flexion latérale debout avec sangle à la poulie basse, incluant une pause de 2 secondes en étirement maximal pour forcer les obliques profonds à réagir.",
-    "id": "exo_350"
+    "id": "exo_350",
+    "subMuscle": "Grand droit"
   },
   {
     "muscle": "Biceps",
@@ -3858,7 +4208,8 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 90,
     "note": "Dos à la poulie basse, bras en arrière. Tension continue et étirement extrême du long chef du biceps.",
-    "id": "exo_351"
+    "id": "exo_351",
+    "subMuscle": "Chef long (Extérieur)"
   },
   {
     "muscle": "Biceps",
@@ -3869,6 +4220,19 @@ export const exerciseLibrary = [
     "unit": "reps",
     "rest": 75,
     "note": "Buste en appui ventral sur un banc incliné à 30°, bras ballants. Isole le biceps et élimine toute triche pour un pic de contraction maximal.",
-    "id": "exo_352"
+    "id": "exo_352",
+    "subMuscle": "Chef long (Extérieur)"
+  },
+  {
+    "id": "exo_farmer_walk",
+    "muscle": "Épaules",
+    "subMuscle": "Trapèzes supérieurs / Grip",
+    "name": "Marche du Fermier (Farmer's Walk)",
+    "sets": 3,
+    "reps": "45-60",
+    "tempo": "N/A",
+    "unit": "seconds",
+    "rest": 90,
+    "note": "Prends des charges lourdes, garde le buste droit et avance. Excellent pour les trapèzes et la force de poigne."
   }
 ];

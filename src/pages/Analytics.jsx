@@ -168,6 +168,57 @@ const Analytics = () => {
     return vol;
   }, [history, allExercises]);
 
+  // Weekly Intensity per muscle group
+  const weekIntensity = useMemo(() => {
+    const now = new Date(), d7 = new Date(now - 7*864e5);
+    const intensity = {};
+    const map = {
+      "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Finition": "Pectoraux", "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
+      "Dos (Largeur)": "Dos", "Dos (Épaisseur)": "Dos", "Dos (Bas)": "Dos", "Dos (Isolation)": "Dos", "Dos": "Dos",
+      "Lombaires": "Lombaires", "Lombes": "Lombaires",
+      "Cuisses": "Quadriceps", "Quadriceps": "Quadriceps",
+      "Ischios": "Ischios",
+      "Fessiers": "Fessiers",
+      "Adducteurs": "Adducteurs",
+      "Abducteurs": "Abducteurs",
+      "Mollets": "Mollets",
+      "Tibias": "Tibias",
+      "Épaules (Masse)": "Épaules", "Épaules (Latéral)": "Épaules", "Arr. Épaules": "Épaules", "Épaules": "Épaules",
+      "Trapèzes": "Trapèzes",
+      "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Brachial": "Biceps", "Biceps": "Biceps",
+      "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps": "Triceps",
+      "Avant-Bras": "Avant-bras", "Avant-bras": "Avant-bras",
+      "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
+      "Cou": "Cou",
+      "Cardio": "Cardio"
+    };
+    Object.keys(history || {}).forEach(id => {
+      const exo = allExercises.find(e=>e.id===id) || exerciseLibrary.find(e=>e.id===id); if(!exo) return;
+      const g = map[exo.muscle]; if(!g) return;
+      if (!intensity[g]) intensity[g] = { sumRPE: 0, count: 0 };
+      const entries = history[id];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry => {
+          if (!entry || !entry.date) return;
+          const d = parseDate(entry.date);
+          if(d>=d7&&d<=now) {
+            (entry.setsData||[]).forEach(s => {
+              if (s.done && +s.weight>0 && !s.isExtra && s.rpe) {
+                intensity[g].sumRPE += Number(s.rpe);
+                intensity[g].count++;
+              }
+            });
+          }
+        });
+      }
+    });
+    const result = {};
+    Object.keys(intensity).forEach(k => {
+      result[k] = intensity[k].count > 0 ? intensity[k].sumRPE / intensity[k].count : 0;
+    });
+    return result;
+  }, [history, allExercises]);
+
   const maxVol = Math.max(...Object.values(weekVolume), 1);
   const volPecs = weekVolume.Pectoraux||0, volDos = weekVolume.Dos||0;
 
@@ -749,18 +800,30 @@ const Analytics = () => {
           <h3 className="font-bold text-white flex items-center gap-2 mb-4"><Target size={16} className="text-blue-400"/>Volume Hebdomadaire</h3>
           <div className="space-y-3.5">
             {Object.entries(weekVolume).map(([muscle,sets])=>{
-              const optimal=sets>=10&&sets<=20, low=sets>0&&sets<10, high=sets>20;
-              const pct=Math.min(100,(sets/25)*100);
-              const barColor=optimal?"bg-emerald-500":low?"bg-amber-500":high?"bg-red-500":"bg-slate-700";
+              const avgRPE = weekIntensity[muscle] || 0;
+              let optimal = sets >= 10 && sets <= 20;
+              let highIntensityOptimal = false;
+              if (sets >= 6 && sets < 10 && avgRPE >= 8) {
+                optimal = true;
+                highIntensityOptimal = true;
+              }
+              const low = sets > 0 && !optimal && sets < 10;
+              const high = sets > 20;
+              const pct = Math.min(100,(sets/25)*100);
+              const barColor = optimal ? "bg-emerald-500" : low ? "bg-amber-500" : high ? "bg-red-500" : "bg-slate-700";
               return(
                 <div key={muscle}>
                   <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-xs font-bold text-white">{muscle}</span>
+                    <span className="text-xs font-bold text-white flex items-center gap-2">
+                      {muscle}
+                      {avgRPE > 0 && <span className="text-[9px] font-mono text-slate-500 bg-black/20 px-1.5 py-0.5 rounded border border-white/5">RPE ~{avgRPE.toFixed(1)}</span>}
+                    </span>
                     <div className="flex items-center gap-2">
                       <span className={`text-sm font-black ${optimal?"text-emerald-400":low?"text-amber-400":high?"text-red-400":"text-slate-600"}`}>{sets}</span>
-                      {optimal&&<span className="badge badge-green">Optimal</span>}
-                      {low&&sets>0&&<span className="badge badge-yellow">Faible</span>}
-                      {high&&<span className="badge badge-red">Excessif</span>}
+                      {highIntensityOptimal && <span className="badge badge-green">Optimal (Intensité)</span>}
+                      {optimal && !highIntensityOptimal && <span className="badge badge-green">Optimal</span>}
+                      {low && sets > 0 && <span className="badge badge-yellow">Faible</span>}
+                      {high && <span className="badge badge-red">Excessif</span>}
                     </div>
                   </div>
                   <div className="progress-track">

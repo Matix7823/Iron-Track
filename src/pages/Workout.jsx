@@ -212,10 +212,12 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight, height } = useApp();
   const [open, setOpen] = useState(true);
+  const [isBypassed, setIsBypassed] = useState(false);
 
   const sets = getSetsForExo(exo.id);
   const advice = getAdvice(exo, history[exo.id]||[], sets, energyLevel, allExercises, currentInput);
-  const isJunk = advice.text.includes("JUNK VOLUME");
+  const hasJunkWarning = advice.text.includes("JUNK VOLUME");
+  const isJunk = hasJunkWarning && !isBypassed;
   const isTime = exo.unit === "seconds" || exo.unit === "minutes";
   const isCardio = exo.muscle.includes("Cardio");
   const style = advStyle[advice.color] || advStyle.blue;
@@ -272,8 +274,22 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
       initial={{ opacity:0, y:16 }}
       animate={{ opacity:1, y:0 }}
       transition={{ delay: index * 0.055, duration: 0.4 }}
-      className={`glass-card mb-4 overflow-hidden transition-all ${isJunk ? "opacity-40 grayscale pointer-events-none" : ""}`}
+      className={`glass-card mb-4 overflow-hidden transition-all relative ${isJunk ? "opacity-60 grayscale" : ""}`}
     >
+      {/* Overtraining Overlay */}
+      {isJunk && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm">
+          <div className="bg-[#0f172a] p-5 rounded-2xl border border-red-500/30 text-center shadow-2xl max-w-[85%]">
+            <AlertTriangle className="w-10 h-10 text-red-500 mx-auto mb-3 animate-pulse" />
+            <p className="text-red-400 font-black mb-1 text-sm uppercase tracking-wide">Surcharge Musculaire</p>
+            <p className="text-xs text-slate-300 mb-4 leading-relaxed font-medium">Continuer pourrait entraîner un surentraînement. Muscle épuisé.</p>
+            <button onClick={() => setIsBypassed(true)} className="px-4 py-2.5 bg-red-500/20 text-red-300 hover:bg-red-500/30 hover:text-white rounded-xl text-xs font-black uppercase tracking-wider transition-all w-full border border-red-500/30 active:scale-95">
+               Pousser quand même
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Progress bar at top */}
       {doneSets > 0 && (
         <div className="h-0.5 bg-white/5 w-full">
@@ -424,7 +440,18 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                           onChange={e => handleSetChange(exo.id, si, "rpe", e.target.value)}
                           className="w-full bg-transparent text-center font-bold text-xs sm:text-sm py-1 sm:py-1.5 appearance-none outline-none cursor-pointer text-blue-400 disabled:text-slate-600">
                           <option value="">—</option>
-                          {[6,7,8,9,10].map(n=><option key={n} value={n} className="bg-[#0a0f1e]">{n}</option>)}
+                          {[
+                            {v: 1, l: "1 - Très Facile"},
+                            {v: 2, l: "2 - Facile"},
+                            {v: 3, l: "3 - Modéré"},
+                            {v: 4, l: "4 - Assez Difficile"},
+                            {v: 5, l: "5 - Difficile"},
+                            {v: 6, l: "6 - 4 reps en réserve"},
+                            {v: 7, l: "7 - 3 reps en réserve"},
+                            {v: 8, l: "8 - 2 reps en réserve"},
+                            {v: 9, l: "9 - 1 rep en réserve"},
+                            {v: 10, l: "10 - Impossible"}
+                          ].map(o=><option key={o.v} value={o.v} className="bg-[#0a0f1e] text-left">{o.l}</option>)}
                         </select>
                       </div>
                     )}
