@@ -488,7 +488,7 @@ const Analytics = () => {
               <p className="text-[10px] text-slate-500 mt-0.5">Basé sur le volume d'entraînement des 7 derniers jours</p>
             </div>
             <div className="flex gap-1">
-              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Frais</span>
+              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Frais / Entraînable</span>
               <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-amber-400 px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">Actif</span>
               <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-red-400 px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20">Fatigué</span>
             </div>
