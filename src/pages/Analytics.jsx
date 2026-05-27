@@ -536,7 +536,7 @@ const Analytics = () => {
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   <div className="pt-3 mt-3 border-t border-white/5">
                     {(() => {
-                      const freshMuscles = Object.entries(weekVolume).filter(([_, vol]) => vol === 0).map(([k]) => k);
+                      const freshMuscles = Object.entries(weekVolume).filter(([_, vol]) => vol <= 6).map(([k]) => k);
                       if (freshMuscles.length === 0) return <p className="text-xs text-emerald-400 font-bold">Tu as travaillé tout ton corps cette semaine ! 🔥</p>;
                       
                       let suggestedSession = null;
@@ -557,7 +557,7 @@ const Analytics = () => {
 
                       return (
                         <>
-                          <p className="text-xs text-slate-300 font-bold mb-2">Muscles non sollicités :</p>
+                          <p className="text-xs text-slate-300 font-bold mb-2">Muscles frais ou peu sollicités :</p>
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {freshMuscles.map(m => <span key={m} className="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] text-slate-400 font-medium">{m}</span>)}
                           </div>
