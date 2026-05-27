@@ -633,7 +633,7 @@ export const AppProvider = ({ children }) => {
                   if (entry.date) dates.add(entry.date);
                   if (Array.isArray(entry.setsData)) {
                     entry.setsData.forEach(s => {
-                      if (parseFloat(s.weight) > 0 && parseFloat(s.reps) > 0 && s.done !== false) {
+                      if ((s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && parseFloat(s.reps) > 0 && s.done !== false) {
                         totalTonnage += parseFloat(s.weight) * parseFloat(s.reps);
                       }
                     });
@@ -987,7 +987,7 @@ export const AppProvider = ({ children }) => {
     let hasData = false;
     Object.keys(currentInput).forEach((exoId) => {
       const input = currentInput[exoId];
-      if (Array.isArray(input) && input.some((s) => parseFloat(s.weight) > 0 && s.done)) {
+      if (Array.isArray(input) && input.some((s) => (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && s.done)) {
         hasData = true;
       }
     });
@@ -1004,7 +1004,7 @@ export const AppProvider = ({ children }) => {
     Object.keys(currentInput).forEach((exoId) => {
       const setsArray = currentInput[exoId];
       if (Array.isArray(setsArray)) {
-        const validSets = setsArray.filter((s) => parseFloat(s.weight) > 0 && parseFloat(s.reps) > 0 && s.done);
+        const validSets = setsArray.filter((s) => (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && parseFloat(s.reps) > 0 && s.done);
         if (validSets.length > 0) {
           newHistory[exoId] = [...normalizeHistory(newHistory[exoId] || []), { date, setsData: validSets }];
           const exoDef = allExercises.find((e) => e.id === exoId);
@@ -1029,7 +1029,7 @@ export const AppProvider = ({ children }) => {
         if (!entry.date) return;
         if (!datesMap[entry.date]) datesMap[entry.date] = { tonnage: 0 };
         (entry.setsData || []).forEach((s) => {
-          if (parseFloat(s.weight) > 0 && parseFloat(s.reps) > 0 && s.done !== false) {
+          if ((s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && parseFloat(s.reps) > 0 && s.done !== false) {
             datesMap[entry.date].tonnage += parseFloat(s.weight) * parseFloat(s.reps);
           }
         });

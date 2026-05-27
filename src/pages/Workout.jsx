@@ -208,6 +208,52 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
   );
 };
 
+const AddSessionModal = ({ onClose }) => {
+  const { userSessions, currentSession, addExerciseToSession } = useApp();
+  
+  const handleAddSession = (sessKey) => {
+    const sessionToAdd = userSessions[sessKey];
+    if (sessionToAdd && Array.isArray(sessionToAdd.exercises)) {
+      sessionToAdd.exercises.forEach(exo => {
+        addExerciseToSession(currentSession, exo);
+      });
+    }
+    if (window.navigator.vibrate) window.navigator.vibrate(15);
+    onClose();
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <motion.div 
+        initial={{ y: 50, opacity: 0 }} 
+        animate={{ y: 0, opacity: 1 }} 
+        className="glass-dark w-[95%] sm:w-full max-w-xl max-h-[85vh] rounded-3xl p-4 sm:p-6 overflow-hidden flex flex-col border border-white/10"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-black text-white flex items-center gap-2"><Target size={20} className="text-purple-400" /> Ajouter une séance complète</h2>
+          <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full"><X size={20}/></button>
+        </div>
+        <div className="flex-1 overflow-y-auto space-y-2 pr-2 scrollbar-hide">
+          {Object.entries(userSessions || {}).filter(([k]) => k !== currentSession && userSessions[k].exercises?.length > 0).map(([key, sess]) => (
+            <button 
+              key={key}
+              onClick={() => handleAddSession(key)}
+              className="w-full glass-card p-4 flex items-center justify-between hover:border-purple-500/30 group text-left"
+            >
+              <div>
+                <p className="text-sm font-bold text-white group-hover:text-purple-400">{sess.title}</p>
+                <p className="text-[10px] text-slate-500 uppercase">{sess.exercises?.length || 0} exercices</p>
+              </div>
+              <Plus size={18} className="text-purple-400"/>
+            </button>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 // ─── ExerciseCard ────────────────────────────────────────────────
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight, height } = useApp();
@@ -485,7 +531,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
 };
 
 // ─── Session Summary Modal ───────────────────────────────────────
-const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared, onSyncAppleHealth }) => (
+const SummaryModal = ({ rank, tonnage, calories, onClose, onShare, hasShared, onSyncAppleHealth }) => (
   <div className="modal-overlay" onClick={onClose}>
     <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
       transition={{ type:"spring", stiffness:280, damping:20 }} onClick={e=>e.stopPropagation()}>
@@ -498,9 +544,15 @@ const SummaryModal = ({ rank, tonnage, onClose, onShare, hasShared, onSyncAppleH
       <p className={`font-bold mb-6 ${rank==="super"?"text-gradient-gold":rank==="medium"?"text-blue-400":"text-slate-400"}`}>
         {rank==="super"?"Performance légendaire !":rank==="medium"?"Séance solide 🔥":"Récupération active 📉"}
       </p>
-      <div className="glass rounded-2xl p-5 border border-white/5 mb-5">
-        <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Tonnage total soulevé</p>
-        <p className="text-5xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-xl text-slate-500 font-normal ml-1">kg</span></p>
+      <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="glass rounded-2xl p-4 border border-white/5">
+          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Tonnage</p>
+          <p className="text-3xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-sm text-slate-500 font-normal ml-1">kg</span></p>
+        </div>
+        <div className="glass rounded-2xl p-4 border border-white/5">
+          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Calories</p>
+          <p className="text-3xl font-black text-orange-400">{calories}<span className="text-sm text-orange-500/50 font-normal ml-1">kcal</span></p>
+        </div>
       </div>
       <div className="flex flex-col gap-2">
         <button 
@@ -537,6 +589,7 @@ const Workout = () => {
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showAddSessionModal, setShowAddSessionModal] = useState(false);
   const [exerciseToDelete, setExerciseToDelete] = useState(null);
   const [hasShared, setHasShared] = useState(false);
   const [showCreateSession, setShowCreateSession] = useState(false);
@@ -966,7 +1019,8 @@ const Workout = () => {
         {showSummary && (
           <SummaryModal 
             rank={sessionRank} 
-            tonnage={sessionTonnage} 
+            tonnage={sessionTonnage}
+            calories={Math.round(Math.max(10, elapsedMin) * 5 * ((currentBodyWeight || 75) / 70))} 
             onClose={() => setShowSummary(false)} 
             onShare={handleShareWorkout} 
             hasShared={hasShared}
@@ -996,6 +1050,10 @@ const Workout = () => {
 
       <AnimatePresence>
         {showAddModal && <AddExerciseModal sessionId={currentSession} onClose={() => setShowAddModal(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showAddSessionModal && <AddSessionModal onClose={() => setShowAddSessionModal(false)} />}
       </AnimatePresence>
 
       {/* Floating timer — premium circular style */}
@@ -1409,22 +1467,36 @@ const Workout = () => {
             <h3 className="text-xl font-black text-white mb-2">{session.category || 'Séance Personnalisée'}</h3>
             <p className="text-sm text-slate-400 max-w-xs mx-auto">Cette séance est vide. Ajoute les exercices de ton choix depuis la bibliothèque.</p>
           </div>
-          <button onClick={() => setShowAddModal(true)} className="btn-primary px-8 py-3 text-sm gap-2">
-            <Plus size={18} /> Construire ma séance
-          </button>
+          <div className="flex gap-2">
+            <button onClick={() => setShowAddModal(true)} className="btn-primary px-4 py-3 text-sm gap-2">
+              <Plus size={18} /> Exercice
+            </button>
+            <button onClick={() => setShowAddSessionModal(true)} className="btn-glass px-4 py-3 text-sm gap-2 border-dashed">
+              <Target size={18} /> Séance complète
+            </button>
+          </div>
           <p className="text-[10px] text-slate-600 uppercase tracking-widest">Sauvegardés automatiquement</p>
         </motion.div>
       ) : (
         <>
           {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} onRemoveRequest={setExerciseToDelete} />)}
-          {/* Add exercise button */}
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="w-full glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-blue-400 hover:border-blue-500/50 transition-all mb-12"
-          >
-            <Plus size={24}/>
-            <span className="text-sm font-bold">Ajouter un exercice</span>
-          </button>
+          {/* Add exercise / session buttons */}
+          <div className="flex gap-2 w-full mb-12">
+            <button
+              onClick={() => setShowAddModal(true)}
+              className="flex-1 glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-blue-400 hover:border-blue-500/50 transition-all"
+            >
+              <Plus size={24}/>
+              <span className="text-sm font-bold text-center">Ajouter un exercice</span>
+            </button>
+            <button
+              onClick={() => setShowAddSessionModal(true)}
+              className="flex-1 glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-purple-400 hover:border-purple-500/50 transition-all"
+            >
+              <Target size={24}/>
+              <span className="text-sm font-bold text-center">Ajouter une séance</span>
+            </button>
+          </div>
         </>
       )}
 

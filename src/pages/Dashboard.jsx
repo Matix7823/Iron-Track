@@ -145,7 +145,7 @@ const Dashboard = () => {
         const d = parseDate(e.date);
         if (d >= d7 && d <= now) {
           dates.add(e.date);
-          (e.setsData || []).forEach(s => { if (s?.done && +s.weight > 0 && +s.reps > 0) tonnage += +s.weight * +s.reps; });
+          (e.setsData || []).forEach(s => { if (s?.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && +s.reps > 0) tonnage += +s.weight * +s.reps; });
         }
       });
     });
@@ -181,7 +181,7 @@ const Dashboard = () => {
           if (Array.isArray(hist)) hist.forEach(entry => {
             if (entry?.date) records.push({
               dateStr: entry.date, date: parseDate(entry.date),
-              setsCount: (entry.setsData || []).filter(s => s?.done && parseFloat(s.weight) > 0).length
+              setsCount: (entry.setsData || []).filter(s => s?.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)).length
             });
           });
         }
@@ -215,7 +215,7 @@ const Dashboard = () => {
   ].map(lift => {
     let best = 0;
     lift.ids.forEach(id => normalizeHistory(history[id]||[]).forEach(h =>
-      (h.setsData||[]).forEach(s => { if (+s.weight>0&&+s.reps>0&&s.done&&!s.isExtra) { const rm=calculate1RM(+s.weight,+s.reps); if(rm>best)best=rm; } })
+      (h.setsData||[]).forEach(s => { if ((s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)&&+s.reps>0&&s.done&&!s.isExtra) { const rm=calculate1RM(+s.weight,+s.reps); if(rm>best)best=rm; } })
     ));
     return { ...lift, best, std: getStrengthStandard(lift.type, best, currentBodyWeight) };
   }), [history, currentBodyWeight]);

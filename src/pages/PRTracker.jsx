@@ -284,7 +284,7 @@ const PRTracker = () => {
       if (!Array.isArray(entries)) return;
       entries.forEach(entry => {
         if (!entry?.date || !Array.isArray(entry.setsData)) return;
-        const hasDone = entry.setsData.some(s => s?.done && +s.weight > 0);
+        const hasDone = entry.setsData.some(s => s?.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0));
         if (!hasDone) return;
         if (!dateMap[entry.date]) dateMap[entry.date] = { date: entry.date, exercices: [], tonnage: 0 };
         
@@ -328,7 +328,7 @@ const PRTracker = () => {
       if (!Array.isArray(entries) || entries.length === 0) return;
 
       const completedEntries = entries.filter(entry =>
-        entry?.setsData && entry.setsData.some(s => s?.done && +s.weight > 0)
+        entry?.setsData && entry.setsData.some(s => s?.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0))
       );
       if (completedEntries.length === 0) return;
 
@@ -343,7 +343,7 @@ const PRTracker = () => {
         const setsList = [];
 
         entry.setsData.forEach(s => {
-          if (s?.done && +s.weight > 0) {
+          if (s?.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)) {
             const w = +s.weight;
             const r = +s.reps || 1;
             const rpe = s.rpe || "";

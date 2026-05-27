@@ -21,7 +21,7 @@ export const getPerformanceMetrics = (setsData) => {
   if (!setsData || setsData.length === 0) return null;
   const validSets = setsData.filter(
     (s) =>
-      parseFloat(s.weight) > 0 &&
+      (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) &&
       parseFloat(s.reps) > 0 &&
       s.done !== false &&
       !s.isExtra
@@ -35,7 +35,7 @@ export const getPerformanceMetrics = (setsData) => {
   const maxRPEAtMax = Math.max(...topSets.map((s) => parseInt(s.rpe) || 0));
 
   const allValid = setsData.filter(
-    (s) => parseFloat(s.weight) > 0 && parseFloat(s.reps) > 0 && s.done !== false
+    (s) => (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && parseFloat(s.reps) > 0 && s.done !== false
   );
   const totalVolume = allValid.reduce(
     (sum, s) => sum + parseFloat(s.weight) * parseFloat(s.reps),

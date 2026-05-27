@@ -27,7 +27,7 @@ const Analytics = () => {
 
   const fatigueLevels = useMemo(() => {
     const now = new Date();
-    const d4 = new Date(now - 4 * 24 * 60 * 60 * 1000); // last 4 days
+    const d7 = new Date(now - 7 * 24 * 60 * 60 * 1000); // last 7 days
     const setsCount = {
       Pectoraux: 0, Dos: 0, Lombaires: 0, Epaules: 0, Biceps: 0, Triceps: 0,
       AvantBras: 0, Abdos: 0, Quadriceps: 0, Ischios: 0, Fessiers: 0, Mollets: 0,
@@ -66,8 +66,8 @@ const Analytics = () => {
         entries.forEach(entry => {
           if (!entry || !entry.date) return;
           const d = parseDate(entry.date);
-          if (d >= d4 && d <= now) {
-            setsCount[key] += (entry.setsData || []).filter(s => s.done && +s.weight > 0 && !s.isExtra).length;
+          if (d >= d7 && d <= now) {
+            setsCount[key] += (entry.setsData || []).filter(s => s.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && !s.isExtra).length;
           }
         });
       }
@@ -78,9 +78,9 @@ const Analytics = () => {
     Object.keys(setsCount).forEach(k => {
       const count = setsCount[k];
       if (count === 0) levels[k] = 0;
-      else if (count <= 3) levels[k] = 25;
-      else if (count <= 6) levels[k] = 55;
-      else if (count <= 9) levels[k] = 85;
+      else if (count <= 4) levels[k] = 25;
+      else if (count <= 9) levels[k] = 55;
+      else if (count <= 14) levels[k] = 85;
       else levels[k] = 100;
     });
 
@@ -90,6 +90,7 @@ const Analytics = () => {
   const [metric, setMetric] = useState("weight");
   
   const [searchExo, setSearchExo] = useState("");
+  const [showRec, setShowRec] = useState(false);
   const [showExoList, setShowExoList] = useState(false);
 
   const listRef = useRef(null);
@@ -165,7 +166,7 @@ const Analytics = () => {
         entries.forEach(entry => {
           if (!entry || !entry.date) return;
           const d = parseDate(entry.date);
-          if(d>=d7&&d<=now) vol[g] += (entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
+          if(d>=d7&&d<=now) vol[g] += (entry.setsData||[]).filter(s=>s.done&&(s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)&&!s.isExtra).length;
         });
       }
     });
@@ -211,7 +212,7 @@ const Analytics = () => {
           const d = parseDate(entry.date);
           if(d>=d7&&d<=now) {
             (entry.setsData||[]).forEach(s => {
-              if (s.done && +s.weight>0 && !s.isExtra && s.rpe) {
+              if (s.done && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0) && !s.isExtra && s.rpe) {
                 intensity[g].sumRPE += Number(s.rpe);
                 intensity[g].count++;
               }
@@ -242,7 +243,7 @@ const Analytics = () => {
           if (!entry || !entry.date) return;
           const d=parseDate(entry.date);
           if(d>=d7&&d<=now){
-            const v=(entry.setsData||[]).filter(s=>s.done&&+s.weight>0&&!s.isExtra).length;
+            const v=(entry.setsData||[]).filter(s=>s.done&&(s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)&&!s.isExtra).length;
             if(exo.muscle==="Épaules (Latéral)") latDelts+=v;
             if(exo.muscle==="Pecs (Haut)")       upperChest+=v;
             if(exo.muscle==="Dos (Largeur)")     lats+=v;
@@ -270,7 +271,7 @@ const Analytics = () => {
           let exoTonnage = 0;
           const sets = [];
           (entry.setsData||[]).forEach(s=>{
-            if(s && +s.weight>0&&+s.reps>0&&s.done!==false) {
+            if(s && (s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)&&+s.reps>0&&s.done!==false) {
               m[entry.date].tonnage+=+s.weight*+s.reps;
               exoTonnage += +s.weight*+s.reps;
               sets.push(s);
@@ -348,7 +349,7 @@ const Analytics = () => {
   ].map(lift=>{
     let best=0;
     lift.ids.forEach(id=>normalizeHistory(history[id]||[]).forEach(h=>
-      (h.setsData||[]).forEach(s=>{if(+s.weight>0&&+s.reps>0&&s.done&&!s.isExtra){const rm=calculate1RM(+s.weight,+s.reps);if(rm>best)best=rm;}})
+      (h.setsData||[]).forEach(s=>{if((s.weight!=="" && !isNaN(s.weight) && parseFloat(s.weight)>=0)&&+s.reps>0&&s.done&&!s.isExtra){const rm=calculate1RM(+s.weight,+s.reps);if(rm>best)best=rm;}})
     ));
     return {...lift,best,std:getStrengthStandard(lift.type,best,currentBodyWeight)};
   });
@@ -484,7 +485,7 @@ const Analytics = () => {
                 <Activity size={16} className="text-cyan-400" />
                 Statut de Fatigue & Récupération
               </h3>
-              <p className="text-[10px] text-slate-500 mt-0.5">Basé sur le volume d'entraînement des 4 derniers jours</p>
+              <p className="text-[10px] text-slate-500 mt-0.5">Basé sur le volume d'entraînement des 7 derniers jours</p>
             </div>
             <div className="flex gap-1">
               <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Frais</span>
@@ -525,6 +526,56 @@ const Analytics = () => {
                 }
               })()}
             </p>
+
+            <button onClick={() => setShowRec(!showRec)} className="mt-3 w-full py-2.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 font-bold rounded-xl border border-blue-500/20 transition-all text-xs flex items-center justify-center gap-2">
+              <Target size={14} /> Qu'est-ce qu'il me reste à travailler ?
+            </button>
+
+            <AnimatePresence>
+              {showRec && (
+                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                  <div className="pt-3 mt-3 border-t border-white/5">
+                    {(() => {
+                      const freshMuscles = Object.entries(weekVolume).filter(([_, vol]) => vol === 0).map(([k]) => k);
+                      if (freshMuscles.length === 0) return <p className="text-xs text-emerald-400 font-bold">Tu as travaillé tout ton corps cette semaine ! 🔥</p>;
+                      
+                      let suggestedSession = null;
+                      if (userSessions) {
+                        const sessionsScores = Object.entries(userSessions).map(([key, sess]) => {
+                          if (!sess || !sess.exercises) return { key, score: 0 };
+                          let score = 0;
+                          sess.exercises.forEach(exo => {
+                            if (freshMuscles.includes(exo.muscle) || freshMuscles.includes(exo.muscle.split(" ")[0])) score++;
+                          });
+                          return { key, title: sess.title, score };
+                        }).sort((a, b) => b.score - a.score);
+                        
+                        if (sessionsScores.length > 0 && sessionsScores[0].score > 0) {
+                          suggestedSession = sessionsScores[0].title;
+                        }
+                      }
+
+                      return (
+                        <>
+                          <p className="text-xs text-slate-300 font-bold mb-2">Muscles non sollicités :</p>
+                          <div className="flex flex-wrap gap-1.5 mb-3">
+                            {freshMuscles.map(m => <span key={m} className="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] text-slate-400 font-medium">{m}</span>)}
+                          </div>
+                          {suggestedSession ? (
+                            <div className="p-3 bg-indigo-950/30 border border-indigo-500/20 rounded-xl">
+                              <p className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider mb-1">Séance Suggérée</p>
+                              <p className="text-sm font-black text-white">{suggestedSession}</p>
+                            </div>
+                          ) : (
+                            <p className="text-xs text-slate-500 italic">Crée une séance ciblant ces muscles !</p>
+                          )}
+                        </>
+                      );
+                    })()}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
 
