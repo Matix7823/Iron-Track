@@ -585,7 +585,7 @@ const Workout = () => {
     saveWorkout, sessionTonnage, sessionRank, showSummary, setShowSummary,
     isTimerRunning, timerSeconds, stopTimer, cnsScore,
     removeExerciseFromSession, createCustomSession, createCustomSessionWithExercises, deleteCustomSession, renameCustomSession,
-    currentInput, updateCustomSchedule, schedules, gender, age
+    currentInput, updateCustomSchedule, schedules, gender, age, currentBodyWeight
   } = useApp();
 
   const [showAddModal, setShowAddModal] = useState(false);
