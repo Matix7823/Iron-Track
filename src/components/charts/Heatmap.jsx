@@ -1,9 +1,32 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, X } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 
 const Heatmap = ({ history }) => {
+  const { allExercises } = useApp();
   const [currentMonthOffset, setCurrentMonthOffset] = useState(0);
+  const [selectedDateStr, setSelectedDateStr] = useState(null);
+
+  const selectedDateWorkout = useMemo(() => {
+    if (!selectedDateStr || !history) return null;
+    
+    const exercisesDone = [];
+    Object.keys(history).forEach(exoId => {
+      const entries = history[exoId];
+      if (Array.isArray(entries)) {
+        const entryForDate = entries.find(e => e.date === selectedDateStr);
+        if (entryForDate && entryForDate.setsData && entryForDate.setsData.length > 0) {
+          const exoDef = allExercises?.find(e => e.id === exoId);
+          exercisesDone.push({
+            exo: exoDef || { name: 'Exercice Inconnu', muscle: 'Inconnu' },
+            sets: entryForDate.setsData
+          });
+        }
+      }
+    });
+    return exercisesDone.length > 0 ? exercisesDone : null;
+  }, [selectedDateStr, history, allExercises]);
 
   const currentMonthDate = useMemo(() => {
     const d = new Date();
@@ -126,12 +149,15 @@ const Heatmap = ({ history }) => {
           return (
             <motion.div
               key={`day-${day.dayNum}`}
+              onClick={() => {
+                if (day.workedOut) setSelectedDateStr(day.dateStr);
+              }}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className={`
                 aspect-square flex flex-col items-center justify-center rounded-xl text-xs font-bold transition-all relative cursor-pointer select-none
                 ${day.workedOut 
-                  ? 'bg-blue-600/30 text-blue-400 border border-blue-500/40 shadow-[0_0_10px_rgba(59,130,246,0.15)]' 
+                  ? 'bg-blue-600/30 text-blue-400 border border-blue-500/40 shadow-[0_0_10px_rgba(59,130,246,0.15)] hover:bg-blue-600/50' 
                   : 'bg-white/[0.02] text-slate-400 border border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
                 }
                 ${day.isToday ? 'ring-2 ring-amber-500/50 border-amber-500/50 shadow-[0_0_8px_rgba(245,158,11,0.2)]' : ''}
@@ -168,6 +194,69 @@ const Heatmap = ({ history }) => {
           </span>
         </div>
       </div>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {selectedDateStr && selectedDateWorkout && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm" onClick={() => setSelectedDateStr(null)}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="glass-dark w-full max-w-md max-h-[80vh] rounded-3xl flex flex-col border border-white/10 shadow-2xl overflow-hidden"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="p-5 border-b border-white/5 flex items-center justify-between shrink-0 bg-blue-500/5">
+                <div>
+                  <h3 className="text-xl font-black text-white flex items-center gap-2">
+                    <Calendar size={20} className="text-blue-400" />
+                    Séance du {selectedDateStr}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1 font-medium">{selectedDateWorkout.length} exercices réalisés</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedDateStr(null)}
+                  className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              <div className="p-5 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+                {selectedDateWorkout.map((item, i) => (
+                  <div key={i} className="glass-card p-4 border-white/5">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h4 className="text-sm font-bold text-white mb-0.5">{item.exo.name}</h4>
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest">{item.exo.muscle}</p>
+                      </div>
+                      <span className="badge badge-blue text-[10px]">{item.sets.length} séries</span>
+                    </div>
+                    
+                    <div className="space-y-1.5">
+                      {item.sets.map((set, j) => (
+                        <div key={j} className="flex items-center justify-between text-xs bg-slate-900/50 p-2 rounded-lg border border-white/5">
+                          <span className="text-slate-500 font-mono w-6 text-center">{j + 1}</span>
+                          <span className="text-slate-300 flex-1 text-center font-medium">
+                            {set.weight ? `${set.weight} kg` : 'Poids du corps'}
+                          </span>
+                          <span className="text-slate-300 flex-1 text-center font-medium">
+                            × {set.reps} reps
+                          </span>
+                          <span className="text-slate-500 flex-1 text-right italic text-[10px]">
+                            {set.rpe ? `RPE ${set.rpe}` : ''}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
