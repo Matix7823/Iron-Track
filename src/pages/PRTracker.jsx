@@ -258,7 +258,7 @@ const PRTracker = () => {
         exo.historyFeed.forEach((h) => {
           h.sets.forEach((s, idx) => {
             const cleanExoName = exo.name.replace(/"/g, '""');
-            const cleanMuscle = exo.muscle.replace(/"/g, '""');
+            const cleanMuscle = (exo.muscle || "Inconnu").replace(/"/g, '""');
             csv += `${h.date},"${cleanMuscle}","${cleanExoName}",${idx + 1},${s.weight},${s.reps},${s.rpe || "-"},${s.tag || "-"}\n`;
           });
         });

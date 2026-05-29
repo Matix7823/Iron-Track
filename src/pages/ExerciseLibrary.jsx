@@ -230,7 +230,7 @@ const ExerciseLibrary = () => {
   const filtered = useMemo(() => exerciseLibrary.filter(e => {
     const q = removeAccents(search.toLowerCase());
     const nameMatch = removeAccents(e.name.toLowerCase()).includes(q);
-    const muscleMatchSearch = removeAccents(e.muscle.toLowerCase()).includes(q);
+    const muscleMatchSearch = e.muscle ? removeAccents(e.muscle.toLowerCase()).includes(q) : false;
     const matchSearch = !search || nameMatch || muscleMatchSearch;
 
     let matchMuscle = false;

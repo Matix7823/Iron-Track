@@ -545,7 +545,7 @@ const Analytics = () => {
                           if (!sess || !sess.exercises) return { key, score: 0 };
                           let score = 0;
                           sess.exercises.forEach(exo => {
-                            if (freshMuscles.includes(exo.muscle) || freshMuscles.includes(exo.muscle.split(" ")[0])) score++;
+                            if (exo.muscle && (freshMuscles.includes(exo.muscle) || freshMuscles.includes(exo.muscle.split(" ")[0]))) score++;
                           });
                           return { key, title: sess.title, score };
                         }).sort((a, b) => b.score - a.score);

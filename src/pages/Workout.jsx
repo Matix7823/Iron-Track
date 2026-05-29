@@ -106,7 +106,7 @@ const AddExerciseModal = ({ sessionId, onClose }) => {
   const filtered = useMemo(() => exerciseLibrary.filter(e => {
     const searchNormalized = removeAccents(search.toLowerCase());
     const nameMatch = removeAccents(e.name.toLowerCase()).includes(searchNormalized);
-    const muscleMatchSearch = removeAccents(e.muscle.toLowerCase()).includes(searchNormalized);
+    const muscleMatchSearch = e.muscle ? removeAccents(e.muscle.toLowerCase()).includes(searchNormalized) : false;
     const matchSearch = nameMatch || muscleMatchSearch;
     
     let matchMuscle = false;
@@ -265,7 +265,7 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const hasJunkWarning = advice.text.includes("JUNK VOLUME");
   const isJunk = hasJunkWarning && !isBypassed;
   const isTime = exo.unit === "seconds" || exo.unit === "minutes";
-  const isCardio = exo.muscle.includes("Cardio");
+  const isCardio = exo.muscle?.includes("Cardio") || false;
   const style = advStyle[advice.color] || advStyle.blue;
 
   const prev = normalizeHistory(history[exo.id]||[]);

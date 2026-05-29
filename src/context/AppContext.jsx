@@ -1008,7 +1008,7 @@ export const AppProvider = ({ children }) => {
         if (validSets.length > 0) {
           newHistory[exoId] = [...normalizeHistory(newHistory[exoId] || []), { date, setsData: validSets }];
           const exoDef = allExercises.find((e) => e.id === exoId);
-          if (exoDef && !exoDef.muscle.includes("Cardio")) {
+          if (exoDef && !exoDef.muscle?.includes("Cardio")) {
             validSets.forEach((s) => { totalTonnage += parseFloat(s.weight) * parseFloat(s.reps); });
           }
         }
@@ -1050,7 +1050,7 @@ export const AppProvider = ({ children }) => {
     setUserProgression(prev => {
       const isToday = prev.lastDate === date;
       const todayXP = (isToday ? (prev.todayXP || 0) : 0) + gainedXP;
-      const newXP = prev.xp + gainedXP;
+      const newXP = (prev.xp || 0) + gainedXP;
       const newProg = { ...prev, xp: newXP, lastDate: date, lastSessionXP: gainedXP, todayXP };
       persistData({ ...dataToSave, userProgression: newProg });
       return newProg;
