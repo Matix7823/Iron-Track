@@ -516,7 +516,7 @@ export const AppProvider = ({ children }) => {
         if (currentData.userSessions && typeof currentData.userSessions === 'object') {
           // If Séance E is the old one (or doesn't have the new scientific Bayesian curl), update it to the new one
           const E = currentData.userSessions.E;
-          if (E && (E.title === "Séance E : Bras (Volume Max)" || !E.exercises?.some(ex => ex.name?.includes("Bayésien")))) {
+          if (E && E.title !== sessions.E.title) {
             currentData.userSessions.E = sessions.E;
           }
 
