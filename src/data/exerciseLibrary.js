@@ -4234,5 +4234,89 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 90,
     "note": "Prends des charges lourdes, garde le buste droit et avance. Excellent pour les trapèzes et la force de poigne."
+  },
+  {
+    "id": "exo_353",
+    "muscle": "Biceps",
+    "name": "Zottman Curl",
+    "sets": 3,
+    "reps": "8-12",
+    "tempo": "2-0-2-0",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Curl en supination à la montée, pronation à la descente. Excellent pour le biceps, le brachial et le brachio-radial.",
+    "subMuscle": "Brachial / Brachio-radial"
+  },
+  {
+    "id": "exo_354",
+    "muscle": "Biceps",
+    "name": "Curl Marteau Poulie Corde (Cable Hammer Curl)",
+    "sets": 3,
+    "reps": "8-12",
+    "tempo": "2-0-1-1",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Tension continue de la poulie. Cible particulièrement le muscle brachial situé sous le biceps.",
+    "subMuscle": "Brachial"
+  },
+  {
+    "id": "exo_355",
+    "muscle": "Biceps",
+    "name": "Curl Marteau Croisé (Cross-body Hammer Curl)",
+    "sets": 3,
+    "reps": "8-12",
+    "tempo": "2-0-1-0",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Ramener l'haltère vers l'épaule opposée. Maximise le recrutement du brachial antérieur.",
+    "subMuscle": "Brachial"
+  },
+  {
+    "id": "exo_356",
+    "muscle": "Avant-bras",
+    "name": "Curl Inversé Poulie (Reverse Cable Curl)",
+    "sets": 3,
+    "reps": "10-15",
+    "tempo": "2-0-1-0",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Excellente isolation du muscle brachio-radial (avant-bras) et du brachial.",
+    "subMuscle": "Fléchisseurs / Extenseurs"
+  },
+  {
+    "id": "exo_357",
+    "muscle": "Triceps",
+    "name": "Extension Triceps Katana (Katana Extensions)",
+    "sets": 3,
+    "reps": "10-15",
+    "tempo": "2-0-1-1",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Extension à la poulie, dos à la machine, bras au-dessus de la tête. Étirement maximal du chef long.",
+    "subMuscle": "Chef long"
+  },
+  {
+    "id": "exo_358",
+    "muscle": "Triceps",
+    "name": "French Press (Extension Nuque Barre EZ)",
+    "sets": 3,
+    "reps": "8-12",
+    "tempo": "2-0-1-0",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Exercice de base pour la masse du triceps, insistant sur le chef long.",
+    "subMuscle": "Chef long"
+  },
+  {
+    "id": "exo_359",
+    "muscle": "Triceps",
+    "name": "JM Press",
+    "sets": 3,
+    "reps": "8-12",
+    "tempo": "2-0-1-0",
+    "unit": "reps",
+    "rest": 90,
+    "note": "Hybride entre le développé couché prise serrée et la barre au front. Permet de charger lourd pour les triceps.",
+    "subMuscle": "Triceps (Global)"
   }
 ];
