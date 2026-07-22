@@ -5,7 +5,7 @@ import { ShieldAlert, LogIn, UserPlus, Loader2 } from 'lucide-react';
 import { isValidEmail, isStrongPassword } from '../utils/security';
 
 const Auth = () => {
-  const { login, register, user } = useAuth();
+  const { login, register, logout, user } = useAuth();
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -28,7 +28,8 @@ const Auth = () => {
     setMessage('');
     
     // Validation des entrées (Sécurité client-side)
-    if (!isValidEmail(email)) {
+    const trimmedEmail = email.trim();
+    if (!isValidEmail(trimmedEmail)) {
       setError("Le format de l'email est invalide.");
       setLoading(false);
       return;
@@ -42,9 +43,10 @@ const Auth = () => {
 
     try {
       if (isLogin) {
-        await login(email, password);
+        await login(trimmedEmail, password);
       } else {
-        await register(email, password);
+        await register(trimmedEmail, password);
+        await logout(); // Prevent auto-login so they see the success message
         setMessage('Compte créé avec succès ! Il est en attente de validation par un administrateur.');
         setIsLogin(true); // Switch to login view
       }

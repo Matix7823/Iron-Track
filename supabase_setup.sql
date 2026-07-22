@@ -59,9 +59,19 @@ USING (auth.uid() = user_id);
 -- 6. Trigger pour créer automatiquement un profil à l'inscription
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
+DECLARE
+  user_count int;
 BEGIN
-  INSERT INTO public.profiles (id, email, role, status)
-  VALUES (new.id, new.email, 'user', 'pending');
+  SELECT count(*) INTO user_count FROM public.profiles;
+  
+  IF user_count = 0 THEN
+    INSERT INTO public.profiles (id, email, role, status)
+    VALUES (new.id, new.email, 'admin', 'active');
+  ELSE
+    INSERT INTO public.profiles (id, email, role, status)
+    VALUES (new.id, new.email, 'user', 'pending');
+  END IF;
+  
   RETURN new;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

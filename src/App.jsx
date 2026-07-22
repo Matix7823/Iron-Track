@@ -31,7 +31,7 @@ const LoadingScreen = () => (
 );
 
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
-  const { user, profile, isLoading } = useAuth();
+  const { user, profile, isLoading, logout } = useAuth();
   
   if (isLoading) return <LoadingScreen />;
   
@@ -63,13 +63,21 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
             </>
           )}
 
-          <button 
-            onClick={() => window.location.reload()}
-            className="flex items-center justify-center gap-2 mx-auto px-6 py-3 bg-slate-700 text-white rounded-xl font-bold hover:bg-slate-600 transition-colors"
-          >
-            <RefreshCw size={18} />
-            Rafraîchir
-          </button>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => window.location.reload()}
+              className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-slate-700 text-white rounded-xl font-bold hover:bg-slate-600 transition-colors"
+            >
+              <RefreshCw size={18} />
+              Rafraîchir
+            </button>
+            <button 
+              onClick={async () => await logout()}
+              className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-red-500/10 text-red-400 rounded-xl font-bold hover:bg-red-500/20 transition-colors"
+            >
+              Se déconnecter
+            </button>
+          </div>
         </div>
       </div>
     );
