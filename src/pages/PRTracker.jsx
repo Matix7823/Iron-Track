@@ -396,11 +396,17 @@ const PRTracker = () => {
   }, [allSessions]);
 
   // Set default selected session index to the last (latest) session in the list
+  // Mettre à jour la sélection automatiquement à la fin
+  // On utilise un effet qui vérifie si on a besoin de se mettre à jour uniquement lors d'un changement MAJEUR
   useEffect(() => {
     if (chartData.length > 0) {
-      setSelectedSessionIndex(chartData.length - 1);
+      // Pour éviter les re-rendus en cascade, on vérifie si la sélection actuelle est hors limites
+      setSelectedSessionIndex(prev => {
+        if (prev === null || prev >= chartData.length) return chartData.length - 1;
+        return prev;
+      });
     }
-  }, [chartData]);
+  }, [chartData.length]);
 
   // SVG coordinates for Global Tonnage Evolution Chart
   const svgCoords = useMemo(() => {

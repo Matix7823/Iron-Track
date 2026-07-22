@@ -55,6 +55,8 @@ const Auth = () => {
         setError('Identifiants incorrects.');
       } else if (err.message.includes('User already registered')) {
         setError('Cet email est déjà utilisé.');
+      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+        setError("Erreur réseau. Impossible de contacter le serveur (Vérifiez votre connexion ou l'état de votre base de données).");
       } else {
         setError(err.message || 'Une erreur est survenue.');
       }

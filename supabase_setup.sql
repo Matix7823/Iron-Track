@@ -42,7 +42,7 @@ USING ( (SELECT role FROM public.profiles WHERE id = auth.uid()) = 'admin' );
 
 
 -- 5. Politiques RLS pour 'app_state'
--- L'utilisateur ne peut insérer/sélectionner/modifier que ses propres données
+-- L'utilisateur ne peut insérer/sélectionner/modifier/supprimer que ses propres données
 CREATE POLICY "Les utilisateurs peuvent voir leurs données" 
 ON public.app_state FOR SELECT 
 USING (auth.uid() = user_id);
@@ -53,6 +53,10 @@ WITH CHECK (auth.uid() = user_id);
 
 CREATE POLICY "Les utilisateurs peuvent modifier leurs données" 
 ON public.app_state FOR UPDATE 
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent supprimer leurs données" 
+ON public.app_state FOR DELETE 
 USING (auth.uid() = user_id);
 
 
