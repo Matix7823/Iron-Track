@@ -17,6 +17,9 @@ export const AuthProvider = ({ children }) => {
       } else {
         setIsLoading(false);
       }
+    }).catch(err => {
+      console.error('Erreur getSession:', err);
+      setIsLoading(false);
     });
 
     // Écouter les changements d'état d'authentification
