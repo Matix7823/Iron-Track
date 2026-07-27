@@ -117,12 +117,7 @@ const Heatmap = ({ history }) => {
           
           <button 
             onClick={() => setCurrentMonthOffset(p => p + 1)}
-            disabled={currentMonthOffset >= 0}
-            className={`p-1.5 rounded-xl transition-all ${
-              currentMonthOffset >= 0 
-                ? 'opacity-20 cursor-not-allowed text-slate-600' 
-                : 'hover:bg-white/5 active:bg-white/10 text-slate-400 hover:text-white'
-            }`}
+            className="p-1.5 hover:bg-white/5 active:bg-white/10 rounded-xl transition-all text-slate-400 hover:text-white"
             title="Mois suivant"
           >
             <ChevronRight size={16} />
