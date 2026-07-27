@@ -89,6 +89,24 @@ const Dashboard = () => {
   } = useApp();
   const { profile } = useAuth();
   const [showYesterdayCheck, setShowYesterdayCheck] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') setDeferredPrompt(null);
+    }
+  };
 
   useEffect(() => {
     const lastCheck = localStorage.getItem('iron_last_yesterday_check');
@@ -238,6 +256,22 @@ const Dashboard = () => {
             className="bg-red-500/15 border border-red-500/25 p-2.5 text-center flex items-center justify-center gap-2 mb-5 rounded-2xl">
             <WifiOff size={13} className="text-red-400" />
             <span className="text-[10px] font-black text-red-400 uppercase tracking-widest">Mode Hors-ligne — Sauvegarde locale active</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── INSTALL PWA BANNER ── */}
+      <AnimatePresence>
+        {deferredPrompt && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+            className="bg-indigo-500/15 border border-indigo-500/25 p-3 flex flex-col sm:flex-row items-center justify-between gap-3 mb-5 rounded-2xl">
+            <div className="flex items-center gap-2 text-left">
+              <Zap size={16} className="text-indigo-400 shrink-0" />
+              <span className="text-xs font-bold text-indigo-300">Installe l'application pour un accès rapide et hors-ligne !</span>
+            </div>
+            <button onClick={handleInstallClick} className="bg-indigo-500 hover:bg-indigo-600 text-white py-1.5 px-4 rounded-xl text-xs font-black shadow-lg transition-all shrink-0">
+              Installer l'App
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

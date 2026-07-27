@@ -358,13 +358,15 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
           {exo.tempo && !isCardio && <p className="text-[10px] text-blue-400 mt-1 font-mono tracking-wider">⏱ {exo.tempo}</p>}
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <button 
-            onClick={() => window.open(`https://www.youtube.com/results?search_query=how+to+do+${exo.name.replace(/\s+/g, '+')}+fitness`, '_blank')}
+          <a 
+            href={`https://www.youtube.com/results?search_query=how+to+do+${exo.name.replace(/\s+/g, '+')}+fitness`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 hover:bg-amber-500/20 active:scale-90 transition-all"
             title="Voir la vidéo"
           >
             <Play size={14} fill="currentColor" />
-          </button>
+          </a>
           {exo.rest > 0 && (
             <button onClick={() => startTimer(adaptedRest)}
               className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 active:scale-90 transition-all">

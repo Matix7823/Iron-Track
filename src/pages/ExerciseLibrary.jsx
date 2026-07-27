@@ -104,12 +104,14 @@ const ExerciseCardGrid = ({ exo }) => {
           <p className={`text-xs font-black ${colors.text}`}>{exo.tempo}</p>
         </div>
         <div className="ml-auto">
-          <button
-            onClick={() => window.open(`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`, '_blank')}
+          <a
+            href={`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg ${colors.bg} ${colors.text} border ${colors.border} hover:scale-105 active:scale-95 transition-all text-[9px] font-black uppercase`}
           >
             <Play size={9} fill="currentColor" />Vidéo
-          </button>
+          </a>
         </div>
       </div>
     </motion.div>
@@ -159,12 +161,14 @@ const ExerciseCardList = ({ exo }) => {
           <p className="text-[9px] text-slate-600 uppercase font-bold">Reps</p>
           <p className="text-xs font-black text-white">{exo.reps}</p>
         </div>
-        <button
-          onClick={() => window.open(`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`, '_blank')}
+        <a
+          href={`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`shrink-0 w-7 h-7 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center hover:scale-110 active:scale-95 transition-all`}
         >
           <Play size={10} className={colors.text} fill="currentColor" />
-        </button>
+        </a>
       </div>
     </motion.div>
   );
