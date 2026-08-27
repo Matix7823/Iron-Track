@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Dumbbell, Activity, Play, Grid, List, ChevronDown, ChevronUp, X, Filter } from "lucide-react";
-import { MuscleMap } from "../components/layout/MuscleMap";
+import { Search, Dumbbell, Activity, Play, Grid, List, ChevronDown, ChevronUp, X, Filter, Info } from "lucide-react";
+import BodyMap from "../components/BodyMap";
+import { Thumb, ExerciseMediaModal } from "../components/Media";
 import { triggerHaptic } from "../utils/haptics";
 
 
@@ -61,116 +62,131 @@ const removeAccents = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, 
 
 // ─── Exercise Card (Grid) ────────────────────────────────────────
 const ExerciseCardGrid = ({ exo }) => {
-  const [open, setOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const colors = getColor(exo.muscle);
   const diff = detectDifficulty(exo);
   const diffStyle = DIFFICULTY_STYLE[diff];
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-      className="glass-card glass-card-interactive p-4 group"
-    >
-      {/* Top */}
-      <div className="flex justify-between items-start mb-3">
-        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${colors.bg} ${colors.text} ${colors.border}`}>
-          {exo.muscle}
-        </span>
-        <span className={`badge ${diffStyle.badge}`}>{diffStyle.icon} {diff}</span>
-      </div>
+    <>
+      <motion.div
+        layout
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+        onClick={() => { setShowModal(true); triggerHaptic(10); }}
+        className="glass-card glass-card-interactive p-4 group cursor-pointer"
+      >
+        {/* Top */}
+        <div className="flex justify-between items-start mb-3">
+          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${colors.bg} ${colors.text} ${colors.border}`}>
+            {exo.muscle}
+          </span>
+          <span className={`badge ${diffStyle.badge}`}>{diffStyle.icon} {diff}</span>
+        </div>
 
-      {/* Name */}
-      <h3 className={`text-sm font-black text-white group-hover:${colors.text} transition-colors mb-1.5 leading-tight`}>{exo.name}</h3>
-      
-      {/* Note */}
-      <p className="text-[10px] text-slate-500 italic leading-relaxed mb-3 line-clamp-2">"{exo.note}"</p>
+        {/* Thumbnail & Title */}
+        <div className="flex items-center gap-3 mb-2">
+          <Thumb ex={exo} />
+          <div className="flex-1 min-w-0">
+            <h3 className={`text-sm font-black text-white group-hover:${colors.text} transition-colors leading-tight truncate`}>
+              {exo.name}
+            </h3>
+            {exo.subMuscle && (
+              <span className="text-[10px] text-cyan-400/80 font-medium block truncate">
+                {exo.subMuscle}
+              </span>
+            )}
+          </div>
+        </div>
+        
+        {/* Note */}
+        <p className="text-[10px] text-slate-500 italic leading-relaxed mb-3 line-clamp-2">"{exo.note}"</p>
 
-      {/* Stats */}
-      <div className="flex gap-3 pt-2.5 border-t border-white/6">
-        <div>
-          <p className="text-[9px] uppercase font-bold text-slate-600">Séries</p>
-          <p className="text-xs font-black text-white">{exo.sets}</p>
+        {/* Stats */}
+        <div className="flex gap-3 pt-2.5 border-t border-white/6 items-center">
+          <div>
+            <p className="text-[9px] uppercase font-bold text-slate-600">Séries</p>
+            <p className="text-xs font-black text-white">{exo.sets}</p>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase font-bold text-slate-600">Reps</p>
+            <p className="text-xs font-black text-white">{exo.reps}</p>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase font-bold text-slate-600">Tempo</p>
+            <p className={`text-xs font-black ${colors.text}`}>{exo.tempo}</p>
+          </div>
+          <div className="ml-auto flex items-center gap-1 text-[9px] font-bold text-cyan-400">
+            <Info size={14} /> Details
+          </div>
         </div>
-        <div>
-          <p className="text-[9px] uppercase font-bold text-slate-600">Reps</p>
-          <p className="text-xs font-black text-white">{exo.reps}</p>
-        </div>
-        <div>
-          <p className="text-[9px] uppercase font-bold text-slate-600">Tempo</p>
-          <p className={`text-xs font-black ${colors.text}`}>{exo.tempo}</p>
-        </div>
-        <div className="ml-auto">
-          <a
-            href={`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg ${colors.bg} ${colors.text} border ${colors.border} hover:scale-105 active:scale-95 transition-all text-[9px] font-black uppercase`}
-          >
-            <Play size={9} fill="currentColor" />Vidéo
-          </a>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {showModal && (
+        <ExerciseMediaModal exo={exo} onClose={() => setShowModal(false)} />
+      )}
+    </>
   );
 };
 
 // ─── Exercise Row (List) ─────────────────────────────────────────
 const ExerciseCardList = ({ exo }) => {
+  const [showModal, setShowModal] = useState(false);
   const colors = getColor(exo.muscle);
   const diff = detectDifficulty(exo);
   const diffStyle = DIFFICULTY_STYLE[diff];
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, x: -12 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -12 }}
-      transition={{ duration: 0.2 }}
-      className="list-row group"
-    >
-      {/* Color dot */}
-      <div className={`w-2 h-10 rounded-full ${colors.bg} border ${colors.border} shrink-0 self-stretch`} />
+    <>
+      <motion.div
+        layout
+        initial={{ opacity: 0, x: -12 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -12 }}
+        transition={{ duration: 0.2 }}
+        onClick={() => { setShowModal(true); triggerHaptic(10); }}
+        className="list-row group cursor-pointer"
+      >
+        {/* Thumbnail */}
+        <Thumb ex={exo} className="w-10 h-10" />
 
-      {/* Main info */}
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className={`text-[9px] font-bold uppercase tracking-wider ${colors.text}`}>{exo.muscle}</span>
-          <span className="text-slate-700">·</span>
-          <span className={`badge ${diffStyle.badge} text-[8px]`}>{diffStyle.icon} {diff}</span>
+        {/* Main info */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={`text-[9px] font-bold uppercase tracking-wider ${colors.text}`}>{exo.muscle}</span>
+            <span className="text-slate-700">·</span>
+            <span className={`badge ${diffStyle.badge} text-[8px]`}>{diffStyle.icon} {diff}</span>
+          </div>
+          <p className="text-sm font-black text-white leading-snug mt-0.5 truncate">{exo.name}</p>
+          <p className="text-[10px] text-slate-500 italic truncate mt-0.5">"{exo.note}"</p>
         </div>
-        <p className="text-sm font-black text-white leading-snug mt-0.5 truncate">{exo.name}</p>
-        <p className="text-[10px] text-slate-500 italic truncate mt-0.5">"{exo.note}"</p>
-      </div>
 
-      {/* Stats */}
-      <div className="flex items-center gap-3 shrink-0 text-right">
-        <div className="hidden sm:block">
-          <p className="text-[9px] text-slate-600 uppercase font-bold">Tempo</p>
-          <p className={`text-xs font-black ${colors.text}`}>{exo.tempo}</p>
+        {/* Stats */}
+        <div className="flex items-center gap-3 shrink-0 text-right">
+          <div className="hidden sm:block">
+            <p className="text-[9px] text-slate-600 uppercase font-bold">Tempo</p>
+            <p className={`text-xs font-black ${colors.text}`}>{exo.tempo}</p>
+          </div>
+          <div>
+            <p className="text-[9px] text-slate-600 uppercase font-bold">Sets</p>
+            <p className="text-xs font-black text-white">{exo.sets}</p>
+          </div>
+          <div>
+            <p className="text-[9px] text-slate-600 uppercase font-bold">Reps</p>
+            <p className="text-xs font-black text-white">{exo.reps}</p>
+          </div>
+          <div className={`shrink-0 w-7 h-7 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center`}>
+            <Info size={12} className={colors.text} />
+          </div>
         </div>
-        <div>
-          <p className="text-[9px] text-slate-600 uppercase font-bold">Sets</p>
-          <p className="text-xs font-black text-white">{exo.sets}</p>
-        </div>
-        <div>
-          <p className="text-[9px] text-slate-600 uppercase font-bold">Reps</p>
-          <p className="text-xs font-black text-white">{exo.reps}</p>
-        </div>
-        <a
-          href={`https://www.youtube.com/results?search_query=how+to+${exo.name.replace(/\s+/g, '+')}+fitness`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`shrink-0 w-7 h-7 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center hover:scale-110 active:scale-95 transition-all`}
-        >
-          <Play size={10} className={colors.text} fill="currentColor" />
-        </a>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {showModal && (
+        <ExerciseMediaModal exo={exo} onClose={() => setShowModal(false)} />
+      )}
+    </>
   );
 };
 
@@ -298,27 +314,15 @@ const ExerciseLibrary = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden mb-4 glass-card p-4 border-amber-500/10 shadow-lg"
+            className="overflow-hidden mb-4"
           >
-            <div className="flex justify-between items-center mb-2 px-1">
-              <span className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
-                <Activity size={13} className="text-amber-500" />
-                Sélection Visuelle Par Muscle
-              </span>
-              <button 
-                onClick={() => { setMuscleFilter("Tous"); triggerHaptic(10); }}
-                className="text-[9px] font-black uppercase text-slate-500 hover:text-white px-2 py-1 rounded bg-slate-900 border border-white/5"
-              >
-                Réinitialiser
-              </button>
-            </div>
-            <p className="text-[10px] text-slate-500 mb-3 px-1">
-              Clique sur un muscle pour filtrer les exercices correspondants.
-            </p>
-            <MuscleMap 
+            <BodyMap
               selectedMuscle={activeMuscleOnMap}
-              onMuscleClick={handleMuscleMapClick}
-              interactive={true}
+              onSelectMuscle={(slug) => {
+                handleMuscleMapClick(slug);
+              }}
+              showControls={true}
+              showUntrained={false}
             />
           </motion.div>
         )}

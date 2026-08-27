@@ -14,6 +14,9 @@ import { hapticLight, hapticMedium, hapticSuccess } from "../utils/native";
 import { triggerHaptic } from "../utils/haptics";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/AuthContext";
+import BodyMap from "../components/BodyMap";
+import Media, { Thumb } from "../components/Media";
+import { loadOfItems } from "../utils/muscles";
 
 const STATUS_ICONS = {
   good: '✅',
@@ -409,6 +412,9 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
                 </div>
               )}
 
+              {/* Media (GIF / Image animation) */}
+              <Media ex={exo} minimizable={true} className="mb-3" />
+
               {/* Coach advice */}
               <div className={`p-3 rounded-xl border text-xs leading-snug ${style}`}>
                 {advice.text}
@@ -533,29 +539,37 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
 };
 
 // ─── Session Summary Modal ───────────────────────────────────────
-const SummaryModal = ({ rank, tonnage, calories, onClose, onShare, hasShared, onSyncAppleHealth }) => (
+const SummaryModal = ({ rank, tonnage, calories, load = {}, onClose, onShare, hasShared, onSyncAppleHealth }) => (
   <div className="modal-overlay" onClick={onClose}>
-    <motion.div className="modal-card" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
+    <motion.div className="modal-card max-h-[90vh] overflow-y-auto" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
       transition={{ type:"spring", stiffness:280, damping:20 }} onClick={e=>e.stopPropagation()}>
-      <div className="mb-6">
-        {rank==="super" ? <div className="text-6xl animate-bounce-sm">🏆</div>
-          : rank==="medium" ? <div className="text-6xl animate-bounce-sm">💪</div>
-          : <div className="text-6xl">📈</div>}
+      <div className="mb-4">
+        {rank==="super" ? <div className="text-5xl animate-bounce-sm">🏆</div>
+          : rank==="medium" ? <div className="text-5xl animate-bounce-sm">💪</div>
+          : <div className="text-5xl">📈</div>}
       </div>
-      <h2 className="text-2xl font-black text-white mb-2">Séance terminée !</h2>
-      <p className={`font-bold mb-6 ${rank==="super"?"text-gradient-gold":rank==="medium"?"text-blue-400":"text-slate-400"}`}>
+      <h2 className="text-2xl font-black text-white mb-1">Séance terminée !</h2>
+      <p className={`font-bold mb-4 ${rank==="super"?"text-gradient-gold":rank==="medium"?"text-blue-400":"text-slate-400"}`}>
         {rank==="super"?"Performance légendaire !":rank==="medium"?"Séance solide 🔥":"Récupération active 📉"}
       </p>
-      <div className="grid grid-cols-2 gap-3 mb-5">
-        <div className="glass rounded-2xl p-4 border border-white/5">
-          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Tonnage</p>
-          <p className="text-3xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-sm text-slate-500 font-normal ml-1">kg</span></p>
+      
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="glass rounded-2xl p-3 border border-white/5">
+          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-0.5">Tonnage</p>
+          <p className="text-2xl font-black text-gradient">{tonnage.toLocaleString()}<span className="text-xs text-slate-500 font-normal ml-1">kg</span></p>
         </div>
-        <div className="glass rounded-2xl p-4 border border-white/5">
-          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Calories</p>
-          <p className="text-3xl font-black text-orange-400">{calories}<span className="text-sm text-orange-500/50 font-normal ml-1">kcal</span></p>
+        <div className="glass rounded-2xl p-3 border border-white/5">
+          <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-0.5">Calories</p>
+          <p className="text-2xl font-black text-orange-400">{calories}<span className="text-xs text-orange-500/50 font-normal ml-1">kcal</span></p>
         </div>
       </div>
+
+      {/* Muscle Map summary for completed workout */}
+      <div className="mb-4 text-left">
+        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Muscles Travaillés cette Séance</h4>
+        <BodyMap load={load} showControls={false} showUntrained={false} className="!p-2" />
+      </div>
+
       <div className="flex flex-col gap-2">
         <button 
           onClick={onSyncAppleHealth}
@@ -624,6 +638,16 @@ const Workout = () => {
   }, [location.state, setCurrentSession]);
 
   const session = userSessions[currentSession] || { category: "Perso", exercises: [], color: "from-indigo-600 to-indigo-800", title: "Séance Personnalisée", focus: "Ta séance sur mesure" };
+
+  // Completed session muscle load
+  const completedSessionLoad = useMemo(() => {
+    const items = (session.exercises || []).map(exo => {
+      const sets = currentInput[exo.id] || [];
+      const doneCount = sets.filter(s => s && s.done).length;
+      return { exercise: exo, sets: doneCount };
+    });
+    return loadOfItems(items);
+  }, [session.exercises, currentInput]);
 
   // Progress computation
   const progressPct = useMemo(() => {
@@ -1023,6 +1047,7 @@ const Workout = () => {
             rank={sessionRank} 
             tonnage={sessionTonnage}
             calories={Math.round(Math.max(10, elapsedMin) * 5 * ((currentBodyWeight || 75) / 70))} 
+            load={completedSessionLoad}
             onClose={() => setShowSummary(false)} 
             onShare={handleShareWorkout} 
             hasShared={hasShared}

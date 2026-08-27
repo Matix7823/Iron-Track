@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { schedules, sessions } from "../data/sessions";
-import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X, Zap, Brain, Dumbbell, Timer } from "lucide-react";
+import { Calendar, ChevronRight, Settings, Plus, Trash2, Edit2, Trash, Play, Check, X, Zap, Brain, Dumbbell, Timer, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
+import BodyMap from "../components/BodyMap";
+import { Thumb } from "../components/Media";
+import { loadOfItems } from "../utils/muscles";
 
 const sessionColors = {
   A:"from-blue-600 to-blue-800", B:"from-cyan-600 to-cyan-800", C:"from-emerald-600 to-emerald-800",
@@ -498,14 +501,28 @@ const Planning = () => {
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 scrollbar-hide">
+                      {/* Routine targeted muscles preview */}
+                      <div className="mb-2">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2 flex items-center gap-1.5">
+                          <Activity size={14} className="text-cyan-400" />
+                          Aperçu Anatomique de la Routine
+                        </span>
+                        <BodyMap
+                          load={loadOfItems((s.exercises || []).map(e => ({ exercise: e, sets: parseInt(e.sets) || 3 })))}
+                          showControls={false}
+                          showUntrained={false}
+                          className="!p-2"
+                        />
+                      </div>
+
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mt-4 mb-2">Exercices du Programme</h4>
+
                       {s.exercises?.map((exo, i) => (
-                        <div key={i} className="flex items-center gap-4 p-3 bg-white/5 rounded-2xl border border-white/5">
-                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 shrink-0">
-                            <Plus size={16} />
-                          </div>
+                        <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-2xl border border-white/5">
+                          <Thumb ex={exo} className="w-10 h-10" />
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-white truncate">{exo.name}</p>
-                            <p className="text-[10px] text-slate-500 font-medium">{exo.muscle}</p>
+                            <p className="text-[10px] text-slate-400 font-medium">{exo.muscle}</p>
                           </div>
                           <div className="text-right shrink-0">
                             <p className="text-xs font-black text-blue-400">{exo.sets}x{exo.reps}</p>

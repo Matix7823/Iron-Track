@@ -5,7 +5,8 @@ import { parseDate, formatDateFR } from "../utils/date";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, getStrengthStandard } from "../utils/metrics";
 import EvolutionChart from "../components/charts/EvolutionChart";
 import { motion, AnimatePresence } from "framer-motion";
-import { MuscleMap } from "../components/layout/MuscleMap";
+import BodyMap from "../components/BodyMap";
+import { loadOfItems } from "../utils/muscles";
 import {
   Activity, BarChart2, Award, Star, Target, Zap, Download,
   TrendingDown, ArrowRightLeft, AlertTriangle, Trophy, Flame, Search, X
@@ -24,6 +25,39 @@ const Analytics = () => {
     dailyNutrition, logNutrition, userSessions, gender, changeGender
   } = useApp();
   const [selectedExo, setSelectedExo] = useState("");
+  const [mapPeriod, setMapPeriod] = useState("week");
+  const [selectedMapMuscle, setSelectedMapMuscle] = useState(null);
+
+  const muscleMapLoad = useMemo(() => {
+    const now = new Date();
+    let minDate = null;
+    if (mapPeriod === "week") {
+      minDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    } else if (mapPeriod === "month") {
+      minDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    }
+
+    const items = [];
+    Object.keys(history || {}).forEach(exoId => {
+      const exo = (allExercises || []).find(e => e.id === exoId) || (exerciseLibrary || []).find(e => e.id === exoId);
+      if (!exo) return;
+      const entries = history[exoId];
+      if (Array.isArray(entries)) {
+        entries.forEach(entry => {
+          if (!entry || !entry.date) return;
+          const d = parseDate(entry.date);
+          if (!minDate || d >= minDate) {
+            const completedSetsCount = (entry.setsData || []).filter(s => s && (s.done || s.completed || s.weight !== "")).length;
+            if (completedSetsCount > 0) {
+              items.push({ exercise: exo, sets: completedSetsCount });
+            }
+          }
+        });
+      }
+    });
+
+    return loadOfItems(items);
+  }, [history, allExercises, mapPeriod]);
 
   const fatigueLevels = useMemo(() => {
     const now = new Date();
@@ -477,29 +511,62 @@ const Analytics = () => {
           </div>
         </motion.div>
 
-        {/* ── DIAGNOSTIC DE RÉCUPÉRATION (MUSCLE MAP) ── */}
-        <motion.div variants={item} className="glass-card p-5 mb-5 border-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.06)]">
-          <div className="flex justify-between items-center mb-4">
+        {/* ── DIAGNOSTIC MUSCULAIRE ANATOMIQUE (OPENGYM BODY MAP) ── */}
+        <motion.div variants={item} className="mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
             <div>
-              <h3 className="font-bold text-white flex items-center gap-2">
-                <Activity size={16} className="text-cyan-400" />
-                Statut de Fatigue & Récupération
+              <h3 className="font-black text-lg text-white flex items-center gap-2">
+                <Activity size={20} className="text-cyan-400" />
+                Carte Musculaire Anatomique
               </h3>
-              <p className="text-[10px] text-slate-500 mt-0.5">Basé sur le volume d'entraînement des 7 derniers jours</p>
+              <p className="text-xs text-slate-400">Sollicitation et équilibre des groupes musculaires</p>
             </div>
-            <div className="flex gap-1">
-              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-emerald-400 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Frais / Entraînable</span>
-              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-amber-400 px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">Actif</span>
-              <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase text-red-400 px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20">Fatigué</span>
+            <div className="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs">
+              <button
+                onClick={() => setMapPeriod("week")}
+                className={`px-3 py-1 font-bold rounded-lg transition-all ${
+                  mapPeriod === "week"
+                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                7 jours
+              </button>
+              <button
+                onClick={() => setMapPeriod("month")}
+                className={`px-3 py-1 font-bold rounded-lg transition-all ${
+                  mapPeriod === "month"
+                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                30 jours
+              </button>
+              <button
+                onClick={() => setMapPeriod("allTime")}
+                className={`px-3 py-1 font-bold rounded-lg transition-all ${
+                  mapPeriod === "allTime"
+                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Global
+              </button>
             </div>
           </div>
 
-          <MuscleMap 
-            fatigueLevels={fatigueLevels}
-            interactive={true}
+          <BodyMap
+            load={muscleMapLoad}
+            selectedMuscle={selectedMapMuscle}
+            onSelectMuscle={setSelectedMapMuscle}
+            showControls={true}
+            showUntrained={true}
           />
+        </motion.div>
 
-          <div className="mt-4 pt-4 border-t border-white/5 space-y-2">
+        {/* ── RECOMMANDATION PHYSIOLOGIQUE ── */}
+        <motion.div variants={item} className="glass-card p-5 mb-6 border-blue-500/10 shadow-[0_0_20px_rgba(59,130,246,0.06)]">
+          <div className="space-y-2">
             <p className="text-[9px] text-slate-500 uppercase font-black tracking-widest flex items-center gap-1">
               🧠 Recommandation Physiologique
             </p>
