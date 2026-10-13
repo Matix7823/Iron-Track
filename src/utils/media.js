@@ -44,14 +44,7 @@ export function findLibraryMatch(ex) {
 }
 
 export function imgSrc(ex) {
-  if (!ex) return null;
-  const match = findLibraryMatch(ex) || ex;
-  const fileName = match.img || match.image;
-  if (!fileName) return null;
-  if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
-    return fileName;
-  }
-  return (import.meta.env.VITE_USE_LOCAL_MEDIA === "true" ? LOCAL_IMG_BASE : CDN_BASE_IMG) + fileName;
+  return null;
 }
 
 export function gifSrc(ex) {
