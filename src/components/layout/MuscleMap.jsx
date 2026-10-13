@@ -24,12 +24,14 @@ const MUSCLE_NAMES = {
 };
 
 const DB_MUSCLE_MAP = {
-  "Pecs": "Pectoraux", "Pectoraux": "Pectoraux",
-  "Dos": "Dos", "Lombaires": "Lombaires", "Lombes": "Lombaires",
-  "Épaules": "Epaules", "Epaules": "Epaules",
-  "Biceps": "Biceps", "Triceps": "Triceps",
+  "Pecs": "Pectoraux", "Pectoraux": "Pectoraux", "Pecs (Haut)": "Pectoraux", "Pecs (Masse)": "Pectoraux", "Pecs (Bas)": "Pectoraux", "Pecs (Iso)": "Pectoraux", "Finition": "Pectoraux",
+  "Dos": "Dos", "Dos (Largeur)": "Dos", "Dos (Épaisseur)": "Dos", "Dos (Bas)": "Dos", "Dos (Isolation)": "Dos",
+  "Lombaires": "Lombaires", "Lombes": "Lombaires",
+  "Épaules": "Epaules", "Epaules": "Epaules", "Épaules (Masse)": "Epaules", "Épaules (Latéral)": "Epaules", "Arr. Épaules": "Epaules",
+  "Biceps": "Biceps", "Biceps (Long)": "Biceps", "Biceps (Court)": "Biceps", "Biceps (Long Chef)": "Biceps", "Biceps (Court Chef)": "Biceps", "Brachial": "Biceps", "Bras": "Biceps",
+  "Triceps": "Triceps", "Triceps (Masse)": "Triceps", "Triceps (Long)": "Triceps", "Triceps (Vaste)": "Triceps", "Triceps (Longue Portion)": "Triceps", "Triceps (Vaste Externe)": "Triceps", "Triceps (Vaste Interne)": "Triceps",
   "Avant-bras": "AvantBras", "Avant-Bras": "AvantBras",
-  "Abdos": "Abdos", "Obliques": "Abdos",
+  "Abdos": "Abdos", "Abdos (Bas)": "Abdos", "Obliques": "Abdos", "Transverse": "Abdos", "Gainage": "Abdos", "Taille": "Abdos",
   "Quadriceps": "Quadriceps", "Cuisses": "Quadriceps",
   "Ischios": "Ischios", "Fessiers": "Fessiers",
   "Mollets": "Mollets", "Adducteurs": "Adducteurs",

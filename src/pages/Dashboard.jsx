@@ -16,6 +16,7 @@ import {
 import Heatmap from "../components/charts/Heatmap";
 import OverloadTracker from "../components/dashboard/OverloadTracker";
 import OnboardingModal from "../components/dashboard/OnboardingModal";
+import MuscleMap3D from "../components/dashboard/Model3D";
 
 
 // ─── Daily Tips ────────────────────────────────────────────────────
@@ -122,6 +123,8 @@ const Dashboard = () => {
     setShowYesterdayCheck(false);
   };
 
+  const [recoveryView, setRecoveryView] = useState("bars"); // "bars" | "3d"
+
   const todayStr = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Bonjour" : hour < 18 ? "Bon après-midi" : "Bonsoir";
@@ -185,16 +188,38 @@ const Dashboard = () => {
       Dos: ["Dos (Largeur)", "Dos (Épaisseur)", "Dos (Bas)", "Dos (Isolation)", "Dos", "Lombaires"],
       Jambes: ["Cuisses", "Ischios", "Mollets", "Jambes", "Quadriceps", "Adducteurs", "Abducteurs", "Fessiers", "Tibias"],
       Épaules: ["Épaules (Masse)", "Épaules (Latéral)", "Arr. Épaules", "Épaules", "Trapèzes"],
-      Bras: ["Biceps (Long)", "Biceps (Court)", "Brachial", "Triceps (Masse)", "Triceps (Long)", "Triceps (Vaste)", "Avant-Bras", "Avant-bras", "Bras", "Biceps", "Triceps"],
+      Bras: [
+        "Biceps (Long Chef)", "Biceps (Court Chef)", "Triceps (Longue Portion)", "Triceps (Masse)",
+        "Triceps (Vaste Externe)", "Biceps (Long)", "Biceps (Court)", "Brachial", "Triceps (Long)",
+        "Triceps (Vaste)", "Avant-Bras", "Avant-bras", "Bras", "Biceps", "Triceps"
+      ],
       Abdos: ["Abdos", "Abdos (Bas)", "Obliques", "Transverse", "Gainage", "Taille"]
     };
+
+    const isMatch = (g, subs, exo) => {
+      if (!exo) return false;
+      if (subs.includes(exo.muscle)) return true;
+      const m = (exo.muscle || "").toLowerCase();
+      const n = (exo.name || "").toLowerCase();
+      if (g === "Bras") {
+        return m.includes("bicep") || m.includes("tricep") || m.includes("bras") || m.includes("brachial") || m.includes("avant-bras") ||
+               n.includes("curl") || n.includes("triceps") || n.includes("dips");
+      }
+      if (g === "Pecs") return m.includes("pec") || m.includes("chest") || n.includes("bench") || n.includes("couché");
+      if (g === "Dos") return m.includes("dos") || m.includes("lats") || m.includes("lomb") || n.includes("rowing") || n.includes("traction");
+      if (g === "Épaules") return m.includes("épaule") || m.includes("epaule") || m.includes("delt") || m.includes("trap");
+      if (g === "Jambes") return m.includes("jambe") || m.includes("cuisse") || m.includes("quad") || m.includes("ischio") || m.includes("mollet") || m.includes("fessier");
+      if (g === "Abdos") return m.includes("abdo") || m.includes("gainage") || m.includes("oblique");
+      return false;
+    };
+
     const now = new Date(); now.setHours(0,0,0,0);
     return Object.keys(groups).map(g => {
       const subs = groups[g];
       let records = [];
       Object.keys(history || {}).forEach(id => {
         const exo = allExercises.find(e => e.id === id) || exerciseLibrary.find(e => e.id === id);
-        if (exo && subs.includes(exo.muscle)) {
+        if (exo && isMatch(g, subs, exo)) {
           const hist = history[id];
           if (Array.isArray(hist)) hist.forEach(entry => {
             if (entry?.date) records.push({
@@ -494,23 +519,53 @@ const Dashboard = () => {
 
       {/* ── RÉCUPÉRATION MUSCULAIRE ── */}
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }} className="glass-card p-5 mb-6">
-        <p className="section-title text-base"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
-        
-        <div className="space-y-4">
-          {recovery.map(({ group, label, pct, color, desc }) => (
-            <div key={group} className="pb-3 border-b border-white/5 last:border-b-0 last:pb-0">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-bold text-slate-300">{group}</span>
-                <span className="text-xs font-black uppercase tracking-wider" style={{ color }}>{label}</span>
-              </div>
-              <div className="progress-track h-2 mb-2 bg-white/5">
-                <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})`, filter: `drop-shadow(0 0 4px ${color}60)` }}
-                  animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
-              </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
-            </div>
-          ))}
+        <div className="flex items-center justify-between mb-4">
+          <p className="section-title text-base mb-0"><Activity size={16} className="text-emerald-400" />Récupération Musculaire</p>
+          <div className="flex bg-slate-900/80 p-1 rounded-xl border border-white/10 text-xs">
+            <button
+              onClick={() => setRecoveryView("bars")}
+              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs ${
+                recoveryView === "bars"
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              📊 Liste
+            </button>
+            <button
+              onClick={() => setRecoveryView("3d")}
+              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1 ${
+                recoveryView === "3d"
+                  ? "bg-cyan-600 text-white shadow-md shadow-cyan-500/20"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              🤖 Modèle 3D
+            </button>
+          </div>
         </div>
+
+        {recoveryView === "3d" ? (
+          <div className="h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-white/5 bg-slate-950/60 relative">
+            <MuscleMap3D recoveryData={recovery} />
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {recovery.map(({ group, label, pct, color, desc }) => (
+              <div key={group} className="pb-3 border-b border-white/5 last:border-b-0 last:pb-0">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-bold text-slate-300">{group}</span>
+                  <span className="text-xs font-black uppercase tracking-wider" style={{ color }}>{label}</span>
+                </div>
+                <div className="progress-track h-2 mb-2 bg-white/5">
+                  <motion.div className="progress-fill h-full rounded-full" style={{ width: 0, background: `linear-gradient(90deg, ${color}80, ${color})`, filter: `drop-shadow(0 0 4px ${color}60)` }}
+                    animate={{ width: `${pct}%` }} transition={{ duration: 1, ease: "easeOut", delay: 0.1 }} />
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </motion.div>
 
       {/* ── 1RM RECORDS ── */}

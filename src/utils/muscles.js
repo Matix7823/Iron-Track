@@ -36,41 +36,52 @@ export const MUSCLE_NAME_FR = {
 const ALIAS = {
   // Pectoraux / Chest
   pectoraux: 'chest', chest: 'chest', pectorals: 'chest', 'upper chest': 'chest',
+  'pecs (haut)': 'chest', 'pecs (masse)': 'chest', 'pecs (bas)': 'chest', 'pecs (iso)': 'chest',
+  pecs: 'chest', 'finition': 'chest',
   'faisceau claviculaire (haut)': 'chest', 'faisceau sterno-costal (milieu)': 'chest', 'faisceau abdominal (bas)': 'chest',
   
   // Épaules / Deltoids / Traps
   épaules: 'deltoids', epaules: 'deltoids', deltoides: 'deltoids', deltoïdes: 'deltoids', delts: 'deltoids',
+  'épaules (masse)': 'deltoids', 'épaules (latéral)': 'deltoids', 'arr. épaules': 'deltoids', 'arriere epaules': 'deltoids',
   deltoids: 'deltoids', shoulders: 'deltoids', 'rear deltoids': 'deltoids', 'faisceau antérieur': 'deltoids',
   'faisceau latéral': 'deltoids', 'faisceau postérieur': 'deltoids', 'rotator cuff': 'deltoids',
   trapèzes: 'trapezius', trapezes: 'trapezius', traps: 'trapezius', trapezius: 'trapezius', 'levator scapulae': 'trapezius',
   
   // Bras / Arms
-  biceps: 'biceps', brachialis: 'biceps', 'biceps brachial': 'biceps', 'longue portion': 'biceps', 'courte portion': 'biceps',
-  triceps: 'triceps', 'triceps brachial': 'triceps', 'vastes': 'triceps',
+  biceps: 'biceps', 'biceps (long chef)': 'biceps', 'biceps (court chef)': 'biceps',
+  'biceps (long)': 'biceps', 'biceps (court)': 'biceps',
+  brachial: 'biceps', brachialis: 'biceps', 'biceps brachial': 'biceps', 'longue portion': 'biceps', 'courte portion': 'biceps',
+  triceps: 'triceps', 'triceps (longue portion)': 'triceps', 'triceps (masse)': 'triceps',
+  'triceps (vaste externe)': 'triceps', 'triceps (long)': 'triceps', 'triceps (vaste)': 'triceps',
+  'triceps brachial': 'triceps', 'vastes': 'triceps',
   'avant-bras': 'forearm', avantbras: 'forearm', forearms: 'forearm', forearm: 'forearm', wrists: 'forearm',
   'wrist flexors': 'forearm', 'wrist extensors': 'forearm', 'grip muscles': 'forearm',
+  bras: 'biceps', 'upper arms': 'biceps', 'lower arms': 'forearm',
 
   // Dos / Back
   dos: 'upper-back', back: 'upper-back', 'haut du dos': 'upper-back', 'upper back': 'upper-back', 'upper-back': 'upper-back',
+  'dos (largeur)': 'upper-back', 'dos (épaisseur)': 'upper-back', 'dos (bas)': 'lower-back', 'dos (isolation)': 'upper-back',
   lats: 'upper-back', 'latissimus dorsi': 'upper-back', 'grand dorsal': 'upper-back', rhomboides: 'upper-back', rhomboids: 'upper-back',
-  'bas du dos': 'lower-back', 'lower back': 'lower-back', 'lower-back': 'lower-back', lombaires: 'lower-back', spine: 'lower-back',
+  'bas du dos': 'lower-back', 'lower back': 'lower-back', 'lower-back': 'lower-back', lombaires: 'lower-back', lombes: 'lower-back', spine: 'lower-back',
   serratus: 'serratus', 'serratus anterior': 'serratus', 'dentelé': 'serratus',
 
   // Abdominaux / Core
   abdominaux: 'abs', abs: 'abs', core: 'abs', abdominals: 'abs', 'lower abs': 'abs', 'grand droit': 'abs',
-  obliques: 'obliques', waist: 'abs',
+  'abdos (bas)': 'abs', gainage: 'abs', transverse: 'abs', 'abdos': 'abs',
+  obliques: 'obliques', taille: 'obliques', waist: 'abs',
 
   // Jambes / Legs
-  quadriceps: 'quadriceps', quads: 'quadriceps', cuisses: 'quadriceps', 'droit fémoral': 'quadriceps', 'vastes externe/interne': 'quadriceps',
+  quadriceps: 'quadriceps', quads: 'quadriceps', cuisses: 'quadriceps', jambes: 'quadriceps',
+  'droit fémoral': 'quadriceps', 'vastes externe/interne': 'quadriceps',
   ischios: 'hamstring', 'ischio-jambiers': 'hamstring', ischiojambiers: 'hamstring', hamstring: 'hamstring', hamstrings: 'hamstring',
-  fessiers: 'gluteal', glutes: 'gluteal', gluteal: 'gluteal', abductors: 'gluteal', 'grand fessier': 'gluteal',
+  fessiers: 'gluteal', glutes: 'gluteal', gluteal: 'gluteal', abductors: 'gluteal', abducteurs: 'gluteal', 'grand fessier': 'gluteal',
   adducteurs: 'adductors', adductors: 'adductors', groin: 'adductors', 'inner thighs': 'adductors',
   'fléchisseurs de hanche': 'hip-flexors', 'hip flexors': 'hip-flexors', 'hip-flexors': 'hip-flexors', psoas: 'hip-flexors',
   mollets: 'calves', calves: 'calves', soleus: 'calves', gastrocnemius: 'calves',
-  tibiaux: 'tibialis', tibialis: 'tibialis', shins: 'tibialis',
+  tibiaux: 'tibialis', tibialis: 'tibialis', shins: 'tibialis', tibias: 'tibialis',
 
   // Systemic / Drop
-  cardio: null, 'cardiovascular system': null, ankles: null, feet: null, hands: null,
+  cardio: null, 'cardio (sèche)': null, 'cardiovascular system': null, ankles: null, feet: null, hands: null,
 };
 
 const BY_BODYPART = {
@@ -83,13 +94,22 @@ const BY_BODYPART = {
   shoulders: { deltoids: 1 },
   Biceps: { biceps: 1 },
   Triceps: { triceps: 1 },
+  Bras: { biceps: 0.5, triceps: 0.5 },
   'Avant-bras': { forearm: 1 },
   Abdominaux: { abs: 0.7, obliques: 0.3 },
+  Abdos: { abs: 0.7, obliques: 0.3 },
   waist: { abs: 0.7, obliques: 0.3 },
   Quadriceps: { quadriceps: 1 },
   'Ischio-Jambiers': { hamstring: 1 },
+  Ischios: { hamstring: 1 },
   Fessiers: { gluteal: 1 },
   Mollets: { calves: 0.8, tibialis: 0.2 },
+  Lombaires: { 'lower-back': 1 },
+  Adducteurs: { adductors: 1 },
+  Abducteurs: { gluteal: 0.6, 'hip-flexors': 0.4 },
+  Tibias: { tibialis: 1 },
+  Cou: { trapezius: 1 },
+  Cardio: {},
   'upper legs': { quadriceps: 0.4, hamstring: 0.35, gluteal: 0.25 },
   'lower legs': { calves: 0.8, tibialis: 0.2 },
   'upper arms': { biceps: 0.5, triceps: 0.5 },
@@ -97,6 +117,39 @@ const BY_BODYPART = {
   neck: { trapezius: 1 },
   cardio: {},
 };
+
+/** Intelligent fuzzy resolver mapping any muscle name/submuscle/exercise label to a BodyMap slug */
+function resolveSlug(name) {
+  if (!name) return null;
+  const raw = String(name).toLowerCase().trim();
+  if (ALIAS[raw] !== undefined) return ALIAS[raw];
+
+  // Strip parentheses and retry
+  const cleaned = raw.replace(/\(.*?\)/g, '').trim();
+  if (ALIAS[cleaned] !== undefined) return ALIAS[cleaned];
+
+  // Keyword heuristic
+  if (raw.includes('bicep') || raw.includes('brachial')) return 'biceps';
+  if (raw.includes('tricep')) return 'triceps';
+  if (raw.includes('avant-bras') || raw.includes('avantbras') || raw.includes('forearm')) return 'forearm';
+  if (raw.includes('bras') || raw.includes('arm')) return 'biceps';
+  if (raw.includes('pec') || raw.includes('chest')) return 'chest';
+  if (raw.includes('lomb') || raw.includes('lower-back') || raw.includes('lower back')) return 'lower-back';
+  if (raw.includes('dos') || raw.includes('lats') || raw.includes('back') || raw.includes('dorsal')) return 'upper-back';
+  if (raw.includes('épaule') || raw.includes('epaule') || raw.includes('delt') || raw.includes('shoulder')) return 'deltoids';
+  if (raw.includes('trap')) return 'trapezius';
+  if (raw.includes('quad') || raw.includes('cuisse')) return 'quadriceps';
+  if (raw.includes('ischio') || raw.includes('hamstring')) return 'hamstring';
+  if (raw.includes('fessier') || raw.includes('glute')) return 'gluteal';
+  if (raw.includes('adduct')) return 'adductors';
+  if (raw.includes('abduct')) return 'gluteal';
+  if (raw.includes('mollet') || raw.includes('calf') || raw.includes('calves')) return 'calves';
+  if (raw.includes('tibia') || raw.includes('shin')) return 'tibialis';
+  if (raw.includes('oblique')) return 'obliques';
+  if (raw.includes('abdo') || raw.includes('abs') || raw.includes('core') || raw.includes('gainage') || raw.includes('transverse')) return 'abs';
+
+  return null;
+}
 
 const SECONDARY_WEIGHT = 0.4;
 
@@ -106,7 +159,7 @@ export function musclesOf(ex) {
   const out = {};
   const add = (name, w) => {
     if (!name) return;
-    const slug = ALIAS[String(name).toLowerCase().trim()];
+    const slug = resolveSlug(name);
     if (slug) out[slug] = Math.max(out[slug] || 0, w);
   };
 
@@ -114,6 +167,12 @@ export function musclesOf(ex) {
   add(ex.muscle, 1);
   add(ex.tg, 1);
   add(ex.subMuscle, 0.6);
+
+  // If exercise is generic "Bras", add both biceps and triceps
+  if (String(ex.muscle).toLowerCase() === 'bras') {
+    out.biceps = Math.max(out.biceps || 0, 0.7);
+    out.triceps = Math.max(out.triceps || 0, 0.7);
+  }
   
   // Secondary muscles
   if (Array.isArray(ex.sm)) {
@@ -122,10 +181,15 @@ export function musclesOf(ex) {
     add(ex.sm, SECONDARY_WEIGHT);
   }
 
-  // Fallback to body part if no specific mapped muscle
+  // Fallback to body part or exercise name heuristics if no specific mapped muscle
   if (!Object.keys(out).length) {
     const bpMap = BY_BODYPART[ex.muscle] || BY_BODYPART[ex.bp] || {};
     Object.assign(out, bpMap);
+
+    // If still empty, check exercise name
+    if (!Object.keys(out).length && ex.name) {
+      add(ex.name, 1);
+    }
   }
 
   return out;

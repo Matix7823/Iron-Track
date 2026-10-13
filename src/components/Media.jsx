@@ -26,26 +26,26 @@ export default function Media({ ex, id, compact = false, minimizable = false, cl
   return (
     <div
       id={id}
-      className={`relative group overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 transition-all duration-300 ${
-        compact ? 'max-w-[120px]' : ''
+      className={`relative group overflow-hidden rounded-2xl bg-slate-950/90 border border-slate-800 transition-all duration-300 ${
+        compact ? 'max-w-[120px]' : 'w-full'
       } ${isMini ? 'h-24' : ''} ${className}`}
       onClick={() => setPlaying(p => !p)}
     >
       {!imgError ? (
-        <img
-          src={currentSrc}
-          alt={ex.name || ex.n || 'Exercice'}
-          onError={() => setImgError(true)}
-          decoding="async"
-          loading="lazy"
-          className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-            isMini ? 'h-full object-center' : 'max-h-[280px] min-h-[160px]'
-          }`}
-        />
+        <div className={`w-full flex items-center justify-center bg-black/40 ${isMini ? 'h-24' : 'h-[160px] sm:h-[180px]'}`}>
+          <img
+            src={currentSrc}
+            alt={ex.name || ex.n || 'Exercice'}
+            onError={() => setImgError(true)}
+            decoding="async"
+            loading="lazy"
+            className={`max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]`}
+          />
+        </div>
       ) : (
-        <div className="h-44 w-full flex flex-col items-center justify-center bg-slate-900 text-slate-400 p-4 text-center">
-          <Dumbbell size={36} className="text-cyan-500 mb-2 animate-bounce" />
-          <span className="text-xs font-semibold">{ex.name || ex.n}</span>
+        <div className="h-36 w-full flex flex-col items-center justify-center bg-slate-900/60 text-slate-400 p-4 text-center">
+          <Dumbbell size={32} className="text-cyan-500 mb-2 opacity-80" />
+          <span className="text-xs font-semibold text-slate-300">{ex.name || ex.n}</span>
         </div>
       )}
 
@@ -107,6 +107,9 @@ export function Thumb({ ex, className = '' }) {
 
 export function ExerciseMediaModal({ ex, onClose }) {
   if (!ex) return null;
+  const exName = ex.name || ex.n || 'Exercice';
+  const ytQuery = encodeURIComponent(`comment faire ${exName} musculation technique`);
+  const ytUrl = `https://www.youtube.com/results?search_query=${ytQuery}`;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
@@ -125,7 +128,7 @@ export function ExerciseMediaModal({ ex, onClose }) {
             {ex.muscle || ex.bp || 'Exercice'}
           </span>
           <h2 className="text-xl font-black text-white mt-1 pr-8">
-            {ex.name || ex.n}
+            {exName}
           </h2>
           {ex.subMuscle && (
             <p className="text-xs text-slate-400 mt-1">Cible : {ex.subMuscle}</p>
@@ -134,6 +137,27 @@ export function ExerciseMediaModal({ ex, onClose }) {
 
         {/* Media Preview */}
         <Media ex={ex} minimizable={false} />
+
+        {/* YouTube Tutorial Button */}
+        <button
+          type="button"
+          onClick={() => {
+            try {
+              window.open(ytUrl, '_blank', 'noopener,noreferrer');
+            } catch {
+              window.location.assign(ytUrl);
+            }
+          }}
+          className="flex items-center gap-3 p-3 bg-red-600/15 border border-red-500/25 rounded-2xl hover:bg-red-600/25 transition-all group text-left w-full cursor-pointer active:scale-[0.98]"
+        >
+          <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30">
+            <Play size={16} fill="white" className="text-white ml-0.5" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-white group-hover:text-red-300 transition-colors">Voir le tutoriel YouTube</p>
+            <p className="text-[11px] text-slate-500">{exName} · technique & exécution</p>
+          </div>
+        </button>
 
         {/* Target Muscles */}
         {(ex.tg || ex.muscle || ex.sm) && (
@@ -193,7 +217,15 @@ export function ExerciseMediaModal({ ex, onClose }) {
             )}
           </div>
         )}
+
+        {ex.note && !ex.st && (
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
+            <p className="text-[10px] font-bold text-blue-400 uppercase tracking-wider mb-1">Conseil technique</p>
+            <p className="text-xs text-slate-300 leading-relaxed">{ex.note}</p>
+          </div>
+        )}
       </div>
     </div>
   );
 }
+

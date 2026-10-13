@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Navbar, BottomNav } from "./components/layout/Nav";
@@ -101,9 +101,112 @@ const AppLayout = ({ children }) => (
   </div>
 );
 
-import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import GenderOnboardingModal from "./components/layout/GenderOnboardingModal";
+
+// Robust scroll & route persistence across navigation, page reload & app resume
+const ScrollRestoration = () => {
+  const { pathname } = useLocation();
+  const pathRef = useRef(pathname);
+
+  // Continuously record scroll position in sessionStorage
+  useEffect(() => {
+    pathRef.current = pathname;
+    try {
+      localStorage.setItem('iron_track_last_route', pathname);
+    } catch {
+      // Storage unavailable
+    }
+
+    let timeoutId;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      try {
+        sessionStorage.setItem('iron_scroll_' + pathRef.current, String(y));
+      } catch {
+        // Storage unavailable
+      }
+    };
+
+    const debouncedScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 40);
+    };
+
+    window.addEventListener('scroll', debouncedScroll, { passive: true });
+    
+    // Save on beforeunload
+    const handleUnload = () => {
+      try {
+        sessionStorage.setItem('iron_scroll_' + pathRef.current, String(window.scrollY));
+      } catch {
+        // Storage unavailable
+      }
+    };
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', debouncedScroll);
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, [pathname]);
+
+  // Restore scroll position whenever pathname changes
+  useEffect(() => {
+    let savedY = 0;
+    try {
+      savedY = parseInt(sessionStorage.getItem('iron_scroll_' + pathname), 10) || 0;
+    } catch {
+      // Storage unavailable
+    }
+
+    if (savedY > 0) {
+      // Try restoring at multiple key moments to account for AnimatePresence & layout rendering
+      const restore = () => {
+        window.scrollTo({ top: savedY, behavior: 'instant' });
+      };
+
+      restore();
+      const raf1 = requestAnimationFrame(restore);
+      const timer1 = setTimeout(restore, 60);
+      const timer2 = setTimeout(restore, 180);
+      const timer3 = setTimeout(restore, 320);
+
+      return () => {
+        cancelAnimationFrame(raf1);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    }
+  }, [pathname]);
+
+  // When app comes back from background (switching apps or tabs), restore scroll immediately
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        let savedY = 0;
+        try {
+          savedY = parseInt(sessionStorage.getItem('iron_scroll_' + pathRef.current), 10) || 0;
+        } catch {
+          // Storage unavailable
+        }
+        if (savedY > 0) {
+          window.scrollTo({ top: savedY, behavior: 'instant' });
+          setTimeout(() => {
+            window.scrollTo({ top: savedY, behavior: 'instant' });
+          }, 60);
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, []);
+
+  return null;
+};
 
 const AnimatedPage = ({ children }) => (
   <motion.div
@@ -146,6 +249,7 @@ const AppInner = () => {
   
   return (
     <>
+      <ScrollRestoration />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/auth" element={<AnimatedPage><Auth /></AnimatedPage>} />

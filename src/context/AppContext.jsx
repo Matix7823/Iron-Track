@@ -1057,7 +1057,6 @@ export const AppProvider = ({ children }) => {
     });
 
     setShowSummary(true);
-    setTimeout(() => setShowSummary(false), 5000);
   }, [history, currentInput, bodyWeightHistory, bodyMeasurements, allExercises, userSessions, persistData]);
 
   const saveBodyData = useCallback(async (newBodyWeight, newShoulders, newWaist) => {

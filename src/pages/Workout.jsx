@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
 import { exerciseLibrary } from "../data/exerciseLibrary";
 import { normalizeHistory, getPerformanceMetrics, calculate1RM, predictLoad } from "../utils/metrics";
+import { MUSCLE_NAME_FR } from "../utils/muscles";
 import {
   Save, CheckCircle2, Circle, Timer, PlayCircle, Flame, Zap,
   Target, Activity, AlertTriangle, TrendingDown, Clock,
@@ -257,11 +258,85 @@ const AddSessionModal = ({ onClose }) => {
   );
 };
 
-// ─── ExerciseCard ────────────────────────────────────────────────
+// ─── Video Search Modal (in-app, no blank page) ──────────────────
+const VideoModal = ({ exo, onClose }) => {
+  if (!exo) return null;
+  const query = encodeURIComponent(`comment faire ${exo.name} musculation technique`);
+  const searchUrl = `https://www.youtube.com/results?search_query=${query}`;
+
+  const openTutorialSafe = () => {
+    try {
+      window.open(searchUrl, '_blank', 'noopener,noreferrer');
+    } catch {
+      window.location.assign(searchUrl);
+    }
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={e => e.stopPropagation()}
+        className="glass-dark w-[95%] max-w-lg rounded-3xl p-5 border border-white/10 shadow-2xl flex flex-col gap-4 max-h-[90vh] overflow-y-auto"
+      >
+        <div className="flex justify-between items-center">
+          <div>
+            <p className="text-[10px] text-amber-400 font-black uppercase tracking-widest">Tutoriel & Démonstration</p>
+            <h3 className="text-lg font-black text-white">{exo.name}</h3>
+          </div>
+          <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-slate-400 active:scale-90 transition-transform">
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Visual Exercise Demonstration directly in app */}
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+          <Media ex={exo} minimizable={false} />
+        </div>
+
+        {/* Safe tutorial launcher */}
+        <div className="bg-slate-900/60 rounded-2xl p-4 border border-slate-800">
+          <p className="text-xs text-slate-400 mb-2.5 font-medium">
+            Pour voir des explications détaillées en vidéo :
+          </p>
+          <button
+            type="button"
+            onClick={openTutorialSafe}
+            className="flex items-center gap-3 p-3 bg-red-600/20 border border-red-500/30 rounded-xl hover:bg-red-600/30 active:scale-95 transition-all w-full text-left cursor-pointer group"
+          >
+            <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30">
+              <Play size={18} fill="white" className="text-white ml-0.5" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white group-hover:text-red-300 transition-colors">
+                Ouvrir le tutoriel YouTube
+              </p>
+              <p className="text-[11px] text-slate-400">{exo.name} · technique & posture</p>
+            </div>
+          </button>
+        </div>
+
+        {exo.note && (
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
+            <p className="text-[10px] font-bold text-blue-400 uppercase tracking-wider mb-1">Conseil technique & tempo</p>
+            <p className="text-sm text-slate-300 leading-relaxed">{exo.note}</p>
+          </div>
+        )}
+
+        <button onClick={onClose} className="btn-glass w-full">Fermer</button>
+      </motion.div>
+    </div>
+  );
+};
+
+// ─── ExerciseCard ───────────────────────────────────────────
 const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   const { history, currentInput, getSetsForExo, handleSetChange, toggleSetDone, cycleSetTag, startTimer, stopTimer, energyLevel, allExercises, gender, age, currentBodyWeight, height } = useApp();
   const [open, setOpen] = useState(true);
   const [isBypassed, setIsBypassed] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
   const sets = getSetsForExo(exo.id);
   const advice = getAdvice(exo, history[exo.id]||[], sets, energyLevel, allExercises, currentInput);
@@ -319,10 +394,11 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity:0, y:16 }}
-      animate={{ opacity:1, y:0 }}
-      transition={{ delay: index * 0.055, duration: 0.4 }}
+    <>
+      <motion.div
+        initial={{ opacity:0, y:16 }}
+        animate={{ opacity:1, y:0 }}
+        transition={{ delay: index * 0.055, duration: 0.4 }}
       className={`glass-card mb-4 overflow-hidden transition-all relative ${isJunk ? "opacity-60 grayscale" : ""}`}
     >
       {/* Overtraining Overlay */}
@@ -361,15 +437,13 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
           {exo.tempo && !isCardio && <p className="text-[10px] text-blue-400 mt-1 font-mono tracking-wider">⏱ {exo.tempo}</p>}
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <a 
-            href={`https://www.youtube.com/results?search_query=how+to+do+${exo.name.replace(/\s+/g, '+')}+fitness`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setShowVideoModal(true)}
             className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 hover:bg-amber-500/20 active:scale-90 transition-all"
-            title="Voir la vidéo"
+            title="Voir le tutoriel"
           >
             <Play size={14} fill="currentColor" />
-          </a>
+          </button>
           {exo.rest > 0 && (
             <button onClick={() => startTimer(adaptedRest)}
               className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 active:scale-90 transition-all">
@@ -535,11 +609,50 @@ const ExerciseCard = ({ exo, index, sessionId, onRemoveRequest }) => {
         )}
       </AnimatePresence>
     </motion.div>
+
+    {/* Video tutorial modal */}
+    <AnimatePresence>
+      {showVideoModal && <VideoModal exo={exo} onClose={() => setShowVideoModal(false)} />}
+    </AnimatePresence>
+    </>
   );
 };
 
 // ─── Session Summary Modal ───────────────────────────────────────
-const SummaryModal = ({ rank, tonnage, calories, load = {}, onClose, onShare, hasShared, onSyncAppleHealth }) => (
+const muscleChipColors = {
+  "chest":      "bg-blue-500/20 text-blue-300 border-blue-500/40",
+  "upper-back": "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+  "lower-back": "bg-teal-500/20 text-teal-300 border-teal-500/40",
+  "deltoids":   "bg-violet-500/20 text-violet-300 border-violet-500/40",
+  "trapezius":  "bg-purple-500/20 text-purple-300 border-purple-500/40",
+  "biceps":     "bg-pink-500/20 text-pink-300 border-pink-500/40",
+  "triceps":    "bg-rose-500/20 text-rose-300 border-rose-500/40",
+  "forearm":    "bg-red-500/20 text-red-300 border-red-500/40",
+  "abs":        "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
+  "obliques":   "bg-indigo-400/20 text-indigo-200 border-indigo-400/40",
+  "gluteal":    "bg-lime-500/20 text-lime-300 border-lime-500/40",
+  "quadriceps": "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+  "hamstring":  "bg-green-500/20 text-green-300 border-green-500/40",
+  "adductors":  "bg-yellow-500/20 text-yellow-300 border-yellow-500/40",
+  "calves":     "bg-orange-500/20 text-orange-300 border-orange-500/40",
+  "tibialis":   "bg-orange-400/20 text-orange-200 border-orange-400/40",
+  "serratus":   "bg-sky-500/20 text-sky-300 border-sky-500/40",
+  "hip-flexors":"bg-amber-500/20 text-amber-300 border-amber-500/40",
+};
+
+const MUSCLE_EMOJI = {
+  "chest":"💪","upper-back":"🔙","lower-back":"⬇️","deltoids":"🔺","trapezius":"🏔️",
+  "biceps":"💪","triceps":"💪","forearm":"🦾","abs":"🎯","obliques":"🎯","gluteal":"🍑",
+  "quadriceps":"🦵","hamstring":"🦵","adductors":"🦵","calves":"🦿","serratus":"⚡",
+};
+
+const SummaryModal = ({ rank, tonnage, calories, load = {}, onClose, onShare, hasShared, onSyncAppleHealth }) => {
+  // Compute the worked muscles from the load object, sorted by volume
+  const workedMuscles = Object.entries(load)
+    .filter(([, v]) => v > 0)
+    .sort(([, a], [, b]) => b - a);
+
+  return (
   <div className="modal-overlay" onClick={onClose}>
     <motion.div className="modal-card max-h-[90vh] overflow-y-auto" initial={{ scale:.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
       transition={{ type:"spring", stiffness:280, damping:20 }} onClick={e=>e.stopPropagation()}>
@@ -564,9 +677,33 @@ const SummaryModal = ({ rank, tonnage, calories, load = {}, onClose, onShare, ha
         </div>
       </div>
 
-      {/* Muscle Map summary for completed workout */}
-      <div className="mb-4 text-left">
-        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Muscles Travaillés cette Séance</h4>
+      {/* ── MUSCLES TRAVAILLÉS (chips colorées lisibles) ── */}
+      <div className="mb-4">
+        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <Activity size={14} className="text-blue-400" />
+          Muscles Travaillés cette Séance
+        </h4>
+        {workedMuscles.length > 0 ? (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {workedMuscles.map(([slug, volume]) => {
+              const chipCls = muscleChipColors[slug] || "bg-slate-500/20 text-slate-300 border-slate-500/40";
+              const name = MUSCLE_NAME_FR[slug] || slug;
+              const emoji = MUSCLE_EMOJI[slug] || "💪";
+              const intensity = volume >= 6 ? "Intense" : volume >= 3 ? "Modéré" : "Léger";
+              return (
+                <div key={slug} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold ${chipCls}`}>
+                  <span>{emoji}</span>
+                  <span>{name}</span>
+                  <span className="opacity-60 text-[10px]">· {intensity}</span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-slate-500 text-sm text-center py-3 bg-slate-900/40 rounded-xl border border-slate-800">Aucun muscle détecté — vérifie que tes séries sont cochées ✓</p>
+        )}
+        
+        {/* SVG Body Map */}
         <BodyMap load={load} showControls={false} showUntrained={false} className="!p-2" />
       </div>
 
@@ -590,7 +727,9 @@ const SummaryModal = ({ rank, tonnage, calories, load = {}, onClose, onShare, ha
       </div>
     </motion.div>
   </div>
-);
+  );
+};
+
 
 // ─── Workout page ────────────────────────────────────────────────
 const Workout = () => {
@@ -613,6 +752,7 @@ const Workout = () => {
   const [newSessionName, setNewSessionName] = useState("");
   const [sessionStartTime] = useState(() => Date.now());
   const [elapsedMin, setElapsedMin] = useState(0);
+  const [persistedSummaryLoad, setPersistedSummaryLoad] = useState({});
 
   // Smart Session Builder Wizard State
   const [showSmartBuilder, setShowSmartBuilder] = useState(false);
@@ -639,12 +779,14 @@ const Workout = () => {
 
   const session = userSessions[currentSession] || { category: "Perso", exercises: [], color: "from-indigo-600 to-indigo-800", title: "Séance Personnalisée", focus: "Ta séance sur mesure" };
 
-  // Completed session muscle load
+  // Completed session muscle load - fixed to properly count done sets
   const completedSessionLoad = useMemo(() => {
-    const items = (session.exercises || []).map(exo => {
+    const items = (session.exercises || []).flatMap(exo => {
       const sets = currentInput[exo.id] || [];
       const doneCount = sets.filter(s => s && s.done).length;
-      return { exercise: exo, sets: doneCount };
+      if (doneCount === 0) return [];
+      // Return one item per done set so loadOfItems accumulates correctly
+      return Array.from({ length: doneCount }, () => ({ exercise: exo, sets: 1 }));
     });
     return loadOfItems(items);
   }, [session.exercises, currentInput]);
@@ -1034,7 +1176,13 @@ const Workout = () => {
               <p className="text-sm text-slate-400 mb-6">Veux-tu vraiment valider ta séance ?</p>
               <div className="flex gap-3">
                 <button onClick={() => setShowConfirmModal(false)} className="btn-glass flex-1">Non, continuer</button>
-                <button onClick={() => { saveWorkout(); hapticSuccess(); }} className="btn-primary flex-1">Oui, valider !</button>
+                <button onClick={() => {
+                  if (completedSessionLoad && Object.keys(completedSessionLoad).length > 0) {
+                    setPersistedSummaryLoad({ ...completedSessionLoad });
+                  }
+                  saveWorkout();
+                  hapticSuccess();
+                }} className="btn-primary flex-1">Oui, valider !</button>
               </div>
             </motion.div>
           </div>
@@ -1047,8 +1195,8 @@ const Workout = () => {
             rank={sessionRank} 
             tonnage={sessionTonnage}
             calories={Math.round(Math.max(10, elapsedMin) * 5 * ((currentBodyWeight || 75) / 70))} 
-            load={completedSessionLoad}
-            onClose={() => setShowSummary(false)} 
+            load={Object.keys(persistedSummaryLoad).length > 0 ? persistedSummaryLoad : completedSessionLoad}
+            onClose={() => { setShowSummary(false); setPersistedSummaryLoad({}); }} 
             onShare={handleShareWorkout} 
             hasShared={hasShared}
             onSyncAppleHealth={handleSyncAppleHealth}
