@@ -1,4 +1,17 @@
 import React, { useMemo, useState, useEffect } from "react";
+
+function handleScan() {
+  // async handler defined inside component scope
+  (async () => {
+    try {
+      const result = await scanCode();
+      alert(`Scanné: ${result}`);
+      // TODO: Ajouter l'exercice basé sur le code QR
+    } catch (e) {
+      alert(e.message);
+    }
+  })();
+}
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "../context/AppContext";
