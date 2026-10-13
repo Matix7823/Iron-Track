@@ -532,24 +532,10 @@ const Dashboard = () => {
             >
               📊 Liste
             </button>
-            <button
-              onClick={() => setRecoveryView("3d")}
-              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1 ${
-                recoveryView === "3d"
-                  ? "bg-cyan-600 text-white shadow-md shadow-cyan-500/20"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              🤖 Modèle 3D
-            </button>
+
           </div>
         </div>
 
-        {recoveryView === "3d" ? (
-          <div className="h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-white/5 bg-slate-950/60 relative">
-            <MuscleMap3D recoveryData={recovery} />
-          </div>
-        ) : (
           <div className="space-y-4">
             {recovery.map(({ group, label, pct, color, desc }) => (
               <div key={group} className="pb-3 border-b border-white/5 last:border-b-0 last:pb-0">
@@ -565,7 +551,6 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-        )}
       </motion.div>
 
       {/* ── 1RM RECORDS ── */}
