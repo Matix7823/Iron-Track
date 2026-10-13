@@ -13,13 +13,8 @@ export default function Media({ ex, id, compact = false, minimizable = false, cl
   const gif = gifSrc(ex);
 
   if (!image && !gif) {
-    return (
-      <div className={`flex flex-col items-center justify-center p-6 bg-slate-800/40 rounded-2xl border border-slate-700/50 text-slate-500 ${className}`}>
-        <Dumbbell size={32} className="mb-2 opacity-50" />
-        <span className="text-xs">Illustration non disponible</span>
-      </div>
-    );
-  }
+  return null;
+}
 
   const currentSrc = playing && gif ? gif : image;
 
