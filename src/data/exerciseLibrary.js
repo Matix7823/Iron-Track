@@ -46,8 +46,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Pectoraux",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0308-yz9nUhF.jpg",
-    "gif": "0308-yz9nUhF.gif",
     "tg": "pectorals",
     "sm": [
       "shoulders"
@@ -72,8 +70,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Pectoraux",
     "subMuscle": "Faisceau claviculaire (Haut)",
-    "img": "0308-yz9nUhF.jpg",
-    "gif": "0308-yz9nUhF.gif",
     "tg": "pectorals",
     "sm": [
       "shoulders"
@@ -110,8 +106,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Pectoraux",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0662-I4hDWkc.jpg",
-    "gif": "0662-I4hDWkc.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -137,8 +131,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Pectoraux",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0375-9XjtHvS.jpg",
-    "gif": "0375-9XjtHvS.gif",
     "tg": "pectorals",
     "sm": [
       "latissimus dorsi",
@@ -296,8 +288,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Dos",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "0652-lBDjFxJ.jpg",
-    "gif": "0652-lBDjFxJ.gif",
     "tg": "lats",
     "sm": [
       "biceps",
@@ -323,8 +313,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Dos",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "1326-T2mxWqc.jpg",
-    "gif": "1326-T2mxWqc.gif",
     "tg": "lats",
     "sm": [
       "biceps",
@@ -602,8 +590,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Lombaires",
     "subMuscle": "Érecteurs du rachis",
-    "img": "0489-zhMwOwE.jpg",
-    "gif": "0489-zhMwOwE.gif",
     "tg": "spine",
     "sm": [
       "glutes",
@@ -629,8 +615,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Lombaires",
     "subMuscle": "Érecteurs du rachis",
-    "img": "0489-zhMwOwE.jpg",
-    "gif": "0489-zhMwOwE.gif",
     "tg": "spine",
     "sm": [
       "glutes",
@@ -716,8 +700,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Quadriceps",
     "subMuscle": "Quadriceps (Global)",
-    "img": "1460-IZVHb27.jpg",
-    "gif": "1460-IZVHb27.gif",
     "tg": "glutes",
     "sm": [
       "quadriceps",
@@ -805,8 +787,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Quadriceps",
     "subMuscle": "Droit fémoral / Vaste",
-    "img": "1489-xdYPUtE.jpg",
-    "gif": "1489-xdYPUtE.gif",
     "tg": "quads",
     "sm": [
       "calves",
@@ -905,8 +885,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Ischios",
     "subMuscle": "Ischios (Global)",
-    "img": "3193-Vvwjz6N.jpg",
-    "gif": "3193-Vvwjz6N.gif",
     "tg": "hamstrings",
     "sm": [
       "glutes",
@@ -994,8 +972,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Fessiers",
     "subMuscle": "Grand fessier",
-    "img": "0860-HEJ6DIX.jpg",
-    "gif": "0860-HEJ6DIX.gif",
     "tg": "triceps",
     "sm": [
       "shoulders"
@@ -1106,8 +1082,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Mollets",
     "subMuscle": "Gastrocnémien",
-    "img": "0284-u5ESqzH.jpg",
-    "gif": "0284-u5ESqzH.gif",
     "tg": "calves",
     "sm": [
       "hamstrings",
@@ -1277,8 +1251,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Épaules",
     "subMuscle": "Faisceau latéral",
-    "img": "0178-goJ6ezq.jpg",
-    "gif": "0178-goJ6ezq.gif",
     "tg": "delts",
     "sm": [
       "traps",
@@ -1316,8 +1288,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Biceps",
     "subMuscle": "Biceps (Global)",
-    "img": "0031-25GPyDY.jpg",
-    "gif": "0031-25GPyDY.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -1403,8 +1373,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Biceps",
     "subMuscle": "Biceps (Global)",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -1515,8 +1483,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Triceps",
     "subMuscle": "Chef latéral / médial",
-    "img": "0814-X6C6i5Y.jpg",
-    "gif": "0814-X6C6i5Y.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -1590,8 +1556,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Triceps",
     "subMuscle": "Chef latéral / médial",
-    "img": "0814-X6C6i5Y.jpg",
-    "gif": "0814-X6C6i5Y.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -1677,8 +1641,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -1717,8 +1679,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit (Bas)",
-    "img": "0472-I3tsCnC.jpg",
-    "gif": "0472-I3tsCnC.gif",
     "tg": "abs",
     "sm": [
       "hip flexors"
@@ -1767,8 +1727,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit",
-    "img": "0687-XVDdcoj.jpg",
-    "gif": "0687-XVDdcoj.gif",
     "tg": "abs",
     "sm": [
       "obliques"
@@ -1795,8 +1753,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -1823,8 +1779,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -1863,8 +1817,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Exercice de référence pour Abdos",
     "subMuscle": "Grand droit",
-    "img": "0277-9Ap7miY.jpg",
-    "gif": "0277-9Ap7miY.gif",
     "tg": "abs",
     "sm": [
       "hip flexors"
@@ -1925,8 +1877,6 @@ export const exerciseLibrary = [
     "rest": 0,
     "note": "Exercice de référence pour Cardio",
     "subMuscle": "",
-    "img": "2612-e1e76I2.jpg",
-    "gif": "2612-e1e76I2.gif",
     "tg": "cardiovascular system",
     "sm": [
       "calves",
@@ -1990,8 +1940,6 @@ export const exerciseLibrary = [
     "note": "Excellent exercice au poids du corps ciblant l'intérieur des pectoraux et les triceps. Idéal à la maison.",
     "id": "exo_134",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0283-soIB2rj.jpg",
-    "gif": "0283-soIB2rj.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -2017,8 +1965,6 @@ export const exerciseLibrary = [
     "note": "Exercice de calisthénie avancé pour surcharger un pectoral à la fois. Idéal à la maison.",
     "id": "exo_135",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "3294-A9qxk2F.jpg",
-    "gif": "3294-A9qxk2F.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -2058,8 +2004,6 @@ export const exerciseLibrary = [
     "note": "Exercice au poids du corps idéal sous une table ou une barre basse pour renforcer l'épaisseur du dos à la maison.",
     "id": "exo_137",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "0499-bZGHsAZ.jpg",
-    "gif": "0499-bZGHsAZ.gif",
     "tg": "upper back",
     "sm": [
       "biceps",
@@ -2123,8 +2067,6 @@ export const exerciseLibrary = [
     "note": "Exercice poids du corps avec le buste incliné pour cibler principalement le deltoïde antérieur. Maison et salle.",
     "id": "exo_141",
     "subMuscle": "Faisceau antérieur",
-    "img": "0662-I4hDWkc.jpg",
-    "gif": "0662-I4hDWkc.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -2234,8 +2176,6 @@ export const exerciseLibrary = [
     "note": "Exercice cardio et de gainage total combinant pompe et squat sauté. Idéal à la maison.",
     "id": "exo_149",
     "subMuscle": "Grand droit",
-    "img": "1160-dK9394r.jpg",
-    "gif": "1160-dK9394r.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -2266,8 +2206,6 @@ export const exerciseLibrary = [
     "note": "Mouvement de flexion rapide des genoux en position de planche haute pour cibler le cœur et la sangle abdominale. Maison.",
     "id": "exo_150",
     "subMuscle": "Grand droit",
-    "img": "0630-RJgzwny.jpg",
-    "gif": "0630-RJgzwny.gif",
     "tg": "cardiovascular system",
     "sm": [
       "core",
@@ -2306,8 +2244,6 @@ export const exerciseLibrary = [
     "note": "Exercice de coordination et d'endurance cardiovasculaire excellent pour brûler les graisses à la maison.",
     "id": "exo_152",
     "subMuscle": "",
-    "img": "2612-e1e76I2.jpg",
-    "gif": "2612-e1e76I2.gif",
     "tg": "cardiovascular system",
     "sm": [
       "calves",
@@ -2335,8 +2271,6 @@ export const exerciseLibrary = [
     "note": "Cardio en extérieur pour développer le système cardiorespiratoire et l'endurance fondamentale.",
     "id": "exo_153",
     "subMuscle": "",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -2555,8 +2489,6 @@ export const exerciseLibrary = [
     "note": "Travail unilatéral à la poulie basse avec une sangle de cheville pour étirer et contracter l'adducteur avec précision en salle.",
     "id": "exo_170",
     "subMuscle": "Adducteurs",
-    "img": "0168-hBGWILP.jpg",
-    "gif": "0168-hBGWILP.gif",
     "tg": "adductors",
     "sm": [
       "glutes",
@@ -2691,8 +2623,6 @@ export const exerciseLibrary = [
     "note": "Marche latérale semi-fléchie avec une bande élastique autour des genoux ou chevilles pour activer intensément le moyen fessier.",
     "id": "exo_180",
     "subMuscle": "Moyen fessier",
-    "img": "0628-O95afRA.jpg",
-    "gif": "0628-O95afRA.gif",
     "tg": "glutes",
     "sm": [
       "hamstrings",
@@ -2766,8 +2696,6 @@ export const exerciseLibrary = [
     "note": "Les mains surélevées sur un support (banc, chaise) pour cibler préférentiellement la partie inférieure du grand pectoral à la maison.",
     "id": "exo_185",
     "subMuscle": "Faisceau claviculaire (Haut)",
-    "img": "0493-B1EVP9F.jpg",
-    "gif": "0493-B1EVP9F.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -2793,8 +2721,6 @@ export const exerciseLibrary = [
     "note": "Les pieds surélevés sur un support pour surcharger le haut de la poitrine (portion claviculaire) au poids du corps à la maison.",
     "id": "exo_186",
     "subMuscle": "Faisceau abdominal (Bas)",
-    "img": "0279-i5cEhka.jpg",
-    "gif": "0279-i5cEhka.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -2844,8 +2770,6 @@ export const exerciseLibrary = [
     "note": "Tractions avec les paumes face à face, plus respectueuses des épaules et favorisant le travail du grand dorsal et du brachial.",
     "id": "exo_189",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "0652-lBDjFxJ.jpg",
-    "gif": "0652-lBDjFxJ.gif",
     "tg": "lats",
     "sm": [
       "biceps",
@@ -2895,8 +2819,6 @@ export const exerciseLibrary = [
     "note": "Tirage inversé au poids du corps avec les paumes vers soi pour solliciter intensément l'épaisseur du dos et les biceps à la maison.",
     "id": "exo_192",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "0499-bZGHsAZ.jpg",
-    "gif": "0499-bZGHsAZ.gif",
     "tg": "upper back",
     "sm": [
       "biceps",
@@ -2924,8 +2846,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur le ventre au sol, lever simultanément les bras et les jambes. Parfait pour la chaîne postérieure profonde à la maison.",
     "id": "exo_193",
     "subMuscle": "Érecteurs du rachis",
-    "img": "0803-4GqRrAk.jpg",
-    "gif": "0803-4GqRrAk.gif",
     "tg": "pectorals",
     "sm": [
       "core",
@@ -3012,8 +2932,6 @@ export const exerciseLibrary = [
     "note": "Montée sur banc ou boîte stable avec des haltères pour développer la force unilatérale et l'équilibre général.",
     "id": "exo_199",
     "subMuscle": "Quadriceps (Global)",
-    "img": "0431-aXtJhlg.jpg",
-    "gif": "0431-aXtJhlg.gif",
     "tg": "glutes",
     "sm": [
       "quadriceps",
@@ -3065,8 +2983,6 @@ export const exerciseLibrary = [
     "note": "Flexion de hanches debout avec des haltères proches des jambes, offrant une grande liberté articulaire et un étirement intense.",
     "id": "exo_202",
     "subMuscle": "Ischios (Étirement)",
-    "img": "1459-rR0LJzx.jpg",
-    "gif": "1459-rR0LJzx.gif",
     "tg": "glutes",
     "sm": [
       "hamstrings",
@@ -3091,8 +3007,6 @@ export const exerciseLibrary = [
     "note": "Moyen fessier sollicité de manière dynamique en faisant des pas de côté avec élastique autour des genoux à la maison.",
     "id": "exo_203",
     "subMuscle": "Grand fessier",
-    "img": "0628-O95afRA.jpg",
-    "gif": "0628-O95afRA.gif",
     "tg": "glutes",
     "sm": [
       "hamstrings",
@@ -3154,8 +3068,6 @@ export const exerciseLibrary = [
     "note": "Assis, genoux fléchis à 90°, poser des haltères sur les cuisses pour cibler sélectivement le soléaire à la maison.",
     "id": "exo_207",
     "subMuscle": "Soléaire",
-    "img": "1379-r29jP7S.jpg",
-    "gif": "1379-r29jP7S.gif",
     "tg": "calves",
     "sm": [
       "hamstrings"
@@ -3205,8 +3117,6 @@ export const exerciseLibrary = [
     "note": "Câble passant derrière le dos pour maximiser la tension dans la position de départ étirée du deltoïde moyen. En salle.",
     "id": "exo_210",
     "subMuscle": "Faisceau latéral",
-    "img": "0178-goJ6ezq.jpg",
-    "gif": "0178-goJ6ezq.gif",
     "tg": "delts",
     "sm": [
       "traps",
@@ -3328,8 +3238,6 @@ export const exerciseLibrary = [
     "note": "Flexions de buste alternées avec rotation coude-genou opposé pour recruter intensément les abdominaux et obliques.",
     "id": "exo_219",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -3356,8 +3264,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur le dos, extension croisée contrôlée bras/jambe opposés en gardant le bas du dos scotché au sol. Gainage profond.",
     "id": "exo_220",
     "subMuscle": "Grand droit",
-    "img": "0276-iny3m5y.jpg",
-    "gif": "0276-iny3m5y.gif",
     "tg": "abs",
     "sm": [
       "hip flexors",
@@ -3409,8 +3315,6 @@ export const exerciseLibrary = [
     "note": "Mouvement d'extension de hanche balistique avec kettlebell, exceptionnel pour l'endurance cardiovasculaire et la puissance postérieure.",
     "id": "exo_223",
     "subMuscle": "",
-    "img": "0549-UHJlbu3.jpg",
-    "gif": "0549-UHJlbu3.gif",
     "tg": "glutes",
     "sm": [
       "hamstrings",
@@ -3437,8 +3341,6 @@ export const exerciseLibrary = [
     "note": "Le câble est placé derrière le corps pour placer le biceps chef long dans un étirement extrême grâce à l'hyperextension de l'épaule. Fournit une tension maximale en étirement.",
     "id": "exo_224",
     "subMuscle": "Biceps (Global)",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -3537,8 +3439,6 @@ export const exerciseLibrary = [
     "note": "On effectue un écarté en bas pour bénéficier de l'étirement maximal, et on remonte en développant serré pour maximiser la tension sans stresser inutilement l'articulation.",
     "id": "exo_231",
     "subMuscle": "Faisceau claviculaire (Haut)",
-    "img": "0308-yz9nUhF.jpg",
-    "gif": "0308-yz9nUhF.gif",
     "tg": "pectorals",
     "sm": [
       "shoulders"
@@ -3599,8 +3499,6 @@ export const exerciseLibrary = [
     "note": "En position de pompe serrée, poser les coudes au sol puis repousser uniquement par la force des triceps. Étirement phénoménal de la longue portion à la maison.",
     "id": "exo_235",
     "subMuscle": "Triceps (Global)",
-    "img": "0662-I4hDWkc.jpg",
-    "gif": "0662-I4hDWkc.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -3650,8 +3548,6 @@ export const exerciseLibrary = [
     "note": "Marquer un arrêt de 2 secondes complètes à chaque coude-genou opposé pour recruter au maximum les obliques profonds sans tricher.",
     "id": "exo_238",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -3762,8 +3658,6 @@ export const exerciseLibrary = [
     "note": "Câble de poulie haute attaché à la cheville pour travailler l'adduction avec une ligne de force descendante modifiant le pic de tension musculaire en fin de mouvement. Salle.",
     "id": "exo_246",
     "subMuscle": "Adducteurs",
-    "img": "0168-hBGWILP.jpg",
-    "gif": "0168-hBGWILP.gif",
     "tg": "adductors",
     "sm": [
       "glutes",
@@ -3850,8 +3744,6 @@ export const exerciseLibrary = [
     "note": "Mains en pronation, avant-bras posés sur un banc plat ou les cuisses, effectuer des extensions de poignet pour isoler les muscles extenseurs de l'avant-bras.",
     "id": "exo_252",
     "subMuscle": "Fléchisseurs / Extenseurs",
-    "img": "0126-82LxxkW.jpg",
-    "gif": "0126-82LxxkW.gif",
     "tg": "forearms",
     "sm": [
       "biceps",
@@ -3877,8 +3769,6 @@ export const exerciseLibrary = [
     "note": "Debout, barre tenue derrière les fessiers, effectuer des flexions de poignets pour cibler le volume interne et l'épaisseur des fléchisseurs de l'avant-bras.",
     "id": "exo_253",
     "subMuscle": "Fléchisseurs / Extenseurs",
-    "img": "0126-82LxxkW.jpg",
-    "gif": "0126-82LxxkW.gif",
     "tg": "forearms",
     "sm": [
       "biceps",
@@ -3904,8 +3794,6 @@ export const exerciseLibrary = [
     "note": "Marcher sur une distance ou un temps donné avec des charges très lourdes (haltères, trap bar) pour surcharger la poigne, les trapèzes et le gainage général.",
     "id": "exo_254",
     "subMuscle": "Fléchisseurs / Extenseurs",
-    "img": "2133-qPEzJjA.jpg",
-    "gif": "2133-qPEzJjA.gif",
     "tg": "quads",
     "sm": [
       "calves",
@@ -3944,8 +3832,6 @@ export const exerciseLibrary = [
     "note": "Pieds surélevés sur une chaise et mains serrées en diamant pour surcharger le haut de la poitrine et solliciter plus intensément les triceps au poids du corps. Maison.",
     "id": "exo_256",
     "subMuscle": "Faisceau abdominal (Bas)",
-    "img": "0259-x6KpKpq.jpg",
-    "gif": "0259-x6KpKpq.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -3970,8 +3856,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur un ballon de gym, effectuer des écartés haltères pour solliciter le recrutement des pectoraux tout en développant l'équilibre profond et les abdominaux. Maison.",
     "id": "exo_257",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0308-yz9nUhF.jpg",
-    "gif": "0308-yz9nUhF.gif",
     "tg": "pectorals",
     "sm": [
       "shoulders"
@@ -4056,8 +3940,6 @@ export const exerciseLibrary = [
     "note": "Se tenir fermement à une barre ou un poteau stable, s'incliner vers l'arrière en poussant les genoux loin devant. Étirement fantastique et surcharge pour les quadriceps.",
     "id": "exo_263",
     "subMuscle": "Droit fémoral / Vaste",
-    "img": "1489-xdYPUtE.jpg",
-    "gif": "1489-xdYPUtE.gif",
     "tg": "quads",
     "sm": [
       "calves",
@@ -4144,8 +4026,6 @@ export const exerciseLibrary = [
     "note": "Buste penché à 90°, pieds sur une marche, effectuer des extensions de mollets avec une charge placée sur les hanches/bas du dos pour un étirement optimal.",
     "id": "exo_269",
     "subMuscle": "Gastrocnémien",
-    "img": "0284-u5ESqzH.jpg",
-    "gif": "0284-u5ESqzH.gif",
     "tg": "calves",
     "sm": [
       "hamstrings",
@@ -4183,8 +4063,6 @@ export const exerciseLibrary = [
     "note": "Tirage vertical le long du buste à la poulie basse avec barre courte pour une tension continue très ergonomique sur les deltoïdes moyens et les trapèzes.",
     "id": "exo_271",
     "subMuscle": "Faisceau antérieur",
-    "img": "0246-cALKspW.jpg",
-    "gif": "0246-cALKspW.gif",
     "tg": "delts",
     "sm": [
       "traps",
@@ -4259,8 +4137,6 @@ export const exerciseLibrary = [
     "note": "En position de planche haute sur les mains, toucher alternativement l'épaule opposée sans laisser osciller le bassin. Travail anti-rotation intense. Maison.",
     "id": "exo_276",
     "subMuscle": "Transverse",
-    "img": "3699-yRpV5TC.jpg",
-    "gif": "3699-yRpV5TC.gif",
     "tg": "abs",
     "sm": [
       "shoulders",
@@ -4286,8 +4162,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur le dos au sol, soulever les jambes tendues à la verticale puis décoller volontairement le bas du dos en enroulant le bassin pour cibler le bas des abdominaux.",
     "id": "exo_277",
     "subMuscle": "Grand droit (Bas)",
-    "img": "0865-9IxJdtC.jpg",
-    "gif": "0865-9IxJdtC.gif",
     "tg": "abs",
     "sm": [
       "hip flexors"
@@ -4312,8 +4186,6 @@ export const exerciseLibrary = [
     "note": "Fentes alternées sautées hyper dynamiques pour développer la puissance explosive des cuisses et propulser instantanément le rythme cardiaque à la maison.",
     "id": "exo_278",
     "subMuscle": "",
-    "img": "2368-9E25EOx.jpg",
-    "gif": "2368-9E25EOx.gif",
     "tg": "quads",
     "sm": [
       "glutes",
@@ -4653,8 +4525,6 @@ export const exerciseLibrary = [
     "note": "Mains serrées en diamant sur un banc ou un support surélevé. Cible le bas des pectoraux (partie interne) et sollicite fortement les triceps.",
     "id": "exo_305",
     "subMuscle": "Faisceau claviculaire (Haut)",
-    "img": "0283-soIB2rj.jpg",
-    "gif": "0283-soIB2rj.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -4680,8 +4550,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur le dos, prise en supination sur la barre. Cette variante anatomique unique permet de cibler en priorité la portion claviculaire haute du pectoral.",
     "id": "exo_306",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0025-EIeI8Vf.jpg",
-    "gif": "0025-EIeI8Vf.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -4721,8 +4589,6 @@ export const exerciseLibrary = [
     "note": "Presser un seul haltère à la fois. Ce travail asymétrique force un gainage intense du buste tout en corrigeant les déséquilibres de force.",
     "id": "exo_308",
     "subMuscle": "Faisceau sterno-costal (Milieu)",
-    "img": "0289-SpYC0Kp.jpg",
-    "gif": "0289-SpYC0Kp.gif",
     "tg": "pectorals",
     "sm": [
       "triceps",
@@ -4760,8 +4626,6 @@ export const exerciseLibrary = [
     "note": "Debout face à la poulie haute, bras presque tendus, tirer la barre vers les cuisses en se concentrant sur le grand dorsal. Excellente tension continue.",
     "id": "exo_310",
     "subMuscle": "Grand Dorsal",
-    "img": "0198-RVwzP10.jpg",
-    "gif": "0198-RVwzP10.gif",
     "tg": "lats",
     "sm": [
       "biceps",
@@ -4801,8 +4665,6 @@ export const exerciseLibrary = [
     "note": "Tirage horizontal unilatéral au poids du corps sous une barre basse. Force unilatérale extrême et travail de gainage rotatoire intense.",
     "id": "exo_312",
     "subMuscle": "Grand Dorsal (Largeur)",
-    "img": "0499-bZGHsAZ.jpg",
-    "gif": "0499-bZGHsAZ.gif",
     "tg": "upper back",
     "sm": [
       "biceps",
@@ -4830,8 +4692,6 @@ export const exerciseLibrary = [
     "note": "Buste allongé sur le banc, lever les jambes tendues vers l'arrière à l'horizontale en contractant fessiers et lombaires profondément.",
     "id": "exo_313",
     "subMuscle": "Érecteurs du rachis",
-    "img": "0489-zhMwOwE.jpg",
-    "gif": "0489-zhMwOwE.gif",
     "tg": "spine",
     "sm": [
       "glutes",
@@ -4857,8 +4717,6 @@ export const exerciseLibrary = [
     "note": "Faire glisser les haltères le long des jambes, genoux fixes et dos plat. Cible l'étirement maximal de toute la chaîne postérieure (ischios, fessiers, lombaires).",
     "id": "exo_314",
     "subMuscle": "Érecteurs du rachis",
-    "img": "0432-5eLRITT.jpg",
-    "gif": "0432-5eLRITT.gif",
     "tg": "glutes",
     "sm": [
       "hamstrings",
@@ -4895,8 +4753,6 @@ export const exerciseLibrary = [
     "note": "En se tenant à un support, fléchir les genoux en les projetant vers l'avant tout en penchant le buste en arrière. Étirement extrême du droit fémoral.",
     "id": "exo_316",
     "subMuscle": "Droit fémoral / Vaste",
-    "img": "1489-xdYPUtE.jpg",
-    "gif": "1489-xdYPUtE.gif",
     "tg": "quads",
     "sm": [
       "calves",
@@ -4947,8 +4803,6 @@ export const exerciseLibrary = [
     "note": "Effectuer des fentes en avançant pas à pas, haltères aux mains. Excellent travail dynamique unilatéral pour les cuisses et l'équilibre général.",
     "id": "exo_319",
     "subMuscle": "Quadriceps (Global)",
-    "img": "1460-IZVHb27.jpg",
-    "gif": "1460-IZVHb27.gif",
     "tg": "glutes",
     "sm": [
       "quadriceps",
@@ -4988,8 +4842,6 @@ export const exerciseLibrary = [
     "note": "Sur le banc GHR spécifique, genoux fléchis, descendre le buste en contrôlant le mouvement avec la force des ischios-jambiers. Mouvement d'élite.",
     "id": "exo_321",
     "subMuscle": "Ischios (Global)",
-    "img": "3193-Vvwjz6N.jpg",
-    "gif": "3193-Vvwjz6N.gif",
     "tg": "hamstrings",
     "sm": [
       "glutes",
@@ -5077,8 +4929,6 @@ export const exerciseLibrary = [
     "note": "Barre sur le dos, pieds sur une cale, effectuer des extensions de chevilles contrôlées pour une surcharge progressive lourde sur les gastrocnémiens.",
     "id": "exo_327",
     "subMuscle": "Gastrocnémien",
-    "img": "1372-8ozhUIZ.jpg",
-    "gif": "1372-8ozhUIZ.gif",
     "tg": "calves",
     "sm": [
       "hamstrings",
@@ -5103,8 +4953,6 @@ export const exerciseLibrary = [
     "note": "Debout, élever les haltères devant soi jusqu'à l'horizontale en gardant le buste gainé. Isole parfaitement le deltoïde antérieur.",
     "id": "exo_328",
     "subMuscle": "Faisceau antérieur",
-    "img": "0310-3eGE2JC.jpg",
-    "gif": "0310-3eGE2JC.gif",
     "tg": "delts",
     "sm": [
       "biceps",
@@ -5165,8 +5013,6 @@ export const exerciseLibrary = [
     "note": "Barre tenue avec paumes vers le bas (pronation). Cible le muscle brachial et le brachio-radial pour épaissir visiblement le haut de l'avant-bras.",
     "id": "exo_332",
     "subMuscle": "Biceps (Global)",
-    "img": "0080-xNrS20v.jpg",
-    "gif": "0080-xNrS20v.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -5228,8 +5074,6 @@ export const exerciseLibrary = [
     "note": "Pompes au sol, mains rapprochées formant un diamant sous le plexus. Variante excellente au poids du corps axée sur les triceps et la partie interne des pecs.",
     "id": "exo_336",
     "subMuscle": "Triceps (Global)",
-    "img": "0283-soIB2rj.jpg",
-    "gif": "0283-soIB2rj.gif",
     "tg": "triceps",
     "sm": [
       "chest",
@@ -5255,8 +5099,6 @@ export const exerciseLibrary = [
     "note": "Avant-bras posés sur le banc, paumes vers le haut, effectuer des flexions de poignets contrôlées pour isoler la face interne de l'avant-bras.",
     "id": "exo_337",
     "subMuscle": "Fléchisseurs / Extenseurs",
-    "img": "0126-82LxxkW.jpg",
-    "gif": "0126-82LxxkW.gif",
     "tg": "forearms",
     "sm": [
       "biceps",
@@ -5294,8 +5136,6 @@ export const exerciseLibrary = [
     "note": "Suspendu à la barre fixe, enrouler lentement le bassin pour amener les genoux ou les pointes de pieds vers le haut sans utiliser d'élan.",
     "id": "exo_339",
     "subMuscle": "Grand droit",
-    "img": "0472-I3tsCnC.jpg",
-    "gif": "0472-I3tsCnC.gif",
     "tg": "abs",
     "sm": [
       "hip flexors"
@@ -5320,8 +5160,6 @@ export const exerciseLibrary = [
     "note": "À genoux avec la corde derrière la nuque face à la poulie, enrouler le haut du dos pour rapprocher les coudes des cuisses sous tension continue.",
     "id": "exo_340",
     "subMuscle": "Grand droit",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -5348,8 +5186,6 @@ export const exerciseLibrary = [
     "note": "Enchaînement dynamique : flexion, planche, pompe, retour accroupi et saut explosif. Un des exercices métaboliques les plus intenses.",
     "id": "exo_341",
     "subMuscle": "",
-    "img": "1160-dK9394r.jpg",
-    "gif": "1160-dK9394r.gif",
     "tg": "cardiovascular system",
     "sm": [
       "quadriceps",
@@ -5380,8 +5216,6 @@ export const exerciseLibrary = [
     "note": "Sauts rapides et coordonnés. Idéal à la maison ou à la salle pour développer la pliométrie des mollets, la vitesse de pied et le souffle.",
     "id": "exo_342",
     "subMuscle": "",
-    "img": "2612-e1e76I2.jpg",
-    "gif": "2612-e1e76I2.gif",
     "tg": "cardiovascular system",
     "sm": [
       "calves",
@@ -5409,8 +5243,6 @@ export const exerciseLibrary = [
     "note": "Buste orienté à 45° face au câble, bras en extension totale arrière. Effectuer un curl marteau (prise neutre) en étirant le brachial en profondeur.",
     "id": "exo_343",
     "subMuscle": "Brachial / Brachio-radial",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -5473,8 +5305,6 @@ export const exerciseLibrary = [
     "note": "Allongé sur le flanc, l'haltère offre une résistance maximale dès le début du mouvement, pile là où le deltoïde moyen est le plus étiré.",
     "id": "exo_347",
     "subMuscle": "Faisceau latéral",
-    "img": "0334-DsgkuIt.jpg",
-    "gif": "0334-DsgkuIt.gif",
     "tg": "delts",
     "sm": [
       "traps"
@@ -5523,8 +5353,6 @@ export const exerciseLibrary = [
     "note": "Flexion latérale debout avec sangle à la poulie basse, incluant une pause de 2 secondes en étirement maximal pour forcer les obliques profonds à réagir.",
     "id": "exo_350",
     "subMuscle": "Grand droit",
-    "img": "0222-wPypxFY.jpg",
-    "gif": "0222-wPypxFY.gif",
     "tg": "abs",
     "sm": [
       "obliques"
@@ -5550,8 +5378,6 @@ export const exerciseLibrary = [
     "note": "Dos à la poulie basse, bras en arrière. Tension continue et étirement extrême du long chef du biceps.",
     "id": "exo_351",
     "subMuscle": "Chef long (Extérieur)",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -5590,8 +5416,6 @@ export const exerciseLibrary = [
     "unit": "seconds",
     "rest": 90,
     "note": "Prends des charges lourdes, garde le buste droit et avance. Excellent pour les trapèzes et la force de poigne.",
-    "img": "2133-qPEzJjA.jpg",
-    "gif": "2133-qPEzJjA.gif",
     "tg": "quads",
     "sm": [
       "calves",
@@ -5618,8 +5442,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Curl en supination à la montée, pronation à la descente. Excellent pour le biceps, le brachial et le brachio-radial.",
     "subMuscle": "Brachial / Brachio-radial",
-    "img": "0439-kXaIn5A.jpg",
-    "gif": "0439-kXaIn5A.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -5669,8 +5491,6 @@ export const exerciseLibrary = [
     "rest": 90,
     "note": "Excellente isolation du muscle brachio-radial (avant-bras) et du brachial.",
     "subMuscle": "Fléchisseurs / Extenseurs",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif",
     "tg": "biceps",
     "sm": [
       "forearms"
@@ -5747,9 +5567,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0001-2gPfomN.jpg",
-    "gif": "0001-2gPfomN.gif"
-  },
+    },
   {
     "id": "og_0002",
     "muscle": "Abdominaux",
@@ -5774,9 +5592,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0002-Hy9D21L.jpg",
-    "gif": "0002-Hy9D21L.gif"
-  },
+    },
   {
     "id": "og_0003",
     "muscle": "Abdominaux",
@@ -5801,9 +5617,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0003-1ZFqTDN.jpg",
-    "gif": "0003-1ZFqTDN.gif"
-  },
+    },
   {
     "id": "og_1512",
     "muscle": "Quadriceps",
@@ -5829,9 +5643,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1512-qBcKorM.jpg",
-    "gif": "1512-qBcKorM.gif"
-  },
+    },
   {
     "id": "og_0006",
     "muscle": "Abdominaux",
@@ -5856,9 +5668,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0006-qaZVsGk.jpg",
-    "gif": "0006-qaZVsGk.gif"
-  },
+    },
   {
     "id": "og_0007",
     "muscle": "Dos",
@@ -5884,9 +5694,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0007-4IKbhHV.jpg",
-    "gif": "0007-4IKbhHV.gif"
-  },
+    },
   {
     "id": "og_1368",
     "muscle": "Mollets",
@@ -5910,9 +5718,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1368-uL9CsKm.jpg",
-    "gif": "1368-uL9CsKm.gif"
-  },
+    },
   {
     "id": "og_3293",
     "muscle": "Dos",
@@ -5939,9 +5745,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3293-72BC5Za.jpg",
-    "gif": "3293-72BC5Za.gif"
-  },
+    },
   {
     "id": "og_3294",
     "muscle": "Pectoraux",
@@ -5969,9 +5773,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3294-A9qxk2F.jpg",
-    "gif": "3294-A9qxk2F.gif"
-  },
+    },
   {
     "id": "og_2355",
     "muscle": "Abdominaux",
@@ -5996,9 +5798,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2355-uWpxD4v.jpg",
-    "gif": "2355-uWpxD4v.gif"
-  },
+    },
   {
     "id": "og_2333",
     "muscle": "Abdominaux",
@@ -6023,9 +5823,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2333-PXTIwgu.jpg",
-    "gif": "2333-PXTIwgu.gif"
-  },
+    },
   {
     "id": "og_3214",
     "muscle": "Fessiers",
@@ -6052,9 +5850,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3214-RtyAsy1.jpg",
-    "gif": "3214-RtyAsy1.gif"
-  },
+    },
   {
     "id": "og_3204",
     "muscle": "Abdominaux",
@@ -6080,9 +5876,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3204-NAkmgdx.jpg",
-    "gif": "3204-NAkmgdx.gif"
-  },
+    },
   {
     "id": "og_0009",
     "muscle": "Pectoraux",
@@ -6108,9 +5902,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "0009-PAgTVaK.jpg",
-    "gif": "0009-PAgTVaK.gif"
-  },
+    },
   {
     "id": "og_0011",
     "muscle": "Abdominaux",
@@ -6135,9 +5927,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "0011-03lzqwk.jpg",
-    "gif": "0011-03lzqwk.gif"
-  },
+    },
   {
     "id": "og_0010",
     "muscle": "Abdominaux",
@@ -6162,9 +5952,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "0010-8K0w2yA.jpg",
-    "gif": "0010-8K0w2yA.gif"
-  },
+    },
   {
     "id": "og_1708",
     "muscle": "Mollets",
@@ -6189,9 +5977,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "lower legs",
-    "img": "1708-GxDwDX0.jpg",
-    "gif": "1708-GxDwDX0.gif"
-  },
+    },
   {
     "id": "og_1709",
     "muscle": "Fessiers",
@@ -6216,9 +6002,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper legs",
-    "img": "1709-yn0LjwL.jpg",
-    "gif": "1709-yn0LjwL.gif"
-  },
+    },
   {
     "id": "og_1710",
     "muscle": "Fessiers",
@@ -6243,9 +6027,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper legs",
-    "img": "1710-RQNVT10.jpg",
-    "gif": "1710-RQNVT10.gif"
-  },
+    },
   {
     "id": "og_0012",
     "muscle": "Abdominaux",
@@ -6273,9 +6055,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "0012-UGhRD1A.jpg",
-    "gif": "0012-UGhRD1A.gif"
-  },
+    },
   {
     "id": "og_0013",
     "muscle": "Abdominaux",
@@ -6304,9 +6084,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "0013-VX5YKR5.jpg",
-    "gif": "0013-VX5YKR5.gif"
-  },
+    },
   {
     "id": "og_0014",
     "muscle": "Abdominaux",
@@ -6333,9 +6111,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "waist",
-    "img": "0014-r7cT9YD.jpg",
-    "gif": "0014-r7cT9YD.gif"
-  },
+    },
   {
     "id": "og_0015",
     "muscle": "Dos",
@@ -6363,9 +6139,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0015-vrhHa6D.jpg",
-    "gif": "0015-vrhHa6D.gif"
-  },
+    },
   {
     "id": "og_0016",
     "muscle": "Ischio-Jambiers",
@@ -6391,9 +6165,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper legs",
-    "img": "0016-VedGSby.jpg",
-    "gif": "0016-VedGSby.gif"
-  },
+    },
   {
     "id": "og_1713",
     "muscle": "Quadriceps",
@@ -6419,9 +6191,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper legs",
-    "img": "1713-YUYAMEj.jpg",
-    "gif": "1713-YUYAMEj.gif"
-  },
+    },
   {
     "id": "og_1714",
     "muscle": "Abdominaux",
@@ -6446,9 +6216,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "1714-2Ryn564.jpg",
-    "gif": "1714-2Ryn564.gif"
-  },
+    },
   {
     "id": "og_0017",
     "muscle": "Dos",
@@ -6476,9 +6244,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0017-kiJ4Z2K.jpg",
-    "gif": "0017-kiJ4Z2K.gif"
-  },
+    },
   {
     "id": "og_1716",
     "muscle": "Pectoraux",
@@ -6504,9 +6270,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "chest",
-    "img": "1716-RoV1Rfa.jpg",
-    "gif": "1716-RoV1Rfa.gif"
-  },
+    },
   {
     "id": "og_1712",
     "muscle": "Ischio-Jambiers",
@@ -6533,9 +6297,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper legs",
-    "img": "1712-hC6oYY5.jpg",
-    "gif": "1712-hC6oYY5.gif"
-  },
+    },
   {
     "id": "og_1758",
     "muscle": "Abdominaux",
@@ -6561,9 +6323,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "waist",
-    "img": "1758-aumB2IV.jpg",
-    "gif": "1758-aumB2IV.gif"
-  },
+    },
   {
     "id": "og_1431",
     "muscle": "Dos",
@@ -6591,9 +6351,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1431-7OeHptV.jpg",
-    "gif": "1431-7OeHptV.gif"
-  },
+    },
   {
     "id": "og_1432",
     "muscle": "Dos",
@@ -6621,9 +6379,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1432-f4xtKBj.jpg",
-    "gif": "1432-f4xtKBj.gif"
-  },
+    },
   {
     "id": "og_0018",
     "muscle": "Triceps",
@@ -6648,9 +6404,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "upper arms",
-    "img": "0018-7HcfMBP.jpg",
-    "gif": "0018-7HcfMBP.gif"
-  },
+    },
   {
     "id": "og_0019",
     "muscle": "Triceps",
@@ -6676,9 +6430,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "0019-J60bN17.jpg",
-    "gif": "0019-J60bN17.gif"
-  },
+    },
   {
     "id": "og_2364",
     "muscle": "Pectoraux",
@@ -6704,9 +6456,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "2364-PnZJIrk.jpg",
-    "gif": "2364-PnZJIrk.gif"
-  },
+    },
   {
     "id": "og_3220",
     "muscle": "Cardio",
@@ -6734,9 +6484,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3220-f9lVSSI.jpg",
-    "gif": "3220-f9lVSSI.gif"
-  },
+    },
   {
     "id": "og_3672",
     "muscle": "Cardio",
@@ -6765,9 +6513,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3672-fNGumX0.jpg",
-    "gif": "3672-fNGumX0.gif"
-  },
+    },
   {
     "id": "og_1314",
     "muscle": "Dos",
@@ -6793,9 +6539,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1314-qLpO4vV.jpg",
-    "gif": "1314-qLpO4vV.gif"
-  },
+    },
   {
     "id": "og_3297",
     "muscle": "Dos",
@@ -6823,9 +6567,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3297-GaSzzuh.jpg",
-    "gif": "3297-GaSzzuh.gif"
-  },
+    },
   {
     "id": "og_1405",
     "muscle": "Dos",
@@ -6853,9 +6595,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1405-chfnQnM.jpg",
-    "gif": "1405-chfnQnM.gif"
-  },
+    },
   {
     "id": "og_1473",
     "muscle": "Quadriceps",
@@ -6881,9 +6621,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1473-SaDOwk7.jpg",
-    "gif": "1473-SaDOwk7.gif"
-  },
+    },
   {
     "id": "og_0020",
     "muscle": "Quadriceps",
@@ -6910,9 +6648,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0020-xAySMB0.jpg",
-    "gif": "0020-xAySMB0.gif"
-  },
+    },
   {
     "id": "og_0968",
     "muscle": "Biceps",
@@ -6936,9 +6672,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper arms",
-    "img": "0968-3omWx6P.jpg",
-    "gif": "0968-3omWx6P.gif"
-  },
+    },
   {
     "id": "og_0969",
     "muscle": "Abdominaux",
@@ -6963,9 +6697,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0969-ztAa1RK.jpg",
-    "gif": "0969-ztAa1RK.gif"
-  },
+    },
   {
     "id": "og_0970",
     "muscle": "Dos",
@@ -6992,9 +6724,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "0970-r1XNRYB.jpg",
-    "gif": "0970-r1XNRYB.gif"
-  },
+    },
   {
     "id": "og_0971",
     "muscle": "Abdominaux",
@@ -7019,9 +6749,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0971-zhF9lW4.jpg",
-    "gif": "0971-zhF9lW4.gif"
-  },
+    },
   {
     "id": "og_1254",
     "muscle": "Pectoraux",
@@ -7047,9 +6775,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "chest",
-    "img": "1254-khlHMqs.jpg",
-    "gif": "1254-khlHMqs.gif"
-  },
+    },
   {
     "id": "og_0980",
     "muscle": "Fessiers",
@@ -7077,9 +6803,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "0980-wSScovH.jpg",
-    "gif": "0980-wSScovH.gif"
-  },
+    },
   {
     "id": "og_0972",
     "muscle": "Abdominaux",
@@ -7105,9 +6829,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0972-tZkGYZ9.jpg",
-    "gif": "0972-tZkGYZ9.gif"
-  },
+    },
   {
     "id": "og_0974",
     "muscle": "Dos",
@@ -7134,9 +6856,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "0974-DptumMx.jpg",
-    "gif": "0974-DptumMx.gif"
-  },
+    },
   {
     "id": "og_0975",
     "muscle": "Triceps",
@@ -7162,9 +6882,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper arms",
-    "img": "0975-ufaxB52.jpg",
-    "gif": "0975-ufaxB52.gif"
-  },
+    },
   {
     "id": "og_0976",
     "muscle": "Biceps",
@@ -7190,9 +6908,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper arms",
-    "img": "0976-kmVVAfu.jpg",
-    "gif": "0976-kmVVAfu.gif"
-  },
+    },
   {
     "id": "og_3117",
     "muscle": "Dos",
@@ -7221,9 +6937,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "3117-4LoWllp.jpg",
-    "gif": "3117-4LoWllp.gif"
-  },
+    },
   {
     "id": "og_3116",
     "muscle": "Dos",
@@ -7254,9 +6968,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "3116-ZH68exZ.jpg",
-    "gif": "3116-ZH68exZ.gif"
-  },
+    },
   {
     "id": "og_0977",
     "muscle": "Épaules",
@@ -7281,9 +6993,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "0977-sTg7iys.jpg",
-    "gif": "0977-sTg7iys.gif"
-  },
+    },
   {
     "id": "og_0978",
     "muscle": "Épaules",
@@ -7308,9 +7018,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "0978-TFA88iB.jpg",
-    "gif": "0978-TFA88iB.gif"
-  },
+    },
   {
     "id": "og_1408",
     "muscle": "Fessiers",
@@ -7337,9 +7045,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1408-E4R8Hz1.jpg",
-    "gif": "1408-E4R8Hz1.gif"
-  },
+    },
   {
     "id": "og_0979",
     "muscle": "Abdominaux",
@@ -7369,9 +7075,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0979-9pa4H5m.jpg",
-    "gif": "0979-9pa4H5m.gif"
-  },
+    },
   {
     "id": "og_0981",
     "muscle": "Abdominaux",
@@ -7395,9 +7099,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0981-KCBKjma.jpg",
-    "gif": "0981-KCBKjma.gif"
-  },
+    },
   {
     "id": "og_0983",
     "muscle": "Dos",
@@ -7424,9 +7126,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "0983-pmnrOp0.jpg",
-    "gif": "0983-pmnrOp0.gif"
-  },
+    },
   {
     "id": "og_0985",
     "muscle": "Abdominaux",
@@ -7452,9 +7152,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0985-225x2Vd.jpg",
-    "gif": "0985-225x2Vd.gif"
-  },
+    },
   {
     "id": "og_0984",
     "muscle": "Fessiers",
@@ -7480,9 +7178,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "0984-vIICElP.jpg",
-    "gif": "0984-vIICElP.gif"
-  },
+    },
   {
     "id": "og_1002",
     "muscle": "Abdominaux",
@@ -7507,9 +7203,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1002-bbLR7fB.jpg",
-    "gif": "1002-bbLR7fB.gif"
-  },
+    },
   {
     "id": "og_0986",
     "muscle": "Biceps",
@@ -7535,9 +7229,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper arms",
-    "img": "0986-UNAB8ak.jpg",
-    "gif": "0986-UNAB8ak.gif"
-  },
+    },
   {
     "id": "og_0987",
     "muscle": "Quadriceps",
@@ -7564,9 +7256,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "0987-arsYEd3.jpg",
-    "gif": "0987-arsYEd3.gif"
-  },
+    },
   {
     "id": "og_0988",
     "muscle": "Dos",
@@ -7594,9 +7284,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "0988-km0sQC0.jpg",
-    "gif": "0988-km0sQC0.gif"
-  },
+    },
   {
     "id": "og_0989",
     "muscle": "Pectoraux",
@@ -7625,9 +7313,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "chest",
-    "img": "0989-c16nYGA.jpg",
-    "gif": "0989-c16nYGA.gif"
-  },
+    },
   {
     "id": "og_0990",
     "muscle": "Dos",
@@ -7654,9 +7340,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "0990-DKBwJrL.jpg",
-    "gif": "0990-DKBwJrL.gif"
-  },
+    },
   {
     "id": "og_0991",
     "muscle": "Fessiers",
@@ -7684,9 +7368,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "0991-VtTbiP3.jpg",
-    "gif": "0991-VtTbiP3.gif"
-  },
+    },
   {
     "id": "og_0992",
     "muscle": "Abdominaux",
@@ -7713,9 +7395,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "0992-zFzbBfL.jpg",
-    "gif": "0992-zFzbBfL.gif"
-  },
+    },
   {
     "id": "og_0993",
     "muscle": "Épaules",
@@ -7742,9 +7422,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "0993-sTfvVsG.jpg",
-    "gif": "0993-sTfvVsG.gif"
-  },
+    },
   {
     "id": "og_0994",
     "muscle": "Avant-bras",
@@ -7770,9 +7448,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "lower arms",
-    "img": "0994-Ezpnw9d.jpg",
-    "gif": "0994-Ezpnw9d.gif"
-  },
+    },
   {
     "id": "og_0996",
     "muscle": "Fessiers",
@@ -7799,9 +7475,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "0996-9gbyYKk.jpg",
-    "gif": "0996-9gbyYKk.gif"
-  },
+    },
   {
     "id": "og_1011",
     "muscle": "Abdominaux",
@@ -7827,9 +7501,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1011-S1JXDAG.jpg",
-    "gif": "1011-S1JXDAG.gif"
-  },
+    },
   {
     "id": "og_0997",
     "muscle": "Épaules",
@@ -7855,9 +7527,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "0997-peAeMR3.jpg",
-    "gif": "0997-peAeMR3.gif"
-  },
+    },
   {
     "id": "og_1018",
     "muscle": "Dos",
@@ -7882,9 +7552,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "1018-trmte8s.jpg",
-    "gif": "1018-trmte8s.gif"
-  },
+    },
   {
     "id": "og_0998",
     "muscle": "Triceps",
@@ -7909,9 +7577,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper arms",
-    "img": "0998-obe5LMq.jpg",
-    "gif": "0998-obe5LMq.gif"
-  },
+    },
   {
     "id": "og_0999",
     "muscle": "Mollets",
@@ -7937,9 +7603,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "lower legs",
-    "img": "0999-9JprnPh.jpg",
-    "gif": "0999-9JprnPh.gif"
-  },
+    },
   {
     "id": "og_1000",
     "muscle": "Mollets",
@@ -7965,9 +7629,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "lower legs",
-    "img": "1000-QsSQWbf.jpg",
-    "gif": "1000-QsSQWbf.gif"
-  },
+    },
   {
     "id": "og_1001",
     "muscle": "Quadriceps",
@@ -7993,9 +7655,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1001-y8bYM8w.jpg",
-    "gif": "1001-y8bYM8w.gif"
-  },
+    },
   {
     "id": "og_1004",
     "muscle": "Fessiers",
@@ -8022,9 +7682,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1004-TUZLh71.jpg",
-    "gif": "1004-TUZLh71.gif"
-  },
+    },
   {
     "id": "og_1003",
     "muscle": "Fessiers",
@@ -8053,9 +7711,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1003-w1NOByi.jpg",
-    "gif": "1003-w1NOByi.gif"
-  },
+    },
   {
     "id": "og_1005",
     "muscle": "Abdominaux",
@@ -8081,9 +7737,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1005-Kzg30R7.jpg",
-    "gif": "1005-Kzg30R7.gif"
-  },
+    },
   {
     "id": "og_1022",
     "muscle": "Épaules",
@@ -8111,9 +7765,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "1022-tc5dYrf.jpg",
-    "gif": "1022-tc5dYrf.gif"
-  },
+    },
   {
     "id": "og_1007",
     "muscle": "Abdominaux",
@@ -8139,9 +7791,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1007-euq4pwp.jpg",
-    "gif": "1007-euq4pwp.gif"
-  },
+    },
   {
     "id": "og_1008",
     "muscle": "Fessiers",
@@ -8170,9 +7820,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1008-d5bTEPV.jpg",
-    "gif": "1008-d5bTEPV.gif"
-  },
+    },
   {
     "id": "og_1009",
     "muscle": "Fessiers",
@@ -8200,9 +7848,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1009-kuMiR2T.jpg",
-    "gif": "1009-kuMiR2T.gif"
-  },
+    },
   {
     "id": "og_1023",
     "muscle": "Fessiers",
@@ -8229,9 +7875,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "upper legs",
-    "img": "1023-lHeUULr.jpg",
-    "gif": "1023-lHeUULr.gif"
-  },
+    },
   {
     "id": "og_1010",
     "muscle": "Dos",
@@ -8259,9 +7903,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "1010-KUaoUV8.jpg",
-    "gif": "1010-KUaoUV8.gif"
-  },
+    },
   {
     "id": "og_1012",
     "muscle": "Épaules",
@@ -8289,9 +7931,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "1012-u4bAmKp.jpg",
-    "gif": "1012-u4bAmKp.gif"
-  },
+    },
   {
     "id": "og_1369",
     "muscle": "Mollets",
@@ -8317,9 +7957,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "lower legs",
-    "img": "1369-jl6uxZV.jpg",
-    "gif": "1369-jl6uxZV.gif"
-  },
+    },
   {
     "id": "og_1013",
     "muscle": "Dos",
@@ -8347,9 +7985,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "back",
-    "img": "1013-k6tUeqS.jpg",
-    "gif": "1013-k6tUeqS.gif"
-  },
+    },
   {
     "id": "og_1014",
     "muscle": "Abdominaux",
@@ -8373,9 +8009,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1014-H6ETwO9.jpg",
-    "gif": "1014-H6ETwO9.gif"
-  },
+    },
   {
     "id": "og_1015",
     "muscle": "Abdominaux",
@@ -8403,9 +8037,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "waist",
-    "img": "1015-G7PXMlT.jpg",
-    "gif": "1015-G7PXMlT.gif"
-  },
+    },
   {
     "id": "og_1016",
     "muscle": "Avant-bras",
@@ -8431,9 +8063,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "lower arms",
-    "img": "1016-vUTfFHw.jpg",
-    "gif": "1016-vUTfFHw.gif"
-  },
+    },
   {
     "id": "og_1017",
     "muscle": "Épaules",
@@ -8459,9 +8089,7 @@ export const exerciseLibrary = [
     ],
     "eq": "band",
     "bp": "shoulders",
-    "img": "1017-aHDy5O5.jpg",
-    "gif": "1017-aHDy5O5.gif"
-  },
+    },
   {
     "id": "og_0023",
     "muscle": "Biceps",
@@ -8487,9 +8115,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0023-Yza7XrQ.jpg",
-    "gif": "0023-Yza7XrQ.gif"
-  },
+    },
   {
     "id": "og_0024",
     "muscle": "Quadriceps",
@@ -8516,9 +8142,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0024-Y7YcmIJ.jpg",
-    "gif": "0024-Y7YcmIJ.gif"
-  },
+    },
   {
     "id": "og_0025",
     "muscle": "Pectoraux",
@@ -8546,9 +8170,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0025-EIeI8Vf.jpg",
-    "gif": "0025-EIeI8Vf.gif"
-  },
+    },
   {
     "id": "og_0026",
     "muscle": "Quadriceps",
@@ -8578,9 +8200,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0026-W9pFVv1.jpg",
-    "gif": "0026-W9pFVv1.gif"
-  },
+    },
   {
     "id": "og_1316",
     "muscle": "Dos",
@@ -8606,9 +8226,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "1316-cA9FuWG.jpg",
-    "gif": "1316-cA9FuWG.gif"
-  },
+    },
   {
     "id": "og_0027",
     "muscle": "Dos",
@@ -8635,9 +8253,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0027-eZyBC3j.jpg",
-    "gif": "0027-eZyBC3j.gif"
-  },
+    },
   {
     "id": "og_2407",
     "muscle": "Biceps",
@@ -8664,9 +8280,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "2407-aee2Fcj.jpg",
-    "gif": "2407-aee2Fcj.gif"
-  },
+    },
   {
     "id": "og_0028",
     "muscle": "Quadriceps",
@@ -8696,9 +8310,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0028-SGY8Zui.jpg",
-    "gif": "0028-SGY8Zui.gif"
-  },
+    },
   {
     "id": "og_0029",
     "muscle": "Fessiers",
@@ -8727,9 +8339,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0029-qi996YS.jpg",
-    "gif": "0029-qi996YS.gif"
-  },
+    },
   {
     "id": "og_0030",
     "muscle": "Triceps",
@@ -8756,9 +8366,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0030-J6Dx1Mu.jpg",
-    "gif": "0030-J6Dx1Mu.gif"
-  },
+    },
   {
     "id": "og_0031",
     "muscle": "Biceps",
@@ -8784,9 +8392,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0031-25GPyDY.jpg",
-    "gif": "0031-25GPyDY.gif"
-  },
+    },
   {
     "id": "og_0032",
     "muscle": "Fessiers",
@@ -8813,9 +8419,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0032-ila4NZS.jpg",
-    "gif": "0032-ila4NZS.gif"
-  },
+    },
   {
     "id": "og_0033",
     "muscle": "Pectoraux",
@@ -8841,9 +8445,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0033-GrO65fd.jpg",
-    "gif": "0033-GrO65fd.gif"
-  },
+    },
   {
     "id": "og_0034",
     "muscle": "Dos",
@@ -8869,9 +8471,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0034-hMEptv0.jpg",
-    "gif": "0034-hMEptv0.gif"
-  },
+    },
   {
     "id": "og_0035",
     "muscle": "Triceps",
@@ -8896,9 +8496,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0035-LMGXZn8.jpg",
-    "gif": "0035-LMGXZn8.gif"
-  },
+    },
   {
     "id": "og_1255",
     "muscle": "Pectoraux",
@@ -8925,9 +8523,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "1255-9sgNE2O.jpg",
-    "gif": "1255-9sgNE2O.gif"
-  },
+    },
   {
     "id": "og_0036",
     "muscle": "Pectoraux",
@@ -8953,9 +8549,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0036-hl8DUh8.jpg",
-    "gif": "0036-hl8DUh8.gif"
-  },
+    },
   {
     "id": "og_0037",
     "muscle": "Dos",
@@ -8981,9 +8575,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0037-Hj4FOCd.jpg",
-    "gif": "0037-Hj4FOCd.gif"
-  },
+    },
   {
     "id": "og_0038",
     "muscle": "Biceps",
@@ -9008,9 +8600,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0038-IENzBdA.jpg",
-    "gif": "0038-IENzBdA.gif"
-  },
+    },
   {
     "id": "og_1370",
     "muscle": "Mollets",
@@ -9036,9 +8626,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "1370-2IHEa2T.jpg",
-    "gif": "1370-2IHEa2T.gif"
-  },
+    },
   {
     "id": "og_0039",
     "muscle": "Fessiers",
@@ -9067,9 +8655,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0039-IeTIEqg.jpg",
-    "gif": "0039-IeTIEqg.gif"
-  },
+    },
   {
     "id": "og_0041",
     "muscle": "Épaules",
@@ -9094,9 +8680,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0041-b2Uoz54.jpg",
-    "gif": "0041-b2Uoz54.gif"
-  },
+    },
   {
     "id": "og_0040",
     "muscle": "Pectoraux",
@@ -9123,9 +8707,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0040-33AzZeV.jpg",
-    "gif": "0040-33AzZeV.gif"
-  },
+    },
   {
     "id": "og_0042",
     "muscle": "Fessiers",
@@ -9154,9 +8736,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0042-zG0zs85.jpg",
-    "gif": "0042-zG0zs85.gif"
-  },
+    },
   {
     "id": "og_0043",
     "muscle": "Fessiers",
@@ -9187,9 +8767,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0043-qXTaZnJ.jpg",
-    "gif": "0043-qXTaZnJ.gif"
-  },
+    },
   {
     "id": "og_1461",
     "muscle": "Fessiers",
@@ -9220,9 +8798,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1461-DhMl549.jpg",
-    "gif": "1461-DhMl549.gif"
-  },
+    },
   {
     "id": "og_1462",
     "muscle": "Fessiers",
@@ -9253,9 +8829,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1462-iYzB0Cz.jpg",
-    "gif": "1462-iYzB0Cz.gif"
-  },
+    },
   {
     "id": "og_1545",
     "muscle": "Fessiers",
@@ -9285,9 +8859,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1545-vR1vold.jpg",
-    "gif": "1545-vR1vold.gif"
-  },
+    },
   {
     "id": "og_1409",
     "muscle": "Fessiers",
@@ -9314,9 +8886,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1409-qKBpF7I.jpg",
-    "gif": "1409-qKBpF7I.gif"
-  },
+    },
   {
     "id": "og_3562",
     "muscle": "Fessiers",
@@ -9343,9 +8913,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "3562-qg2PGl6.jpg",
-    "gif": "3562-qg2PGl6.gif"
-  },
+    },
   {
     "id": "og_0044",
     "muscle": "Ischio-Jambiers",
@@ -9370,9 +8938,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0044-XlZ4lAC.jpg",
-    "gif": "0044-XlZ4lAC.gif"
-  },
+    },
   {
     "id": "og_0045",
     "muscle": "Pectoraux",
@@ -9399,9 +8965,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0045-GXoaSgn.jpg",
-    "gif": "0045-GXoaSgn.gif"
-  },
+    },
   {
     "id": "og_0046",
     "muscle": "Fessiers",
@@ -9429,9 +8993,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0046-5VCj6iH.jpg",
-    "gif": "0046-5VCj6iH.gif"
-  },
+    },
   {
     "id": "og_1436",
     "muscle": "Fessiers",
@@ -9460,9 +9022,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1436-Gnfo4FM.jpg",
-    "gif": "1436-Gnfo4FM.gif"
-  },
+    },
   {
     "id": "og_0047",
     "muscle": "Pectoraux",
@@ -9489,9 +9049,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0047-3TZduzM.jpg",
-    "gif": "0047-3TZduzM.gif"
-  },
+    },
   {
     "id": "og_1719",
     "muscle": "Triceps",
@@ -9519,9 +9077,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1719-gx7s7uF.jpg",
-    "gif": "1719-gx7s7uF.gif"
-  },
+    },
   {
     "id": "og_0048",
     "muscle": "Triceps",
@@ -9547,9 +9103,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0048-641mIfk.jpg",
-    "gif": "0048-641mIfk.gif"
-  },
+    },
   {
     "id": "og_0049",
     "muscle": "Dos",
@@ -9577,9 +9131,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0049-dmgMp3n.jpg",
-    "gif": "0049-dmgMp3n.gif"
-  },
+    },
   {
     "id": "og_0050",
     "muscle": "Pectoraux",
@@ -9607,9 +9159,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0050-xi0yckC.jpg",
-    "gif": "0050-xi0yckC.gif"
-  },
+    },
   {
     "id": "og_0051",
     "muscle": "Fessiers",
@@ -9637,9 +9187,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0051-pkSoCW9.jpg",
-    "gif": "0051-pkSoCW9.gif"
-  },
+    },
   {
     "id": "og_0052",
     "muscle": "Triceps",
@@ -9665,9 +9213,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0052-ZsiqXYa.jpg",
-    "gif": "0052-ZsiqXYa.gif"
-  },
+    },
   {
     "id": "og_0053",
     "muscle": "Fessiers",
@@ -9694,9 +9240,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0053-1gFNTZV.jpg",
-    "gif": "0053-1gFNTZV.gif"
-  },
+    },
   {
     "id": "og_1410",
     "muscle": "Fessiers",
@@ -9723,9 +9267,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1410-py1HSzx.jpg",
-    "gif": "1410-py1HSzx.gif"
-  },
+    },
   {
     "id": "og_1435",
     "muscle": "Fessiers",
@@ -9752,9 +9294,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1435-bTpEUcm.jpg",
-    "gif": "1435-bTpEUcm.gif"
-  },
+    },
   {
     "id": "og_0054",
     "muscle": "Fessiers",
@@ -9781,9 +9321,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0054-t8iSghb.jpg",
-    "gif": "0054-t8iSghb.gif"
-  },
+    },
   {
     "id": "og_1720",
     "muscle": "Triceps",
@@ -9808,9 +9346,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1720-yg8Totb.jpg",
-    "gif": "1720-yg8Totb.gif"
-  },
+    },
   {
     "id": "og_0055",
     "muscle": "Triceps",
@@ -9837,9 +9373,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0055-EcaV7aL.jpg",
-    "gif": "0055-EcaV7aL.gif"
-  },
+    },
   {
     "id": "og_0056",
     "muscle": "Triceps",
@@ -9865,9 +9399,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0056-HJ63mSO.jpg",
-    "gif": "0056-HJ63mSO.gif"
-  },
+    },
   {
     "id": "og_0057",
     "muscle": "Triceps",
@@ -9892,9 +9424,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0057-EMpUwRI.jpg",
-    "gif": "0057-EMpUwRI.gif"
-  },
+    },
   {
     "id": "og_0058",
     "muscle": "Fessiers",
@@ -9920,9 +9450,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0058-SNFfUff.jpg",
-    "gif": "0058-SNFfUff.gif"
-  },
+    },
   {
     "id": "og_0059",
     "muscle": "Biceps",
@@ -9948,9 +9476,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0059-SYJ4Bkt.jpg",
-    "gif": "0059-SYJ4Bkt.gif"
-  },
+    },
   {
     "id": "og_0061",
     "muscle": "Triceps",
@@ -9975,9 +9501,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0061-iZop9xO.jpg",
-    "gif": "0061-iZop9xO.gif"
-  },
+    },
   {
     "id": "og_0060",
     "muscle": "Triceps",
@@ -10002,9 +9526,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0060-h8LFzo9.jpg",
-    "gif": "0060-h8LFzo9.gif"
-  },
+    },
   {
     "id": "og_0063",
     "muscle": "Fessiers",
@@ -10032,9 +9554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0063-elhhVgj.jpg",
-    "gif": "0063-elhhVgj.gif"
-  },
+    },
   {
     "id": "og_0064",
     "muscle": "Dos",
@@ -10060,9 +9580,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0064-Jsgsc27.jpg",
-    "gif": "0064-Jsgsc27.gif"
-  },
+    },
   {
     "id": "og_0065",
     "muscle": "Triceps",
@@ -10088,9 +9606,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0065-vtusOWT.jpg",
-    "gif": "0065-vtusOWT.gif"
-  },
+    },
   {
     "id": "og_0066",
     "muscle": "Fessiers",
@@ -10118,9 +9634,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0066-2DxtqHL.jpg",
-    "gif": "0066-2DxtqHL.gif"
-  },
+    },
   {
     "id": "og_0067",
     "muscle": "Épaules",
@@ -10150,9 +9664,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0067-xHKN2s8.jpg",
-    "gif": "0067-xHKN2s8.gif"
-  },
+    },
   {
     "id": "og_0068",
     "muscle": "Quadriceps",
@@ -10179,9 +9691,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0068-uKyN64F.jpg",
-    "gif": "0068-uKyN64F.gif"
-  },
+    },
   {
     "id": "og_0069",
     "muscle": "Quadriceps",
@@ -10209,9 +9719,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0069-gfk9kD4.jpg",
-    "gif": "0069-gfk9kD4.gif"
-  },
+    },
   {
     "id": "og_1411",
     "muscle": "Avant-bras",
@@ -10237,9 +9745,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "1411-yzYH9pI.jpg",
-    "gif": "1411-yzYH9pI.gif"
-  },
+    },
   {
     "id": "og_1412",
     "muscle": "Avant-bras",
@@ -10265,9 +9771,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "1412-SJAA2IQ.jpg",
-    "gif": "1412-SJAA2IQ.gif"
-  },
+    },
   {
     "id": "og_3017",
     "muscle": "Dos",
@@ -10294,9 +9798,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "3017-r0z6xzQ.jpg",
-    "gif": "3017-r0z6xzQ.gif"
-  },
+    },
   {
     "id": "og_1751",
     "muscle": "Triceps",
@@ -10324,9 +9826,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1751-bndCa3Q.jpg",
-    "gif": "1751-bndCa3Q.gif"
-  },
+    },
   {
     "id": "og_0070",
     "muscle": "Biceps",
@@ -10352,9 +9852,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0070-qOgPVf6.jpg",
-    "gif": "0070-qOgPVf6.gif"
-  },
+    },
   {
     "id": "og_0071",
     "muscle": "Abdominaux",
@@ -10380,9 +9878,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0071-wnEscH8.jpg",
-    "gif": "0071-wnEscH8.gif"
-  },
+    },
   {
     "id": "og_0072",
     "muscle": "Biceps",
@@ -10411,9 +9907,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0072-WLvTAv5.jpg",
-    "gif": "0072-WLvTAv5.gif"
-  },
+    },
   {
     "id": "og_0073",
     "muscle": "Dos",
@@ -10439,9 +9933,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0073-i6LWjok.jpg",
-    "gif": "0073-i6LWjok.gif"
-  },
+    },
   {
     "id": "og_0022",
     "muscle": "Dos",
@@ -10468,9 +9960,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0022-znLogoF.jpg",
-    "gif": "0022-znLogoF.gif"
-  },
+    },
   {
     "id": "og_0074",
     "muscle": "Fessiers",
@@ -10497,9 +9987,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0074-za9Ni4z.jpg",
-    "gif": "0074-za9Ni4z.gif"
-  },
+    },
   {
     "id": "og_0075",
     "muscle": "Épaules",
@@ -10525,9 +10013,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0075-Ln9iTbU.jpg",
-    "gif": "0075-Ln9iTbU.gif"
-  },
+    },
   {
     "id": "og_0076",
     "muscle": "Épaules",
@@ -10555,9 +10041,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0076-S9zHIvU.jpg",
-    "gif": "0076-S9zHIvU.gif"
-  },
+    },
   {
     "id": "og_0078",
     "muscle": "Fessiers",
@@ -10584,9 +10068,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0078-VaP75jl.jpg",
-    "gif": "0078-VaP75jl.gif"
-  },
+    },
   {
     "id": "og_0077",
     "muscle": "Fessiers",
@@ -10613,9 +10095,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0077-62Nw60O.jpg",
-    "gif": "0077-62Nw60O.gif"
-  },
+    },
   {
     "id": "og_0079",
     "muscle": "Avant-bras",
@@ -10642,9 +10122,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0079-qDnGfDb.jpg",
-    "gif": "0079-qDnGfDb.gif"
-  },
+    },
   {
     "id": "og_2187",
     "muscle": "Triceps",
@@ -10672,9 +10150,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "2187-YqJw82s.jpg",
-    "gif": "2187-YqJw82s.gif"
-  },
+    },
   {
     "id": "og_0080",
     "muscle": "Biceps",
@@ -10700,9 +10176,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0080-xNrS20v.jpg",
-    "gif": "0080-xNrS20v.gif"
-  },
+    },
   {
     "id": "og_0118",
     "muscle": "Dos",
@@ -10729,9 +10203,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0118-SzX3uzM.jpg",
-    "gif": "0118-SzX3uzM.gif"
-  },
+    },
   {
     "id": "og_1256",
     "muscle": "Pectoraux",
@@ -10757,9 +10229,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "1256-DotAgEF.jpg",
-    "gif": "1256-DotAgEF.gif"
-  },
+    },
   {
     "id": "og_1257",
     "muscle": "Pectoraux",
@@ -10787,9 +10257,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "1257-DU7I633.jpg",
-    "gif": "1257-DU7I633.gif"
-  },
+    },
   {
     "id": "og_1317",
     "muscle": "Dos",
@@ -10818,9 +10286,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "1317-8d8qJQI.jpg",
-    "gif": "1317-8d8qJQI.gif"
-  },
+    },
   {
     "id": "og_1721",
     "muscle": "Triceps",
@@ -10846,9 +10312,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1721-yRLPCLu.jpg",
-    "gif": "1721-yRLPCLu.gif"
-  },
+    },
   {
     "id": "og_0081",
     "muscle": "Biceps",
@@ -10874,9 +10338,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0081-4LIG9xr.jpg",
-    "gif": "0081-4LIG9xr.gif"
-  },
+    },
   {
     "id": "og_0082",
     "muscle": "Avant-bras",
@@ -10902,9 +10364,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0082-LsZkfU6.jpg",
-    "gif": "0082-LsZkfU6.gif"
-  },
+    },
   {
     "id": "og_0084",
     "muscle": "Abdominaux",
@@ -10929,9 +10389,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0084-7M66AVi.jpg",
-    "gif": "0084-7M66AVi.gif"
-  },
+    },
   {
     "id": "og_0083",
     "muscle": "Abdominaux",
@@ -10958,9 +10416,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0083-Gxg9lDc.jpg",
-    "gif": "0083-Gxg9lDc.gif"
-  },
+    },
   {
     "id": "og_0085",
     "muscle": "Fessiers",
@@ -10989,9 +10445,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0085-wQ2c4XD.jpg",
-    "gif": "0085-wQ2c4XD.gif"
-  },
+    },
   {
     "id": "og_0086",
     "muscle": "Épaules",
@@ -11018,9 +10472,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0086-ngPpyRS.jpg",
-    "gif": "0086-ngPpyRS.gif"
-  },
+    },
   {
     "id": "og_0087",
     "muscle": "Épaules",
@@ -11046,9 +10498,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0087-0dCyly0.jpg",
-    "gif": "0087-0dCyly0.gif"
-  },
+    },
   {
     "id": "og_0088",
     "muscle": "Mollets",
@@ -11075,9 +10525,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "0088-ktsFQAZ.jpg",
-    "gif": "0088-ktsFQAZ.gif"
-  },
+    },
   {
     "id": "og_1371",
     "muscle": "Mollets",
@@ -11102,9 +10550,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "1371-ipvgBnC.jpg",
-    "gif": "1371-ipvgBnC.gif"
-  },
+    },
   {
     "id": "og_1718",
     "muscle": "Triceps",
@@ -11129,9 +10575,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1718-4CBIBOM.jpg",
-    "gif": "1718-4CBIBOM.gif"
-  },
+    },
   {
     "id": "og_0089",
     "muscle": "Biceps",
@@ -11156,9 +10600,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0089-1V1gj1u.jpg",
-    "gif": "0089-1V1gj1u.gif"
-  },
+    },
   {
     "id": "og_0090",
     "muscle": "Fessiers",
@@ -11184,9 +10626,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0090-d960PgE.jpg",
-    "gif": "0090-d960PgE.gif"
-  },
+    },
   {
     "id": "og_0091",
     "muscle": "Épaules",
@@ -11213,9 +10653,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0091-kTbSH9h.jpg",
-    "gif": "0091-kTbSH9h.gif"
-  },
+    },
   {
     "id": "og_0092",
     "muscle": "Triceps",
@@ -11240,9 +10678,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0092-5uFK1xr.jpg",
-    "gif": "0092-5uFK1xr.gif"
-  },
+    },
   {
     "id": "og_0094",
     "muscle": "Abdominaux",
@@ -11269,9 +10705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0094-dFSNDOA.jpg",
-    "gif": "0094-dFSNDOA.gif"
-  },
+    },
   {
     "id": "og_0095",
     "muscle": "Dos",
@@ -11296,9 +10730,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0095-dG7tG5y.jpg",
-    "gif": "0095-dG7tG5y.gif"
-  },
+    },
   {
     "id": "og_0096",
     "muscle": "Abdominaux",
@@ -11325,9 +10757,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0096-i4JkUaL.jpg",
-    "gif": "0096-i4JkUaL.gif"
-  },
+    },
   {
     "id": "og_0098",
     "muscle": "Quadriceps",
@@ -11355,9 +10785,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0098-W31mMjd.jpg",
-    "gif": "0098-W31mMjd.gif"
-  },
+    },
   {
     "id": "og_0097",
     "muscle": "Quadriceps",
@@ -11386,9 +10814,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0097-HUEqZ1y.jpg",
-    "gif": "0097-HUEqZ1y.gif"
-  },
+    },
   {
     "id": "og_1756",
     "muscle": "Fessiers",
@@ -11415,9 +10841,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1756-gEyURal.jpg",
-    "gif": "1756-gEyURal.gif"
-  },
+    },
   {
     "id": "og_0099",
     "muscle": "Quadriceps",
@@ -11445,9 +10869,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0099-gGNQmVt.jpg",
-    "gif": "0099-gGNQmVt.gif"
-  },
+    },
   {
     "id": "og_2799",
     "muscle": "Abdominaux",
@@ -11471,9 +10893,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "2799-G7xoEzr.jpg",
-    "gif": "2799-G7xoEzr.gif"
-  },
+    },
   {
     "id": "og_2800",
     "muscle": "Abdominaux",
@@ -11499,9 +10919,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "2800-BCs0G2F.jpg",
-    "gif": "2800-BCs0G2F.gif"
-  },
+    },
   {
     "id": "og_0100",
     "muscle": "Épaules",
@@ -11527,9 +10945,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0100-4Leypho.jpg",
-    "gif": "0100-4Leypho.gif"
-  },
+    },
   {
     "id": "og_0101",
     "muscle": "Fessiers",
@@ -11557,9 +10973,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0101-euI1BwR.jpg",
-    "gif": "0101-euI1BwR.gif"
-  },
+    },
   {
     "id": "og_2810",
     "muscle": "Quadriceps",
@@ -11586,9 +11000,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "2810-HBYyX94.jpg",
-    "gif": "2810-HBYyX94.gif"
-  },
+    },
   {
     "id": "og_0102",
     "muscle": "Quadriceps",
@@ -11616,9 +11028,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0102-oR7O9LW.jpg",
-    "gif": "0102-oR7O9LW.gif"
-  },
+    },
   {
     "id": "og_2798",
     "muscle": "Quadriceps",
@@ -11648,9 +11058,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "2798-RYcV1kH.jpg",
-    "gif": "2798-RYcV1kH.gif"
-  },
+    },
   {
     "id": "og_0103",
     "muscle": "Abdominaux",
@@ -11676,9 +11084,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0103-xnInPfE.jpg",
-    "gif": "0103-xnInPfE.gif"
-  },
+    },
   {
     "id": "og_0104",
     "muscle": "Avant-bras",
@@ -11704,9 +11110,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0104-2qTvJAZ.jpg",
-    "gif": "0104-2qTvJAZ.gif"
-  },
+    },
   {
     "id": "og_0105",
     "muscle": "Épaules",
@@ -11731,9 +11135,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0105-dCPESfR.jpg",
-    "gif": "0105-dCPESfR.gif"
-  },
+    },
   {
     "id": "og_1372",
     "muscle": "Mollets",
@@ -11758,9 +11160,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "1372-8ozhUIZ.jpg",
-    "gif": "1372-8ozhUIZ.gif"
-  },
+    },
   {
     "id": "og_0106",
     "muscle": "Biceps",
@@ -11786,9 +11186,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0106-4dUn2iv.jpg",
-    "gif": "0106-4dUn2iv.gif"
-  },
+    },
   {
     "id": "og_1456",
     "muscle": "Épaules",
@@ -11814,9 +11212,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "1456-wdRZISl.jpg",
-    "gif": "1456-wdRZISl.gif"
-  },
+    },
   {
     "id": "og_2414",
     "muscle": "Biceps",
@@ -11842,9 +11238,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "2414-vsMcDi9.jpg",
-    "gif": "2414-vsMcDi9.gif"
-  },
+    },
   {
     "id": "og_0107",
     "muscle": "Épaules",
@@ -11871,9 +11265,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0107-S8mo30S.jpg",
-    "gif": "0107-S8mo30S.gif"
-  },
+    },
   {
     "id": "og_0108",
     "muscle": "Mollets",
@@ -11898,9 +11290,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "0108-rGwhJ5o.jpg",
-    "gif": "0108-rGwhJ5o.gif"
-  },
+    },
   {
     "id": "og_0109",
     "muscle": "Triceps",
@@ -11925,9 +11315,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0109-dZl9Q27.jpg",
-    "gif": "0109-dZl9Q27.gif"
-  },
+    },
   {
     "id": "og_0110",
     "muscle": "Biceps",
@@ -11953,9 +11341,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0110-LWuA3aZ.jpg",
-    "gif": "0110-LWuA3aZ.gif"
-  },
+    },
   {
     "id": "og_0111",
     "muscle": "Mollets",
@@ -11980,9 +11366,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower legs",
-    "img": "0111-6HiHHe0.jpg",
-    "gif": "0111-6HiHHe0.gif"
-  },
+    },
   {
     "id": "og_0112",
     "muscle": "Abdominaux",
@@ -12009,9 +11393,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0112-yQe5HpE.jpg",
-    "gif": "0112-yQe5HpE.gif"
-  },
+    },
   {
     "id": "og_1629",
     "muscle": "Biceps",
@@ -12037,9 +11419,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "1629-faHKVkK.jpg",
-    "gif": "1629-faHKVkK.gif"
-  },
+    },
   {
     "id": "og_1457",
     "muscle": "Épaules",
@@ -12064,9 +11444,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "1457-Kyd9Rz5.jpg",
-    "gif": "1457-Kyd9Rz5.gif"
-  },
+    },
   {
     "id": "og_0113",
     "muscle": "Biceps",
@@ -12094,9 +11472,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper arms",
-    "img": "0113-NdIb5Z1.jpg",
-    "gif": "0113-NdIb5Z1.gif"
-  },
+    },
   {
     "id": "og_0114",
     "muscle": "Fessiers",
@@ -12124,9 +11500,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0114-Kxquu2E.jpg",
-    "gif": "0114-Kxquu2E.gif"
-  },
+    },
   {
     "id": "og_0115",
     "muscle": "Fessiers",
@@ -12153,9 +11527,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0115-JrOHAZc.jpg",
-    "gif": "0115-JrOHAZc.gif"
-  },
+    },
   {
     "id": "og_0116",
     "muscle": "Ischio-Jambiers",
@@ -12182,9 +11554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0116-hrVQWvE.jpg",
-    "gif": "0116-hrVQWvE.gif"
-  },
+    },
   {
     "id": "og_0117",
     "muscle": "Fessiers",
@@ -12213,9 +11583,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0117-KgI0tqW.jpg",
-    "gif": "0117-KgI0tqW.gif"
-  },
+    },
   {
     "id": "og_3305",
     "muscle": "Épaules",
@@ -12243,9 +11611,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "3305-f7Y9eDZ.jpg",
-    "gif": "3305-f7Y9eDZ.gif"
-  },
+    },
   {
     "id": "og_0120",
     "muscle": "Épaules",
@@ -12271,9 +11637,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0120-UDlhcO8.jpg",
-    "gif": "0120-UDlhcO8.gif"
-  },
+    },
   {
     "id": "og_0119",
     "muscle": "Épaules",
@@ -12299,9 +11663,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0119-83HoW9X.jpg",
-    "gif": "0119-83HoW9X.gif"
-  },
+    },
   {
     "id": "og_0121",
     "muscle": "Épaules",
@@ -12327,9 +11689,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0121-fI18Rbc.jpg",
-    "gif": "0121-fI18Rbc.gif"
-  },
+    },
   {
     "id": "og_0122",
     "muscle": "Pectoraux",
@@ -12356,9 +11716,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0122-JsKq9so.jpg",
-    "gif": "0122-JsKq9so.gif"
-  },
+    },
   {
     "id": "og_1258",
     "muscle": "Pectoraux",
@@ -12385,9 +11743,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "1258-945zpRg.jpg",
-    "gif": "1258-945zpRg.gif"
-  },
+    },
   {
     "id": "og_0124",
     "muscle": "Quadriceps",
@@ -12415,9 +11771,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0124-s7HX1BY.jpg",
-    "gif": "0124-s7HX1BY.gif"
-  },
+    },
   {
     "id": "og_0123",
     "muscle": "Épaules",
@@ -12443,9 +11797,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0123-RgJDRR1.jpg",
-    "gif": "0123-RgJDRR1.gif"
-  },
+    },
   {
     "id": "og_0126",
     "muscle": "Avant-bras",
@@ -12471,9 +11823,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0126-82LxxkW.jpg",
-    "gif": "0126-82LxxkW.gif"
-  },
+    },
   {
     "id": "og_0125",
     "muscle": "Avant-bras",
@@ -12500,9 +11850,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0125-6kSxYnw.jpg",
-    "gif": "0125-6kSxYnw.gif"
-  },
+    },
   {
     "id": "og_0127",
     "muscle": "Fessiers",
@@ -12531,9 +11879,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0127-LSTChY9.jpg",
-    "gif": "0127-LSTChY9.gif"
-  },
+    },
   {
     "id": "og_3212",
     "muscle": "Fessiers",
@@ -12559,9 +11905,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3212-BbfB8Gb.jpg",
-    "gif": "3212-BbfB8Gb.gif"
-  },
+    },
   {
     "id": "og_0128",
     "muscle": "Épaules",
@@ -12587,9 +11931,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "shoulders",
-    "img": "0128-RJa4tCo.jpg",
-    "gif": "0128-RJa4tCo.gif"
-  },
+    },
   {
     "id": "og_3360",
     "muscle": "Cardio",
@@ -12617,9 +11959,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3360-0Yz8WdV.jpg",
-    "gif": "3360-0Yz8WdV.gif"
-  },
+    },
   {
     "id": "og_1259",
     "muscle": "Pectoraux",
@@ -12645,9 +11985,7 @@ export const exerciseLibrary = [
     ],
     "eq": "assisted",
     "bp": "chest",
-    "img": "1259-QoHIhPl.jpg",
-    "gif": "1259-QoHIhPl.gif"
-  },
+    },
   {
     "id": "og_0129",
     "muscle": "Triceps",
@@ -12673,9 +12011,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0129-RrLske5.jpg",
-    "gif": "0129-RrLske5.gif"
-  },
+    },
   {
     "id": "og_1399",
     "muscle": "Triceps",
@@ -12701,9 +12037,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1399-9RT8oQW.jpg",
-    "gif": "1399-9RT8oQW.gif"
-  },
+    },
   {
     "id": "og_0130",
     "muscle": "Fessiers",
@@ -12728,9 +12062,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0130-u27Kcdz.jpg",
-    "gif": "0130-u27Kcdz.gif"
-  },
+    },
   {
     "id": "og_3019",
     "muscle": "Dos",
@@ -12758,9 +12090,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3019-mExgrF9.jpg",
-    "gif": "3019-mExgrF9.gif"
-  },
+    },
   {
     "id": "og_3639",
     "muscle": "Fessiers",
@@ -12787,9 +12117,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3639-6sYyrRX.jpg",
-    "gif": "3639-6sYyrRX.gif"
-  },
+    },
   {
     "id": "og_1770",
     "muscle": "Biceps",
@@ -12814,9 +12142,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1770-sJFIDIp.jpg",
-    "gif": "1770-sJFIDIp.gif"
-  },
+    },
   {
     "id": "og_0139",
     "muscle": "Biceps",
@@ -12841,9 +12167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0139-50BETrz.jpg",
-    "gif": "0139-50BETrz.gif"
-  },
+    },
   {
     "id": "og_0140",
     "muscle": "Biceps",
@@ -12868,9 +12192,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0140-guT8YnS.jpg",
-    "gif": "0140-guT8YnS.gif"
-  },
+    },
   {
     "id": "og_0137",
     "muscle": "Triceps",
@@ -12896,9 +12218,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0137-U6G2gk9.jpg",
-    "gif": "0137-U6G2gk9.gif"
-  },
+    },
   {
     "id": "og_3543",
     "muscle": "Fessiers",
@@ -12926,9 +12246,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3543-wfotm7S.jpg",
-    "gif": "3543-wfotm7S.gif"
-  },
+    },
   {
     "id": "og_3544",
     "muscle": "Abdominaux",
@@ -12954,9 +12272,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3544-5VXmnV5.jpg",
-    "gif": "3544-5VXmnV5.gif"
-  },
+    },
   {
     "id": "og_1771",
     "muscle": "Triceps",
@@ -12983,9 +12299,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1771-s0HKO2I.jpg",
-    "gif": "1771-s0HKO2I.gif"
-  },
+    },
   {
     "id": "og_1769",
     "muscle": "Biceps",
@@ -13009,9 +12323,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1769-gscGLOU.jpg",
-    "gif": "1769-gscGLOU.gif"
-  },
+    },
   {
     "id": "og_3168",
     "muscle": "Dos",
@@ -13037,9 +12349,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3168-3xK09Sk.jpg",
-    "gif": "3168-3xK09Sk.gif"
-  },
+    },
   {
     "id": "og_3167",
     "muscle": "Dos",
@@ -13065,9 +12375,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3167-BReCuOn.jpg",
-    "gif": "3167-BReCuOn.gif"
-  },
+    },
   {
     "id": "og_1373",
     "muscle": "Mollets",
@@ -13093,9 +12401,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1373-bJYHBIN.jpg",
-    "gif": "1373-bJYHBIN.gif"
-  },
+    },
   {
     "id": "og_3156",
     "muscle": "Dos",
@@ -13121,9 +12427,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3156-v2DfH14.jpg",
-    "gif": "3156-v2DfH14.gif"
-  },
+    },
   {
     "id": "og_3158",
     "muscle": "Dos",
@@ -13150,9 +12454,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3158-tig3PXb.jpg",
-    "gif": "3158-tig3PXb.gif"
-  },
+    },
   {
     "id": "og_3162",
     "muscle": "Dos",
@@ -13180,9 +12482,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3162-xbkPfaw.jpg",
-    "gif": "3162-xbkPfaw.gif"
-  },
+    },
   {
     "id": "og_3161",
     "muscle": "Dos",
@@ -13208,9 +12508,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3161-O4oIqQD.jpg",
-    "gif": "3161-O4oIqQD.gif"
-  },
+    },
   {
     "id": "og_3166",
     "muscle": "Dos",
@@ -13238,9 +12536,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3166-wd4ds3s.jpg",
-    "gif": "3166-wd4ds3s.gif"
-  },
+    },
   {
     "id": "og_3165",
     "muscle": "Dos",
@@ -13266,9 +12562,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3165-uTv34oq.jpg",
-    "gif": "3165-uTv34oq.gif"
-  },
+    },
   {
     "id": "og_0138",
     "muscle": "Abdominaux",
@@ -13294,9 +12588,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0138-CI6baTY.jpg",
-    "gif": "0138-CI6baTY.gif"
-  },
+    },
   {
     "id": "og_1374",
     "muscle": "Mollets",
@@ -13324,9 +12616,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1374-iPm26QU.jpg",
-    "gif": "1374-iPm26QU.gif"
-  },
+    },
   {
     "id": "og_2466",
     "muscle": "Abdominaux",
@@ -13357,9 +12647,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2466-9c6T1YX.jpg",
-    "gif": "2466-9c6T1YX.gif"
-  },
+    },
   {
     "id": "og_1160",
     "muscle": "Cardio",
@@ -13390,9 +12678,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "1160-dK9394r.jpg",
-    "gif": "1160-dK9394r.gif"
-  },
+    },
   {
     "id": "og_0870",
     "muscle": "Abdominaux",
@@ -13419,9 +12705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0870-qcNN2FN.jpg",
-    "gif": "0870-qcNN2FN.gif"
-  },
+    },
   {
     "id": "og_1494",
     "muscle": "Ischio-Jambiers",
@@ -13449,9 +12733,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1494-bWlZvXh.jpg",
-    "gif": "1494-bWlZvXh.gif"
-  },
+    },
   {
     "id": "og_0148",
     "muscle": "Épaules",
@@ -13479,9 +12761,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0148-KHPZL0b.jpg",
-    "gif": "0148-KHPZL0b.gif"
-  },
+    },
   {
     "id": "og_0149",
     "muscle": "Triceps",
@@ -13507,9 +12787,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0149-Gchi5Tr.jpg",
-    "gif": "0149-Gchi5Tr.gif"
-  },
+    },
   {
     "id": "og_3235",
     "muscle": "Ischio-Jambiers",
@@ -13537,9 +12815,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper legs",
-    "img": "3235-zHEpuuc.jpg",
-    "gif": "3235-zHEpuuc.gif"
-  },
+    },
   {
     "id": "og_0150",
     "muscle": "Dos",
@@ -13568,9 +12844,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0150-eYnzaCm.jpg",
-    "gif": "0150-eYnzaCm.gif"
-  },
+    },
   {
     "id": "og_0151",
     "muscle": "Pectoraux",
@@ -13599,9 +12873,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0151-7xI5MXA.jpg",
-    "gif": "0151-7xI5MXA.gif"
-  },
+    },
   {
     "id": "og_1630",
     "muscle": "Biceps",
@@ -13629,9 +12901,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1630-BCGQ6J5.jpg",
-    "gif": "1630-BCGQ6J5.gif"
-  },
+    },
   {
     "id": "og_1631",
     "muscle": "Biceps",
@@ -13656,9 +12926,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1631-NvfE43H.jpg",
-    "gif": "1631-NvfE43H.gif"
-  },
+    },
   {
     "id": "og_0152",
     "muscle": "Triceps",
@@ -13683,9 +12951,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0152-Db7eEgw.jpg",
-    "gif": "0152-Db7eEgw.gif"
-  },
+    },
   {
     "id": "og_0153",
     "muscle": "Dos",
@@ -13714,9 +12980,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0153-OQ1otBN.jpg",
-    "gif": "0153-OQ1otBN.gif"
-  },
+    },
   {
     "id": "og_0154",
     "muscle": "Épaules",
@@ -13743,9 +13007,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0154-aqvSOQE.jpg",
-    "gif": "0154-aqvSOQE.gif"
-  },
+    },
   {
     "id": "og_0155",
     "muscle": "Pectoraux",
@@ -13773,9 +13035,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0155-0CXGHya.jpg",
-    "gif": "0155-0CXGHya.gif"
-  },
+    },
   {
     "id": "og_0868",
     "muscle": "Biceps",
@@ -13802,9 +13062,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0868-G08RZcQ.jpg",
-    "gif": "0868-G08RZcQ.gif"
-  },
+    },
   {
     "id": "og_0157",
     "muscle": "Fessiers",
@@ -13832,9 +13090,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper legs",
-    "img": "0157-eGDudUV.jpg",
-    "gif": "0157-eGDudUV.gif"
-  },
+    },
   {
     "id": "og_0158",
     "muscle": "Pectoraux",
@@ -13861,9 +13117,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0158-7saC5zz.jpg",
-    "gif": "0158-7saC5zz.gif"
-  },
+    },
   {
     "id": "og_1260",
     "muscle": "Pectoraux",
@@ -13890,9 +13144,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1260-KHGNa16.jpg",
-    "gif": "1260-KHGNa16.gif"
-  },
+    },
   {
     "id": "og_1261",
     "muscle": "Pectoraux",
@@ -13921,9 +13173,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1261-2Pya1cP.jpg",
-    "gif": "1261-2Pya1cP.gif"
-  },
+    },
   {
     "id": "og_0159",
     "muscle": "Dos",
@@ -13950,9 +13200,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0159-kesXOpB.jpg",
-    "gif": "0159-kesXOpB.gif"
-  },
+    },
   {
     "id": "og_1632",
     "muscle": "Biceps",
@@ -13978,9 +13226,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1632-dXz8zjF.jpg",
-    "gif": "1632-dXz8zjF.gif"
-  },
+    },
   {
     "id": "og_0160",
     "muscle": "Dos",
@@ -14008,9 +13254,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0160-veXwo0D.jpg",
-    "gif": "0160-veXwo0D.gif"
-  },
+    },
   {
     "id": "og_0161",
     "muscle": "Épaules",
@@ -14036,9 +13280,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0161-hvHhCv8.jpg",
-    "gif": "0161-hvHhCv8.gif"
-  },
+    },
   {
     "id": "og_0162",
     "muscle": "Épaules",
@@ -14065,9 +13307,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0162-u2X71Np.jpg",
-    "gif": "0162-u2X71Np.gif"
-  },
+    },
   {
     "id": "og_0164",
     "muscle": "Épaules",
@@ -14094,9 +13334,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0164-mTT3KLn.jpg",
-    "gif": "0164-mTT3KLn.gif"
-  },
+    },
   {
     "id": "og_0165",
     "muscle": "Biceps",
@@ -14123,9 +13361,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0165-HPlPoQA.jpg",
-    "gif": "0165-HPlPoQA.gif"
-  },
+    },
   {
     "id": "og_1722",
     "muscle": "Triceps",
@@ -14151,9 +13387,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1722-1xHyxys.jpg",
-    "gif": "1722-1xHyxys.gif"
-  },
+    },
   {
     "id": "og_0167",
     "muscle": "Dos",
@@ -14180,9 +13414,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0167-ZSJNetl.jpg",
-    "gif": "0167-ZSJNetl.gif"
-  },
+    },
   {
     "id": "og_0168",
     "muscle": "Fessiers",
@@ -14209,9 +13441,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper legs",
-    "img": "0168-hBGWILP.jpg",
-    "gif": "0168-hBGWILP.gif"
-  },
+    },
   {
     "id": "og_0169",
     "muscle": "Pectoraux",
@@ -14239,9 +13469,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0169-Vh0GsK4.jpg",
-    "gif": "0169-Vh0GsK4.gif"
-  },
+    },
   {
     "id": "og_1318",
     "muscle": "Dos",
@@ -14269,9 +13497,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1318-yaMIo4D.jpg",
-    "gif": "1318-yaMIo4D.gif"
-  },
+    },
   {
     "id": "og_0171",
     "muscle": "Pectoraux",
@@ -14298,9 +13524,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0171-tBWXbIT.jpg",
-    "gif": "0171-tBWXbIT.gif"
-  },
+    },
   {
     "id": "og_0170",
     "muscle": "Pectoraux",
@@ -14330,9 +13554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0170-27NNGFr.jpg",
-    "gif": "0170-27NNGFr.gif"
-  },
+    },
   {
     "id": "og_0172",
     "muscle": "Dos",
@@ -14360,9 +13582,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0172-1PK5Uo3.jpg",
-    "gif": "0172-1PK5Uo3.gif"
-  },
+    },
   {
     "id": "og_0173",
     "muscle": "Triceps",
@@ -14390,9 +13610,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0173-Hx1WC8I.jpg",
-    "gif": "0173-Hx1WC8I.gif"
-  },
+    },
   {
     "id": "og_0174",
     "muscle": "Abdominaux",
@@ -14421,9 +13639,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0174-MvQPqVW.jpg",
-    "gif": "0174-MvQPqVW.gif"
-  },
+    },
   {
     "id": "og_0860",
     "muscle": "Triceps",
@@ -14450,9 +13666,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0860-HEJ6DIX.jpg",
-    "gif": "0860-HEJ6DIX.gif"
-  },
+    },
   {
     "id": "og_0175",
     "muscle": "Abdominaux",
@@ -14477,9 +13691,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0175-WW95auq.jpg",
-    "gif": "0175-WW95auq.gif"
-  },
+    },
   {
     "id": "og_3697",
     "muscle": "Épaules",
@@ -14507,9 +13719,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "3697-G61cXLk.jpg",
-    "gif": "3697-G61cXLk.gif"
-  },
+    },
   {
     "id": "og_0176",
     "muscle": "Triceps",
@@ -14535,9 +13745,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0176-KWdF2JI.jpg",
-    "gif": "0176-KWdF2JI.gif"
-  },
+    },
   {
     "id": "og_2330",
     "muscle": "Dos",
@@ -14565,9 +13773,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "2330-LEprlgG.jpg",
-    "gif": "2330-LEprlgG.gif"
-  },
+    },
   {
     "id": "og_0177",
     "muscle": "Dos",
@@ -14596,9 +13802,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0177-CuaWCmC.jpg",
-    "gif": "0177-CuaWCmC.gif"
-  },
+    },
   {
     "id": "og_2616",
     "muscle": "Dos",
@@ -14625,9 +13829,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "2616-4c9BhzB.jpg",
-    "gif": "2616-4c9BhzB.gif"
-  },
+    },
   {
     "id": "og_0178",
     "muscle": "Épaules",
@@ -14653,9 +13855,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0178-goJ6ezq.jpg",
-    "gif": "0178-goJ6ezq.gif"
-  },
+    },
   {
     "id": "og_0179",
     "muscle": "Pectoraux",
@@ -14683,9 +13883,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0179-FVmZVhk.jpg",
-    "gif": "0179-FVmZVhk.gif"
-  },
+    },
   {
     "id": "og_0180",
     "muscle": "Dos",
@@ -14712,9 +13910,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0180-hvV79Si.jpg",
-    "gif": "0180-hvV79Si.gif"
-  },
+    },
   {
     "id": "og_1634",
     "muscle": "Biceps",
@@ -14742,9 +13938,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1634-otqIxU4.jpg",
-    "gif": "1634-otqIxU4.gif"
-  },
+    },
   {
     "id": "og_0182",
     "muscle": "Biceps",
@@ -14772,9 +13966,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0182-61GrD55.jpg",
-    "gif": "0182-61GrD55.gif"
-  },
+    },
   {
     "id": "og_0184",
     "muscle": "Dos",
@@ -14801,9 +13993,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0184-Q2Eu1Ax.jpg",
-    "gif": "0184-Q2Eu1Ax.gif"
-  },
+    },
   {
     "id": "og_0185",
     "muscle": "Pectoraux",
@@ -14829,9 +14019,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0185-lJJ7Yq8.jpg",
-    "gif": "0185-lJJ7Yq8.gif"
-  },
+    },
   {
     "id": "og_0186",
     "muscle": "Triceps",
@@ -14857,9 +14045,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0186-uxJcFUU.jpg",
-    "gif": "0186-uxJcFUU.gif"
-  },
+    },
   {
     "id": "og_0188",
     "muscle": "Pectoraux",
@@ -14887,9 +14073,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0188-xLYSdtg.jpg",
-    "gif": "0188-xLYSdtg.gif"
-  },
+    },
   {
     "id": "og_0189",
     "muscle": "Dos",
@@ -14916,9 +14100,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0189-EIsE3u8.jpg",
-    "gif": "0189-EIsE3u8.gif"
-  },
+    },
   {
     "id": "og_0190",
     "muscle": "Biceps",
@@ -14943,9 +14125,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0190-YTur5nR.jpg",
-    "gif": "0190-YTur5nR.gif"
-  },
+    },
   {
     "id": "og_1262",
     "muscle": "Pectoraux",
@@ -14972,9 +14152,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1262-w4dLzSx.jpg",
-    "gif": "1262-w4dLzSx.gif"
-  },
+    },
   {
     "id": "og_1263",
     "muscle": "Pectoraux",
@@ -15001,9 +14179,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1263-hHy8tQG.jpg",
-    "gif": "1263-hHy8tQG.gif"
-  },
+    },
   {
     "id": "og_1264",
     "muscle": "Pectoraux",
@@ -15029,9 +14205,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1264-P14Dz9D.jpg",
-    "gif": "1264-P14Dz9D.gif"
-  },
+    },
   {
     "id": "og_1265",
     "muscle": "Pectoraux",
@@ -15059,9 +14233,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1265-GKEH6jj.jpg",
-    "gif": "1265-GKEH6jj.gif"
-  },
+    },
   {
     "id": "og_1266",
     "muscle": "Pectoraux",
@@ -15087,9 +14259,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1266-6t00BsF.jpg",
-    "gif": "1266-6t00BsF.gif"
-  },
+    },
   {
     "id": "og_0191",
     "muscle": "Pectoraux",
@@ -15116,9 +14286,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0191-dB07vDu.jpg",
-    "gif": "0191-dB07vDu.gif"
-  },
+    },
   {
     "id": "og_0192",
     "muscle": "Épaules",
@@ -15144,9 +14312,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0192-wEulIzp.jpg",
-    "gif": "0192-wEulIzp.gif"
-  },
+    },
   {
     "id": "og_1633",
     "muscle": "Biceps",
@@ -15175,9 +14341,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1633-eHBlPsa.jpg",
-    "gif": "1633-eHBlPsa.gif"
-  },
+    },
   {
     "id": "og_1267",
     "muscle": "Pectoraux",
@@ -15204,9 +14368,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1267-MKIelrR.jpg",
-    "gif": "1267-MKIelrR.gif"
-  },
+    },
   {
     "id": "og_3563",
     "muscle": "Dos",
@@ -15236,9 +14398,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "3563-U5INZY6.jpg",
-    "gif": "3563-U5INZY6.gif"
-  },
+    },
   {
     "id": "og_1635",
     "muscle": "Biceps",
@@ -15267,9 +14427,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1635-ZXnjcOQ.jpg",
-    "gif": "1635-ZXnjcOQ.gif"
-  },
+    },
   {
     "id": "og_0193",
     "muscle": "Dos",
@@ -15298,9 +14456,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0193-WrYPP2g.jpg",
-    "gif": "0193-WrYPP2g.gif"
-  },
+    },
   {
     "id": "og_1723",
     "muscle": "Triceps",
@@ -15328,9 +14484,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1723-qRZ5S1N.jpg",
-    "gif": "1723-qRZ5S1N.gif"
-  },
+    },
   {
     "id": "og_1636",
     "muscle": "Biceps",
@@ -15359,9 +14513,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1636-wDUqY2u.jpg",
-    "gif": "1636-wDUqY2u.gif"
-  },
+    },
   {
     "id": "og_1637",
     "muscle": "Biceps",
@@ -15387,9 +14539,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1637-ioTf098.jpg",
-    "gif": "1637-ioTf098.gif"
-  },
+    },
   {
     "id": "og_0194",
     "muscle": "Triceps",
@@ -15416,9 +14566,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0194-2IxROQ1.jpg",
-    "gif": "0194-2IxROQ1.gif"
-  },
+    },
   {
     "id": "og_1319",
     "muscle": "Dos",
@@ -15447,9 +14595,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1319-OmQ8w0p.jpg",
-    "gif": "1319-OmQ8w0p.gif"
-  },
+    },
   {
     "id": "og_0195",
     "muscle": "Biceps",
@@ -15475,9 +14621,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0195-P2lNrGL.jpg",
-    "gif": "0195-P2lNrGL.gif"
-  },
+    },
   {
     "id": "og_1268",
     "muscle": "Pectoraux",
@@ -15503,9 +14647,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1268-vAwm6rK.jpg",
-    "gif": "1268-vAwm6rK.gif"
-  },
+    },
   {
     "id": "og_0196",
     "muscle": "Fessiers",
@@ -15531,9 +14673,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper legs",
-    "img": "0196-OM46QHm.jpg",
-    "gif": "0196-OM46QHm.gif"
-  },
+    },
   {
     "id": "og_0198",
     "muscle": "Dos",
@@ -15561,9 +14701,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0198-RVwzP10.jpg",
-    "gif": "0198-RVwzP10.gif"
-  },
+    },
   {
     "id": "og_0197",
     "muscle": "Dos",
@@ -15590,9 +14728,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0197-qdRxqCj.jpg",
-    "gif": "0197-qdRxqCj.gif"
-  },
+    },
   {
     "id": "og_1638",
     "muscle": "Biceps",
@@ -15620,9 +14756,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1638-QTXKWPh.jpg",
-    "gif": "1638-QTXKWPh.gif"
-  },
+    },
   {
     "id": "og_0201",
     "muscle": "Triceps",
@@ -15649,9 +14783,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0201-3ZflifB.jpg",
-    "gif": "0201-3ZflifB.gif"
-  },
+    },
   {
     "id": "og_0199",
     "muscle": "Dos",
@@ -15678,9 +14810,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0199-PskORrA.jpg",
-    "gif": "0199-PskORrA.gif"
-  },
+    },
   {
     "id": "og_0200",
     "muscle": "Triceps",
@@ -15707,9 +14837,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0200-dU605di.jpg",
-    "gif": "0200-dU605di.gif"
-  },
+    },
   {
     "id": "og_0202",
     "muscle": "Épaules",
@@ -15738,9 +14866,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0202-yUdIGNs.jpg",
-    "gif": "0202-yUdIGNs.gif"
-  },
+    },
   {
     "id": "og_0203",
     "muscle": "Épaules",
@@ -15769,9 +14895,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0203-wqNPGCg.jpg",
-    "gif": "0203-wqNPGCg.gif"
-  },
+    },
   {
     "id": "og_0204",
     "muscle": "Triceps",
@@ -15796,9 +14920,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0204-c3QQLPi.jpg",
-    "gif": "0204-c3QQLPi.gif"
-  },
+    },
   {
     "id": "og_0205",
     "muscle": "Dos",
@@ -15827,9 +14949,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0205-SpsOSXk.jpg",
-    "gif": "0205-SpsOSXk.gif"
-  },
+    },
   {
     "id": "og_0873",
     "muscle": "Abdominaux",
@@ -15855,9 +14975,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0873-RqOtqD7.jpg",
-    "gif": "0873-RqOtqD7.gif"
-  },
+    },
   {
     "id": "og_0206",
     "muscle": "Biceps",
@@ -15885,9 +15003,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0206-eOG0r6v.jpg",
-    "gif": "0206-eOG0r6v.gif"
-  },
+    },
   {
     "id": "og_2406",
     "muscle": "Triceps",
@@ -15914,9 +15030,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "2406-ThKP69G.jpg",
-    "gif": "2406-ThKP69G.gif"
-  },
+    },
   {
     "id": "og_1413",
     "muscle": "Biceps",
@@ -15941,9 +15055,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1413-gVlnLIJ.jpg",
-    "gif": "1413-gVlnLIJ.gif"
-  },
+    },
   {
     "id": "og_0209",
     "muscle": "Biceps",
@@ -15970,9 +15082,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0209-IwX5NqK.jpg",
-    "gif": "0209-IwX5NqK.gif"
-  },
+    },
   {
     "id": "og_0210",
     "muscle": "Avant-bras",
@@ -15999,9 +15109,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "lower arms",
-    "img": "0210-eYmsEPR.jpg",
-    "gif": "0210-eYmsEPR.gif"
-  },
+    },
   {
     "id": "og_0207",
     "muscle": "Triceps",
@@ -16028,9 +15136,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0207-VjYliFZ.jpg",
-    "gif": "0207-VjYliFZ.gif"
-  },
+    },
   {
     "id": "og_0208",
     "muscle": "Dos",
@@ -16057,9 +15163,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0208-PNtsX17.jpg",
-    "gif": "0208-PNtsX17.gif"
-  },
+    },
   {
     "id": "og_1320",
     "muscle": "Dos",
@@ -16086,9 +15190,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1320-UFGF6gk.jpg",
-    "gif": "1320-UFGF6gk.gif"
-  },
+    },
   {
     "id": "og_1321",
     "muscle": "Dos",
@@ -16116,9 +15218,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1321-c8oybX6.jpg",
-    "gif": "1321-c8oybX6.gif"
-  },
+    },
   {
     "id": "og_1322",
     "muscle": "Dos",
@@ -16146,9 +15246,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1322-MgKwAAo.jpg",
-    "gif": "1322-MgKwAAo.gif"
-  },
+    },
   {
     "id": "og_1639",
     "muscle": "Biceps",
@@ -16176,9 +15274,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1639-PcPe0P5.jpg",
-    "gif": "1639-PcPe0P5.gif"
-  },
+    },
   {
     "id": "og_1724",
     "muscle": "Triceps",
@@ -16205,9 +15301,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1724-NN8nSNT.jpg",
-    "gif": "1724-NN8nSNT.gif"
-  },
+    },
   {
     "id": "og_1725",
     "muscle": "Triceps",
@@ -16234,9 +15328,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1725-ZujAdR9.jpg",
-    "gif": "1725-ZujAdR9.gif"
-  },
+    },
   {
     "id": "og_1726",
     "muscle": "Triceps",
@@ -16262,9 +15354,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1726-U3ffHlY.jpg",
-    "gif": "1726-U3ffHlY.gif"
-  },
+    },
   {
     "id": "og_1640",
     "muscle": "Biceps",
@@ -16292,9 +15382,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1640-4hATdoB.jpg",
-    "gif": "1640-4hATdoB.gif"
-  },
+    },
   {
     "id": "og_1323",
     "muscle": "Dos",
@@ -16321,9 +15409,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1323-SJqRxOt.jpg",
-    "gif": "1323-SJqRxOt.gif"
-  },
+    },
   {
     "id": "og_0211",
     "muscle": "Abdominaux",
@@ -16350,9 +15436,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0211-d9Xaxq6.jpg",
-    "gif": "0211-d9Xaxq6.gif"
-  },
+    },
   {
     "id": "og_2144",
     "muscle": "Pectoraux",
@@ -16379,9 +15463,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "2144-nIR4Rwl.jpg",
-    "gif": "2144-nIR4Rwl.gif"
-  },
+    },
   {
     "id": "og_0212",
     "muscle": "Abdominaux",
@@ -16406,9 +15488,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0212-8xUv4J7.jpg",
-    "gif": "0212-8xUv4J7.gif"
-  },
+    },
   {
     "id": "og_1641",
     "muscle": "Biceps",
@@ -16434,9 +15514,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1641-8oYqOt9.jpg",
-    "gif": "1641-8oYqOt9.gif"
-  },
+    },
   {
     "id": "og_0213",
     "muscle": "Dos",
@@ -16464,9 +15542,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0213-pwt0pnM.jpg",
-    "gif": "0213-pwt0pnM.gif"
-  },
+    },
   {
     "id": "og_0214",
     "muscle": "Dos",
@@ -16494,9 +15570,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0214-vpp9Ku2.jpg",
-    "gif": "0214-vpp9Ku2.gif"
-  },
+    },
   {
     "id": "og_1642",
     "muscle": "Biceps",
@@ -16522,9 +15596,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1642-rZ80Gbp.jpg",
-    "gif": "1642-rZ80Gbp.gif"
-  },
+    },
   {
     "id": "og_1643",
     "muscle": "Biceps",
@@ -16552,9 +15624,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1643-DpWMFP5.jpg",
-    "gif": "1643-DpWMFP5.gif"
-  },
+    },
   {
     "id": "og_0215",
     "muscle": "Épaules",
@@ -16580,9 +15650,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0215-x825CZm.jpg",
-    "gif": "0215-x825CZm.gif"
-  },
+    },
   {
     "id": "og_0861",
     "muscle": "Dos",
@@ -16608,9 +15676,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0861-fUBheHs.jpg",
-    "gif": "0861-fUBheHs.gif"
-  },
+    },
   {
     "id": "og_0216",
     "muscle": "Épaules",
@@ -16637,9 +15703,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0216-YPoVrBi.jpg",
-    "gif": "0216-YPoVrBi.gif"
-  },
+    },
   {
     "id": "og_2399",
     "muscle": "Abdominaux",
@@ -16665,9 +15729,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "2399-UEjSrKI.jpg",
-    "gif": "2399-UEjSrKI.gif"
-  },
+    },
   {
     "id": "og_0218",
     "muscle": "Dos",
@@ -16695,9 +15757,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0218-qcY50ZD.jpg",
-    "gif": "0218-qcY50ZD.gif"
-  },
+    },
   {
     "id": "og_0219",
     "muscle": "Épaules",
@@ -16724,9 +15784,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0219-PzQanLE.jpg",
-    "gif": "0219-PzQanLE.gif"
-  },
+    },
   {
     "id": "og_0220",
     "muscle": "Dos",
@@ -16751,9 +15809,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0220-Eg98Ft9.jpg",
-    "gif": "0220-Eg98Ft9.gif"
-  },
+    },
   {
     "id": "og_0222",
     "muscle": "Abdominaux",
@@ -16779,9 +15835,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0222-wPypxFY.jpg",
-    "gif": "0222-wPypxFY.gif"
-  },
+    },
   {
     "id": "og_0221",
     "muscle": "Abdominaux",
@@ -16806,9 +15860,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0221-qatbkEd.jpg",
-    "gif": "0221-qatbkEd.gif"
-  },
+    },
   {
     "id": "og_0223",
     "muscle": "Abdominaux",
@@ -16834,9 +15886,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0223-q2ADGqV.jpg",
-    "gif": "0223-q2ADGqV.gif"
-  },
+    },
   {
     "id": "og_1717",
     "muscle": "Dos",
@@ -16866,9 +15916,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1717-f7fnAIB.jpg",
-    "gif": "1717-f7fnAIB.gif"
-  },
+    },
   {
     "id": "og_1644",
     "muscle": "Biceps",
@@ -16896,9 +15944,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1644-3XFdb1Z.jpg",
-    "gif": "1644-3XFdb1Z.gif"
-  },
+    },
   {
     "id": "og_0224",
     "muscle": "Avant-bras",
@@ -16925,9 +15971,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "lower arms",
-    "img": "0224-VhX2JdE.jpg",
-    "gif": "0224-VhX2JdE.gif"
-  },
+    },
   {
     "id": "og_1375",
     "muscle": "Mollets",
@@ -16953,9 +15997,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "lower legs",
-    "img": "1375-yl2IYyy.jpg",
-    "gif": "1375-yl2IYyy.gif"
-  },
+    },
   {
     "id": "og_0225",
     "muscle": "Épaules",
@@ -16984,9 +16026,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0225-P5p0j8B.jpg",
-    "gif": "0225-P5p0j8B.gif"
-  },
+    },
   {
     "id": "og_0226",
     "muscle": "Abdominaux",
@@ -17012,9 +16052,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0226-jpgqxiS.jpg",
-    "gif": "0226-jpgqxiS.gif"
-  },
+    },
   {
     "id": "og_0874",
     "muscle": "Abdominaux",
@@ -17040,9 +16078,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0874-XU3ePuv.jpg",
-    "gif": "0874-XU3ePuv.gif"
-  },
+    },
   {
     "id": "og_0227",
     "muscle": "Pectoraux",
@@ -17072,9 +16108,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "0227-Pr9Rhf4.jpg",
-    "gif": "0227-Pr9Rhf4.gif"
-  },
+    },
   {
     "id": "og_0228",
     "muscle": "Fessiers",
@@ -17102,9 +16136,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper legs",
-    "img": "0228-Kpajagk.jpg",
-    "gif": "0228-Kpajagk.gif"
-  },
+    },
   {
     "id": "og_0229",
     "muscle": "Biceps",
@@ -17131,9 +16163,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0229-YwnI4ja.jpg",
-    "gif": "0229-YwnI4ja.gif"
-  },
+    },
   {
     "id": "og_0230",
     "muscle": "Abdominaux",
@@ -17160,9 +16190,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0230-qFpAkpP.jpg",
-    "gif": "0230-qFpAkpP.gif"
-  },
+    },
   {
     "id": "og_0231",
     "muscle": "Triceps",
@@ -17188,9 +16216,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0231-sYCcnon.jpg",
-    "gif": "0231-sYCcnon.gif"
-  },
+    },
   {
     "id": "og_1376",
     "muscle": "Mollets",
@@ -17217,9 +16243,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "lower legs",
-    "img": "1376-fgc9Xdl.jpg",
-    "gif": "1376-fgc9Xdl.gif"
-  },
+    },
   {
     "id": "og_0232",
     "muscle": "Biceps",
@@ -17247,9 +16271,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0232-CvPn9WV.jpg",
-    "gif": "0232-CvPn9WV.gif"
-  },
+    },
   {
     "id": "og_0233",
     "muscle": "Épaules",
@@ -17277,9 +16299,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0233-ZfyAGhK.jpg",
-    "gif": "0233-ZfyAGhK.gif"
-  },
+    },
   {
     "id": "og_1727",
     "muscle": "Triceps",
@@ -17304,9 +16324,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1727-i11JWU7.jpg",
-    "gif": "1727-i11JWU7.gif"
-  },
+    },
   {
     "id": "og_0234",
     "muscle": "Dos",
@@ -17333,9 +16351,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0234-4f8RXP8.jpg",
-    "gif": "0234-4f8RXP8.gif"
-  },
+    },
   {
     "id": "og_0235",
     "muscle": "Épaules",
@@ -17362,9 +16378,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0235-FWdVhcW.jpg",
-    "gif": "0235-FWdVhcW.gif"
-  },
+    },
   {
     "id": "og_0236",
     "muscle": "Dos",
@@ -17395,9 +16409,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0236-JOZhu2h.jpg",
-    "gif": "0236-JOZhu2h.gif"
-  },
+    },
   {
     "id": "og_1269",
     "muscle": "Pectoraux",
@@ -17423,9 +16435,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1269-UKWTJWR.jpg",
-    "gif": "1269-UKWTJWR.gif"
-  },
+    },
   {
     "id": "og_0238",
     "muscle": "Dos",
@@ -17452,9 +16462,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0238-x69MAlq.jpg",
-    "gif": "0238-x69MAlq.gif"
-  },
+    },
   {
     "id": "og_0237",
     "muscle": "Dos",
@@ -17482,9 +16490,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0237-DT14T9T.jpg",
-    "gif": "0237-DT14T9T.gif"
-  },
+    },
   {
     "id": "og_0239",
     "muscle": "Dos",
@@ -17512,9 +16518,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0239-Tq6gbK6.jpg",
-    "gif": "0239-Tq6gbK6.gif"
-  },
+    },
   {
     "id": "og_0240",
     "muscle": "Épaules",
@@ -17540,9 +16544,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0240-PQcUlDi.jpg",
-    "gif": "0240-PQcUlDi.gif"
-  },
+    },
   {
     "id": "og_2464",
     "muscle": "Dos",
@@ -17570,9 +16572,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "2464-ZgwWBoC.jpg",
-    "gif": "2464-ZgwWBoC.gif"
-  },
+    },
   {
     "id": "og_0241",
     "muscle": "Triceps",
@@ -17600,9 +16600,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "0241-gAwDzB3.jpg",
-    "gif": "0241-gAwDzB3.gif"
-  },
+    },
   {
     "id": "og_2405",
     "muscle": "Triceps",
@@ -17630,9 +16628,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "2405-OxJk1fg.jpg",
-    "gif": "2405-OxJk1fg.gif"
-  },
+    },
   {
     "id": "og_0242",
     "muscle": "Abdominaux",
@@ -17658,9 +16654,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0242-TXtXc84.jpg",
-    "gif": "0242-TXtXc84.gif"
-  },
+    },
   {
     "id": "og_0243",
     "muscle": "Abdominaux",
@@ -17687,9 +16681,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0243-aVs3BR3.jpg",
-    "gif": "0243-aVs3BR3.gif"
-  },
+    },
   {
     "id": "og_0862",
     "muscle": "Abdominaux",
@@ -17716,9 +16708,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "waist",
-    "img": "0862-fhZQPlV.jpg",
-    "gif": "0862-fhZQPlV.gif"
-  },
+    },
   {
     "id": "og_0244",
     "muscle": "Dos",
@@ -17747,9 +16737,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0244-zCgxPbV.jpg",
-    "gif": "0244-zCgxPbV.gif"
-  },
+    },
   {
     "id": "og_1645",
     "muscle": "Biceps",
@@ -17775,9 +16763,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1645-H9y3Dkr.jpg",
-    "gif": "1645-H9y3Dkr.gif"
-  },
+    },
   {
     "id": "og_1728",
     "muscle": "Triceps",
@@ -17802,9 +16788,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "upper arms",
-    "img": "1728-vvNjDJS.jpg",
-    "gif": "1728-vvNjDJS.gif"
-  },
+    },
   {
     "id": "og_0245",
     "muscle": "Dos",
@@ -17831,9 +16815,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0245-xBYcQHj.jpg",
-    "gif": "0245-xBYcQHj.gif"
-  },
+    },
   {
     "id": "og_1270",
     "muscle": "Pectoraux",
@@ -17862,9 +16844,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "chest",
-    "img": "1270-j7XMAyn.jpg",
-    "gif": "1270-j7XMAyn.gif"
-  },
+    },
   {
     "id": "og_1324",
     "muscle": "Dos",
@@ -17893,9 +16873,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1324-PQStVXH.jpg",
-    "gif": "1324-PQStVXH.gif"
-  },
+    },
   {
     "id": "og_0246",
     "muscle": "Épaules",
@@ -17922,9 +16900,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "shoulders",
-    "img": "0246-cALKspW.jpg",
-    "gif": "0246-cALKspW.gif"
-  },
+    },
   {
     "id": "og_1325",
     "muscle": "Dos",
@@ -17952,9 +16928,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "1325-CmEr4pM.jpg",
-    "gif": "1325-CmEr4pM.gif"
-  },
+    },
   {
     "id": "og_0247",
     "muscle": "Avant-bras",
@@ -17982,9 +16956,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "lower arms",
-    "img": "0247-LrV4s90.jpg",
-    "gif": "0247-LrV4s90.gif"
-  },
+    },
   {
     "id": "og_1407",
     "muscle": "Mollets",
@@ -18010,9 +16982,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1407-PzNxakt.jpg",
-    "gif": "1407-PzNxakt.gif"
-  },
+    },
   {
     "id": "og_1377",
     "muscle": "Mollets",
@@ -18038,9 +17008,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1377-m0tCHqc.jpg",
-    "gif": "1377-m0tCHqc.gif"
-  },
+    },
   {
     "id": "og_1378",
     "muscle": "Mollets",
@@ -18066,9 +17034,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "lower legs",
-    "img": "1378-1LVFcEn.jpg",
-    "gif": "1378-1LVFcEn.gif"
-  },
+    },
   {
     "id": "og_0248",
     "muscle": "Dos",
@@ -18094,9 +17060,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0248-R5swFnc.jpg",
-    "gif": "0248-R5swFnc.gif"
-  },
+    },
   {
     "id": "og_2963",
     "muscle": "Abdominaux",
@@ -18122,9 +17086,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2963-weoDEpH.jpg",
-    "gif": "2963-weoDEpH.gif"
-  },
+    },
   {
     "id": "og_1548",
     "muscle": "Quadriceps",
@@ -18150,9 +17112,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1548-xGgAGPm.jpg",
-    "gif": "1548-xGgAGPm.gif"
-  },
+    },
   {
     "id": "og_1271",
     "muscle": "Pectoraux",
@@ -18179,9 +17139,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1271-Uto7l43.jpg",
-    "gif": "1271-Uto7l43.gif"
-  },
+    },
   {
     "id": "og_0251",
     "muscle": "Pectoraux",
@@ -18206,9 +17164,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0251-9WTm7dq.jpg",
-    "gif": "0251-9WTm7dq.gif"
-  },
+    },
   {
     "id": "og_1430",
     "muscle": "Pectoraux",
@@ -18237,9 +17193,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1430-XgWyAiA.jpg",
-    "gif": "1430-XgWyAiA.gif"
-  },
+    },
   {
     "id": "og_2462",
     "muscle": "Pectoraux",
@@ -18265,9 +17219,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "2462-LQFOrMn.jpg",
-    "gif": "2462-LQFOrMn.gif"
-  },
+    },
   {
     "id": "og_1272",
     "muscle": "Pectoraux",
@@ -18293,9 +17245,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "chest",
-    "img": "1272-ykA5tU7.jpg",
-    "gif": "1272-ykA5tU7.gif"
-  },
+    },
   {
     "id": "og_3216",
     "muscle": "Pectoraux",
@@ -18322,9 +17272,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3216-7E06s6d.jpg",
-    "gif": "3216-7E06s6d.gif"
-  },
+    },
   {
     "id": "og_1326",
     "muscle": "Dos",
@@ -18350,9 +17298,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1326-T2mxWqc.jpg",
-    "gif": "1326-T2mxWqc.gif"
-  },
+    },
   {
     "id": "og_0253",
     "muscle": "Dos",
@@ -18378,9 +17324,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0253-G70mEAJ.jpg",
-    "gif": "0253-G70mEAJ.gif"
-  },
+    },
   {
     "id": "og_0257",
     "muscle": "Mollets",
@@ -18405,9 +17349,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "0257-X7jbxra.jpg",
-    "gif": "0257-X7jbxra.gif"
-  },
+    },
   {
     "id": "og_1273",
     "muscle": "Pectoraux",
@@ -18433,9 +17375,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1273-wigSg76.jpg",
-    "gif": "1273-wigSg76.gif"
-  },
+    },
   {
     "id": "og_0258",
     "muscle": "Pectoraux",
@@ -18463,9 +17403,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0258-CMAxnsG.jpg",
-    "gif": "0258-CMAxnsG.gif"
-  },
+    },
   {
     "id": "og_1327",
     "muscle": "Dos",
@@ -18492,9 +17430,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1327-VnfUNW7.jpg",
-    "gif": "1327-VnfUNW7.gif"
-  },
+    },
   {
     "id": "og_0259",
     "muscle": "Triceps",
@@ -18519,9 +17455,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0259-x6KpKpq.jpg",
-    "gif": "0259-x6KpKpq.gif"
-  },
+    },
   {
     "id": "og_2398",
     "muscle": "Triceps",
@@ -18547,9 +17481,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "2398-v3vLFW0.jpg",
-    "gif": "2398-v3vLFW0.gif"
-  },
+    },
   {
     "id": "og_0260",
     "muscle": "Abdominaux",
@@ -18575,9 +17507,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0260-SLKj2pX.jpg",
-    "gif": "0260-SLKj2pX.gif"
-  },
+    },
   {
     "id": "og_1468",
     "muscle": "Abdominaux",
@@ -18603,9 +17533,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1468-xgsGFVM.jpg",
-    "gif": "1468-xgsGFVM.gif"
-  },
+    },
   {
     "id": "og_0262",
     "muscle": "Abdominaux",
@@ -18631,9 +17559,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0262-rbu5UUb.jpg",
-    "gif": "0262-rbu5UUb.gif"
-  },
+    },
   {
     "id": "og_0267",
     "muscle": "Abdominaux",
@@ -18658,9 +17584,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0267-kjJ3VoQ.jpg",
-    "gif": "0267-kjJ3VoQ.gif"
-  },
+    },
   {
     "id": "og_0271",
     "muscle": "Abdominaux",
@@ -18686,9 +17610,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "waist",
-    "img": "0271-MCUhf1F.jpg",
-    "gif": "0271-MCUhf1F.gif"
-  },
+    },
   {
     "id": "og_0272",
     "muscle": "Abdominaux",
@@ -18714,9 +17636,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "waist",
-    "img": "0272-Sn8wxAI.jpg",
-    "gif": "0272-Sn8wxAI.gif"
-  },
+    },
   {
     "id": "og_0274",
     "muscle": "Abdominaux",
@@ -18741,9 +17661,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0274-TFqbd8t.jpg",
-    "gif": "0274-TFqbd8t.gif"
-  },
+    },
   {
     "id": "og_3016",
     "muscle": "Abdominaux",
@@ -18768,9 +17686,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3016-g2oKspu.jpg",
-    "gif": "3016-g2oKspu.gif"
-  },
+    },
   {
     "id": "og_3769",
     "muscle": "Fessiers",
@@ -18798,9 +17714,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3769-gUjqdei.jpg",
-    "gif": "3769-gUjqdei.gif"
-  },
+    },
   {
     "id": "og_2331",
     "muscle": "Cardio",
@@ -18827,9 +17741,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "cardio",
-    "img": "2331-XSCHmiI.jpg",
-    "gif": "2331-XSCHmiI.gif"
-  },
+    },
   {
     "id": "og_0276",
     "muscle": "Abdominaux",
@@ -18857,9 +17769,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0276-iny3m5y.jpg",
-    "gif": "0276-iny3m5y.gif"
-  },
+    },
   {
     "id": "og_0277",
     "muscle": "Abdominaux",
@@ -18884,9 +17794,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0277-9Ap7miY.jpg",
-    "gif": "0277-9Ap7miY.gif"
-  },
+    },
   {
     "id": "og_0279",
     "muscle": "Pectoraux",
@@ -18912,9 +17820,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0279-i5cEhka.jpg",
-    "gif": "0279-i5cEhka.gif"
-  },
+    },
   {
     "id": "og_0282",
     "muscle": "Abdominaux",
@@ -18940,9 +17846,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0282-QLL2gdc.jpg",
-    "gif": "0282-QLL2gdc.gif"
-  },
+    },
   {
     "id": "og_1274",
     "muscle": "Pectoraux",
@@ -18967,9 +17871,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1274-vptOQ4N.jpg",
-    "gif": "1274-vptOQ4N.gif"
-  },
+    },
   {
     "id": "og_0283",
     "muscle": "Triceps",
@@ -18995,9 +17897,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0283-soIB2rj.jpg",
-    "gif": "0283-soIB2rj.gif"
-  },
+    },
   {
     "id": "og_0284",
     "muscle": "Mollets",
@@ -19023,9 +17923,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "0284-u5ESqzH.jpg",
-    "gif": "0284-u5ESqzH.gif"
-  },
+    },
   {
     "id": "og_1275",
     "muscle": "Pectoraux",
@@ -19051,9 +17949,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1275-Q497lAE.jpg",
-    "gif": "1275-Q497lAE.gif"
-  },
+    },
   {
     "id": "og_0285",
     "muscle": "Biceps",
@@ -19079,9 +17975,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0285-BU15nH4.jpg",
-    "gif": "0285-BU15nH4.gif"
-  },
+    },
   {
     "id": "og_2403",
     "muscle": "Biceps",
@@ -19109,9 +18003,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2403-CfKsRbG.jpg",
-    "gif": "2403-CfKsRbG.gif"
-  },
+    },
   {
     "id": "og_1646",
     "muscle": "Biceps",
@@ -19137,9 +18029,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1646-fy7Tgy4.jpg",
-    "gif": "1646-fy7Tgy4.gif"
-  },
+    },
   {
     "id": "og_1647",
     "muscle": "Biceps",
@@ -19166,9 +18056,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1647-NlfIbzq.jpg",
-    "gif": "1647-NlfIbzq.gif"
-  },
+    },
   {
     "id": "og_1648",
     "muscle": "Biceps",
@@ -19195,9 +18083,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1648-6em2Dxj.jpg",
-    "gif": "1648-6em2Dxj.gif"
-  },
+    },
   {
     "id": "og_0286",
     "muscle": "Épaules",
@@ -19222,9 +18108,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0286-izMnLqz.jpg",
-    "gif": "0286-izMnLqz.gif"
-  },
+    },
   {
     "id": "og_1649",
     "muscle": "Biceps",
@@ -19250,9 +18134,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1649-Zwiw7XR.jpg",
-    "gif": "1649-Zwiw7XR.gif"
-  },
+    },
   {
     "id": "og_1650",
     "muscle": "Biceps",
@@ -19278,9 +18160,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1650-J74XlNf.jpg",
-    "gif": "1650-J74XlNf.gif"
-  },
+    },
   {
     "id": "og_2137",
     "muscle": "Épaules",
@@ -19306,9 +18186,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2137-Xy4jlWA.jpg",
-    "gif": "2137-Xy4jlWA.gif"
-  },
+    },
   {
     "id": "og_0287",
     "muscle": "Épaules",
@@ -19334,9 +18212,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0287-eOrFCnx.jpg",
-    "gif": "0287-eOrFCnx.gif"
-  },
+    },
   {
     "id": "og_0288",
     "muscle": "Pectoraux",
@@ -19362,9 +18238,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0288-vi8EhoE.jpg",
-    "gif": "0288-vi8EhoE.gif"
-  },
+    },
   {
     "id": "og_0289",
     "muscle": "Pectoraux",
@@ -19390,9 +18264,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0289-SpYC0Kp.jpg",
-    "gif": "0289-SpYC0Kp.gif"
-  },
+    },
   {
     "id": "og_0290",
     "muscle": "Épaules",
@@ -19418,9 +18290,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0290-3d7wHyd.jpg",
-    "gif": "0290-3d7wHyd.gif"
-  },
+    },
   {
     "id": "og_0291",
     "muscle": "Fessiers",
@@ -19447,9 +18317,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0291-mnzcrIB.jpg",
-    "gif": "0291-mnzcrIB.gif"
-  },
+    },
   {
     "id": "og_0293",
     "muscle": "Dos",
@@ -19476,9 +18344,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0293-BJ0Hz5L.jpg",
-    "gif": "0293-BJ0Hz5L.gif"
-  },
+    },
   {
     "id": "og_1651",
     "muscle": "Biceps",
@@ -19506,9 +18372,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1651-1VpF8db.jpg",
-    "gif": "1651-1VpF8db.gif"
-  },
+    },
   {
     "id": "og_1652",
     "muscle": "Biceps",
@@ -19535,9 +18399,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1652-2NImIAG.jpg",
-    "gif": "1652-2NImIAG.gif"
-  },
+    },
   {
     "id": "og_1653",
     "muscle": "Biceps",
@@ -19564,9 +18426,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1653-uSkDMYl.jpg",
-    "gif": "1653-uSkDMYl.gif"
-  },
+    },
   {
     "id": "og_0294",
     "muscle": "Biceps",
@@ -19592,9 +18452,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0294-NbVPDMW.jpg",
-    "gif": "0294-NbVPDMW.gif"
-  },
+    },
   {
     "id": "og_2401",
     "muscle": "Biceps",
@@ -19621,9 +18479,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2401-nlJsbkW.jpg",
-    "gif": "2401-nlJsbkW.gif"
-  },
+    },
   {
     "id": "og_1654",
     "muscle": "Biceps",
@@ -19649,9 +18505,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1654-nFc4FyV.jpg",
-    "gif": "1654-nFc4FyV.gif"
-  },
+    },
   {
     "id": "og_1655",
     "muscle": "Biceps",
@@ -19676,9 +18530,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1655-niXESDw.jpg",
-    "gif": "1655-niXESDw.gif"
-  },
+    },
   {
     "id": "og_1656",
     "muscle": "Biceps",
@@ -19706,9 +18558,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1656-H1XAdpk.jpg",
-    "gif": "1656-H1XAdpk.gif"
-  },
+    },
   {
     "id": "og_1201",
     "muscle": "Cardio",
@@ -19741,9 +18591,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "cardio",
-    "img": "1201-0JtKWum.jpg",
-    "gif": "1201-0JtKWum.gif"
-  },
+    },
   {
     "id": "og_0295",
     "muscle": "Fessiers",
@@ -19772,9 +18620,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0295-7Hg55JG.jpg",
-    "gif": "0295-7Hg55JG.gif"
-  },
+    },
   {
     "id": "og_1731",
     "muscle": "Triceps",
@@ -19801,9 +18647,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1731-7jGOBF3.jpg",
-    "gif": "1731-7jGOBF3.gif"
-  },
+    },
   {
     "id": "og_0296",
     "muscle": "Triceps",
@@ -19830,9 +18674,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0296-RxayqAZ.jpg",
-    "gif": "0296-RxayqAZ.gif"
-  },
+    },
   {
     "id": "og_0297",
     "muscle": "Biceps",
@@ -19859,9 +18701,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0297-gvsWLQw.jpg",
-    "gif": "0297-gvsWLQw.gif"
-  },
+    },
   {
     "id": "og_3635",
     "muscle": "Fessiers",
@@ -19889,9 +18729,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "3635-ecl28tP.jpg",
-    "gif": "3635-ecl28tP.gif"
-  },
+    },
   {
     "id": "og_0298",
     "muscle": "Biceps",
@@ -19918,9 +18756,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0298-Qyk5J3p.jpg",
-    "gif": "0298-Qyk5J3p.gif"
-  },
+    },
   {
     "id": "og_1657",
     "muscle": "Biceps",
@@ -19946,9 +18782,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1657-HDYiZcY.jpg",
-    "gif": "1657-HDYiZcY.gif"
-  },
+    },
   {
     "id": "og_0299",
     "muscle": "Épaules",
@@ -19974,9 +18808,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0299-QfAKy1G.jpg",
-    "gif": "0299-QfAKy1G.gif"
-  },
+    },
   {
     "id": "og_2136",
     "muscle": "Épaules",
@@ -20002,9 +18834,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2136-BqgCRif.jpg",
-    "gif": "2136-BqgCRif.gif"
-  },
+    },
   {
     "id": "og_0300",
     "muscle": "Fessiers",
@@ -20030,9 +18860,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0300-nUwVh7b.jpg",
-    "gif": "0300-nUwVh7b.gif"
-  },
+    },
   {
     "id": "og_0301",
     "muscle": "Pectoraux",
@@ -20058,9 +18886,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0301-DwhEmmE.jpg",
-    "gif": "0301-DwhEmmE.gif"
-  },
+    },
   {
     "id": "og_0302",
     "muscle": "Pectoraux",
@@ -20085,9 +18911,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0302-xXm4nYq.jpg",
-    "gif": "0302-xXm4nYq.gif"
-  },
+    },
   {
     "id": "og_0303",
     "muscle": "Pectoraux",
@@ -20113,9 +18937,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0303-1qrWgZ2.jpg",
-    "gif": "0303-1qrWgZ2.gif"
-  },
+    },
   {
     "id": "og_1276",
     "muscle": "Pectoraux",
@@ -20141,9 +18963,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1276-NL6YBwN.jpg",
-    "gif": "1276-NL6YBwN.gif"
-  },
+    },
   {
     "id": "og_1617",
     "muscle": "Triceps",
@@ -20169,9 +18989,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1617-SHUMp5H.jpg",
-    "gif": "1617-SHUMp5H.gif"
-  },
+    },
   {
     "id": "og_0305",
     "muscle": "Dos",
@@ -20198,9 +19016,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0305-cwsAI4G.jpg",
-    "gif": "0305-cwsAI4G.gif"
-  },
+    },
   {
     "id": "og_0304",
     "muscle": "Dos",
@@ -20227,9 +19043,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0304-bRlbdjK.jpg",
-    "gif": "0304-bRlbdjK.gif"
-  },
+    },
   {
     "id": "og_0306",
     "muscle": "Triceps",
@@ -20254,9 +19068,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0306-OTgkHwR.jpg",
-    "gif": "0306-OTgkHwR.gif"
-  },
+    },
   {
     "id": "og_0307",
     "muscle": "Pectoraux",
@@ -20283,9 +19095,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0307-reFHapa.jpg",
-    "gif": "0307-reFHapa.gif"
-  },
+    },
   {
     "id": "og_1437",
     "muscle": "Avant-bras",
@@ -20310,9 +19120,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "1437-mtXengz.jpg",
-    "gif": "1437-mtXengz.gif"
-  },
+    },
   {
     "id": "og_0308",
     "muscle": "Pectoraux",
@@ -20337,9 +19145,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0308-yz9nUhF.jpg",
-    "gif": "0308-yz9nUhF.gif"
-  },
+    },
   {
     "id": "og_1277",
     "muscle": "Pectoraux",
@@ -20366,9 +19172,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1277-Lt3iWnf.jpg",
-    "gif": "1277-Lt3iWnf.gif"
-  },
+    },
   {
     "id": "og_1732",
     "muscle": "Triceps",
@@ -20396,9 +19200,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1732-XalXcvM.jpg",
-    "gif": "1732-XalXcvM.gif"
-  },
+    },
   {
     "id": "og_0310",
     "muscle": "Épaules",
@@ -20423,9 +19225,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0310-3eGE2JC.jpg",
-    "gif": "0310-3eGE2JC.gif"
-  },
+    },
   {
     "id": "og_0309",
     "muscle": "Épaules",
@@ -20451,9 +19251,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0309-Rr7S3yg.jpg",
-    "gif": "0309-Rr7S3yg.gif"
-  },
+    },
   {
     "id": "og_0311",
     "muscle": "Épaules",
@@ -20479,9 +19277,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0311-AQ0mC4Y.jpg",
-    "gif": "0311-AQ0mC4Y.gif"
-  },
+    },
   {
     "id": "og_1760",
     "muscle": "Quadriceps",
@@ -20508,9 +19304,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "1760-yn8yg1r.jpg",
-    "gif": "1760-yn8yg1r.gif"
-  },
+    },
   {
     "id": "og_0313",
     "muscle": "Biceps",
@@ -20538,9 +19332,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0313-slDvUAU.jpg",
-    "gif": "0313-slDvUAU.gif"
-  },
+    },
   {
     "id": "og_1659",
     "muscle": "Biceps",
@@ -20567,9 +19359,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1659-fY68AyX.jpg",
-    "gif": "1659-fY68AyX.gif"
-  },
+    },
   {
     "id": "og_0312",
     "muscle": "Biceps",
@@ -20597,9 +19387,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0312-2NpxjC1.jpg",
-    "gif": "0312-2NpxjC1.gif"
-  },
+    },
   {
     "id": "og_2402",
     "muscle": "Biceps",
@@ -20627,9 +19415,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2402-GNhAeJ0.jpg",
-    "gif": "2402-GNhAeJ0.gif"
-  },
+    },
   {
     "id": "og_1664",
     "muscle": "Biceps",
@@ -20653,9 +19439,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1664-qAmNMJY.jpg",
-    "gif": "1664-qAmNMJY.gif"
-  },
+    },
   {
     "id": "og_3545",
     "muscle": "Pectoraux",
@@ -20682,9 +19466,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "3545-TVdivgY.jpg",
-    "gif": "3545-TVdivgY.gif"
-  },
+    },
   {
     "id": "og_0314",
     "muscle": "Pectoraux",
@@ -20711,9 +19493,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0314-ns0SIbU.jpg",
-    "gif": "0314-ns0SIbU.gif"
-  },
+    },
   {
     "id": "og_0315",
     "muscle": "Biceps",
@@ -20739,9 +19519,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0315-F3xgbjF.jpg",
-    "gif": "0315-F3xgbjF.gif"
-  },
+    },
   {
     "id": "og_0316",
     "muscle": "Pectoraux",
@@ -20769,9 +19547,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0316-B3Rxp6L.jpg",
-    "gif": "0316-B3Rxp6L.gif"
-  },
+    },
   {
     "id": "og_0318",
     "muscle": "Biceps",
@@ -20798,9 +19574,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0318-ae9UoXQ.jpg",
-    "gif": "0318-ae9UoXQ.gif"
-  },
+    },
   {
     "id": "og_0317",
     "muscle": "Biceps",
@@ -20826,9 +19600,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0317-RaflbWD.jpg",
-    "gif": "0317-RaflbWD.gif"
-  },
+    },
   {
     "id": "og_0319",
     "muscle": "Pectoraux",
@@ -20854,9 +19626,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0319-ESOd5Pl.jpg",
-    "gif": "0319-ESOd5Pl.gif"
-  },
+    },
   {
     "id": "og_1278",
     "muscle": "Pectoraux",
@@ -20882,9 +19652,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1278-HYe1ZqR.jpg",
-    "gif": "1278-HYe1ZqR.gif"
-  },
+    },
   {
     "id": "og_0320",
     "muscle": "Biceps",
@@ -20911,9 +19679,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0320-ByX0WxV.jpg",
-    "gif": "0320-ByX0WxV.gif"
-  },
+    },
   {
     "id": "og_0321",
     "muscle": "Pectoraux",
@@ -20939,9 +19705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0321-PG1kcIb.jpg",
-    "gif": "0321-PG1kcIb.gif"
-  },
+    },
   {
     "id": "og_1618",
     "muscle": "Triceps",
@@ -20969,9 +19733,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1618-wkgnGfb.jpg",
-    "gif": "1618-wkgnGfb.gif"
-  },
+    },
   {
     "id": "og_0322",
     "muscle": "Biceps",
@@ -20998,9 +19760,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0322-LCtQPn8.jpg",
-    "gif": "0322-LCtQPn8.gif"
-  },
+    },
   {
     "id": "og_1279",
     "muscle": "Pectoraux",
@@ -21028,9 +19788,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1279-Gw2HFvW.jpg",
-    "gif": "1279-Gw2HFvW.gif"
-  },
+    },
   {
     "id": "og_1280",
     "muscle": "Pectoraux",
@@ -21057,9 +19815,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1280-LLNh6q5.jpg",
-    "gif": "1280-LLNh6q5.gif"
-  },
+    },
   {
     "id": "og_1619",
     "muscle": "Triceps",
@@ -21086,9 +19842,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1619-LL1UiTX.jpg",
-    "gif": "1619-LL1UiTX.gif"
-  },
+    },
   {
     "id": "og_1620",
     "muscle": "Triceps",
@@ -21115,9 +19869,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1620-jDnrkar.jpg",
-    "gif": "1620-jDnrkar.gif"
-  },
+    },
   {
     "id": "og_0323",
     "muscle": "Épaules",
@@ -21144,9 +19896,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0323-aTNKZiC.jpg",
-    "gif": "0323-aTNKZiC.gif"
-  },
+    },
   {
     "id": "og_1281",
     "muscle": "Pectoraux",
@@ -21172,9 +19922,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1281-rDAiRf9.jpg",
-    "gif": "1281-rDAiRf9.gif"
-  },
+    },
   {
     "id": "og_1282",
     "muscle": "Pectoraux",
@@ -21201,9 +19949,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1282-Bg5JKSH.jpg",
-    "gif": "1282-Bg5JKSH.gif"
-  },
+    },
   {
     "id": "og_0324",
     "muscle": "Pectoraux",
@@ -21231,9 +19977,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0324-OVLmUuL.jpg",
-    "gif": "0324-OVLmUuL.gif"
-  },
+    },
   {
     "id": "og_1283",
     "muscle": "Pectoraux",
@@ -21260,9 +20004,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1283-bfiHMpI.jpg",
-    "gif": "1283-bfiHMpI.gif"
-  },
+    },
   {
     "id": "og_0325",
     "muscle": "Épaules",
@@ -21288,9 +20030,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0325-nxW6BkN.jpg",
-    "gif": "0325-nxW6BkN.gif"
-  },
+    },
   {
     "id": "og_0326",
     "muscle": "Épaules",
@@ -21317,9 +20057,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0326-vYk8lqw.jpg",
-    "gif": "0326-vYk8lqw.gif"
-  },
+    },
   {
     "id": "og_0327",
     "muscle": "Dos",
@@ -21346,9 +20084,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0327-7vG5o25.jpg",
-    "gif": "0327-7vG5o25.gif"
-  },
+    },
   {
     "id": "og_0328",
     "muscle": "Pectoraux",
@@ -21375,9 +20111,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0328-6e2DcYX.jpg",
-    "gif": "0328-6e2DcYX.gif"
-  },
+    },
   {
     "id": "og_0329",
     "muscle": "Dos",
@@ -21402,9 +20136,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0329-JymLInS.jpg",
-    "gif": "0329-JymLInS.gif"
-  },
+    },
   {
     "id": "og_3542",
     "muscle": "Épaules",
@@ -21430,9 +20162,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "3542-jgbvVJ0.jpg",
-    "gif": "3542-jgbvVJ0.gif"
-  },
+    },
   {
     "id": "og_0330",
     "muscle": "Triceps",
@@ -21457,9 +20187,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0330-OVIKwsd.jpg",
-    "gif": "0330-OVIKwsd.gif"
-  },
+    },
   {
     "id": "og_0331",
     "muscle": "Pectoraux",
@@ -21486,9 +20214,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0331-1PLE8e9.jpg",
-    "gif": "0331-1PLE8e9.gif"
-  },
+    },
   {
     "id": "og_1733",
     "muscle": "Triceps",
@@ -21513,9 +20239,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1733-U7D9Fx3.jpg",
-    "gif": "1733-U7D9Fx3.gif"
-  },
+    },
   {
     "id": "og_3541",
     "muscle": "Dos",
@@ -21541,9 +20265,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "3541-PbzNu7c.jpg",
-    "gif": "3541-PbzNu7c.gif"
-  },
+    },
   {
     "id": "og_0332",
     "muscle": "Épaules",
@@ -21568,9 +20290,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0332-cALkHHX.jpg",
-    "gif": "0332-cALkHHX.gif"
-  },
+    },
   {
     "id": "og_0333",
     "muscle": "Triceps",
@@ -21596,9 +20316,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0333-W6PxUkg.jpg",
-    "gif": "0333-W6PxUkg.gif"
-  },
+    },
   {
     "id": "og_1734",
     "muscle": "Triceps",
@@ -21624,9 +20342,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1734-cAvTaSg.jpg",
-    "gif": "1734-cAvTaSg.gif"
-  },
+    },
   {
     "id": "og_1660",
     "muscle": "Biceps",
@@ -21653,9 +20369,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1660-2JCuFTU.jpg",
-    "gif": "1660-2JCuFTU.gif"
-  },
+    },
   {
     "id": "og_0334",
     "muscle": "Épaules",
@@ -21680,9 +20394,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0334-DsgkuIt.jpg",
-    "gif": "0334-DsgkuIt.gif"
-  },
+    },
   {
     "id": "og_0335",
     "muscle": "Épaules",
@@ -21710,9 +20422,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0335-xMjBKwn.jpg",
-    "gif": "0335-xMjBKwn.gif"
-  },
+    },
   {
     "id": "og_0336",
     "muscle": "Fessiers",
@@ -21740,9 +20450,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0336-RRWFUcw.jpg",
-    "gif": "0336-RRWFUcw.gif"
-  },
+    },
   {
     "id": "og_1658",
     "muscle": "Biceps",
@@ -21769,9 +20477,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1658-Mz6lLcW.jpg",
-    "gif": "1658-Mz6lLcW.gif"
-  },
+    },
   {
     "id": "og_0337",
     "muscle": "Triceps",
@@ -21796,9 +20502,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0337-L2V5Nan.jpg",
-    "gif": "0337-L2V5Nan.gif"
-  },
+    },
   {
     "id": "og_1729",
     "muscle": "Triceps",
@@ -21823,9 +20527,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1729-NfP83rA.jpg",
-    "gif": "1729-NfP83rA.gif"
-  },
+    },
   {
     "id": "og_0338",
     "muscle": "Triceps",
@@ -21850,9 +20552,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0338-eOCOwIR.jpg",
-    "gif": "0338-eOCOwIR.gif"
-  },
+    },
   {
     "id": "og_0863",
     "muscle": "Épaules",
@@ -21878,9 +20578,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0863-bmBf7LN.jpg",
-    "gif": "0863-bmBf7LN.gif"
-  },
+    },
   {
     "id": "og_0339",
     "muscle": "Ischio-Jambiers",
@@ -21904,9 +20602,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0339-FkBIE6a.jpg",
-    "gif": "0339-FkBIE6a.gif"
-  },
+    },
   {
     "id": "og_0340",
     "muscle": "Pectoraux",
@@ -21931,9 +20627,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0340-7gdLIXa.jpg",
-    "gif": "0340-7gdLIXa.gif"
-  },
+    },
   {
     "id": "og_2470",
     "muscle": "Épaules",
@@ -21959,9 +20653,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2470-Ion0XWz.jpg",
-    "gif": "2470-Ion0XWz.gif"
-  },
+    },
   {
     "id": "og_0341",
     "muscle": "Épaules",
@@ -21987,9 +20679,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0341-gSw59a4.jpg",
-    "gif": "0341-gSw59a4.gif"
-  },
+    },
   {
     "id": "og_0343",
     "muscle": "Pectoraux",
@@ -22015,9 +20705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0343-zGSIWQi.jpg",
-    "gif": "0343-zGSIWQi.gif"
-  },
+    },
   {
     "id": "og_0342",
     "muscle": "Pectoraux",
@@ -22044,9 +20732,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0342-K3dIO25.jpg",
-    "gif": "0342-K3dIO25.gif"
-  },
+    },
   {
     "id": "og_0344",
     "muscle": "Triceps",
@@ -22071,9 +20757,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0344-wyaqzOS.jpg",
-    "gif": "0344-wyaqzOS.gif"
-  },
+    },
   {
     "id": "og_0345",
     "muscle": "Épaules",
@@ -22098,9 +20782,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0345-KwFGiEP.jpg",
-    "gif": "0345-KwFGiEP.gif"
-  },
+    },
   {
     "id": "og_0346",
     "muscle": "Triceps",
@@ -22125,9 +20807,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0346-zZlORz6.jpg",
-    "gif": "0346-zZlORz6.gif"
-  },
+    },
   {
     "id": "og_0347",
     "muscle": "Avant-bras",
@@ -22153,9 +20833,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0347-mym4hJo.jpg",
-    "gif": "0347-mym4hJo.gif"
-  },
+    },
   {
     "id": "og_2705",
     "muscle": "Avant-bras",
@@ -22182,9 +20860,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "2705-7RWNjiB.jpg",
-    "gif": "2705-7RWNjiB.gif"
-  },
+    },
   {
     "id": "og_1284",
     "muscle": "Pectoraux",
@@ -22211,9 +20887,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1284-iK59oEA.jpg",
-    "gif": "1284-iK59oEA.gif"
-  },
+    },
   {
     "id": "og_1328",
     "muscle": "Dos",
@@ -22239,9 +20913,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "1328-XUUD0Fs.jpg",
-    "gif": "1328-XUUD0Fs.gif"
-  },
+    },
   {
     "id": "og_0348",
     "muscle": "Épaules",
@@ -22267,9 +20939,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0348-53Ttlck.jpg",
-    "gif": "0348-53Ttlck.gif"
-  },
+    },
   {
     "id": "og_1735",
     "muscle": "Triceps",
@@ -22293,9 +20963,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1735-6MfS53i.jpg",
-    "gif": "1735-6MfS53i.gif"
-  },
+    },
   {
     "id": "og_0349",
     "muscle": "Avant-bras",
@@ -22321,9 +20989,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0349-M2Pm3zj.jpg",
-    "gif": "0349-M2Pm3zj.gif"
-  },
+    },
   {
     "id": "og_2706",
     "muscle": "Avant-bras",
@@ -22349,9 +21015,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "2706-rEhi2o5.jpg",
-    "gif": "2706-rEhi2o5.gif"
-  },
+    },
   {
     "id": "og_1661",
     "muscle": "Biceps",
@@ -22378,9 +21042,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1661-XVzF3iZ.jpg",
-    "gif": "1661-XVzF3iZ.gif"
-  },
+    },
   {
     "id": "og_0350",
     "muscle": "Biceps",
@@ -22406,9 +21068,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0350-KUaZst7.jpg",
-    "gif": "0350-KUaZst7.gif"
-  },
+    },
   {
     "id": "og_0351",
     "muscle": "Triceps",
@@ -22433,9 +21093,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0351-mpKZGWz.jpg",
-    "gif": "0351-mpKZGWz.gif"
-  },
+    },
   {
     "id": "og_1662",
     "muscle": "Biceps",
@@ -22461,9 +21119,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1662-qm9veZw.jpg",
-    "gif": "1662-qm9veZw.gif"
-  },
+    },
   {
     "id": "og_0352",
     "muscle": "Triceps",
@@ -22489,9 +21145,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0352-pP8wP2P.jpg",
-    "gif": "0352-pP8wP2P.gif"
-  },
+    },
   {
     "id": "og_1285",
     "muscle": "Pectoraux",
@@ -22518,9 +21172,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1285-o5Jsk92.jpg",
-    "gif": "1285-o5Jsk92.gif"
-  },
+    },
   {
     "id": "og_0292",
     "muscle": "Dos",
@@ -22547,9 +21199,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0292-C0MA9bC.jpg",
-    "gif": "0292-C0MA9bC.gif"
-  },
+    },
   {
     "id": "og_1286",
     "muscle": "Pectoraux",
@@ -22577,9 +21227,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1286-Bpkf41o.jpg",
-    "gif": "1286-Bpkf41o.gif"
-  },
+    },
   {
     "id": "og_0353",
     "muscle": "Biceps",
@@ -22605,9 +21253,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0353-k5IpyHg.jpg",
-    "gif": "0353-k5IpyHg.gif"
-  },
+    },
   {
     "id": "og_1287",
     "muscle": "Pectoraux",
@@ -22633,9 +21279,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1287-REGM1dE.jpg",
-    "gif": "1287-REGM1dE.gif"
-  },
+    },
   {
     "id": "og_1288",
     "muscle": "Pectoraux",
@@ -22662,9 +21306,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1288-Am02iPd.jpg",
-    "gif": "1288-Am02iPd.gif"
-  },
+    },
   {
     "id": "og_1736",
     "muscle": "Triceps",
@@ -22689,9 +21331,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1736-ziFKQXP.jpg",
-    "gif": "1736-ziFKQXP.gif"
-  },
+    },
   {
     "id": "og_1663",
     "muscle": "Biceps",
@@ -22717,9 +21357,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1663-4dF3maG.jpg",
-    "gif": "1663-4dF3maG.gif"
-  },
+    },
   {
     "id": "og_1621",
     "muscle": "Triceps",
@@ -22746,9 +21384,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1621-VYmYxK5.jpg",
-    "gif": "1621-VYmYxK5.gif"
-  },
+    },
   {
     "id": "og_1289",
     "muscle": "Pectoraux",
@@ -22775,9 +21411,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1289-PDaMuyV.jpg",
-    "gif": "1289-PDaMuyV.gif"
-  },
+    },
   {
     "id": "og_0354",
     "muscle": "Triceps",
@@ -22803,9 +21437,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0354-bQy2Eni.jpg",
-    "gif": "0354-bQy2Eni.gif"
-  },
+    },
   {
     "id": "og_0355",
     "muscle": "Épaules",
@@ -22832,9 +21464,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0355-n5cWCsI.jpg",
-    "gif": "0355-n5cWCsI.gif"
-  },
+    },
   {
     "id": "og_0356",
     "muscle": "Épaules",
@@ -22862,9 +21492,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0356-Yg7MJAT.jpg",
-    "gif": "0356-Yg7MJAT.gif"
-  },
+    },
   {
     "id": "og_1290",
     "muscle": "Pectoraux",
@@ -22891,9 +21519,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1290-QZFv5ui.jpg",
-    "gif": "1290-QZFv5ui.gif"
-  },
+    },
   {
     "id": "og_1665",
     "muscle": "Biceps",
@@ -22918,9 +21544,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1665-JWjujiY.jpg",
-    "gif": "1665-JWjujiY.gif"
-  },
+    },
   {
     "id": "og_1666",
     "muscle": "Biceps",
@@ -22944,9 +21568,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1666-LIGZSTA.jpg",
-    "gif": "1666-LIGZSTA.gif"
-  },
+    },
   {
     "id": "og_1291",
     "muscle": "Pectoraux",
@@ -22973,9 +21595,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1291-bQHPBU3.jpg",
-    "gif": "1291-bQHPBU3.gif"
-  },
+    },
   {
     "id": "og_0358",
     "muscle": "Avant-bras",
@@ -23001,9 +21621,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0358-BwSNDGt.jpg",
-    "gif": "0358-BwSNDGt.gif"
-  },
+    },
   {
     "id": "og_0359",
     "muscle": "Épaules",
@@ -23030,9 +21648,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0359-e25F58f.jpg",
-    "gif": "0359-e25F58f.gif"
-  },
+    },
   {
     "id": "og_1622",
     "muscle": "Pectoraux",
@@ -23059,9 +21675,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1622-Ze7MoIb.jpg",
-    "gif": "1622-Ze7MoIb.gif"
-  },
+    },
   {
     "id": "og_1414",
     "muscle": "Biceps",
@@ -23086,9 +21700,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1414-bWxq4op.jpg",
-    "gif": "1414-bWxq4op.gif"
-  },
+    },
   {
     "id": "og_1667",
     "muscle": "Biceps",
@@ -23112,9 +21724,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1667-VdLZ3nB.jpg",
-    "gif": "1667-VdLZ3nB.gif"
-  },
+    },
   {
     "id": "og_1668",
     "muscle": "Biceps",
@@ -23139,9 +21749,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1668-s999Hdo.jpg",
-    "gif": "1668-s999Hdo.gif"
-  },
+    },
   {
     "id": "og_1669",
     "muscle": "Biceps",
@@ -23168,9 +21776,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1669-jK2hZ6n.jpg",
-    "gif": "1669-jK2hZ6n.gif"
-  },
+    },
   {
     "id": "og_1415",
     "muscle": "Avant-bras",
@@ -23196,9 +21802,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "1415-YtaCTYl.jpg",
-    "gif": "1415-YtaCTYl.gif"
-  },
+    },
   {
     "id": "og_0361",
     "muscle": "Épaules",
@@ -23223,9 +21827,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0361-84RyJf8.jpg",
-    "gif": "0361-84RyJf8.gif"
-  },
+    },
   {
     "id": "og_0360",
     "muscle": "Épaules",
@@ -23250,9 +21852,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0360-1TkiAFK.jpg",
-    "gif": "0360-1TkiAFK.gif"
-  },
+    },
   {
     "id": "og_3888",
     "muscle": "Fessiers",
@@ -23282,9 +21882,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "3888-6pTkI99.jpg",
-    "gif": "3888-6pTkI99.gif"
-  },
+    },
   {
     "id": "og_1670",
     "muscle": "Biceps",
@@ -23310,9 +21908,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1670-ffQsyBj.jpg",
-    "gif": "1670-ffQsyBj.gif"
-  },
+    },
   {
     "id": "og_1671",
     "muscle": "Biceps",
@@ -23339,9 +21935,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1671-2sQGZ5b.jpg",
-    "gif": "1671-2sQGZ5b.gif"
-  },
+    },
   {
     "id": "og_0362",
     "muscle": "Triceps",
@@ -23367,9 +21961,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0362-nAuHPcD.jpg",
-    "gif": "0362-nAuHPcD.gif"
-  },
+    },
   {
     "id": "og_0363",
     "muscle": "Épaules",
@@ -23395,9 +21987,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0363-6cKQC5E.jpg",
-    "gif": "0363-6cKQC5E.gif"
-  },
+    },
   {
     "id": "og_0364",
     "muscle": "Avant-bras",
@@ -23423,9 +22013,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0364-q8aHNoF.jpg",
-    "gif": "0364-q8aHNoF.gif"
-  },
+    },
   {
     "id": "og_1672",
     "muscle": "Biceps",
@@ -23451,9 +22039,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1672-sxY5Biu.jpg",
-    "gif": "1672-sxY5Biu.gif"
-  },
+    },
   {
     "id": "og_1292",
     "muscle": "Pectoraux",
@@ -23480,9 +22066,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1292-pH2x2jj.jpg",
-    "gif": "1292-pH2x2jj.gif"
-  },
+    },
   {
     "id": "og_0365",
     "muscle": "Biceps",
@@ -23507,9 +22091,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0365-BKa8dmT.jpg",
-    "gif": "0365-BKa8dmT.gif"
-  },
+    },
   {
     "id": "og_0366",
     "muscle": "Biceps",
@@ -23533,9 +22115,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0366-IvV6C9M.jpg",
-    "gif": "0366-IvV6C9M.gif"
-  },
+    },
   {
     "id": "og_1441",
     "muscle": "Avant-bras",
@@ -23561,9 +22141,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "1441-4Jc36XM.jpg",
-    "gif": "1441-4Jc36XM.gif"
-  },
+    },
   {
     "id": "og_0367",
     "muscle": "Avant-bras",
@@ -23589,9 +22167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0367-KI1DjNN.jpg",
-    "gif": "0367-KI1DjNN.gif"
-  },
+    },
   {
     "id": "og_0368",
     "muscle": "Avant-bras",
@@ -23617,9 +22193,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0368-3tAXPQ6.jpg",
-    "gif": "0368-3tAXPQ6.gif"
-  },
+    },
   {
     "id": "og_0369",
     "muscle": "Avant-bras",
@@ -23645,9 +22219,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0369-D1xYJAU.jpg",
-    "gif": "0369-D1xYJAU.gif"
-  },
+    },
   {
     "id": "og_1329",
     "muscle": "Dos",
@@ -23676,9 +22248,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "1329-wt6rwjk.jpg",
-    "gif": "1329-wt6rwjk.gif"
-  },
+    },
   {
     "id": "og_1623",
     "muscle": "Triceps",
@@ -23706,9 +22276,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1623-8eqjhOl.jpg",
-    "gif": "1623-8eqjhOl.gif"
-  },
+    },
   {
     "id": "og_0370",
     "muscle": "Biceps",
@@ -23736,9 +22304,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0370-F1KxjBa.jpg",
-    "gif": "0370-F1KxjBa.gif"
-  },
+    },
   {
     "id": "og_0371",
     "muscle": "Fessiers",
@@ -23766,9 +22332,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0371-S4pwGlc.jpg",
-    "gif": "0371-S4pwGlc.gif"
-  },
+    },
   {
     "id": "og_0372",
     "muscle": "Biceps",
@@ -23795,9 +22359,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0372-jivWf8n.jpg",
-    "gif": "0372-jivWf8n.gif"
-  },
+    },
   {
     "id": "og_1673",
     "muscle": "Biceps",
@@ -23822,9 +22384,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1673-hwygydB.jpg",
-    "gif": "1673-hwygydB.gif"
-  },
+    },
   {
     "id": "og_1293",
     "muscle": "Pectoraux",
@@ -23851,9 +22411,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1293-O8o7q4d.jpg",
-    "gif": "1293-O8o7q4d.gif"
-  },
+    },
   {
     "id": "og_0373",
     "muscle": "Triceps",
@@ -23878,9 +22436,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0373-bpJL2Qs.jpg",
-    "gif": "0373-bpJL2Qs.gif"
-  },
+    },
   {
     "id": "og_0374",
     "muscle": "Biceps",
@@ -23908,9 +22464,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0374-mwpPcr1.jpg",
-    "gif": "0374-mwpPcr1.gif"
-  },
+    },
   {
     "id": "og_1674",
     "muscle": "Biceps",
@@ -23938,9 +22492,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1674-cWemPG8.jpg",
-    "gif": "1674-cWemPG8.gif"
-  },
+    },
   {
     "id": "og_0375",
     "muscle": "Pectoraux",
@@ -23966,9 +22518,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0375-9XjtHvS.jpg",
-    "gif": "0375-9XjtHvS.gif"
-  },
+    },
   {
     "id": "og_1294",
     "muscle": "Pectoraux",
@@ -23998,9 +22548,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1294-lI7easp.jpg",
-    "gif": "1294-lI7easp.gif"
-  },
+    },
   {
     "id": "og_1295",
     "muscle": "Pectoraux",
@@ -24025,9 +22573,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1295-FSD6PGL.jpg",
-    "gif": "1295-FSD6PGL.gif"
-  },
+    },
   {
     "id": "og_1700",
     "muscle": "Épaules",
@@ -24052,9 +22598,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "1700-FS63wTN.jpg",
-    "gif": "1700-FS63wTN.gif"
-  },
+    },
   {
     "id": "og_0376",
     "muscle": "Épaules",
@@ -24080,9 +22624,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0376-c9MnDRp.jpg",
-    "gif": "0376-c9MnDRp.gif"
-  },
+    },
   {
     "id": "og_2292",
     "muscle": "Épaules",
@@ -24108,9 +22650,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2292-mu5Guxt.jpg",
-    "gif": "2292-mu5Guxt.gif"
-  },
+    },
   {
     "id": "og_0377",
     "muscle": "Épaules",
@@ -24138,9 +22678,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0377-EKXOMEh.jpg",
-    "gif": "0377-EKXOMEh.gif"
-  },
+    },
   {
     "id": "og_0378",
     "muscle": "Épaules",
@@ -24167,9 +22705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0378-8DiFDVA.jpg",
-    "gif": "0378-8DiFDVA.gif"
-  },
+    },
   {
     "id": "og_0380",
     "muscle": "Épaules",
@@ -24195,9 +22731,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0380-v1qBec9.jpg",
-    "gif": "0380-v1qBec9.gif"
-  },
+    },
   {
     "id": "og_0379",
     "muscle": "Épaules",
@@ -24223,9 +22757,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0379-UzkLrem.jpg",
-    "gif": "0379-UzkLrem.gif"
-  },
+    },
   {
     "id": "og_0381",
     "muscle": "Fessiers",
@@ -24252,9 +22784,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0381-SSsBDwB.jpg",
-    "gif": "0381-SSsBDwB.gif"
-  },
+    },
   {
     "id": "og_0382",
     "muscle": "Biceps",
@@ -24280,9 +22810,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0382-e4ojVhP.jpg",
-    "gif": "0382-e4ojVhP.gif"
-  },
+    },
   {
     "id": "og_1624",
     "muscle": "Pectoraux",
@@ -24309,9 +22837,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "1624-UIbGx6H.jpg",
-    "gif": "1624-UIbGx6H.gif"
-  },
+    },
   {
     "id": "og_0383",
     "muscle": "Épaules",
@@ -24338,9 +22864,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0383-EAs3xL9.jpg",
-    "gif": "0383-EAs3xL9.gif"
-  },
+    },
   {
     "id": "og_1330",
     "muscle": "Dos",
@@ -24372,9 +22896,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "1330-ZIViNh1.jpg",
-    "gif": "1330-ZIViNh1.gif"
-  },
+    },
   {
     "id": "og_1331",
     "muscle": "Dos",
@@ -24402,9 +22924,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "1331-9pQSkH8.jpg",
-    "gif": "1331-9pQSkH8.gif"
-  },
+    },
   {
     "id": "og_2327",
     "muscle": "Dos",
@@ -24432,9 +22952,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "2327-Nh3mvOO.jpg",
-    "gif": "2327-Nh3mvOO.gif"
-  },
+    },
   {
     "id": "og_0384",
     "muscle": "Biceps",
@@ -24461,9 +22979,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0384-O8Aq69u.jpg",
-    "gif": "0384-O8Aq69u.gif"
-  },
+    },
   {
     "id": "og_1675",
     "muscle": "Biceps",
@@ -24489,9 +23005,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1675-6sMAmNv.jpg",
-    "gif": "1675-6sMAmNv.gif"
-  },
+    },
   {
     "id": "og_0385",
     "muscle": "Avant-bras",
@@ -24518,9 +23032,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0385-BLCvwr2.jpg",
-    "gif": "0385-BLCvwr2.gif"
-  },
+    },
   {
     "id": "og_1459",
     "muscle": "Fessiers",
@@ -24545,9 +23057,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "1459-rR0LJzx.jpg",
-    "gif": "1459-rR0LJzx.gif"
-  },
+    },
   {
     "id": "og_0386",
     "muscle": "Épaules",
@@ -24574,9 +23084,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0386-prbWx1D.jpg",
-    "gif": "0386-prbWx1D.gif"
-  },
+    },
   {
     "id": "og_2397",
     "muscle": "Épaules",
@@ -24602,9 +23110,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2397-5vfAI0I.jpg",
-    "gif": "2397-5vfAI0I.gif"
-  },
+    },
   {
     "id": "og_0387",
     "muscle": "Épaules",
@@ -24631,9 +23137,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0387-gH5fRsC.jpg",
-    "gif": "0387-gH5fRsC.gif"
-  },
+    },
   {
     "id": "og_1676",
     "muscle": "Biceps",
@@ -24661,9 +23165,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1676-QLRmNeT.jpg",
-    "gif": "1676-QLRmNeT.gif"
-  },
+    },
   {
     "id": "og_0388",
     "muscle": "Épaules",
@@ -24690,9 +23192,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0388-QT5Q0nK.jpg",
-    "gif": "0388-QT5Q0nK.gif"
-  },
+    },
   {
     "id": "og_3546",
     "muscle": "Épaules",
@@ -24718,9 +23218,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "3546-q7qkONO.jpg",
-    "gif": "3546-q7qkONO.gif"
-  },
+    },
   {
     "id": "og_0389",
     "muscle": "Triceps",
@@ -24745,9 +23243,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0389-JhYSVwT.jpg",
-    "gif": "0389-JhYSVwT.gif"
-  },
+    },
   {
     "id": "og_2317",
     "muscle": "Épaules",
@@ -24773,9 +23269,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2317-JzQbv7J.jpg",
-    "gif": "2317-JzQbv7J.gif"
-  },
+    },
   {
     "id": "og_1730",
     "muscle": "Triceps",
@@ -24802,9 +23296,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1730-x0lwvfq.jpg",
-    "gif": "1730-x0lwvfq.gif"
-  },
+    },
   {
     "id": "og_1737",
     "muscle": "Triceps",
@@ -24830,9 +23322,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1737-4ievMJ9.jpg",
-    "gif": "1737-4ievMJ9.gif"
-  },
+    },
   {
     "id": "og_1677",
     "muscle": "Biceps",
@@ -24857,9 +23347,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1677-xiA6lRr.jpg",
-    "gif": "1677-xiA6lRr.gif"
-  },
+    },
   {
     "id": "og_0390",
     "muscle": "Biceps",
@@ -24886,9 +23374,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0390-WgJnBH5.jpg",
-    "gif": "0390-WgJnBH5.gif"
-  },
+    },
   {
     "id": "og_3547",
     "muscle": "Biceps",
@@ -24915,9 +23401,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "3547-OeL23VY.jpg",
-    "gif": "3547-OeL23VY.gif"
-  },
+    },
   {
     "id": "og_1379",
     "muscle": "Mollets",
@@ -24943,9 +23427,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "1379-r29jP7S.jpg",
-    "gif": "1379-r29jP7S.gif"
-  },
+    },
   {
     "id": "og_0391",
     "muscle": "Biceps",
@@ -24970,9 +23452,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0391-TiaZTxx.jpg",
-    "gif": "0391-TiaZTxx.gif"
-  },
+    },
   {
     "id": "og_0392",
     "muscle": "Épaules",
@@ -24998,9 +23478,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0392-Ys97II0.jpg",
-    "gif": "0392-Ys97II0.gif"
-  },
+    },
   {
     "id": "og_1678",
     "muscle": "Biceps",
@@ -25026,9 +23504,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1678-IGtBdNT.jpg",
-    "gif": "1678-IGtBdNT.gif"
-  },
+    },
   {
     "id": "og_0393",
     "muscle": "Biceps",
@@ -25053,9 +23529,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0393-KXyoEtA.jpg",
-    "gif": "0393-KXyoEtA.gif"
-  },
+    },
   {
     "id": "og_0394",
     "muscle": "Triceps",
@@ -25081,9 +23555,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0394-en550rk.jpg",
-    "gif": "0394-en550rk.gif"
-  },
+    },
   {
     "id": "og_0396",
     "muscle": "Épaules",
@@ -25109,9 +23581,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0396-hxyTtWj.jpg",
-    "gif": "0396-hxyTtWj.gif"
-  },
+    },
   {
     "id": "og_0395",
     "muscle": "Épaules",
@@ -25137,9 +23607,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0395-hrrS0Ed.jpg",
-    "gif": "0395-hrrS0Ed.gif"
-  },
+    },
   {
     "id": "og_0397",
     "muscle": "Biceps",
@@ -25164,9 +23632,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0397-uJmK7Z1.jpg",
-    "gif": "0397-uJmK7Z1.gif"
-  },
+    },
   {
     "id": "og_1679",
     "muscle": "Biceps",
@@ -25195,9 +23661,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1679-84sESNy.jpg",
-    "gif": "1679-84sESNy.gif"
-  },
+    },
   {
     "id": "og_0398",
     "muscle": "Triceps",
@@ -25222,9 +23686,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0398-VQ3sNCn.jpg",
-    "gif": "0398-VQ3sNCn.gif"
-  },
+    },
   {
     "id": "og_0399",
     "muscle": "Avant-bras",
@@ -25250,9 +23712,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0399-7f2jsqP.jpg",
-    "gif": "0399-7f2jsqP.gif"
-  },
+    },
   {
     "id": "og_0400",
     "muscle": "Mollets",
@@ -25279,9 +23739,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "0400-Ia7tumC.jpg",
-    "gif": "0400-Ia7tumC.gif"
-  },
+    },
   {
     "id": "og_1380",
     "muscle": "Mollets",
@@ -25308,9 +23766,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "1380-FxhcxUW.jpg",
-    "gif": "1380-FxhcxUW.gif"
-  },
+    },
   {
     "id": "og_1381",
     "muscle": "Mollets",
@@ -25337,9 +23793,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "1381-VW88JNd.jpg",
-    "gif": "1381-VW88JNd.gif"
-  },
+    },
   {
     "id": "og_0401",
     "muscle": "Avant-bras",
@@ -25365,9 +23819,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower arms",
-    "img": "0401-2dImyQ8.jpg",
-    "gif": "0401-2dImyQ8.gif"
-  },
+    },
   {
     "id": "og_0402",
     "muscle": "Biceps",
@@ -25392,9 +23844,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0402-7D5bgLT.jpg",
-    "gif": "0402-7D5bgLT.gif"
-  },
+    },
   {
     "id": "og_0403",
     "muscle": "Biceps",
@@ -25420,9 +23870,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0403-lyKCLmK.jpg",
-    "gif": "0403-lyKCLmK.gif"
-  },
+    },
   {
     "id": "og_1738",
     "muscle": "Triceps",
@@ -25447,9 +23895,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1738-5fKX7wi.jpg",
-    "gif": "1738-5fKX7wi.gif"
-  },
+    },
   {
     "id": "og_0405",
     "muscle": "Épaules",
@@ -25475,9 +23921,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0405-znQUdHY.jpg",
-    "gif": "0405-znQUdHY.gif"
-  },
+    },
   {
     "id": "og_0404",
     "muscle": "Épaules",
@@ -25503,9 +23947,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0404-f1jf47L.jpg",
-    "gif": "0404-f1jf47L.gif"
-  },
+    },
   {
     "id": "og_2188",
     "muscle": "Triceps",
@@ -25530,9 +23972,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2188-kont8Ut.jpg",
-    "gif": "2188-kont8Ut.gif"
-  },
+    },
   {
     "id": "og_0406",
     "muscle": "Dos",
@@ -25557,9 +23997,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "0406-NJzBsGJ.jpg",
-    "gif": "0406-NJzBsGJ.gif"
-  },
+    },
   {
     "id": "og_0407",
     "muscle": "Abdominaux",
@@ -25583,9 +24021,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "waist",
-    "img": "0407-IpONWYv.jpg",
-    "gif": "0407-IpONWYv.gif"
-  },
+    },
   {
     "id": "og_0408",
     "muscle": "Épaules",
@@ -25611,9 +24047,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0408-fTlkJop.jpg",
-    "gif": "0408-fTlkJop.gif"
-  },
+    },
   {
     "id": "og_3664",
     "muscle": "Dos",
@@ -25641,9 +24075,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "back",
-    "img": "3664-X6ytgYZ.jpg",
-    "gif": "3664-X6ytgYZ.gif"
-  },
+    },
   {
     "id": "og_3548",
     "muscle": "Épaules",
@@ -25669,9 +24101,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "3548-mWBtgmb.jpg",
-    "gif": "3548-mWBtgmb.gif"
-  },
+    },
   {
     "id": "og_0409",
     "muscle": "Mollets",
@@ -25696,9 +24126,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "0409-1kB3Wmk.jpg",
-    "gif": "0409-1kB3Wmk.gif"
-  },
+    },
   {
     "id": "og_1757",
     "muscle": "Fessiers",
@@ -25726,9 +24154,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "1757-gKozT8X.jpg",
-    "gif": "1757-gKozT8X.gif"
-  },
+    },
   {
     "id": "og_2805",
     "muscle": "Fessiers",
@@ -25755,9 +24181,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2805-daBmy1Y.jpg",
-    "gif": "2805-daBmy1Y.gif"
-  },
+    },
   {
     "id": "og_0410",
     "muscle": "Quadriceps",
@@ -25784,9 +24208,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0410-qx4fgX7.jpg",
-    "gif": "0410-qx4fgX7.gif"
-  },
+    },
   {
     "id": "og_0411",
     "muscle": "Fessiers",
@@ -25814,9 +24236,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0411-H6ybluc.jpg",
-    "gif": "0411-H6ybluc.gif"
-  },
+    },
   {
     "id": "og_0413",
     "muscle": "Fessiers",
@@ -25843,9 +24263,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0413-HsvHqgf.jpg",
-    "gif": "0413-HsvHqgf.gif"
-  },
+    },
   {
     "id": "og_3560",
     "muscle": "Biceps",
@@ -25877,9 +24295,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "3560-LeaZOIz.jpg",
-    "gif": "3560-LeaZOIz.gif"
-  },
+    },
   {
     "id": "og_0414",
     "muscle": "Épaules",
@@ -25905,9 +24321,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0414-bBi35y3.jpg",
-    "gif": "0414-bBi35y3.gif"
-  },
+    },
   {
     "id": "og_0415",
     "muscle": "Épaules",
@@ -25935,9 +24349,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0415-SxHteRW.jpg",
-    "gif": "0415-SxHteRW.gif"
-  },
+    },
   {
     "id": "og_1739",
     "muscle": "Triceps",
@@ -25962,9 +24374,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1739-Gi2BXfK.jpg",
-    "gif": "1739-Gi2BXfK.gif"
-  },
+    },
   {
     "id": "og_2143",
     "muscle": "Épaules",
@@ -25990,9 +24400,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "2143-RSOsp5d.jpg",
-    "gif": "2143-RSOsp5d.gif"
-  },
+    },
   {
     "id": "og_1740",
     "muscle": "Triceps",
@@ -26018,9 +24426,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1740-CJwa0vD.jpg",
-    "gif": "1740-CJwa0vD.gif"
-  },
+    },
   {
     "id": "og_1741",
     "muscle": "Triceps",
@@ -26046,9 +24452,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1741-3T12T87.jpg",
-    "gif": "1741-3T12T87.gif"
-  },
+    },
   {
     "id": "og_0416",
     "muscle": "Biceps",
@@ -26074,9 +24478,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0416-3s4NnTh.jpg",
-    "gif": "0416-3s4NnTh.gif"
-  },
+    },
   {
     "id": "og_0417",
     "muscle": "Mollets",
@@ -26100,9 +24502,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "0417-dPmaUaU.jpg",
-    "gif": "0417-dPmaUaU.gif"
-  },
+    },
   {
     "id": "og_0418",
     "muscle": "Biceps",
@@ -26129,9 +24529,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0418-7inpWch.jpg",
-    "gif": "0418-7inpWch.gif"
-  },
+    },
   {
     "id": "og_0419",
     "muscle": "Épaules",
@@ -26156,9 +24554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0419-laVRfDf.jpg",
-    "gif": "0419-laVRfDf.gif"
-  },
+    },
   {
     "id": "og_2321",
     "muscle": "Biceps",
@@ -26185,9 +24581,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2321-vKilzz3.jpg",
-    "gif": "2321-vKilzz3.gif"
-  },
+    },
   {
     "id": "og_0420",
     "muscle": "Triceps",
@@ -26212,9 +24606,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0420-UmpPAAe.jpg",
-    "gif": "0420-UmpPAAe.gif"
-  },
+    },
   {
     "id": "og_0421",
     "muscle": "Biceps",
@@ -26241,9 +24633,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0421-8fgqP5a.jpg",
-    "gif": "0421-8fgqP5a.gif"
-  },
+    },
   {
     "id": "og_0422",
     "muscle": "Biceps",
@@ -26268,9 +24658,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0422-BIb1tGo.jpg",
-    "gif": "0422-BIb1tGo.gif"
-  },
+    },
   {
     "id": "og_1680",
     "muscle": "Biceps",
@@ -26295,9 +24683,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1680-EmlJR2y.jpg",
-    "gif": "1680-EmlJR2y.gif"
-  },
+    },
   {
     "id": "og_0423",
     "muscle": "Triceps",
@@ -26323,9 +24709,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0423-BCUR88E.jpg",
-    "gif": "0423-BCUR88E.gif"
-  },
+    },
   {
     "id": "og_0424",
     "muscle": "Épaules",
@@ -26351,9 +24735,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0424-ocYc6Db.jpg",
-    "gif": "0424-ocYc6Db.gif"
-  },
+    },
   {
     "id": "og_0425",
     "muscle": "Biceps",
@@ -26378,9 +24760,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0425-DU5Kkj2.jpg",
-    "gif": "0425-DU5Kkj2.gif"
-  },
+    },
   {
     "id": "og_0426",
     "muscle": "Épaules",
@@ -26405,9 +24785,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0426-A6wtbuL.jpg",
-    "gif": "0426-A6wtbuL.gif"
-  },
+    },
   {
     "id": "og_0427",
     "muscle": "Épaules",
@@ -26432,9 +24810,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0427-UilDHSs.jpg",
-    "gif": "0427-UilDHSs.gif"
-  },
+    },
   {
     "id": "og_0428",
     "muscle": "Biceps",
@@ -26461,9 +24837,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0428-hq2hyDH.jpg",
-    "gif": "0428-hq2hyDH.gif"
-  },
+    },
   {
     "id": "og_0429",
     "muscle": "Biceps",
@@ -26488,9 +24862,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0429-0IgNjSM.jpg",
-    "gif": "0429-0IgNjSM.gif"
-  },
+    },
   {
     "id": "og_0430",
     "muscle": "Triceps",
@@ -26515,9 +24887,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0430-PdmaD0N.jpg",
-    "gif": "0430-PdmaD0N.gif"
-  },
+    },
   {
     "id": "og_2293",
     "muscle": "Biceps",
@@ -26543,9 +24913,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2293-P2nRiUa.jpg",
-    "gif": "2293-P2nRiUa.gif"
-  },
+    },
   {
     "id": "og_1684",
     "muscle": "Biceps",
@@ -26574,9 +24942,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1684-76vfTdU.jpg",
-    "gif": "1684-76vfTdU.gif"
-  },
+    },
   {
     "id": "og_0431",
     "muscle": "Fessiers",
@@ -26604,9 +24970,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0431-aXtJhlg.jpg",
-    "gif": "0431-aXtJhlg.gif"
-  },
+    },
   {
     "id": "og_2796",
     "muscle": "Quadriceps",
@@ -26634,9 +24998,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2796-gFyFj9z.jpg",
-    "gif": "2796-gFyFj9z.gif"
-  },
+    },
   {
     "id": "og_2812",
     "muscle": "Quadriceps",
@@ -26665,9 +25027,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2812-QjE2DcA.jpg",
-    "gif": "2812-QjE2DcA.gif"
-  },
+    },
   {
     "id": "og_0432",
     "muscle": "Fessiers",
@@ -26692,9 +25052,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0432-5eLRITT.jpg",
-    "gif": "0432-5eLRITT.gif"
-  },
+    },
   {
     "id": "og_0433",
     "muscle": "Pectoraux",
@@ -26720,9 +25078,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "0433-i8BdLTK.jpg",
-    "gif": "0433-i8BdLTK.gif"
-  },
+    },
   {
     "id": "og_0434",
     "muscle": "Fessiers",
@@ -26748,9 +25104,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "0434-oom75KC.jpg",
-    "gif": "0434-oom75KC.gif"
-  },
+    },
   {
     "id": "og_2808",
     "muscle": "Fessiers",
@@ -26779,9 +25133,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2808-BmrwWzo.jpg",
-    "gif": "2808-BmrwWzo.gif"
-  },
+    },
   {
     "id": "og_2803",
     "muscle": "Quadriceps",
@@ -26808,9 +25160,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2803-r5DgrW9.jpg",
-    "gif": "2803-r5DgrW9.gif"
-  },
+    },
   {
     "id": "og_0436",
     "muscle": "Triceps",
@@ -26834,9 +25184,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0436-s5PdDyY.jpg",
-    "gif": "0436-s5PdDyY.gif"
-  },
+    },
   {
     "id": "og_1742",
     "muscle": "Triceps",
@@ -26862,9 +25210,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1742-wOLmCXc.jpg",
-    "gif": "1742-wOLmCXc.gif"
-  },
+    },
   {
     "id": "og_1743",
     "muscle": "Triceps",
@@ -26893,9 +25239,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1743-z6TAHoT.jpg",
-    "gif": "1743-z6TAHoT.gif"
-  },
+    },
   {
     "id": "og_0437",
     "muscle": "Épaules",
@@ -26921,9 +25265,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0437-ainizkb.jpg",
-    "gif": "0437-ainizkb.gif"
-  },
+    },
   {
     "id": "og_1765",
     "muscle": "Épaules",
@@ -26950,9 +25292,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "1765-Iptlv6x.jpg",
-    "gif": "1765-Iptlv6x.gif"
-  },
+    },
   {
     "id": "og_0864",
     "muscle": "Épaules",
@@ -26978,9 +25318,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0864-x306lCW.jpg",
-    "gif": "0864-x306lCW.gif"
-  },
+    },
   {
     "id": "og_5201",
     "muscle": "Biceps",
@@ -27006,9 +25344,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "5201-KOpzGBL.jpg",
-    "gif": "5201-KOpzGBL.gif"
-  },
+    },
   {
     "id": "og_0438",
     "muscle": "Épaules",
@@ -27034,9 +25370,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "shoulders",
-    "img": "0438-vmwLyCg.jpg",
-    "gif": "0438-vmwLyCg.gif"
-  },
+    },
   {
     "id": "og_0439",
     "muscle": "Biceps",
@@ -27062,9 +25396,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0439-kXaIn5A.jpg",
-    "gif": "0439-kXaIn5A.gif"
-  },
+    },
   {
     "id": "og_2294",
     "muscle": "Biceps",
@@ -27089,9 +25421,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2294-y5U5B9Y.jpg",
-    "gif": "2294-y5U5B9Y.gif"
-  },
+    },
   {
     "id": "og_2189",
     "muscle": "Triceps",
@@ -27116,9 +25446,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "2189-FQXdXzY.jpg",
-    "gif": "2189-FQXdXzY.gif"
-  },
+    },
   {
     "id": "og_1167",
     "muscle": "Pectoraux",
@@ -27145,9 +25473,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1167-3uj0Ozg.jpg",
-    "gif": "1167-3uj0Ozg.gif"
-  },
+    },
   {
     "id": "og_3287",
     "muscle": "Triceps",
@@ -27173,9 +25499,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "3287-LkoAWAE.jpg",
-    "gif": "3287-LkoAWAE.gif"
-  },
+    },
   {
     "id": "og_1772",
     "muscle": "Dos",
@@ -27201,9 +25525,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1772-wbUYILZ.jpg",
-    "gif": "1772-wbUYILZ.gif"
-  },
+    },
   {
     "id": "og_0443",
     "muscle": "Abdominaux",
@@ -27230,9 +25552,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0443-jvp6DiD.jpg",
-    "gif": "0443-jvp6DiD.gif"
-  },
+    },
   {
     "id": "og_3292",
     "muscle": "Dos",
@@ -27258,9 +25578,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3292-zYmNaoY.jpg",
-    "gif": "3292-zYmNaoY.gif"
-  },
+    },
   {
     "id": "og_1332",
     "muscle": "Dos",
@@ -27287,9 +25605,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1332-EyLrNC2.jpg",
-    "gif": "1332-EyLrNC2.gif"
-  },
+    },
   {
     "id": "og_1333",
     "muscle": "Dos",
@@ -27315,9 +25631,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1333-PERjVm8.jpg",
-    "gif": "1333-PERjVm8.gif"
-  },
+    },
   {
     "id": "og_1334",
     "muscle": "Dos",
@@ -27344,9 +25658,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1334-o1HGDSq.jpg",
-    "gif": "1334-o1HGDSq.gif"
-  },
+    },
   {
     "id": "og_1335",
     "muscle": "Dos",
@@ -27372,9 +25684,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1335-WME869U.jpg",
-    "gif": "1335-WME869U.gif"
-  },
+    },
   {
     "id": "og_1336",
     "muscle": "Dos",
@@ -27401,9 +25711,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1336-WVD66ff.jpg",
-    "gif": "1336-WVD66ff.gif"
-  },
+    },
   {
     "id": "og_1744",
     "muscle": "Triceps",
@@ -27429,9 +25737,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper arms",
-    "img": "1744-kprile3.jpg",
-    "gif": "1744-kprile3.gif"
-  },
+    },
   {
     "id": "og_1559",
     "muscle": "Fessiers",
@@ -27457,9 +25763,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper legs",
-    "img": "1559-2LQkNPW.jpg",
-    "gif": "1559-2LQkNPW.gif"
-  },
+    },
   {
     "id": "og_1338",
     "muscle": "Dos",
@@ -27486,9 +25790,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1338-d7z1Y7V.jpg",
-    "gif": "1338-d7z1Y7V.gif"
-  },
+    },
   {
     "id": "og_1339",
     "muscle": "Dos",
@@ -27514,9 +25816,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1339-sM84pE4.jpg",
-    "gif": "1339-sM84pE4.gif"
-  },
+    },
   {
     "id": "og_1341",
     "muscle": "Dos",
@@ -27543,9 +25843,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1341-yU7w7CA.jpg",
-    "gif": "1341-yU7w7CA.gif"
-  },
+    },
   {
     "id": "og_1342",
     "muscle": "Dos",
@@ -27571,9 +25869,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1342-rTbyBYV.jpg",
-    "gif": "1342-rTbyBYV.gif"
-  },
+    },
   {
     "id": "og_1382",
     "muscle": "Mollets",
@@ -27600,9 +25896,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "1382-xo6sENf.jpg",
-    "gif": "1382-xo6sENf.gif"
-  },
+    },
   {
     "id": "og_3241",
     "muscle": "Mollets",
@@ -27630,9 +25924,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "3241-FY3UdNT.jpg",
-    "gif": "3241-FY3UdNT.gif"
-  },
+    },
   {
     "id": "og_3240",
     "muscle": "Mollets",
@@ -27660,9 +25952,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "3240-j74M6Zn.jpg",
-    "gif": "3240-j74M6Zn.gif"
-  },
+    },
   {
     "id": "og_1416",
     "muscle": "Fessiers",
@@ -27692,9 +25982,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper legs",
-    "img": "1416-M72BExt.jpg",
-    "gif": "1416-M72BExt.gif"
-  },
+    },
   {
     "id": "og_1417",
     "muscle": "Fessiers",
@@ -27722,9 +26010,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper legs",
-    "img": "1417-GOJKFfO.jpg",
-    "gif": "1417-GOJKFfO.gif"
-  },
+    },
   {
     "id": "og_1296",
     "muscle": "Pectoraux",
@@ -27752,9 +26038,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "chest",
-    "img": "1296-sVvXT5J.jpg",
-    "gif": "1296-sVvXT5J.gif"
-  },
+    },
   {
     "id": "og_1343",
     "muscle": "Dos",
@@ -27780,9 +26064,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "back",
-    "img": "1343-lCKm4Rs.jpg",
-    "gif": "1343-lCKm4Rs.gif"
-  },
+    },
   {
     "id": "og_1560",
     "muscle": "Ischio-Jambiers",
@@ -27810,9 +26092,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper legs",
-    "img": "1560-yRYyfdA.jpg",
-    "gif": "1560-yRYyfdA.gif"
-  },
+    },
   {
     "id": "og_1745",
     "muscle": "Triceps",
@@ -27837,9 +26117,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper arms",
-    "img": "1745-7ePTw4B.jpg",
-    "gif": "1745-7ePTw4B.gif"
-  },
+    },
   {
     "id": "og_1746",
     "muscle": "Triceps",
@@ -27864,9 +26142,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "1746-Gm2Uv1z.jpg",
-    "gif": "1746-Gm2Uv1z.gif"
-  },
+    },
   {
     "id": "og_1747",
     "muscle": "Triceps",
@@ -27891,9 +26167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1747-CFN9P8G.jpg",
-    "gif": "1747-CFN9P8G.gif"
-  },
+    },
   {
     "id": "og_3010",
     "muscle": "Dos",
@@ -27920,9 +26194,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "back",
-    "img": "3010-nDK1HJ0.jpg",
-    "gif": "3010-nDK1HJ0.gif"
-  },
+    },
   {
     "id": "og_1748",
     "muscle": "Triceps",
@@ -27947,9 +26219,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1748-6CKUx7o.jpg",
-    "gif": "1748-6CKUx7o.gif"
-  },
+    },
   {
     "id": "og_1344",
     "muscle": "Dos",
@@ -27976,9 +26246,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "back",
-    "img": "1344-G8dXpNG.jpg",
-    "gif": "1344-G8dXpNG.gif"
-  },
+    },
   {
     "id": "og_1682",
     "muscle": "Biceps",
@@ -28003,9 +26271,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1682-Dsfz0Id.jpg",
-    "gif": "1682-Dsfz0Id.gif"
-  },
+    },
   {
     "id": "og_1749",
     "muscle": "Triceps",
@@ -28030,9 +26296,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1749-1cTf2Ux.jpg",
-    "gif": "1749-1cTf2Ux.gif"
-  },
+    },
   {
     "id": "og_0445",
     "muscle": "Épaules",
@@ -28057,9 +26321,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "shoulders",
-    "img": "0445-fprd84i.jpg",
-    "gif": "0445-fprd84i.gif"
-  },
+    },
   {
     "id": "og_1627",
     "muscle": "Biceps",
@@ -28085,9 +26347,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1627-hacCyUv.jpg",
-    "gif": "1627-hacCyUv.gif"
-  },
+    },
   {
     "id": "og_0446",
     "muscle": "Biceps",
@@ -28112,9 +26372,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0446-V4ryaZa.jpg",
-    "gif": "0446-V4ryaZa.gif"
-  },
+    },
   {
     "id": "og_0447",
     "muscle": "Biceps",
@@ -28139,9 +26397,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0447-6TG6x2w.jpg",
-    "gif": "0447-6TG6x2w.gif"
-  },
+    },
   {
     "id": "og_0448",
     "muscle": "Triceps",
@@ -28168,9 +26424,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0448-DgZQ11d.jpg",
-    "gif": "0448-DgZQ11d.gif"
-  },
+    },
   {
     "id": "og_2186",
     "muscle": "Triceps",
@@ -28196,9 +26450,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "2186-CQHoDm0.jpg",
-    "gif": "2186-CQHoDm0.gif"
-  },
+    },
   {
     "id": "og_0449",
     "muscle": "Triceps",
@@ -28224,9 +26476,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0449-KyLtiLT.jpg",
-    "gif": "0449-KyLtiLT.gif"
-  },
+    },
   {
     "id": "og_0450",
     "muscle": "Triceps",
@@ -28252,9 +26502,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0450-hnOYgH3.jpg",
-    "gif": "0450-hnOYgH3.gif"
-  },
+    },
   {
     "id": "og_0451",
     "muscle": "Biceps",
@@ -28281,9 +26529,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0451-Y5X65IB.jpg",
-    "gif": "0451-Y5X65IB.gif"
-  },
+    },
   {
     "id": "og_0452",
     "muscle": "Biceps",
@@ -28309,9 +26555,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0452-vBNyir7.jpg",
-    "gif": "0452-vBNyir7.gif"
-  },
+    },
   {
     "id": "og_1458",
     "muscle": "Biceps",
@@ -28338,9 +26582,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1458-jtFKbt5.jpg",
-    "gif": "1458-jtFKbt5.gif"
-  },
+    },
   {
     "id": "og_0453",
     "muscle": "Triceps",
@@ -28366,9 +26608,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0453-iaapw0g.jpg",
-    "gif": "0453-iaapw0g.gif"
-  },
+    },
   {
     "id": "og_0454",
     "muscle": "Biceps",
@@ -28394,9 +26634,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "0454-Ye5Qxb0.jpg",
-    "gif": "0454-Ye5Qxb0.gif"
-  },
+    },
   {
     "id": "og_1628",
     "muscle": "Biceps",
@@ -28422,9 +26660,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "1628-2kattbR.jpg",
-    "gif": "1628-2kattbR.gif"
-  },
+    },
   {
     "id": "og_2404",
     "muscle": "Biceps",
@@ -28450,9 +26686,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "2404-tJ5nYqo.jpg",
-    "gif": "2404-tJ5nYqo.gif"
-  },
+    },
   {
     "id": "og_2432",
     "muscle": "Triceps",
@@ -28480,9 +26714,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "2432-da4cXST.jpg",
-    "gif": "2432-da4cXST.gif"
-  },
+    },
   {
     "id": "og_2741",
     "muscle": "Biceps",
@@ -28507,9 +26739,7 @@ export const exerciseLibrary = [
     ],
     "eq": "ez barbell",
     "bp": "upper arms",
-    "img": "2741-OVTZ65k.jpg",
-    "gif": "2741-OVTZ65k.gif"
-  },
+    },
   {
     "id": "og_2133",
     "muscle": "Quadriceps",
@@ -28536,9 +26766,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper legs",
-    "img": "2133-qPEzJjA.jpg",
-    "gif": "2133-qPEzJjA.gif"
-  },
+    },
   {
     "id": "og_0455",
     "muscle": "Avant-bras",
@@ -28564,9 +26792,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "lower arms",
-    "img": "0455-awG04cF.jpg",
-    "gif": "0455-awG04cF.gif"
-  },
+    },
   {
     "id": "og_3303",
     "muscle": "Abdominaux",
@@ -28593,9 +26819,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3303-pQ0Mx1Z.jpg",
-    "gif": "3303-pQ0Mx1Z.gif"
-  },
+    },
   {
     "id": "og_0456",
     "muscle": "Abdominaux",
@@ -28621,9 +26845,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0456-AR0ig3o.jpg",
-    "gif": "0456-AR0ig3o.gif"
-  },
+    },
   {
     "id": "og_0457",
     "muscle": "Abdominaux",
@@ -28649,9 +26871,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0457-KZn52RC.jpg",
-    "gif": "0457-KZn52RC.gif"
-  },
+    },
   {
     "id": "og_0458",
     "muscle": "Pectoraux",
@@ -28678,9 +26898,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "chest",
-    "img": "0458-neonEDL.jpg",
-    "gif": "0458-neonEDL.gif"
-  },
+    },
   {
     "id": "og_0459",
     "muscle": "Fessiers",
@@ -28705,9 +26923,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0459-UVo2Qs2.jpg",
-    "gif": "0459-UVo2Qs2.gif"
-  },
+    },
   {
     "id": "og_1472",
     "muscle": "Quadriceps",
@@ -28735,9 +26951,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1472-uZKq7lo.jpg",
-    "gif": "1472-uZKq7lo.gif"
-  },
+    },
   {
     "id": "og_3470",
     "muscle": "Fessiers",
@@ -28764,9 +26978,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3470-kMzUs9Y.jpg",
-    "gif": "3470-kMzUs9Y.gif"
-  },
+    },
   {
     "id": "og_3194",
     "muscle": "Fessiers",
@@ -28793,9 +27005,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "3194-bdWcbaU.jpg",
-    "gif": "3194-bdWcbaU.gif"
-  },
+    },
   {
     "id": "og_2429",
     "muscle": "Abdominaux",
@@ -28820,9 +27030,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2429-FFRP97T.jpg",
-    "gif": "2429-FFRP97T.gif"
-  },
+    },
   {
     "id": "og_3301",
     "muscle": "Abdominaux",
@@ -28849,9 +27057,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3301-rQhGcin.jpg",
-    "gif": "3301-rQhGcin.gif"
-  },
+    },
   {
     "id": "og_3296",
     "muscle": "Abdominaux",
@@ -28880,9 +27086,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3296-PkCN2lv.jpg",
-    "gif": "3296-PkCN2lv.gif"
-  },
+    },
   {
     "id": "og_3295",
     "muscle": "Dos",
@@ -28909,9 +27113,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3295-hbY9wqG.jpg",
-    "gif": "3295-hbY9wqG.gif"
-  },
+    },
   {
     "id": "og_0464",
     "muscle": "Abdominaux",
@@ -28939,9 +27141,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0464-CosupLu.jpg",
-    "gif": "0464-CosupLu.gif"
-  },
+    },
   {
     "id": "og_3315",
     "muscle": "Abdominaux",
@@ -28967,9 +27167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3315-YRaCa5Y.jpg",
-    "gif": "3315-YRaCa5Y.gif"
-  },
+    },
   {
     "id": "og_3299",
     "muscle": "Abdominaux",
@@ -28997,9 +27195,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3299-YZ4961r.jpg",
-    "gif": "3299-YZ4961r.gif"
-  },
+    },
   {
     "id": "og_3327",
     "muscle": "Pectoraux",
@@ -29028,9 +27224,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3327-gw9PqGk.jpg",
-    "gif": "3327-gw9PqGk.gif"
-  },
+    },
   {
     "id": "og_0466",
     "muscle": "Dos",
@@ -29058,9 +27252,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0466-IL0JUxR.jpg",
-    "gif": "0466-IL0JUxR.gif"
-  },
+    },
   {
     "id": "og_3561",
     "muscle": "Fessiers",
@@ -29087,9 +27279,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3561-GibBPPg.jpg",
-    "gif": "3561-GibBPPg.gif"
-  },
+    },
   {
     "id": "og_3523",
     "muscle": "Fessiers",
@@ -29115,9 +27305,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3523-aWedzZX.jpg",
-    "gif": "3523-aWedzZX.gif"
-  },
+    },
   {
     "id": "og_3193",
     "muscle": "Ischio-Jambiers",
@@ -29145,9 +27333,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3193-Vvwjz6N.jpg",
-    "gif": "3193-Vvwjz6N.gif"
-  },
+    },
   {
     "id": "og_0467",
     "muscle": "Abdominaux",
@@ -29174,9 +27360,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0467-bmwlYvD.jpg",
-    "gif": "0467-bmwlYvD.gif"
-  },
+    },
   {
     "id": "og_0469",
     "muscle": "Abdominaux",
@@ -29202,9 +27386,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0469-mWppALS.jpg",
-    "gif": "0469-mWppALS.gif"
-  },
+    },
   {
     "id": "og_1383",
     "muscle": "Mollets",
@@ -29231,9 +27413,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "1383-2ORFMoR.jpg",
-    "gif": "1383-2ORFMoR.gif"
-  },
+    },
   {
     "id": "og_1384",
     "muscle": "Mollets",
@@ -29261,9 +27441,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "1384-AxFoqAD.jpg",
-    "gif": "1384-AxFoqAD.gif"
-  },
+    },
   {
     "id": "og_3221",
     "muscle": "Cardio",
@@ -29290,9 +27468,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3221-ia6kIIl.jpg",
-    "gif": "3221-ia6kIIl.gif"
-  },
+    },
   {
     "id": "og_3202",
     "muscle": "Abdominaux",
@@ -29317,9 +27493,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3202-iQ241UP.jpg",
-    "gif": "3202-iQ241UP.gif"
-  },
+    },
   {
     "id": "og_1511",
     "muscle": "Ischio-Jambiers",
@@ -29344,9 +27518,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1511-99rWm7w.jpg",
-    "gif": "1511-99rWm7w.gif"
-  },
+    },
   {
     "id": "og_2139",
     "muscle": "Pectoraux",
@@ -29372,9 +27544,7 @@ export const exerciseLibrary = [
     ],
     "eq": "upper body ergometer",
     "bp": "chest",
-    "img": "2139-pAIWRGu.jpg",
-    "gif": "2139-pAIWRGu.gif"
-  },
+    },
   {
     "id": "og_3218",
     "muscle": "Fessiers",
@@ -29401,9 +27571,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3218-B5xca8s.jpg",
-    "gif": "3218-B5xca8s.gif"
-  },
+    },
   {
     "id": "og_3215",
     "muscle": "Fessiers",
@@ -29432,9 +27600,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3215-yq3GAJX.jpg",
-    "gif": "3215-yq3GAJX.gif"
-  },
+    },
   {
     "id": "og_3302",
     "muscle": "Triceps",
@@ -29462,9 +27628,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "3302-XooAdhl.jpg",
-    "gif": "3302-XooAdhl.gif"
-  },
+    },
   {
     "id": "og_0471",
     "muscle": "Triceps",
@@ -29491,9 +27655,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0471-rQxwMxO.jpg",
-    "gif": "0471-rQxwMxO.gif"
-  },
+    },
   {
     "id": "og_1764",
     "muscle": "Abdominaux",
@@ -29518,9 +27680,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1764-VEcJRo2.jpg",
-    "gif": "1764-VEcJRo2.gif"
-  },
+    },
   {
     "id": "og_0472",
     "muscle": "Abdominaux",
@@ -29545,9 +27705,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0472-I3tsCnC.jpg",
-    "gif": "0472-I3tsCnC.gif"
-  },
+    },
   {
     "id": "og_1761",
     "muscle": "Abdominaux",
@@ -29572,9 +27730,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1761-BaE7O6U.jpg",
-    "gif": "1761-BaE7O6U.gif"
-  },
+    },
   {
     "id": "og_0473",
     "muscle": "Abdominaux",
@@ -29600,9 +27756,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0473-nuBF9MO.jpg",
-    "gif": "0473-nuBF9MO.gif"
-  },
+    },
   {
     "id": "og_0474",
     "muscle": "Abdominaux",
@@ -29626,9 +27780,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0474-pj0X0tF.jpg",
-    "gif": "0474-pj0X0tF.gif"
-  },
+    },
   {
     "id": "og_0475",
     "muscle": "Abdominaux",
@@ -29653,9 +27805,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0475-4Ml7QFO.jpg",
-    "gif": "0475-4Ml7QFO.gif"
-  },
+    },
   {
     "id": "og_0476",
     "muscle": "Abdominaux",
@@ -29682,9 +27832,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0476-Q6bvyen.jpg",
-    "gif": "0476-Q6bvyen.gif"
-  },
+    },
   {
     "id": "og_3636",
     "muscle": "Cardio",
@@ -29714,9 +27862,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3636-ealLwvX.jpg",
-    "gif": "3636-ealLwvX.gif"
-  },
+    },
   {
     "id": "og_0484",
     "muscle": "Abdominaux",
@@ -29742,9 +27888,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0484-196HJGw.jpg",
-    "gif": "0484-196HJGw.gif"
-  },
+    },
   {
     "id": "og_1418",
     "muscle": "Fessiers",
@@ -29770,9 +27914,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1418-znP9SIh.jpg",
-    "gif": "1418-znP9SIh.gif"
-  },
+    },
   {
     "id": "og_3234",
     "muscle": "Pectoraux",
@@ -29797,9 +27939,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "chest",
-    "img": "3234-P9ZRyLT.jpg",
-    "gif": "3234-P9ZRyLT.gif"
-  },
+    },
   {
     "id": "og_0489",
     "muscle": "Dos",
@@ -29825,9 +27965,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0489-zhMwOwE.jpg",
-    "gif": "0489-zhMwOwE.gif"
-  },
+    },
   {
     "id": "og_0488",
     "muscle": "Dos",
@@ -29853,9 +27991,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0488-zkgRrbK.jpg",
-    "gif": "0488-zkgRrbK.gif"
-  },
+    },
   {
     "id": "og_3289",
     "muscle": "Triceps",
@@ -29881,9 +28017,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "3289-05Cf2v8.jpg",
-    "gif": "3289-05Cf2v8.gif"
-  },
+    },
   {
     "id": "og_1471",
     "muscle": "Abdominaux",
@@ -29910,9 +28044,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1471-ZgsNQ6d.jpg",
-    "gif": "1471-ZgsNQ6d.gif"
-  },
+    },
   {
     "id": "og_3698",
     "muscle": "Abdominaux",
@@ -29938,9 +28070,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3698-TV87DNB.jpg",
-    "gif": "3698-TV87DNB.gif"
-  },
+    },
   {
     "id": "og_0490",
     "muscle": "Triceps",
@@ -29966,9 +28096,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0490-1YB40kg.jpg",
-    "gif": "0490-1YB40kg.gif"
-  },
+    },
   {
     "id": "og_0491",
     "muscle": "Abdominaux",
@@ -29993,9 +28121,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0491-eVxAzgz.jpg",
-    "gif": "0491-eVxAzgz.gif"
-  },
+    },
   {
     "id": "og_0492",
     "muscle": "Pectoraux",
@@ -30023,9 +28149,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0492-CB8WET1.jpg",
-    "gif": "0492-CB8WET1.gif"
-  },
+    },
   {
     "id": "og_0493",
     "muscle": "Pectoraux",
@@ -30051,9 +28175,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0493-B1EVP9F.jpg",
-    "gif": "0493-B1EVP9F.gif"
-  },
+    },
   {
     "id": "og_3785",
     "muscle": "Pectoraux",
@@ -30079,9 +28201,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3785-F7vjXqT.jpg",
-    "gif": "3785-F7vjXqT.gif"
-  },
+    },
   {
     "id": "og_0494",
     "muscle": "Pectoraux",
@@ -30107,9 +28227,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0494-XaaRnRn.jpg",
-    "gif": "0494-XaaRnRn.gif"
-  },
+    },
   {
     "id": "og_3011",
     "muscle": "Pectoraux",
@@ -30137,9 +28255,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3011-GdMa1ET.jpg",
-    "gif": "3011-GdMa1ET.gif"
-  },
+    },
   {
     "id": "og_0495",
     "muscle": "Abdominaux",
@@ -30167,9 +28283,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0495-9ZGZuOD.jpg",
-    "gif": "0495-9ZGZuOD.gif"
-  },
+    },
   {
     "id": "og_1564",
     "muscle": "Quadriceps",
@@ -30196,9 +28310,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "upper legs",
-    "img": "1564-tFGKm99.jpg",
-    "gif": "1564-tFGKm99.gif"
-  },
+    },
   {
     "id": "og_0496",
     "muscle": "Ischio-Jambiers",
@@ -30224,9 +28336,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0496-ms7tjSG.jpg",
-    "gif": "0496-ms7tjSG.gif"
-  },
+    },
   {
     "id": "og_2400",
     "muscle": "Ischio-Jambiers",
@@ -30253,9 +28363,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "2400-0rHfvy9.jpg",
-    "gif": "2400-0rHfvy9.gif"
-  },
+    },
   {
     "id": "og_0499",
     "muscle": "Dos",
@@ -30283,9 +28391,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0499-bZGHsAZ.jpg",
-    "gif": "0499-bZGHsAZ.gif"
-  },
+    },
   {
     "id": "og_2300",
     "muscle": "Dos",
@@ -30312,9 +28418,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "2300-VPPtusI.jpg",
-    "gif": "2300-VPPtusI.gif"
-  },
+    },
   {
     "id": "og_2298",
     "muscle": "Dos",
@@ -30342,9 +28446,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "2298-Mxa7Cr8.jpg",
-    "gif": "2298-Mxa7Cr8.gif"
-  },
+    },
   {
     "id": "og_0497",
     "muscle": "Dos",
@@ -30371,9 +28473,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0497-uX3sUBz.jpg",
-    "gif": "0497-uX3sUBz.gif"
-  },
+    },
   {
     "id": "og_0498",
     "muscle": "Dos",
@@ -30401,9 +28501,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0498-jdiExfW.jpg",
-    "gif": "0498-jdiExfW.gif"
-  },
+    },
   {
     "id": "og_1419",
     "muscle": "Fessiers",
@@ -30430,9 +28528,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1419-pZwUsKB.jpg",
-    "gif": "1419-pZwUsKB.gif"
-  },
+    },
   {
     "id": "og_1297",
     "muscle": "Pectoraux",
@@ -30459,9 +28555,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1297-HbSG1Pw.jpg",
-    "gif": "1297-HbSG1Pw.gif"
-  },
+    },
   {
     "id": "og_0500",
     "muscle": "Pectoraux",
@@ -30490,9 +28584,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0500-11wrviz.jpg",
-    "gif": "0500-11wrviz.gif"
-  },
+    },
   {
     "id": "og_0501",
     "muscle": "Cardio",
@@ -30524,9 +28616,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "0501-mr7pkqP.jpg",
-    "gif": "0501-mr7pkqP.gif"
-  },
+    },
   {
     "id": "og_3224",
     "muscle": "Cardio",
@@ -30551,9 +28641,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3224-1g5bPpA.jpg",
-    "gif": "3224-1g5bPpA.gif"
-  },
+    },
   {
     "id": "og_0507",
     "muscle": "Abdominaux",
@@ -30577,9 +28665,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0507-mbkgB44.jpg",
-    "gif": "0507-mbkgB44.gif"
-  },
+    },
   {
     "id": "og_0508",
     "muscle": "Abdominaux",
@@ -30605,9 +28691,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0508-1GPHRyK.jpg",
-    "gif": "0508-1GPHRyK.gif"
-  },
+    },
   {
     "id": "og_2612",
     "muscle": "Cardio",
@@ -30635,9 +28719,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "cardio",
-    "img": "2612-e1e76I2.jpg",
-    "gif": "2612-e1e76I2.gif"
-  },
+    },
   {
     "id": "og_0514",
     "muscle": "Fessiers",
@@ -30665,9 +28747,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0514-LIlE5Tn.jpg",
-    "gif": "0514-LIlE5Tn.gif"
-  },
+    },
   {
     "id": "og_0513",
     "muscle": "Fessiers",
@@ -30694,9 +28774,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0513-TDYiji6.jpg",
-    "gif": "0513-TDYiji6.gif"
-  },
+    },
   {
     "id": "og_0517",
     "muscle": "Abdominaux",
@@ -30726,9 +28804,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "waist",
-    "img": "0517-Kal9cQQ.jpg",
-    "gif": "0517-Kal9cQQ.gif"
-  },
+    },
   {
     "id": "og_0518",
     "muscle": "Avant-bras",
@@ -30757,9 +28833,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "lower arms",
-    "img": "0518-I4tibZG.jpg",
-    "gif": "0518-I4tibZG.gif"
-  },
+    },
   {
     "id": "og_0520",
     "muscle": "Épaules",
@@ -30785,9 +28859,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0520-5KLbZWx.jpg",
-    "gif": "0520-5KLbZWx.gif"
-  },
+    },
   {
     "id": "og_0519",
     "muscle": "Pectoraux",
@@ -30813,9 +28885,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "chest",
-    "img": "0519-7w6i0vE.jpg",
-    "gif": "0519-7w6i0vE.gif"
-  },
+    },
   {
     "id": "og_0521",
     "muscle": "Dos",
@@ -30841,9 +28911,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "back",
-    "img": "0521-b9kqlBy.jpg",
-    "gif": "0521-b9kqlBy.gif"
-  },
+    },
   {
     "id": "og_0522",
     "muscle": "Dos",
@@ -30869,9 +28937,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "back",
-    "img": "0522-Ca76jUE.jpg",
-    "gif": "0522-Ca76jUE.gif"
-  },
+    },
   {
     "id": "og_0523",
     "muscle": "Épaules",
@@ -30896,9 +28962,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0523-UM8mgyG.jpg",
-    "gif": "0523-UM8mgyG.gif"
-  },
+    },
   {
     "id": "og_0524",
     "muscle": "Abdominaux",
@@ -30928,9 +28992,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "waist",
-    "img": "0524-kjE55n5.jpg",
-    "gif": "0524-kjE55n5.gif"
-  },
+    },
   {
     "id": "og_0525",
     "muscle": "Biceps",
@@ -30959,9 +29021,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper arms",
-    "img": "0525-4KJEpzb.jpg",
-    "gif": "0525-4KJEpzb.gif"
-  },
+    },
   {
     "id": "og_0526",
     "muscle": "Biceps",
@@ -30989,9 +29049,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper arms",
-    "img": "0526-a4F9Oyc.jpg",
-    "gif": "0526-a4F9Oyc.gif"
-  },
+    },
   {
     "id": "og_0527",
     "muscle": "Épaules",
@@ -31020,9 +29078,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0527-tznL2Ad.jpg",
-    "gif": "0527-tznL2Ad.gif"
-  },
+    },
   {
     "id": "og_0528",
     "muscle": "Épaules",
@@ -31049,9 +29105,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0528-I4KkPdl.jpg",
-    "gif": "0528-I4KkPdl.gif"
-  },
+    },
   {
     "id": "og_0529",
     "muscle": "Épaules",
@@ -31078,9 +29132,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0529-M74kdvm.jpg",
-    "gif": "0529-M74kdvm.gif"
-  },
+    },
   {
     "id": "og_0530",
     "muscle": "Abdominaux",
@@ -31108,9 +29160,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "waist",
-    "img": "0530-OaE7CpD.jpg",
-    "gif": "0530-OaE7CpD.gif"
-  },
+    },
   {
     "id": "og_0531",
     "muscle": "Pectoraux",
@@ -31136,9 +29186,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "chest",
-    "img": "0531-rseLfH3.jpg",
-    "gif": "0531-rseLfH3.gif"
-  },
+    },
   {
     "id": "og_0532",
     "muscle": "Abdominaux",
@@ -31166,9 +29214,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "waist",
-    "img": "0532-L4ay0PW.jpg",
-    "gif": "0532-L4ay0PW.gif"
-  },
+    },
   {
     "id": "og_0533",
     "muscle": "Fessiers",
@@ -31196,9 +29242,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0533-DB0n8AG.jpg",
-    "gif": "0533-DB0n8AG.gif"
-  },
+    },
   {
     "id": "og_0534",
     "muscle": "Fessiers",
@@ -31225,9 +29269,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0534-ZA8b5hc.jpg",
-    "gif": "0534-ZA8b5hc.gif"
-  },
+    },
   {
     "id": "og_0535",
     "muscle": "Ischio-Jambiers",
@@ -31255,9 +29297,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0535-LHWF7us.jpg",
-    "gif": "0535-LHWF7us.gif"
-  },
+    },
   {
     "id": "og_0536",
     "muscle": "Fessiers",
@@ -31285,9 +29325,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0536-WKMQzCD.jpg",
-    "gif": "0536-WKMQzCD.gif"
-  },
+    },
   {
     "id": "og_0537",
     "muscle": "Épaules",
@@ -31313,9 +29351,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0537-vzAxBtt.jpg",
-    "gif": "0537-vzAxBtt.gif"
-  },
+    },
   {
     "id": "og_1298",
     "muscle": "Pectoraux",
@@ -31341,9 +29377,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "chest",
-    "img": "1298-rg59QCH.jpg",
-    "gif": "1298-rg59QCH.gif"
-  },
+    },
   {
     "id": "og_0538",
     "muscle": "Épaules",
@@ -31372,9 +29406,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0538-S37C94C.jpg",
-    "gif": "0538-S37C94C.gif"
-  },
+    },
   {
     "id": "og_0539",
     "muscle": "Épaules",
@@ -31400,9 +29432,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0539-yCvYdi7.jpg",
-    "gif": "0539-yCvYdi7.gif"
-  },
+    },
   {
     "id": "og_0540",
     "muscle": "Épaules",
@@ -31428,9 +29458,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0540-osdXT3K.jpg",
-    "gif": "0540-osdXT3K.gif"
-  },
+    },
   {
     "id": "og_0541",
     "muscle": "Dos",
@@ -31456,9 +29484,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "back",
-    "img": "0541-g9AsZ8P.jpg",
-    "gif": "0541-g9AsZ8P.gif"
-  },
+    },
   {
     "id": "og_0542",
     "muscle": "Épaules",
@@ -31485,9 +29511,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0542-aXcUyKb.jpg",
-    "gif": "0542-aXcUyKb.gif"
-  },
+    },
   {
     "id": "og_0543",
     "muscle": "Épaules",
@@ -31514,9 +29538,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0543-kuXhl0o.jpg",
-    "gif": "0543-kuXhl0o.gif"
-  },
+    },
   {
     "id": "og_0544",
     "muscle": "Fessiers",
@@ -31543,9 +29565,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0544-5bpPTHv.jpg",
-    "gif": "0544-5bpPTHv.gif"
-  },
+    },
   {
     "id": "og_0545",
     "muscle": "Pectoraux",
@@ -31572,9 +29592,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "chest",
-    "img": "0545-ktf3nvW.jpg",
-    "gif": "0545-ktf3nvW.gif"
-  },
+    },
   {
     "id": "og_0546",
     "muscle": "Épaules",
@@ -31600,9 +29618,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0546-BkxB8LW.jpg",
-    "gif": "0546-BkxB8LW.gif"
-  },
+    },
   {
     "id": "og_1438",
     "muscle": "Épaules",
@@ -31628,9 +29644,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "1438-ZEkjZDi.jpg",
-    "gif": "1438-ZEkjZDi.gif"
-  },
+    },
   {
     "id": "og_0547",
     "muscle": "Épaules",
@@ -31656,9 +29670,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0547-UDm6cGl.jpg",
-    "gif": "0547-UDm6cGl.gif"
-  },
+    },
   {
     "id": "og_0548",
     "muscle": "Dos",
@@ -31686,9 +29698,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "back",
-    "img": "0548-8ARQ9Hw.jpg",
-    "gif": "0548-8ARQ9Hw.gif"
-  },
+    },
   {
     "id": "og_0550",
     "muscle": "Épaules",
@@ -31716,9 +29726,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0550-yWxMvB5.jpg",
-    "gif": "0550-yWxMvB5.gif"
-  },
+    },
   {
     "id": "og_0551",
     "muscle": "Fessiers",
@@ -31749,9 +29757,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "upper legs",
-    "img": "0551-Ha7SZ3y.jpg",
-    "gif": "0551-Ha7SZ3y.gif"
-  },
+    },
   {
     "id": "og_0552",
     "muscle": "Épaules",
@@ -31777,9 +29783,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0552-7Ba7bQ2.jpg",
-    "gif": "0552-7Ba7bQ2.gif"
-  },
+    },
   {
     "id": "og_0553",
     "muscle": "Épaules",
@@ -31804,9 +29808,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "shoulders",
-    "img": "0553-blBXysN.jpg",
-    "gif": "0553-blBXysN.gif"
-  },
+    },
   {
     "id": "og_1345",
     "muscle": "Dos",
@@ -31832,9 +29834,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "back",
-    "img": "1345-wf24o8S.jpg",
-    "gif": "1345-wf24o8S.gif"
-  },
+    },
   {
     "id": "og_0554",
     "muscle": "Abdominaux",
@@ -31861,9 +29861,7 @@ export const exerciseLibrary = [
     ],
     "eq": "kettlebell",
     "bp": "waist",
-    "img": "0554-9Tkqa9O.jpg",
-    "gif": "0554-9Tkqa9O.gif"
-  },
+    },
   {
     "id": "og_0555",
     "muscle": "Ischio-Jambiers",
@@ -31889,9 +29887,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0555-v7p5bYl.jpg",
-    "gif": "0555-v7p5bYl.gif"
-  },
+    },
   {
     "id": "og_0558",
     "muscle": "Dos",
@@ -31920,9 +29916,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0558-pM07UxU.jpg",
-    "gif": "0558-pM07UxU.gif"
-  },
+    },
   {
     "id": "og_3640",
     "muscle": "Abdominaux",
@@ -31947,9 +29941,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3640-dTg95eZ.jpg",
-    "gif": "3640-dTg95eZ.gif"
-  },
+    },
   {
     "id": "og_1420",
     "muscle": "Fessiers",
@@ -31977,9 +29969,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "1420-UgDm3oy.jpg",
-    "gif": "1420-UgDm3oy.gif"
-  },
+    },
   {
     "id": "og_1346",
     "muscle": "Dos",
@@ -32006,9 +29996,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1346-f38OEuO.jpg",
-    "gif": "1346-f38OEuO.gif"
-  },
+    },
   {
     "id": "og_3239",
     "muscle": "Abdominaux",
@@ -32034,9 +30022,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3239-h1ezqSu.jpg",
-    "gif": "3239-h1ezqSu.gif"
-  },
+    },
   {
     "id": "og_3211",
     "muscle": "Pectoraux",
@@ -32062,9 +30048,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3211-ZOuKWir.jpg",
-    "gif": "3211-ZOuKWir.gif"
-  },
+    },
   {
     "id": "og_3288",
     "muscle": "Pectoraux",
@@ -32089,9 +30073,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3288-rWoBmi5.jpg",
-    "gif": "3288-rWoBmi5.gif"
-  },
+    },
   {
     "id": "og_3418",
     "muscle": "Dos",
@@ -32118,9 +30100,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3418-d1GgzTU.jpg",
-    "gif": "3418-d1GgzTU.gif"
-  },
+    },
   {
     "id": "og_3419",
     "muscle": "Abdominaux",
@@ -32147,9 +30127,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3419-UpWmA5E.jpg",
-    "gif": "3419-UpWmA5E.gif"
-  },
+    },
   {
     "id": "og_0562",
     "muscle": "Abdominaux",
@@ -32174,9 +30152,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "waist",
-    "img": "0562-QYysSLV.jpg",
-    "gif": "0562-QYysSLV.gif"
-  },
+    },
   {
     "id": "og_3237",
     "muscle": "Épaules",
@@ -32202,9 +30178,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "3237-eXMFHww.jpg",
-    "gif": "3237-eXMFHww.gif"
-  },
+    },
   {
     "id": "og_3300",
     "muscle": "Abdominaux",
@@ -32231,9 +30205,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3300-LYJodFS.jpg",
-    "gif": "3300-LYJodFS.gif"
-  },
+    },
   {
     "id": "og_2271",
     "muscle": "Épaules",
@@ -32260,9 +30232,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "shoulders",
-    "img": "2271-hoXt6wv.jpg",
-    "gif": "2271-hoXt6wv.gif"
-  },
+    },
   {
     "id": "og_0570",
     "muscle": "Abdominaux",
@@ -32288,9 +30258,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0570-OyoZ3Pu.jpg",
-    "gif": "0570-OyoZ3Pu.gif"
-  },
+    },
   {
     "id": "og_1576",
     "muscle": "Ischio-Jambiers",
@@ -32315,9 +30283,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1576-sU5BrfP.jpg",
-    "gif": "1576-sU5BrfP.gif"
-  },
+    },
   {
     "id": "og_2287",
     "muscle": "Quadriceps",
@@ -32345,9 +30311,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "2287-V07qpXy.jpg",
-    "gif": "2287-V07qpXy.gif"
-  },
+    },
   {
     "id": "og_0571",
     "muscle": "Dos",
@@ -32376,9 +30340,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0571-w2oRpuH.jpg",
-    "gif": "0571-w2oRpuH.gif"
-  },
+    },
   {
     "id": "og_0572",
     "muscle": "Dos",
@@ -32406,9 +30368,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0572-MaMuGH6.jpg",
-    "gif": "0572-MaMuGH6.gif"
-  },
+    },
   {
     "id": "og_0573",
     "muscle": "Dos",
@@ -32436,9 +30396,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0573-rUXfn3R.jpg",
-    "gif": "0573-rUXfn3R.gif"
-  },
+    },
   {
     "id": "og_0574",
     "muscle": "Dos",
@@ -32465,9 +30423,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0574-X3cqyXz.jpg",
-    "gif": "0574-X3cqyXz.gif"
-  },
+    },
   {
     "id": "og_3200",
     "muscle": "Dos",
@@ -32493,9 +30449,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "3200-LuBEORI.jpg",
-    "gif": "3200-LuBEORI.gif"
-  },
+    },
   {
     "id": "og_0575",
     "muscle": "Biceps",
@@ -32521,9 +30475,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "0575-q6y3OhV.jpg",
-    "gif": "0575-q6y3OhV.gif"
-  },
+    },
   {
     "id": "og_2289",
     "muscle": "Mollets",
@@ -32550,9 +30502,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "2289-7B4F5nZ.jpg",
-    "gif": "2289-7B4F5nZ.gif"
-  },
+    },
   {
     "id": "og_0577",
     "muscle": "Pectoraux",
@@ -32578,9 +30528,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "0577-T0yTjgW.jpg",
-    "gif": "0577-T0yTjgW.gif"
-  },
+    },
   {
     "id": "og_0576",
     "muscle": "Pectoraux",
@@ -32606,9 +30554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "0576-DOoWcnA.jpg",
-    "gif": "0576-DOoWcnA.gif"
-  },
+    },
   {
     "id": "og_0578",
     "muscle": "Fessiers",
@@ -32637,9 +30583,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0578-GUT8I22.jpg",
-    "gif": "0578-GUT8I22.gif"
-  },
+    },
   {
     "id": "og_1300",
     "muscle": "Pectoraux",
@@ -32667,9 +30611,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "1300-vsVoPHt.jpg",
-    "gif": "1300-vsVoPHt.gif"
-  },
+    },
   {
     "id": "og_1253",
     "muscle": "Mollets",
@@ -32696,9 +30638,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "1253-C9LuR4A.jpg",
-    "gif": "1253-C9LuR4A.gif"
-  },
+    },
   {
     "id": "og_0579",
     "muscle": "Dos",
@@ -32726,9 +30666,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0579-7F1DVzn.jpg",
-    "gif": "0579-7F1DVzn.gif"
-  },
+    },
   {
     "id": "og_0580",
     "muscle": "Dos",
@@ -32754,9 +30692,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0580-f91FwXG.jpg",
-    "gif": "0580-f91FwXG.gif"
-  },
+    },
   {
     "id": "og_1439",
     "muscle": "Dos",
@@ -32782,9 +30718,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1439-cbuFJrn.jpg",
-    "gif": "1439-cbuFJrn.gif"
-  },
+    },
   {
     "id": "og_2288",
     "muscle": "Avant-bras",
@@ -32810,9 +30744,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower arms",
-    "img": "2288-mKwcrHn.jpg",
-    "gif": "2288-mKwcrHn.gif"
-  },
+    },
   {
     "id": "og_1615",
     "muscle": "Biceps",
@@ -32839,9 +30771,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "1615-OAguZoG.jpg",
-    "gif": "1615-OAguZoG.gif"
-  },
+    },
   {
     "id": "og_0581",
     "muscle": "Dos",
@@ -32869,9 +30799,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0581-nZZZy9m.jpg",
-    "gif": "0581-nZZZy9m.gif"
-  },
+    },
   {
     "id": "og_2286",
     "muscle": "Fessiers",
@@ -32896,9 +30824,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "2286-OPqShYN.jpg",
-    "gif": "2286-OPqShYN.gif"
-  },
+    },
   {
     "id": "og_2611",
     "muscle": "Fessiers",
@@ -32926,9 +30852,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "2611-9KU9TYF.jpg",
-    "gif": "2611-9KU9TYF.gif"
-  },
+    },
   {
     "id": "og_1299",
     "muscle": "Pectoraux",
@@ -32955,9 +30879,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "1299-jHAnWmT.jpg",
-    "gif": "1299-jHAnWmT.gif"
-  },
+    },
   {
     "id": "og_1479",
     "muscle": "Pectoraux",
@@ -32984,9 +30906,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "1479-o17Jfkt.jpg",
-    "gif": "1479-o17Jfkt.gif"
-  },
+    },
   {
     "id": "og_0582",
     "muscle": "Ischio-Jambiers",
@@ -33013,9 +30933,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0582-nnmCTLN.jpg",
-    "gif": "0582-nnmCTLN.gif"
-  },
+    },
   {
     "id": "og_0583",
     "muscle": "Abdominaux",
@@ -33042,9 +30960,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "waist",
-    "img": "0583-sZOR9EV.jpg",
-    "gif": "0583-sZOR9EV.gif"
-  },
+    },
   {
     "id": "og_0584",
     "muscle": "Épaules",
@@ -33070,9 +30986,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0584-dRTfGZT.jpg",
-    "gif": "0584-dRTfGZT.gif"
-  },
+    },
   {
     "id": "og_0585",
     "muscle": "Quadriceps",
@@ -33098,9 +31012,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0585-my33uHU.jpg",
-    "gif": "0585-my33uHU.gif"
-  },
+    },
   {
     "id": "og_0586",
     "muscle": "Ischio-Jambiers",
@@ -33127,9 +31039,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0586-17lJ1kr.jpg",
-    "gif": "0586-17lJ1kr.gif"
-  },
+    },
   {
     "id": "og_3195",
     "muscle": "Ischio-Jambiers",
@@ -33155,9 +31065,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "3195-UXpKJoq.jpg",
-    "gif": "3195-UXpKJoq.gif"
-  },
+    },
   {
     "id": "og_0587",
     "muscle": "Épaules",
@@ -33183,9 +31091,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0587-CggQhII.jpg",
-    "gif": "0587-CggQhII.gif"
-  },
+    },
   {
     "id": "og_0588",
     "muscle": "Dos",
@@ -33214,9 +31120,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0588-IGjKj1v.jpg",
-    "gif": "0588-IGjKj1v.gif"
-  },
+    },
   {
     "id": "og_0589",
     "muscle": "Dos",
@@ -33244,9 +31148,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "back",
-    "img": "0589-Fhdtwf3.jpg",
-    "gif": "0589-Fhdtwf3.gif"
-  },
+    },
   {
     "id": "og_1356",
     "muscle": "Dos",
@@ -33273,9 +31175,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1356-OIFMAp1.jpg",
-    "gif": "1356-OIFMAp1.gif"
-  },
+    },
   {
     "id": "og_1347",
     "muscle": "Dos",
@@ -33302,9 +31202,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1347-tTuZSDT.jpg",
-    "gif": "1347-tTuZSDT.gif"
-  },
+    },
   {
     "id": "og_0590",
     "muscle": "Épaules",
@@ -33330,9 +31228,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0590-2KGnL6M.jpg",
-    "gif": "0590-2KGnL6M.gif"
-  },
+    },
   {
     "id": "og_0591",
     "muscle": "Triceps",
@@ -33359,9 +31255,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "0591-D5yqP2p.jpg",
-    "gif": "0591-D5yqP2p.gif"
-  },
+    },
   {
     "id": "og_0592",
     "muscle": "Biceps",
@@ -33388,9 +31282,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "0592-b6hQYMb.jpg",
-    "gif": "0592-b6hQYMb.gif"
-  },
+    },
   {
     "id": "og_1614",
     "muscle": "Biceps",
@@ -33416,9 +31308,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "1614-ye84CTU.jpg",
-    "gif": "1614-ye84CTU.gif"
-  },
+    },
   {
     "id": "og_2285",
     "muscle": "Dos",
@@ -33445,9 +31335,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "2285-4U7iLb5.jpg",
-    "gif": "2285-4U7iLb5.gif"
-  },
+    },
   {
     "id": "og_2736",
     "muscle": "Dos",
@@ -33475,9 +31363,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "2736-ky8FLU8.jpg",
-    "gif": "2736-ky8FLU8.gif"
-  },
+    },
   {
     "id": "og_1616",
     "muscle": "Biceps",
@@ -33504,9 +31390,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "1616-kj3hy6W.jpg",
-    "gif": "1616-kj3hy6W.gif"
-  },
+    },
   {
     "id": "og_1348",
     "muscle": "Dos",
@@ -33534,9 +31418,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1348-ZqNOWQ6.jpg",
-    "gif": "1348-ZqNOWQ6.gif"
-  },
+    },
   {
     "id": "og_0593",
     "muscle": "Fessiers",
@@ -33563,9 +31445,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0593-Krmb3cB.jpg",
-    "gif": "0593-Krmb3cB.gif"
-  },
+    },
   {
     "id": "og_1349",
     "muscle": "Dos",
@@ -33593,9 +31473,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1349-BgljGjd.jpg",
-    "gif": "1349-BgljGjd.gif"
-  },
+    },
   {
     "id": "og_2315",
     "muscle": "Mollets",
@@ -33622,9 +31500,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "2315-MrgP9L6.jpg",
-    "gif": "2315-MrgP9L6.gif"
-  },
+    },
   {
     "id": "og_2335",
     "muscle": "Mollets",
@@ -33651,9 +31527,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "2335-Ie9UGty.jpg",
-    "gif": "2335-Ie9UGty.gif"
-  },
+    },
   {
     "id": "og_0594",
     "muscle": "Mollets",
@@ -33680,9 +31554,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "0594-bOOdeyc.jpg",
-    "gif": "0594-bOOdeyc.gif"
-  },
+    },
   {
     "id": "og_1452",
     "muscle": "Abdominaux",
@@ -33708,9 +31580,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "waist",
-    "img": "1452-Wgaz7pm.jpg",
-    "gif": "1452-Wgaz7pm.gif"
-  },
+    },
   {
     "id": "og_0595",
     "muscle": "Abdominaux",
@@ -33737,9 +31607,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "waist",
-    "img": "0595-ZnJHhMk.jpg",
-    "gif": "0595-ZnJHhMk.gif"
-  },
+    },
   {
     "id": "og_3760",
     "muscle": "Abdominaux",
@@ -33766,9 +31634,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "waist",
-    "img": "3760-eXFXCY0.jpg",
-    "gif": "3760-eXFXCY0.gif"
-  },
+    },
   {
     "id": "og_1451",
     "muscle": "Triceps",
@@ -33794,9 +31660,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "1451-BRImeP8.jpg",
-    "gif": "1451-BRImeP8.gif"
-  },
+    },
   {
     "id": "og_0596",
     "muscle": "Pectoraux",
@@ -33823,9 +31687,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "0596-v3xmPAR.jpg",
-    "gif": "0596-v3xmPAR.gif"
-  },
+    },
   {
     "id": "og_3759",
     "muscle": "Fessiers",
@@ -33852,9 +31714,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "3759-XsCcxCC.jpg",
-    "gif": "3759-XsCcxCC.gif"
-  },
+    },
   {
     "id": "og_0597",
     "muscle": "Fessiers",
@@ -33881,9 +31741,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0597-CHpahtl.jpg",
-    "gif": "0597-CHpahtl.gif"
-  },
+    },
   {
     "id": "og_0598",
     "muscle": "Ischio-Jambiers",
@@ -33909,9 +31767,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0598-oHsrypV.jpg",
-    "gif": "0598-oHsrypV.gif"
-  },
+    },
   {
     "id": "og_0599",
     "muscle": "Ischio-Jambiers",
@@ -33938,9 +31794,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper legs",
-    "img": "0599-Zg3XY7P.jpg",
-    "gif": "0599-Zg3XY7P.gif"
-  },
+    },
   {
     "id": "og_0600",
     "muscle": "Abdominaux",
@@ -33965,9 +31819,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "waist",
-    "img": "0600-PQ2AtC3.jpg",
-    "gif": "0600-PQ2AtC3.gif"
-  },
+    },
   {
     "id": "og_0602",
     "muscle": "Épaules",
@@ -33993,9 +31845,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0602-myfUsKf.jpg",
-    "gif": "0602-myfUsKf.gif"
-  },
+    },
   {
     "id": "og_0601",
     "muscle": "Épaules",
@@ -34021,9 +31871,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0601-xiHiJcA.jpg",
-    "gif": "0601-xiHiJcA.gif"
-  },
+    },
   {
     "id": "og_1350",
     "muscle": "Dos",
@@ -34052,9 +31900,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1350-7I6LNUG.jpg",
-    "gif": "1350-7I6LNUG.gif"
-  },
+    },
   {
     "id": "og_1385",
     "muscle": "Mollets",
@@ -34083,9 +31929,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "1385-IeDEXTe.jpg",
-    "gif": "1385-IeDEXTe.gif"
-  },
+    },
   {
     "id": "og_0603",
     "muscle": "Épaules",
@@ -34111,9 +31955,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0603-67n3r98.jpg",
-    "gif": "0603-67n3r98.gif"
-  },
+    },
   {
     "id": "og_0869",
     "muscle": "Épaules",
@@ -34140,9 +31982,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "0869-vqsbmL0.jpg",
-    "gif": "0869-vqsbmL0.gif"
-  },
+    },
   {
     "id": "og_2318",
     "muscle": "Épaules",
@@ -34169,9 +32009,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "shoulders",
-    "img": "2318-dNFYIU1.jpg",
-    "gif": "2318-dNFYIU1.gif"
-  },
+    },
   {
     "id": "og_0604",
     "muscle": "Dos",
@@ -34196,9 +32034,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0604-ZZKbeMw.jpg",
-    "gif": "0604-ZZKbeMw.gif"
-  },
+    },
   {
     "id": "og_0605",
     "muscle": "Mollets",
@@ -34224,9 +32060,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "lower legs",
-    "img": "0605-ykUOVze.jpg",
-    "gif": "0605-ykUOVze.gif"
-  },
+    },
   {
     "id": "og_3758",
     "muscle": "Pectoraux",
@@ -34252,9 +32086,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "3758-WbNq5Xu.jpg",
-    "gif": "3758-WbNq5Xu.gif"
-  },
+    },
   {
     "id": "og_0606",
     "muscle": "Dos",
@@ -34282,9 +32114,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0606-aaXr7ld.jpg",
-    "gif": "0606-aaXr7ld.gif"
-  },
+    },
   {
     "id": "og_1351",
     "muscle": "Dos",
@@ -34311,9 +32141,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1351-FVM1AUZ.jpg",
-    "gif": "1351-FVM1AUZ.gif"
-  },
+    },
   {
     "id": "og_0607",
     "muscle": "Triceps",
@@ -34338,9 +32166,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "upper arms",
-    "img": "0607-Ser9eQp.jpg",
-    "gif": "0607-Ser9eQp.gif"
-  },
+    },
   {
     "id": "og_1313",
     "muscle": "Dos",
@@ -34366,9 +32192,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "1313-oROuvrX.jpg",
-    "gif": "1313-oROuvrX.gif"
-  },
+    },
   {
     "id": "og_0609",
     "muscle": "Dos",
@@ -34397,9 +32221,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "back",
-    "img": "0609-bLyQokI.jpg",
-    "gif": "0609-bLyQokI.gif"
-  },
+    },
   {
     "id": "og_3013",
     "muscle": "Fessiers",
@@ -34426,9 +32248,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3013-u0cNiij.jpg",
-    "gif": "3013-u0cNiij.gif"
-  },
+    },
   {
     "id": "og_1352",
     "muscle": "Dos",
@@ -34453,9 +32273,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1352-ANbbry2.jpg",
-    "gif": "1352-ANbbry2.gif"
-  },
+    },
   {
     "id": "og_3582",
     "muscle": "Fessiers",
@@ -34482,9 +32300,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3582-PM1PZjg.jpg",
-    "gif": "3582-PM1PZjg.gif"
-  },
+    },
   {
     "id": "og_1688",
     "muscle": "Abdominaux",
@@ -34512,9 +32328,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1688-K9VL0Jq.jpg",
-    "gif": "1688-K9VL0Jq.gif"
-  },
+    },
   {
     "id": "og_0613",
     "muscle": "Quadriceps",
@@ -34539,9 +32353,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0613-BWnJR72.jpg",
-    "gif": "0613-BWnJR72.gif"
-  },
+    },
   {
     "id": "og_2312",
     "muscle": "Abdominaux",
@@ -34569,9 +32381,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2312-AQIhRjM.jpg",
-    "gif": "2312-AQIhRjM.gif"
-  },
+    },
   {
     "id": "og_0620",
     "muscle": "Abdominaux",
@@ -34596,9 +32406,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0620-WhuFnR7.jpg",
-    "gif": "0620-WhuFnR7.gif"
-  },
+    },
   {
     "id": "og_0865",
     "muscle": "Abdominaux",
@@ -34623,9 +32431,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0865-9IxJdtC.jpg",
-    "gif": "0865-9IxJdtC.gif"
-  },
+    },
   {
     "id": "og_1301",
     "muscle": "Pectoraux",
@@ -34651,9 +32457,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "chest",
-    "img": "1301-wDN97Ca.jpg",
-    "gif": "1301-wDN97Ca.gif"
-  },
+    },
   {
     "id": "og_0624",
     "muscle": "Fessiers",
@@ -34680,9 +32484,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0624-sVQCCeG.jpg",
-    "gif": "0624-sVQCCeG.gif"
-  },
+    },
   {
     "id": "og_1353",
     "muscle": "Dos",
@@ -34709,9 +32511,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "back",
-    "img": "1353-PsVS1QP.jpg",
-    "gif": "1353-PsVS1QP.gif"
-  },
+    },
   {
     "id": "og_1302",
     "muscle": "Pectoraux",
@@ -34737,9 +32537,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "1302-aDoFKrE.jpg",
-    "gif": "1302-aDoFKrE.gif"
-  },
+    },
   {
     "id": "og_1303",
     "muscle": "Pectoraux",
@@ -34765,9 +32563,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "1303-dCJnuVq.jpg",
-    "gif": "1303-dCJnuVq.gif"
-  },
+    },
   {
     "id": "og_1304",
     "muscle": "Pectoraux",
@@ -34792,9 +32588,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "1304-7aolH9D.jpg",
-    "gif": "1304-7aolH9D.gif"
-  },
+    },
   {
     "id": "og_1305",
     "muscle": "Pectoraux",
@@ -34819,9 +32613,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "1305-jeHtrlO.jpg",
-    "gif": "1305-jeHtrlO.gif"
-  },
+    },
   {
     "id": "og_1312",
     "muscle": "Pectoraux",
@@ -34849,9 +32641,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "1312-pX9Elbe.jpg",
-    "gif": "1312-pX9Elbe.gif"
-  },
+    },
   {
     "id": "og_1701",
     "muscle": "Triceps",
@@ -34876,9 +32666,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "upper arms",
-    "img": "1701-8K7m2SS.jpg",
-    "gif": "1701-8K7m2SS.gif"
-  },
+    },
   {
     "id": "og_1354",
     "muscle": "Dos",
@@ -34904,9 +32692,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "back",
-    "img": "1354-oHg8eop.jpg",
-    "gif": "1354-oHg8eop.gif"
-  },
+    },
   {
     "id": "og_1750",
     "muscle": "Triceps",
@@ -34932,9 +32718,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "upper arms",
-    "img": "1750-Al3tP0D.jpg",
-    "gif": "1750-Al3tP0D.gif"
-  },
+    },
   {
     "id": "og_0627",
     "muscle": "Dos",
@@ -34961,9 +32745,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0627-T8UpLkb.jpg",
-    "gif": "0627-T8UpLkb.gif"
-  },
+    },
   {
     "id": "og_3217",
     "muscle": "Pectoraux",
@@ -34990,9 +32772,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3217-epOSYUZ.jpg",
-    "gif": "3217-epOSYUZ.gif"
-  },
+    },
   {
     "id": "og_1421",
     "muscle": "Avant-bras",
@@ -35019,9 +32799,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower arms",
-    "img": "1421-arvaszz.jpg",
-    "gif": "1421-arvaszz.gif"
-  },
+    },
   {
     "id": "og_0628",
     "muscle": "Fessiers",
@@ -35047,9 +32825,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0628-O95afRA.jpg",
-    "gif": "0628-O95afRA.gif"
-  },
+    },
   {
     "id": "og_0630",
     "muscle": "Cardio",
@@ -35076,9 +32852,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "0630-RJgzwny.jpg",
-    "gif": "0630-RJgzwny.gif"
-  },
+    },
   {
     "id": "og_0631",
     "muscle": "Dos",
@@ -35107,9 +32881,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0631-yJUHKTn.jpg",
-    "gif": "0631-yJUHKTn.gif"
-  },
+    },
   {
     "id": "og_1401",
     "muscle": "Dos",
@@ -35137,9 +32909,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1401-Af0EW2I.jpg",
-    "gif": "1401-Af0EW2I.gif"
-  },
+    },
   {
     "id": "og_2328",
     "muscle": "Triceps",
@@ -35165,9 +32935,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper arms",
-    "img": "2328-4cWjYEN.jpg",
-    "gif": "2328-4cWjYEN.gif"
-  },
+    },
   {
     "id": "og_1403",
     "muscle": "Autre",
@@ -35193,9 +32961,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "neck",
-    "img": "1403-x2chWLO.jpg",
-    "gif": "1403-x2chWLO.gif"
-  },
+    },
   {
     "id": "og_0634",
     "muscle": "Abdominaux",
@@ -35220,9 +32986,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0634-szIn2UK.jpg",
-    "gif": "0634-szIn2UK.gif"
-  },
+    },
   {
     "id": "og_1495",
     "muscle": "Abdominaux",
@@ -35248,9 +33012,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1495-cJgSTmh.jpg",
-    "gif": "1495-cJgSTmh.gif"
-  },
+    },
   {
     "id": "og_0635",
     "muscle": "Abdominaux",
@@ -35275,9 +33037,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0635-QUDd8WS.jpg",
-    "gif": "0635-QUDd8WS.gif"
-  },
+    },
   {
     "id": "og_0636",
     "muscle": "Biceps",
@@ -35304,9 +33064,7 @@ export const exerciseLibrary = [
     ],
     "eq": "olympic barbell",
     "bp": "upper arms",
-    "img": "0636-o1ntciW.jpg",
-    "gif": "0636-o1ntciW.gif"
-  },
+    },
   {
     "id": "og_0637",
     "muscle": "Triceps",
@@ -35331,9 +33089,7 @@ export const exerciseLibrary = [
     ],
     "eq": "olympic barbell",
     "bp": "upper arms",
-    "img": "0637-wu5LXwz.jpg",
-    "gif": "0637-wu5LXwz.gif"
-  },
+    },
   {
     "id": "og_1355",
     "muscle": "Dos",
@@ -35359,9 +33115,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1355-ZZTGMKh.jpg",
-    "gif": "1355-ZZTGMKh.gif"
-  },
+    },
   {
     "id": "og_0638",
     "muscle": "Dos",
@@ -35388,9 +33142,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0638-HjdqmZa.jpg",
-    "gif": "0638-HjdqmZa.gif"
-  },
+    },
   {
     "id": "og_0639",
     "muscle": "Triceps",
@@ -35417,9 +33169,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0639-FAoIFMw.jpg",
-    "gif": "0639-FAoIFMw.gif"
-  },
+    },
   {
     "id": "og_0640",
     "muscle": "Abdominaux",
@@ -35445,9 +33195,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "waist",
-    "img": "0640-jCrtE9b.jpg",
-    "gif": "0640-jCrtE9b.gif"
-  },
+    },
   {
     "id": "og_1773",
     "muscle": "Dos",
@@ -35474,9 +33222,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1773-bKWbrTA.jpg",
-    "gif": "1773-bKWbrTA.gif"
-  },
+    },
   {
     "id": "og_1386",
     "muscle": "Mollets",
@@ -35503,9 +33249,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1386-A2upspL.jpg",
-    "gif": "1386-A2upspL.gif"
-  },
+    },
   {
     "id": "og_1387",
     "muscle": "Mollets",
@@ -35531,9 +33275,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1387-0jp9Rlz.jpg",
-    "gif": "1387-0jp9Rlz.gif"
-  },
+    },
   {
     "id": "og_1476",
     "muscle": "Fessiers",
@@ -35561,9 +33303,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1476-C31LMnP.jpg",
-    "gif": "1476-C31LMnP.gif"
-  },
+    },
   {
     "id": "og_0641",
     "muscle": "Abdominaux",
@@ -35589,9 +33329,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0641-UVL20oz.jpg",
-    "gif": "0641-UVL20oz.gif"
-  },
+    },
   {
     "id": "og_0642",
     "muscle": "Fessiers",
@@ -35618,9 +33356,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0642-jNU1gFQ.jpg",
-    "gif": "0642-jNU1gFQ.gif"
-  },
+    },
   {
     "id": "og_0643",
     "muscle": "Triceps",
@@ -35645,9 +33381,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0643-Z5YStHW.jpg",
-    "gif": "0643-Z5YStHW.gif"
-  },
+    },
   {
     "id": "og_3147",
     "muscle": "Abdominaux",
@@ -35673,9 +33407,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3147-NKJ8o6x.jpg",
-    "gif": "3147-NKJ8o6x.gif"
-  },
+    },
   {
     "id": "og_1422",
     "muscle": "Fessiers",
@@ -35703,9 +33435,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1422-D9qe7CM.jpg",
-    "gif": "1422-D9qe7CM.gif"
-  },
+    },
   {
     "id": "og_1388",
     "muscle": "Mollets",
@@ -35732,9 +33462,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "lower legs",
-    "img": "1388-XhfS1DZ.jpg",
-    "gif": "1388-XhfS1DZ.gif"
-  },
+    },
   {
     "id": "og_3662",
     "muscle": "Fessiers",
@@ -35764,9 +33492,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3662-XPUDTt7.jpg",
-    "gif": "3662-XPUDTt7.gif"
-  },
+    },
   {
     "id": "og_1306",
     "muscle": "Pectoraux",
@@ -35793,9 +33519,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1306-Snj1wSv.jpg",
-    "gif": "1306-Snj1wSv.gif"
-  },
+    },
   {
     "id": "og_1687",
     "muscle": "Abdominaux",
@@ -35825,9 +33549,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "1687-ErqK3UL.jpg",
-    "gif": "1687-ErqK3UL.gif"
-  },
+    },
   {
     "id": "og_1389",
     "muscle": "Mollets",
@@ -35854,9 +33576,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "lower legs",
-    "img": "1389-DEEqoI2.jpg",
-    "gif": "1389-DEEqoI2.gif"
-  },
+    },
   {
     "id": "og_3119",
     "muscle": "Abdominaux",
@@ -35883,9 +33603,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3119-75Bgtjy.jpg",
-    "gif": "3119-75Bgtjy.gif"
-  },
+    },
   {
     "id": "og_3132",
     "muscle": "Fessiers",
@@ -35913,9 +33631,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3132-b63ZzGe.jpg",
-    "gif": "3132-b63ZzGe.gif"
-  },
+    },
   {
     "id": "og_0648",
     "muscle": "Ischio-Jambiers",
@@ -35945,9 +33661,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0648-SiWCcTN.jpg",
-    "gif": "0648-SiWCcTN.gif"
-  },
+    },
   {
     "id": "og_3665",
     "muscle": "Abdominaux",
@@ -35975,9 +33689,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3665-hCjGsRQ.jpg",
-    "gif": "3665-hCjGsRQ.gif"
-  },
+    },
   {
     "id": "og_3203",
     "muscle": "Abdominaux",
@@ -36002,9 +33714,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3203-mgejmGP.jpg",
-    "gif": "3203-mgejmGP.gif"
-  },
+    },
   {
     "id": "og_1707",
     "muscle": "Abdominaux",
@@ -36032,9 +33742,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "waist",
-    "img": "1707-1IG6gVF.jpg",
-    "gif": "1707-1IG6gVF.gif"
-  },
+    },
   {
     "id": "og_0651",
     "muscle": "Dos",
@@ -36061,9 +33769,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0651-0V2YQjW.jpg",
-    "gif": "0651-0V2YQjW.gif"
-  },
+    },
   {
     "id": "og_0650",
     "muscle": "Abdominaux",
@@ -36088,9 +33794,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "waist",
-    "img": "0650-UQr48Oi.jpg",
-    "gif": "0650-UQr48Oi.gif"
-  },
+    },
   {
     "id": "og_0652",
     "muscle": "Dos",
@@ -36116,9 +33820,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0652-lBDjFxJ.jpg",
-    "gif": "0652-lBDjFxJ.gif"
-  },
+    },
   {
     "id": "og_1689",
     "muscle": "Pectoraux",
@@ -36145,9 +33847,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1689-wXvUZC8.jpg",
-    "gif": "1689-wXvUZC8.gif"
-  },
+    },
   {
     "id": "og_3638",
     "muscle": "Cardio",
@@ -36175,9 +33875,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3638-PrQbjvB.jpg",
-    "gif": "3638-PrQbjvB.gif"
-  },
+    },
   {
     "id": "og_1307",
     "muscle": "Pectoraux",
@@ -36204,9 +33902,7 @@ export const exerciseLibrary = [
     ],
     "eq": "bosu ball",
     "bp": "chest",
-    "img": "1307-wVompEp.jpg",
-    "gif": "1307-wVompEp.gif"
-  },
+    },
   {
     "id": "og_0662",
     "muscle": "Pectoraux",
@@ -36232,9 +33928,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0662-I4hDWkc.jpg",
-    "gif": "0662-I4hDWkc.gif"
-  },
+    },
   {
     "id": "og_0653",
     "muscle": "Pectoraux",
@@ -36261,9 +33955,7 @@ export const exerciseLibrary = [
     ],
     "eq": "bosu ball",
     "bp": "chest",
-    "img": "0653-2kr2lWy.jpg",
-    "gif": "0653-2kr2lWy.gif"
-  },
+    },
   {
     "id": "og_0655",
     "muscle": "Pectoraux",
@@ -36290,9 +33982,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "chest",
-    "img": "0655-Y4BRNQF.jpg",
-    "gif": "0655-Y4BRNQF.gif"
-  },
+    },
   {
     "id": "og_0656",
     "muscle": "Pectoraux",
@@ -36319,9 +34009,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "chest",
-    "img": "0656-tgryw5Y.jpg",
-    "gif": "0656-tgryw5Y.gif"
-  },
+    },
   {
     "id": "og_0659",
     "muscle": "Pectoraux",
@@ -36348,9 +34036,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0659-LEH9jxP.jpg",
-    "gif": "0659-LEH9jxP.gif"
-  },
+    },
   {
     "id": "og_0658",
     "muscle": "Pectoraux",
@@ -36378,9 +34064,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0658-NCmbLCw.jpg",
-    "gif": "0658-NCmbLCw.gif"
-  },
+    },
   {
     "id": "og_0660",
     "muscle": "Triceps",
@@ -36406,9 +34090,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "upper arms",
-    "img": "0660-KZXAtKQ.jpg",
-    "gif": "0660-KZXAtKQ.gif"
-  },
+    },
   {
     "id": "og_0661",
     "muscle": "Fessiers",
@@ -36436,9 +34118,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0661-0br45wL.jpg",
-    "gif": "0661-0br45wL.gif"
-  },
+    },
   {
     "id": "og_0663",
     "muscle": "Pectoraux",
@@ -36464,9 +34144,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "chest",
-    "img": "0663-W8KAlkI.jpg",
-    "gif": "0663-W8KAlkI.gif"
-  },
+    },
   {
     "id": "og_1467",
     "muscle": "Triceps",
@@ -36492,9 +34170,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1467-4Jt8QsQ.jpg",
-    "gif": "1467-4Jt8QsQ.gif"
-  },
+    },
   {
     "id": "og_3145",
     "muscle": "Pectoraux",
@@ -36521,9 +34197,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3145-pvBMLHA.jpg",
-    "gif": "3145-pvBMLHA.gif"
-  },
+    },
   {
     "id": "og_0664",
     "muscle": "Abdominaux",
@@ -36552,9 +34226,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0664-KhHJ338.jpg",
-    "gif": "0664-KhHJ338.gif"
-  },
+    },
   {
     "id": "og_3533",
     "muscle": "Quadriceps",
@@ -36581,9 +34253,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3533-6YUfHPL.jpg",
-    "gif": "3533-6YUfHPL.gif"
-  },
+    },
   {
     "id": "og_3201",
     "muscle": "Abdominaux",
@@ -36608,9 +34278,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3201-enxnJcM.jpg",
-    "gif": "3201-enxnJcM.gif"
-  },
+    },
   {
     "id": "og_3552",
     "muscle": "Quadriceps",
@@ -36635,9 +34303,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3552-mweqJin.jpg",
-    "gif": "3552-mweqJin.gif"
-  },
+    },
   {
     "id": "og_0666",
     "muscle": "Pectoraux",
@@ -36664,9 +34330,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0666-13TpY4H.jpg",
-    "gif": "0666-13TpY4H.gif"
-  },
+    },
   {
     "id": "og_0668",
     "muscle": "Fessiers",
@@ -36692,9 +34356,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0668-UpAlold.jpg",
-    "gif": "0668-UpAlold.gif"
-  },
+    },
   {
     "id": "og_0669",
     "muscle": "Épaules",
@@ -36720,9 +34382,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "shoulders",
-    "img": "0669-xifhB5W.jpg",
-    "gif": "0669-xifhB5W.gif"
-  },
+    },
   {
     "id": "og_0670",
     "muscle": "Dos",
@@ -36749,9 +34409,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0670-CbFSYC1.jpg",
-    "gif": "0670-CbFSYC1.gif"
-  },
+    },
   {
     "id": "og_1582",
     "muscle": "Ischio-Jambiers",
@@ -36778,9 +34436,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "upper legs",
-    "img": "1582-K5xgdvI.jpg",
-    "gif": "1582-K5xgdvI.gif"
-  },
+    },
   {
     "id": "og_3236",
     "muscle": "Fessiers",
@@ -36808,9 +34464,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "upper legs",
-    "img": "3236-Pjbc0Kt.jpg",
-    "gif": "3236-Pjbc0Kt.gif"
-  },
+    },
   {
     "id": "og_3007",
     "muscle": "Quadriceps",
@@ -36835,9 +34489,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "upper legs",
-    "img": "3007-Y1MsI1l.jpg",
-    "gif": "3007-Y1MsI1l.gif"
-  },
+    },
   {
     "id": "og_3123",
     "muscle": "Biceps",
@@ -36863,9 +34515,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "upper arms",
-    "img": "3123-XFc3vpY.jpg",
-    "gif": "3123-XFc3vpY.gif"
-  },
+    },
   {
     "id": "og_3124",
     "muscle": "Pectoraux",
@@ -36891,9 +34541,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "chest",
-    "img": "3124-4x5Okof.jpg",
-    "gif": "3124-4x5Okof.gif"
-  },
+    },
   {
     "id": "og_3006",
     "muscle": "Fessiers",
@@ -36920,9 +34568,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "upper legs",
-    "img": "3006-0xDpB4L.jpg",
-    "gif": "3006-0xDpB4L.gif"
-  },
+    },
   {
     "id": "og_3122",
     "muscle": "Épaules",
@@ -36948,9 +34594,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "shoulders",
-    "img": "3122-S93zLTG.jpg",
-    "gif": "3122-S93zLTG.gif"
-  },
+    },
   {
     "id": "og_3144",
     "muscle": "Dos",
@@ -36977,9 +34621,7 @@ export const exerciseLibrary = [
     ],
     "eq": "resistance band",
     "bp": "back",
-    "img": "3144-Nu7jqFE.jpg",
-    "gif": "3144-Nu7jqFE.gif"
-  },
+    },
   {
     "id": "og_0872",
     "muscle": "Abdominaux",
@@ -37004,9 +34646,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0872-nCU1Ekp.jpg",
-    "gif": "0872-nCU1Ekp.gif"
-  },
+    },
   {
     "id": "og_0672",
     "muscle": "Triceps",
@@ -37031,9 +34671,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0672-NZ5Qqkz.jpg",
-    "gif": "0672-NZ5Qqkz.gif"
-  },
+    },
   {
     "id": "og_0673",
     "muscle": "Dos",
@@ -37060,9 +34698,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "back",
-    "img": "0673-ecpY0rH.jpg",
-    "gif": "0673-ecpY0rH.gif"
-  },
+    },
   {
     "id": "og_0674",
     "muscle": "Dos",
@@ -37089,9 +34725,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0674-YAk5dIw.jpg",
-    "gif": "0674-YAk5dIw.gif"
-  },
+    },
   {
     "id": "og_0675",
     "muscle": "Fessiers",
@@ -37117,9 +34751,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "upper legs",
-    "img": "0675-vM5YS2g.jpg",
-    "gif": "0675-vM5YS2g.gif"
-  },
+    },
   {
     "id": "og_1423",
     "muscle": "Fessiers",
@@ -37146,9 +34778,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1423-OrETs32.jpg",
-    "gif": "1423-OrETs32.gif"
-  },
+    },
   {
     "id": "og_3663",
     "muscle": "Abdominaux",
@@ -37176,9 +34806,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3663-tFToB7l.jpg",
-    "gif": "3663-tFToB7l.gif"
-  },
+    },
   {
     "id": "og_0677",
     "muscle": "Triceps",
@@ -37203,9 +34831,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0677-ezTvXcr.jpg",
-    "gif": "0677-ezTvXcr.gif"
-  },
+    },
   {
     "id": "og_2571",
     "muscle": "Fessiers",
@@ -37233,9 +34859,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "2571-2Dk4xQV.jpg",
-    "gif": "2571-2Dk4xQV.gif"
-  },
+    },
   {
     "id": "og_0678",
     "muscle": "Dos",
@@ -37262,9 +34886,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0678-cQ19bBP.jpg",
-    "gif": "0678-cQ19bBP.gif"
-  },
+    },
   {
     "id": "og_2208",
     "muscle": "Dos",
@@ -37291,9 +34913,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "back",
-    "img": "2208-isofgzg.jpg",
-    "gif": "2208-isofgzg.gif"
-  },
+    },
   {
     "id": "og_2204",
     "muscle": "Abdominaux",
@@ -37319,9 +34939,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "waist",
-    "img": "2204-XeMvLgE.jpg",
-    "gif": "2204-XeMvLgE.gif"
-  },
+    },
   {
     "id": "og_2205",
     "muscle": "Fessiers",
@@ -37347,9 +34965,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "upper legs",
-    "img": "2205-0L2KwtI.jpg",
-    "gif": "2205-0L2KwtI.gif"
-  },
+    },
   {
     "id": "og_2202",
     "muscle": "Fessiers",
@@ -37377,9 +34993,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "upper legs",
-    "img": "2202-oMypNrz.jpg",
-    "gif": "2202-oMypNrz.gif"
-  },
+    },
   {
     "id": "og_2206",
     "muscle": "Abdominaux",
@@ -37404,9 +35018,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "waist",
-    "img": "2206-SKXQAx3.jpg",
-    "gif": "2206-SKXQAx3.gif"
-  },
+    },
   {
     "id": "og_2203",
     "muscle": "Pectoraux",
@@ -37432,9 +35044,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "chest",
-    "img": "2203-8coXSYU.jpg",
-    "gif": "2203-8coXSYU.gif"
-  },
+    },
   {
     "id": "og_2209",
     "muscle": "Pectoraux",
@@ -37461,9 +35071,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "chest",
-    "img": "2209-CjETvlw.jpg",
-    "gif": "2209-CjETvlw.gif"
-  },
+    },
   {
     "id": "og_2207",
     "muscle": "Dos",
@@ -37489,9 +35097,7 @@ export const exerciseLibrary = [
     ],
     "eq": "roller",
     "bp": "back",
-    "img": "2207-c3Pfhti.jpg",
-    "gif": "2207-c3Pfhti.gif"
-  },
+    },
   {
     "id": "og_0680",
     "muscle": "Dos",
@@ -37521,9 +35127,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "back",
-    "img": "0680-yaAxcQr.jpg",
-    "gif": "0680-yaAxcQr.gif"
-  },
+    },
   {
     "id": "og_0685",
     "muscle": "Cardio",
@@ -37550,9 +35154,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "0685-oLrKqDH.jpg",
-    "gif": "0685-oLrKqDH.gif"
-  },
+    },
   {
     "id": "og_0684",
     "muscle": "Cardio",
@@ -37579,9 +35181,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "0684-y5p0H8a.jpg",
-    "gif": "0684-y5p0H8a.gif"
-  },
+    },
   {
     "id": "og_1585",
     "muscle": "Ischio-Jambiers",
@@ -37607,9 +35207,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1585-0mB6wHO.jpg",
-    "gif": "1585-0mB6wHO.gif"
-  },
+    },
   {
     "id": "og_0687",
     "muscle": "Abdominaux",
@@ -37636,9 +35234,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0687-XVDdcoj.jpg",
-    "gif": "0687-XVDdcoj.gif"
-  },
+    },
   {
     "id": "og_3012",
     "muscle": "Dos",
@@ -37664,9 +35260,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3012-7xeukSt.jpg",
-    "gif": "3012-7xeukSt.gif"
-  },
+    },
   {
     "id": "og_3021",
     "muscle": "Pectoraux",
@@ -37692,9 +35286,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "3021-jV65tKx.jpg",
-    "gif": "3021-jV65tKx.gif"
-  },
+    },
   {
     "id": "og_0688",
     "muscle": "Dos",
@@ -37721,9 +35313,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0688-uTBt1HV.jpg",
-    "gif": "0688-uTBt1HV.gif"
-  },
+    },
   {
     "id": "og_3219",
     "muscle": "Cardio",
@@ -37750,9 +35340,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3219-Eh2v5Iu.jpg",
-    "gif": "3219-Eh2v5Iu.gif"
-  },
+    },
   {
     "id": "og_1390",
     "muscle": "Mollets",
@@ -37777,9 +35365,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1390-17bqEXD.jpg",
-    "gif": "1390-17bqEXD.gif"
-  },
+    },
   {
     "id": "og_1424",
     "muscle": "Fessiers",
@@ -37805,9 +35391,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1424-DeDThfG.jpg",
-    "gif": "1424-DeDThfG.gif"
-  },
+    },
   {
     "id": "og_0689",
     "muscle": "Abdominaux",
@@ -37832,9 +35416,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0689-Hgs6Nl1.jpg",
-    "gif": "0689-Hgs6Nl1.gif"
-  },
+    },
   {
     "id": "og_0690",
     "muscle": "Dos",
@@ -37860,9 +35442,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0690-QFmz6ch.jpg",
-    "gif": "0690-QFmz6ch.gif"
-  },
+    },
   {
     "id": "og_2567",
     "muscle": "Fessiers",
@@ -37886,9 +35466,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "2567-QY39eBr.jpg",
-    "gif": "2567-QY39eBr.gif"
-  },
+    },
   {
     "id": "og_0691",
     "muscle": "Abdominaux",
@@ -37915,9 +35493,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0691-Y9hNPcN.jpg",
-    "gif": "0691-Y9hNPcN.gif"
-  },
+    },
   {
     "id": "og_1587",
     "muscle": "Ischio-Jambiers",
@@ -37946,9 +35522,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1587-HIgYKAB.jpg",
-    "gif": "1587-HIgYKAB.gif"
-  },
+    },
   {
     "id": "og_0697",
     "muscle": "Ischio-Jambiers",
@@ -37974,9 +35548,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0697-GwYwElT.jpg",
-    "gif": "0697-GwYwElT.gif"
-  },
+    },
   {
     "id": "og_1766",
     "muscle": "Ischio-Jambiers",
@@ -38003,9 +35575,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1766-ZSY3MsL.jpg",
-    "gif": "1766-ZSY3MsL.gif"
-  },
+    },
   {
     "id": "og_0696",
     "muscle": "Ischio-Jambiers",
@@ -38033,9 +35603,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0696-E4PwJqI.jpg",
-    "gif": "0696-E4PwJqI.gif"
-  },
+    },
   {
     "id": "og_3222",
     "muscle": "Cardio",
@@ -38062,9 +35630,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3222-6FMU51h.jpg",
-    "gif": "3222-6FMU51h.gif"
-  },
+    },
   {
     "id": "og_3656",
     "muscle": "Cardio",
@@ -38091,9 +35657,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3656-CcWEoWV.jpg",
-    "gif": "3656-CcWEoWV.gif"
-  },
+    },
   {
     "id": "og_1763",
     "muscle": "Dos",
@@ -38119,9 +35683,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1763-YtgD7Xq.jpg",
-    "gif": "1763-YtgD7Xq.gif"
-  },
+    },
   {
     "id": "og_3699",
     "muscle": "Abdominaux",
@@ -38147,9 +35709,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3699-yRpV5TC.jpg",
-    "gif": "3699-yRpV5TC.gif"
-  },
+    },
   {
     "id": "og_0699",
     "muscle": "Pectoraux",
@@ -38177,9 +35737,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0699-qEse6fe.jpg",
-    "gif": "0699-qEse6fe.gif"
-  },
+    },
   {
     "id": "og_1774",
     "muscle": "Fessiers",
@@ -38206,9 +35764,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1774-WL4EmxJ.jpg",
-    "gif": "1774-WL4EmxJ.gif"
-  },
+    },
   {
     "id": "og_0705",
     "muscle": "Abdominaux",
@@ -38235,9 +35791,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0705-RKjH6Lt.jpg",
-    "gif": "0705-RKjH6Lt.gif"
-  },
+    },
   {
     "id": "og_0709",
     "muscle": "Abdominaux",
@@ -38263,9 +35817,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0709-jTkSc6o.jpg",
-    "gif": "0709-jTkSc6o.gif"
-  },
+    },
   {
     "id": "og_0710",
     "muscle": "Fessiers",
@@ -38291,9 +35843,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0710-7WaDzyL.jpg",
-    "gif": "0710-7WaDzyL.gif"
-  },
+    },
   {
     "id": "og_1358",
     "muscle": "Dos",
@@ -38320,9 +35870,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1358-jDOKRM5.jpg",
-    "gif": "1358-jDOKRM5.gif"
-  },
+    },
   {
     "id": "og_3667",
     "muscle": "Fessiers",
@@ -38348,9 +35896,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3667-c8f5cSY.jpg",
-    "gif": "3667-c8f5cSY.gif"
-  },
+    },
   {
     "id": "og_1775",
     "muscle": "Quadriceps",
@@ -38377,9 +35923,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1775-VO2qeJg.jpg",
-    "gif": "1775-VO2qeJg.gif"
-  },
+    },
   {
     "id": "og_0716",
     "muscle": "Autre",
@@ -38406,9 +35950,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "neck",
-    "img": "0716-oQRJYkC.jpg",
-    "gif": "0716-oQRJYkC.gif"
-  },
+    },
   {
     "id": "og_0717",
     "muscle": "Triceps",
@@ -38436,9 +35978,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0717-wpbD28t.jpg",
-    "gif": "0717-wpbD28t.gif"
-  },
+    },
   {
     "id": "og_0721",
     "muscle": "Avant-bras",
@@ -38464,9 +36004,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower arms",
-    "img": "0721-UtmIqcI.jpg",
-    "gif": "0721-UtmIqcI.gif"
-  },
+    },
   {
     "id": "og_0720",
     "muscle": "Dos",
@@ -38493,9 +36031,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0720-isAAZWA.jpg",
-    "gif": "0720-isAAZWA.gif"
-  },
+    },
   {
     "id": "og_3213",
     "muscle": "Abdominaux",
@@ -38520,9 +36056,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3213-WCAvOfC.jpg",
-    "gif": "3213-WCAvOfC.gif"
-  },
+    },
   {
     "id": "og_0725",
     "muscle": "Pectoraux",
@@ -38549,9 +36083,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0725-MUic5zN.jpg",
-    "gif": "0725-MUic5zN.gif"
-  },
+    },
   {
     "id": "og_3645",
     "muscle": "Fessiers",
@@ -38577,9 +36109,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3645-rmEukuS.jpg",
-    "gif": "3645-rmEukuS.gif"
-  },
+    },
   {
     "id": "og_0727",
     "muscle": "Mollets",
@@ -38605,9 +36135,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "lower legs",
-    "img": "0727-fKZgDEO.jpg",
-    "gif": "0727-fKZgDEO.gif"
-  },
+    },
   {
     "id": "og_0730",
     "muscle": "Ischio-Jambiers",
@@ -38633,9 +36161,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0730-LNE3wfo.jpg",
-    "gif": "0730-LNE3wfo.gif"
-  },
+    },
   {
     "id": "og_1759",
     "muscle": "Fessiers",
@@ -38664,9 +36190,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1759-nqs5HGV.jpg",
-    "gif": "1759-nqs5HGV.gif"
-  },
+    },
   {
     "id": "og_1489",
     "muscle": "Quadriceps",
@@ -38693,9 +36217,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1489-xdYPUtE.jpg",
-    "gif": "1489-xdYPUtE.gif"
-  },
+    },
   {
     "id": "og_0735",
     "muscle": "Abdominaux",
@@ -38720,9 +36242,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0735-Bn6TXyO.jpg",
-    "gif": "0735-Bn6TXyO.gif"
-  },
+    },
   {
     "id": "og_3679",
     "muscle": "Abdominaux",
@@ -38747,9 +36267,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3679-6ZCiYWQ.jpg",
-    "gif": "3679-6ZCiYWQ.gif"
-  },
+    },
   {
     "id": "og_3361",
     "muscle": "Cardio",
@@ -38779,9 +36297,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3361-zfNHMN9.jpg",
-    "gif": "3361-zfNHMN9.gif"
-  },
+    },
   {
     "id": "og_2142",
     "muscle": "Triceps",
@@ -38809,9 +36325,7 @@ export const exerciseLibrary = [
     ],
     "eq": "skierg machine",
     "bp": "upper arms",
-    "img": "2142-vpQaQkH.jpg",
-    "gif": "2142-vpQaQkH.gif"
-  },
+    },
   {
     "id": "og_3671",
     "muscle": "Cardio",
@@ -38840,9 +36354,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3671-5MRH8H2.jpg",
-    "gif": "3671-5MRH8H2.gif"
-  },
+    },
   {
     "id": "og_3304",
     "muscle": "Dos",
@@ -38869,9 +36381,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3304-MSfvriJ.jpg",
-    "gif": "3304-MSfvriJ.gif"
-  },
+    },
   {
     "id": "og_1425",
     "muscle": "Fessiers",
@@ -38899,9 +36409,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "1425-WWD6FzI.jpg",
-    "gif": "1425-WWD6FzI.gif"
-  },
+    },
   {
     "id": "og_0738",
     "muscle": "Mollets",
@@ -38926,9 +36434,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "0738-qCNVnaU.jpg",
-    "gif": "0738-qCNVnaU.gif"
-  },
+    },
   {
     "id": "og_0739",
     "muscle": "Fessiers",
@@ -38957,9 +36463,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "0739-10Z2DXU.jpg",
-    "gif": "0739-10Z2DXU.gif"
-  },
+    },
   {
     "id": "og_1464",
     "muscle": "Fessiers",
@@ -38988,9 +36492,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "1464-yn2lLSI.jpg",
-    "gif": "1464-yn2lLSI.gif"
-  },
+    },
   {
     "id": "og_1463",
     "muscle": "Fessiers",
@@ -39018,9 +36520,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "1463-2Qh2J1e.jpg",
-    "gif": "1463-2Qh2J1e.gif"
-  },
+    },
   {
     "id": "og_0740",
     "muscle": "Fessiers",
@@ -39048,9 +36548,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "0740-tj41Nu6.jpg",
-    "gif": "0740-tj41Nu6.gif"
-  },
+    },
   {
     "id": "og_1391",
     "muscle": "Mollets",
@@ -39076,9 +36574,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "1391-ykHcWme.jpg",
-    "gif": "1391-ykHcWme.gif"
-  },
+    },
   {
     "id": "og_0741",
     "muscle": "Fessiers",
@@ -39107,9 +36603,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "0741-gf3ZjB9.jpg",
-    "gif": "0741-gf3ZjB9.gif"
-  },
+    },
   {
     "id": "og_0742",
     "muscle": "Mollets",
@@ -39135,9 +36629,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "0742-XDOiFns.jpg",
-    "gif": "0742-XDOiFns.gif"
-  },
+    },
   {
     "id": "og_0743",
     "muscle": "Fessiers",
@@ -39166,9 +36658,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "0743-Qa55kX1.jpg",
-    "gif": "0743-Qa55kX1.gif"
-  },
+    },
   {
     "id": "og_2334",
     "muscle": "Mollets",
@@ -39196,9 +36686,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "2334-g376LuL.jpg",
-    "gif": "2334-g376LuL.gif"
-  },
+    },
   {
     "id": "og_0744",
     "muscle": "Fessiers",
@@ -39228,9 +36716,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "upper legs",
-    "img": "0744-9n2149Z.jpg",
-    "gif": "0744-9n2149Z.gif"
-  },
+    },
   {
     "id": "og_1392",
     "muscle": "Mollets",
@@ -39257,9 +36743,7 @@ export const exerciseLibrary = [
     ],
     "eq": "sled machine",
     "bp": "lower legs",
-    "img": "1392-u0pLNgz.jpg",
-    "gif": "1392-u0pLNgz.gif"
-  },
+    },
   {
     "id": "og_1496",
     "muscle": "Abdominaux",
@@ -39285,9 +36769,7 @@ export const exerciseLibrary = [
     ],
     "eq": "hammer",
     "bp": "waist",
-    "img": "1496-REXmfVC.jpg",
-    "gif": "1496-REXmfVC.gif"
-  },
+    },
   {
     "id": "og_0746",
     "muscle": "Dos",
@@ -39313,9 +36795,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "0746-MzNnwx9.jpg",
-    "gif": "0746-MzNnwx9.gif"
-  },
+    },
   {
     "id": "og_0747",
     "muscle": "Épaules",
@@ -39344,9 +36824,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0747-Gpn4ADc.jpg",
-    "gif": "0747-Gpn4ADc.gif"
-  },
+    },
   {
     "id": "og_0748",
     "muscle": "Pectoraux",
@@ -39374,9 +36852,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0748-trqKQv2.jpg",
-    "gif": "0748-trqKQv2.gif"
-  },
+    },
   {
     "id": "og_0749",
     "muscle": "Fessiers",
@@ -39403,9 +36879,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0749-1bQkKZK.jpg",
-    "gif": "0749-1bQkKZK.gif"
-  },
+    },
   {
     "id": "og_1359",
     "muscle": "Dos",
@@ -39433,9 +36907,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "1359-ZX9UZmj.jpg",
-    "gif": "1359-ZX9UZmj.gif"
-  },
+    },
   {
     "id": "og_0750",
     "muscle": "Quadriceps",
@@ -39464,9 +36936,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0750-Gu2rNJd.jpg",
-    "gif": "0750-Gu2rNJd.gif"
-  },
+    },
   {
     "id": "og_0751",
     "muscle": "Triceps",
@@ -39492,9 +36962,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper arms",
-    "img": "0751-WcHl7ru.jpg",
-    "gif": "0751-WcHl7ru.gif"
-  },
+    },
   {
     "id": "og_0752",
     "muscle": "Fessiers",
@@ -39523,9 +36991,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0752-UfePqpx.jpg",
-    "gif": "0752-UfePqpx.gif"
-  },
+    },
   {
     "id": "og_0753",
     "muscle": "Pectoraux",
@@ -39552,9 +37018,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0753-ETZfAbZ.jpg",
-    "gif": "0753-ETZfAbZ.gif"
-  },
+    },
   {
     "id": "og_0754",
     "muscle": "Pectoraux",
@@ -39581,9 +37045,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0754-MY9P1WA.jpg",
-    "gif": "0754-MY9P1WA.gif"
-  },
+    },
   {
     "id": "og_1433",
     "muscle": "Fessiers",
@@ -39615,9 +37077,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "1433-lFhb2Rw.jpg",
-    "gif": "1433-lFhb2Rw.gif"
-  },
+    },
   {
     "id": "og_3281",
     "muscle": "Fessiers",
@@ -39648,9 +37108,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "3281-NNoHCEA.jpg",
-    "gif": "3281-NNoHCEA.gif"
-  },
+    },
   {
     "id": "og_0755",
     "muscle": "Fessiers",
@@ -39682,9 +37140,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0755-ZuPXtCK.jpg",
-    "gif": "0755-ZuPXtCK.gif"
-  },
+    },
   {
     "id": "og_0756",
     "muscle": "Abdominaux",
@@ -39711,9 +37167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "waist",
-    "img": "0756-CqhoytW.jpg",
-    "gif": "0756-CqhoytW.gif"
-  },
+    },
   {
     "id": "og_0757",
     "muscle": "Pectoraux",
@@ -39740,9 +37194,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0757-5v7KYld.jpg",
-    "gif": "0757-5v7KYld.gif"
-  },
+    },
   {
     "id": "og_0758",
     "muscle": "Pectoraux",
@@ -39770,9 +37222,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0758-78VqWQK.jpg",
-    "gif": "0758-78VqWQK.gif"
-  },
+    },
   {
     "id": "og_0759",
     "muscle": "Pectoraux",
@@ -39800,9 +37250,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0759-ayAHcEm.jpg",
-    "gif": "0759-ayAHcEm.gif"
-  },
+    },
   {
     "id": "og_0760",
     "muscle": "Fessiers",
@@ -39831,9 +37279,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0760-7zdxRTl.jpg",
-    "gif": "0760-7zdxRTl.gif"
-  },
+    },
   {
     "id": "og_1434",
     "muscle": "Fessiers",
@@ -39866,9 +37312,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "1434-RGLscZM.jpg",
-    "gif": "1434-RGLscZM.gif"
-  },
+    },
   {
     "id": "og_1683",
     "muscle": "Biceps",
@@ -39896,9 +37340,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper arms",
-    "img": "1683-zILLZ98.jpg",
-    "gif": "1683-zILLZ98.gif"
-  },
+    },
   {
     "id": "og_1625",
     "muscle": "Triceps",
@@ -39926,9 +37368,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper arms",
-    "img": "1625-yB9SvIF.jpg",
-    "gif": "1625-yB9SvIF.gif"
-  },
+    },
   {
     "id": "og_1752",
     "muscle": "Triceps",
@@ -39955,9 +37395,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper arms",
-    "img": "1752-o8aOcrz.jpg",
-    "gif": "1752-o8aOcrz.gif"
-  },
+    },
   {
     "id": "og_1626",
     "muscle": "Pectoraux",
@@ -39984,9 +37422,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "1626-QyO6Uma.jpg",
-    "gif": "1626-QyO6Uma.gif"
-  },
+    },
   {
     "id": "og_0761",
     "muscle": "Dos",
@@ -40012,9 +37448,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "0761-JGKowMS.jpg",
-    "gif": "0761-JGKowMS.gif"
-  },
+    },
   {
     "id": "og_1360",
     "muscle": "Dos",
@@ -40042,9 +37476,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "1360-Q4DSJPC.jpg",
-    "gif": "1360-Q4DSJPC.gif"
-  },
+    },
   {
     "id": "og_1393",
     "muscle": "Mollets",
@@ -40072,9 +37504,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "1393-9GXrTE6.jpg",
-    "gif": "1393-9GXrTE6.gif"
-  },
+    },
   {
     "id": "og_0762",
     "muscle": "Épaules",
@@ -40101,9 +37531,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0762-nFUwqG6.jpg",
-    "gif": "0762-nFUwqG6.gif"
-  },
+    },
   {
     "id": "og_0763",
     "muscle": "Mollets",
@@ -40130,9 +37558,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "0763-ywaNfuh.jpg",
-    "gif": "0763-ywaNfuh.gif"
-  },
+    },
   {
     "id": "og_1394",
     "muscle": "Mollets",
@@ -40159,9 +37585,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "1394-Lsqrgh4.jpg",
-    "gif": "1394-Lsqrgh4.gif"
-  },
+    },
   {
     "id": "og_1361",
     "muscle": "Dos",
@@ -40189,9 +37613,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "1361-aaxA3cm.jpg",
-    "gif": "1361-aaxA3cm.gif"
-  },
+    },
   {
     "id": "og_0764",
     "muscle": "Pectoraux",
@@ -40220,9 +37642,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "0764-zK8Fu1W.jpg",
-    "gif": "0764-zK8Fu1W.gif"
-  },
+    },
   {
     "id": "og_1395",
     "muscle": "Mollets",
@@ -40247,9 +37667,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "1395-0S75mYG.jpg",
-    "gif": "1395-0S75mYG.gif"
-  },
+    },
   {
     "id": "og_0765",
     "muscle": "Épaules",
@@ -40277,9 +37695,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0765-xUwnBMT.jpg",
-    "gif": "0765-xUwnBMT.gif"
-  },
+    },
   {
     "id": "og_1426",
     "muscle": "Avant-bras",
@@ -40306,9 +37722,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower arms",
-    "img": "1426-B6dAO1t.jpg",
-    "gif": "1426-B6dAO1t.gif"
-  },
+    },
   {
     "id": "og_0766",
     "muscle": "Épaules",
@@ -40335,9 +37749,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0766-903mzG8.jpg",
-    "gif": "0766-903mzG8.gif"
-  },
+    },
   {
     "id": "og_0767",
     "muscle": "Dos",
@@ -40363,9 +37775,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "back",
-    "img": "0767-OUQ0ZyW.jpg",
-    "gif": "0767-OUQ0ZyW.gif"
-  },
+    },
   {
     "id": "og_0768",
     "muscle": "Quadriceps",
@@ -40392,9 +37802,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0768-wWFspEi.jpg",
-    "gif": "0768-wWFspEi.gif"
-  },
+    },
   {
     "id": "og_0769",
     "muscle": "Fessiers",
@@ -40423,9 +37831,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0769-HsjbB1z.jpg",
-    "gif": "0769-HsjbB1z.gif"
-  },
+    },
   {
     "id": "og_0770",
     "muscle": "Fessiers",
@@ -40456,9 +37862,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "0770-jFtipLl.jpg",
-    "gif": "0770-jFtipLl.gif"
-  },
+    },
   {
     "id": "og_0771",
     "muscle": "Avant-bras",
@@ -40485,9 +37889,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower arms",
-    "img": "0771-hfmQ0Tz.jpg",
-    "gif": "0771-hfmQ0Tz.gif"
-  },
+    },
   {
     "id": "og_0772",
     "muscle": "Épaules",
@@ -40517,9 +37919,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0772-ht8xDrP.jpg",
-    "gif": "0772-ht8xDrP.gif"
-  },
+    },
   {
     "id": "og_0773",
     "muscle": "Mollets",
@@ -40546,9 +37946,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "0773-6MaEjVA.jpg",
-    "gif": "0773-6MaEjVA.gif"
-  },
+    },
   {
     "id": "og_0774",
     "muscle": "Épaules",
@@ -40575,9 +37973,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0774-jjUPrze.jpg",
-    "gif": "0774-jjUPrze.gif"
-  },
+    },
   {
     "id": "og_3142",
     "muscle": "Fessiers",
@@ -40606,9 +38002,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "upper legs",
-    "img": "3142-dzz6BiV.jpg",
-    "gif": "3142-dzz6BiV.gif"
-  },
+    },
   {
     "id": "og_1396",
     "muscle": "Mollets",
@@ -40637,9 +38031,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "lower legs",
-    "img": "1396-Y4QlY8z.jpg",
-    "gif": "1396-Y4QlY8z.gif"
-  },
+    },
   {
     "id": "og_0775",
     "muscle": "Épaules",
@@ -40666,9 +38058,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "shoulders",
-    "img": "0775-1DN3iz4.jpg",
-    "gif": "0775-1DN3iz4.gif"
-  },
+    },
   {
     "id": "og_1308",
     "muscle": "Pectoraux",
@@ -40696,9 +38086,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "1308-zoOvPcx.jpg",
-    "gif": "1308-zoOvPcx.gif"
-  },
+    },
   {
     "id": "og_1309",
     "muscle": "Pectoraux",
@@ -40726,9 +38114,7 @@ export const exerciseLibrary = [
     ],
     "eq": "smith machine",
     "bp": "chest",
-    "img": "1309-wi2H9QX.jpg",
-    "gif": "1309-wi2H9QX.gif"
-  },
+    },
   {
     "id": "og_0776",
     "muscle": "Quadriceps",
@@ -40759,9 +38145,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0776-dG5Smob.jpg",
-    "gif": "0776-dG5Smob.gif"
-  },
+    },
   {
     "id": "og_0777",
     "muscle": "Abdominaux",
@@ -40787,9 +38171,7 @@ export const exerciseLibrary = [
     ],
     "eq": "dumbbell",
     "bp": "waist",
-    "img": "0777-p9cCe2r.jpg",
-    "gif": "0777-p9cCe2r.gif"
-  },
+    },
   {
     "id": "og_1362",
     "muscle": "Dos",
@@ -40815,9 +38197,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1362-DIVyqrU.jpg",
-    "gif": "1362-DIVyqrU.gif"
-  },
+    },
   {
     "id": "og_0778",
     "muscle": "Fessiers",
@@ -40844,9 +38224,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0778-P9GFBME.jpg",
-    "gif": "0778-P9GFBME.gif"
-  },
+    },
   {
     "id": "og_1363",
     "muscle": "Dos",
@@ -40873,9 +38251,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1363-JbC2iaV.jpg",
-    "gif": "1363-JbC2iaV.gif"
-  },
+    },
   {
     "id": "og_2329",
     "muscle": "Abdominaux",
@@ -40903,9 +38279,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2329-2jl9K55.jpg",
-    "gif": "2329-2jl9K55.gif"
-  },
+    },
   {
     "id": "og_2368",
     "muscle": "Quadriceps",
@@ -40933,9 +38307,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "2368-9E25EOx.jpg",
-    "gif": "2368-9E25EOx.gif"
-  },
+    },
   {
     "id": "og_0786",
     "muscle": "Quadriceps",
@@ -40965,9 +38337,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "upper legs",
-    "img": "0786-IMRsOCn.jpg",
-    "gif": "0786-IMRsOCn.gif"
-  },
+    },
   {
     "id": "og_1705",
     "muscle": "Quadriceps",
@@ -40996,9 +38366,7 @@ export const exerciseLibrary = [
     ],
     "eq": "bosu ball",
     "bp": "upper legs",
-    "img": "1705-T2fA5Ir.jpg",
-    "gif": "1705-T2fA5Ir.gif"
-  },
+    },
   {
     "id": "og_1685",
     "muscle": "Quadriceps",
@@ -41025,9 +38393,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1685-QChZi3x.jpg",
-    "gif": "1685-QChZi3x.gif"
-  },
+    },
   {
     "id": "og_1686",
     "muscle": "Quadriceps",
@@ -41054,9 +38420,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1686-5BZHW9s.jpg",
-    "gif": "1686-5BZHW9s.gif"
-  },
+    },
   {
     "id": "og_2297",
     "muscle": "Abdominaux",
@@ -41081,9 +38445,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stability ball",
     "bp": "waist",
-    "img": "2297-Gn5FwYT.jpg",
-    "gif": "2297-Gn5FwYT.gif"
-  },
+    },
   {
     "id": "og_3291",
     "muscle": "Triceps",
@@ -41110,9 +38472,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "3291-zd4P4B2.jpg",
-    "gif": "3291-zd4P4B2.gif"
-  },
+    },
   {
     "id": "og_3669",
     "muscle": "Dos",
@@ -41141,9 +38501,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3669-JF8AkMX.jpg",
-    "gif": "3669-JF8AkMX.gif"
-  },
+    },
   {
     "id": "og_0788",
     "muscle": "Épaules",
@@ -41169,9 +38527,7 @@ export const exerciseLibrary = [
     ],
     "eq": "barbell",
     "bp": "shoulders",
-    "img": "0788-xDh0lJr.jpg",
-    "gif": "0788-xDh0lJr.gif"
-  },
+    },
   {
     "id": "og_1490",
     "muscle": "Mollets",
@@ -41197,9 +38553,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1490-6HmFgmx.jpg",
-    "gif": "1490-6HmFgmx.gif"
-  },
+    },
   {
     "id": "og_1397",
     "muscle": "Mollets",
@@ -41224,9 +38578,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1397-XIHEoCG.jpg",
-    "gif": "1397-XIHEoCG.gif"
-  },
+    },
   {
     "id": "og_1398",
     "muscle": "Mollets",
@@ -41254,9 +38606,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower legs",
-    "img": "1398-qOKcgVP.jpg",
-    "gif": "1398-qOKcgVP.gif"
-  },
+    },
   {
     "id": "og_1599",
     "muscle": "Ischio-Jambiers",
@@ -41283,9 +38633,7 @@ export const exerciseLibrary = [
     ],
     "eq": "rope",
     "bp": "upper legs",
-    "img": "1599-xTjr103.jpg",
-    "gif": "1599-xTjr103.gif"
-  },
+    },
   {
     "id": "og_0794",
     "muscle": "Dos",
@@ -41312,9 +38660,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0794-1jXLYEw.jpg",
-    "gif": "0794-1jXLYEw.gif"
-  },
+    },
   {
     "id": "og_1364",
     "muscle": "Dos",
@@ -41339,9 +38685,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1364-cuKYxhu.jpg",
-    "gif": "1364-cuKYxhu.gif"
-  },
+    },
   {
     "id": "og_0795",
     "muscle": "Ischio-Jambiers",
@@ -41366,9 +38710,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0795-C5jncD2.jpg",
-    "gif": "0795-C5jncD2.gif"
-  },
+    },
   {
     "id": "og_0796",
     "muscle": "Abdominaux",
@@ -41394,9 +38736,7 @@ export const exerciseLibrary = [
     ],
     "eq": "wheel roller",
     "bp": "waist",
-    "img": "0796-KtRomty.jpg",
-    "gif": "0796-KtRomty.gif"
-  },
+    },
   {
     "id": "og_3223",
     "muscle": "Cardio",
@@ -41423,9 +38763,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3223-HtfCpfi.jpg",
-    "gif": "3223-HtfCpfi.gif"
-  },
+    },
   {
     "id": "og_2138",
     "muscle": "Cardio",
@@ -41455,9 +38793,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stationary bike",
     "bp": "cardio",
-    "img": "2138-H1PESYI.jpg",
-    "gif": "2138-H1PESYI.gif"
-  },
+    },
   {
     "id": "og_0798",
     "muscle": "Cardio",
@@ -41486,9 +38822,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "cardio",
-    "img": "0798-a8VDgLw.jpg",
-    "gif": "0798-a8VDgLw.gif"
-  },
+    },
   {
     "id": "og_3314",
     "muscle": "Abdominaux",
@@ -41514,9 +38848,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3314-HfqciZF.jpg",
-    "gif": "3314-HfqciZF.gif"
-  },
+    },
   {
     "id": "og_3298",
     "muscle": "Abdominaux",
@@ -41543,9 +38875,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3298-BL3GHeY.jpg",
-    "gif": "3298-BL3GHeY.gif"
-  },
+    },
   {
     "id": "og_1427",
     "muscle": "Fessiers",
@@ -41571,9 +38901,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1427-mQ1tBXn.jpg",
-    "gif": "1427-mQ1tBXn.gif"
-  },
+    },
   {
     "id": "og_0803",
     "muscle": "Pectoraux",
@@ -41600,9 +38928,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0803-4GqRrAk.jpg",
-    "gif": "0803-4GqRrAk.gif"
-  },
+    },
   {
     "id": "og_0805",
     "muscle": "Abdominaux",
@@ -41629,9 +38955,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0805-X3TCNEU.jpg",
-    "gif": "0805-X3TCNEU.gif"
-  },
+    },
   {
     "id": "og_0806",
     "muscle": "Pectoraux",
@@ -41659,9 +38983,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "0806-IaGQCrC.jpg",
-    "gif": "0806-IaGQCrC.gif"
-  },
+    },
   {
     "id": "og_0807",
     "muscle": "Abdominaux",
@@ -41685,9 +39007,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0807-R1WYG5D.jpg",
-    "gif": "0807-R1WYG5D.gif"
-  },
+    },
   {
     "id": "og_0808",
     "muscle": "Dos",
@@ -41715,9 +39035,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "0808-4OaumBr.jpg",
-    "gif": "0808-4OaumBr.gif"
-  },
+    },
   {
     "id": "og_0809",
     "muscle": "Quadriceps",
@@ -41744,9 +39062,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "0809-QpXqiq8.jpg",
-    "gif": "0809-QpXqiq8.gif"
-  },
+    },
   {
     "id": "og_3433",
     "muscle": "Fessiers",
@@ -41773,9 +39089,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "3433-SP3hUez.jpg",
-    "gif": "3433-SP3hUez.gif"
-  },
+    },
   {
     "id": "og_3318",
     "muscle": "Cardio",
@@ -41801,9 +39115,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3318-tnaj0mT.jpg",
-    "gif": "3318-tnaj0mT.gif"
-  },
+    },
   {
     "id": "og_1753",
     "muscle": "Triceps",
@@ -41829,9 +39141,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "1753-DQ0cqkT.jpg",
-    "gif": "1753-DQ0cqkT.gif"
-  },
+    },
   {
     "id": "og_2459",
     "muscle": "Fessiers",
@@ -41860,9 +39170,7 @@ export const exerciseLibrary = [
     ],
     "eq": "tire",
     "bp": "upper legs",
-    "img": "2459-oZjMu1t.jpg",
-    "gif": "2459-oZjMu1t.gif"
-  },
+    },
   {
     "id": "og_0811",
     "muscle": "Fessiers",
@@ -41890,9 +39198,7 @@ export const exerciseLibrary = [
     ],
     "eq": "trap bar",
     "bp": "upper legs",
-    "img": "0811-jQGwmxN.jpg",
-    "gif": "0811-jQGwmxN.gif"
-  },
+    },
   {
     "id": "og_0814",
     "muscle": "Triceps",
@@ -41918,9 +39224,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0814-X6C6i5Y.jpg",
-    "gif": "0814-X6C6i5Y.gif"
-  },
+    },
   {
     "id": "og_0812",
     "muscle": "Triceps",
@@ -41946,9 +39250,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0812-VuoerH0.jpg",
-    "gif": "0812-VuoerH0.gif"
-  },
+    },
   {
     "id": "og_0813",
     "muscle": "Triceps",
@@ -41974,9 +39276,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0813-Wgbn9qo.jpg",
-    "gif": "0813-Wgbn9qo.gif"
-  },
+    },
   {
     "id": "og_0815",
     "muscle": "Triceps",
@@ -42003,9 +39303,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0815-7aVz15j.jpg",
-    "gif": "0815-7aVz15j.gif"
-  },
+    },
   {
     "id": "og_0816",
     "muscle": "Triceps",
@@ -42030,9 +39328,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0816-fSrPP6B.jpg",
-    "gif": "0816-fSrPP6B.gif"
-  },
+    },
   {
     "id": "og_0817",
     "muscle": "Triceps",
@@ -42057,9 +39353,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper arms",
-    "img": "0817-uOV3Itw.jpg",
-    "gif": "0817-uOV3Itw.gif"
-  },
+    },
   {
     "id": "og_0871",
     "muscle": "Abdominaux",
@@ -42084,9 +39378,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0871-BMMolZ3.jpg",
-    "gif": "0871-BMMolZ3.gif"
-  },
+    },
   {
     "id": "og_0818",
     "muscle": "Dos",
@@ -42116,9 +39408,7 @@ export const exerciseLibrary = [
     ],
     "eq": "cable",
     "bp": "back",
-    "img": "0818-rkg41Fb.jpg",
-    "gif": "0818-rkg41Fb.gif"
-  },
+    },
   {
     "id": "og_1466",
     "muscle": "Fessiers",
@@ -42145,9 +39435,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1466-AX1kB0o.jpg",
-    "gif": "1466-AX1kB0o.gif"
-  },
+    },
   {
     "id": "og_2802",
     "muscle": "Abdominaux",
@@ -42175,9 +39463,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2802-C0eCeEt.jpg",
-    "gif": "2802-C0eCeEt.gif"
-  },
+    },
   {
     "id": "og_2801",
     "muscle": "Abdominaux",
@@ -42204,9 +39490,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "2801-yT9tk17.jpg",
-    "gif": "2801-yT9tk17.gif"
-  },
+    },
   {
     "id": "og_3231",
     "muscle": "Dos",
@@ -42232,9 +39516,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "3231-p195zsJ.jpg",
-    "gif": "3231-p195zsJ.gif"
-  },
+    },
   {
     "id": "og_1365",
     "muscle": "Dos",
@@ -42260,9 +39542,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1365-GSDioYu.jpg",
-    "gif": "1365-GSDioYu.gif"
-  },
+    },
   {
     "id": "og_1366",
     "muscle": "Dos",
@@ -42289,9 +39569,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1366-01qpYSe.jpg",
-    "gif": "1366-01qpYSe.gif"
-  },
+    },
   {
     "id": "og_3420",
     "muscle": "Abdominaux",
@@ -42316,9 +39594,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "3420-ZuXu4Eq.jpg",
-    "gif": "3420-ZuXu4Eq.gif"
-  },
+    },
   {
     "id": "og_0826",
     "muscle": "Abdominaux",
@@ -42343,9 +39619,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0826-ZNgOYQU.jpg",
-    "gif": "0826-ZNgOYQU.gif"
-  },
+    },
   {
     "id": "og_2141",
     "muscle": "Cardio",
@@ -42375,9 +39649,7 @@ export const exerciseLibrary = [
     ],
     "eq": "elliptical machine",
     "bp": "cardio",
-    "img": "2141-rjtuP6X.jpg",
-    "gif": "2141-rjtuP6X.gif"
-  },
+    },
   {
     "id": "og_3655",
     "muscle": "Cardio",
@@ -42407,9 +39679,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3655-J9zIWig.jpg",
-    "gif": "3655-J9zIWig.gif"
-  },
+    },
   {
     "id": "og_1460",
     "muscle": "Fessiers",
@@ -42437,9 +39707,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1460-IZVHb27.jpg",
-    "gif": "1460-IZVHb27.gif"
-  },
+    },
   {
     "id": "og_3666",
     "muscle": "Cardio",
@@ -42467,9 +39735,7 @@ export const exerciseLibrary = [
     ],
     "eq": "leverage machine",
     "bp": "cardio",
-    "img": "3666-rjiM4L3.jpg",
-    "gif": "3666-rjiM4L3.gif"
-  },
+    },
   {
     "id": "og_2311",
     "muscle": "Cardio",
@@ -42499,9 +39765,7 @@ export const exerciseLibrary = [
     ],
     "eq": "stepmill machine",
     "bp": "cardio",
-    "img": "2311-j9Q5crt.jpg",
-    "gif": "2311-j9Q5crt.gif"
-  },
+    },
   {
     "id": "og_0830",
     "muscle": "Triceps",
@@ -42527,9 +39791,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper arms",
-    "img": "0830-MU9HnE7.jpg",
-    "gif": "0830-MU9HnE7.gif"
-  },
+    },
   {
     "id": "og_2987",
     "muscle": "Dos",
@@ -42556,9 +39818,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "2987-Gk1r408.jpg",
-    "gif": "2987-Gk1r408.gif"
-  },
+    },
   {
     "id": "og_3643",
     "muscle": "Fessiers",
@@ -42586,9 +39846,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper legs",
-    "img": "3643-GWoKnIm.jpg",
-    "gif": "3643-GWoKnIm.gif"
-  },
+    },
   {
     "id": "og_0832",
     "muscle": "Abdominaux",
@@ -42613,9 +39871,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0832-s8nrDXF.jpg",
-    "gif": "0832-s8nrDXF.gif"
-  },
+    },
   {
     "id": "og_3670",
     "muscle": "Abdominaux",
@@ -42641,9 +39897,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "3670-EZeDVzO.jpg",
-    "gif": "3670-EZeDVzO.gif"
-  },
+    },
   {
     "id": "og_0833",
     "muscle": "Mollets",
@@ -42669,9 +39923,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "lower legs",
-    "img": "0833-LmaFNZS.jpg",
-    "gif": "0833-LmaFNZS.gif"
-  },
+    },
   {
     "id": "og_1310",
     "muscle": "Pectoraux",
@@ -42699,9 +39951,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "chest",
-    "img": "1310-PSlvNMs.jpg",
-    "gif": "1310-PSlvNMs.gif"
-  },
+    },
   {
     "id": "og_2135",
     "muscle": "Abdominaux",
@@ -42730,9 +39980,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "2135-VBAWRPG.jpg",
-    "gif": "2135-VBAWRPG.gif"
-  },
+    },
   {
     "id": "og_0834",
     "muscle": "Épaules",
@@ -42757,9 +40005,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "shoulders",
-    "img": "0834-e4aFmFY.jpg",
-    "gif": "0834-e4aFmFY.gif"
-  },
+    },
   {
     "id": "og_0866",
     "muscle": "Abdominaux",
@@ -42785,9 +40031,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0866-QOA0FD0.jpg",
-    "gif": "0866-QOA0FD0.gif"
-  },
+    },
   {
     "id": "og_0835",
     "muscle": "Dos",
@@ -42813,9 +40057,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "0835-8urJS9b.jpg",
-    "gif": "0835-8urJS9b.gif"
-  },
+    },
   {
     "id": "og_3641",
     "muscle": "Épaules",
@@ -42840,9 +40082,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "shoulders",
-    "img": "3641-7uFJuXp.jpg",
-    "gif": "3641-7uFJuXp.gif"
-  },
+    },
   {
     "id": "og_3644",
     "muscle": "Fessiers",
@@ -42869,9 +40109,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper legs",
-    "img": "3644-5WiFcYk.jpg",
-    "gif": "3644-5WiFcYk.gif"
-  },
+    },
   {
     "id": "og_3286",
     "muscle": "Dos",
@@ -42900,9 +40138,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "3286-JsOV1SU.jpg",
-    "gif": "3286-JsOV1SU.gif"
-  },
+    },
   {
     "id": "og_3312",
     "muscle": "Dos",
@@ -42931,9 +40167,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "3312-MCkqdKE.jpg",
-    "gif": "3312-MCkqdKE.gif"
-  },
+    },
   {
     "id": "og_3290",
     "muscle": "Dos",
@@ -42960,9 +40194,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "3290-fXfqg1E.jpg",
-    "gif": "3290-fXfqg1E.gif"
-  },
+    },
   {
     "id": "og_0840",
     "muscle": "Abdominaux",
@@ -42988,9 +40220,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0840-xmM75XG.jpg",
-    "gif": "0840-xmM75XG.gif"
-  },
+    },
   {
     "id": "og_0841",
     "muscle": "Dos",
@@ -43017,9 +40247,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "back",
-    "img": "0841-HMzLjXx.jpg",
-    "gif": "0841-HMzLjXx.gif"
-  },
+    },
   {
     "id": "og_0844",
     "muscle": "Épaules",
@@ -43046,9 +40274,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "shoulders",
-    "img": "0844-VLYXo8S.jpg",
-    "gif": "0844-VLYXo8S.gif"
-  },
+    },
   {
     "id": "og_0846",
     "muscle": "Abdominaux",
@@ -43075,9 +40301,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0846-fZFZ704.jpg",
-    "gif": "0846-fZFZ704.gif"
-  },
+    },
   {
     "id": "og_0845",
     "muscle": "Abdominaux",
@@ -43104,9 +40328,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0845-WU9BLIs.jpg",
-    "gif": "0845-WU9BLIs.gif"
-  },
+    },
   {
     "id": "og_2371",
     "muscle": "Abdominaux",
@@ -43133,9 +40355,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "2371-YIUAtYf.jpg",
-    "gif": "2371-YIUAtYf.gif"
-  },
+    },
   {
     "id": "og_0847",
     "muscle": "Biceps",
@@ -43161,9 +40381,7 @@ export const exerciseLibrary = [
     ],
     "eq": "medicine ball",
     "bp": "upper arms",
-    "img": "0847-b4b6afT.jpg",
-    "gif": "0847-b4b6afT.gif"
-  },
+    },
   {
     "id": "og_0849",
     "muscle": "Abdominaux",
@@ -43190,9 +40408,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0849-s34Y4LR.jpg",
-    "gif": "0849-s34Y4LR.gif"
-  },
+    },
   {
     "id": "og_0850",
     "muscle": "Abdominaux",
@@ -43218,9 +40434,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "waist",
-    "img": "0850-6bOA1Oi.jpg",
-    "gif": "0850-6bOA1Oi.gif"
-  },
+    },
   {
     "id": "og_0851",
     "muscle": "Quadriceps",
@@ -43248,9 +40462,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper legs",
-    "img": "0851-0lQnxMZ.jpg",
-    "gif": "0851-0lQnxMZ.gif"
-  },
+    },
   {
     "id": "og_0852",
     "muscle": "Fessiers",
@@ -43278,9 +40490,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper legs",
-    "img": "0852-JZuApnB.jpg",
-    "gif": "0852-JZuApnB.gif"
-  },
+    },
   {
     "id": "og_0853",
     "muscle": "Biceps",
@@ -43304,9 +40514,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper arms",
-    "img": "0853-M5Y7GPg.jpg",
-    "gif": "0853-M5Y7GPg.gif"
-  },
+    },
   {
     "id": "og_0854",
     "muscle": "Avant-bras",
@@ -43332,9 +40540,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "lower arms",
-    "img": "0854-bjqbauy.jpg",
-    "gif": "0854-bjqbauy.gif"
-  },
+    },
   {
     "id": "og_3313",
     "muscle": "Pectoraux",
@@ -43359,9 +40565,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "chest",
-    "img": "3313-Ff18ItA.jpg",
-    "gif": "3313-Ff18ItA.gif"
-  },
+    },
   {
     "id": "og_3642",
     "muscle": "Fessiers",
@@ -43389,9 +40593,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper legs",
-    "img": "3642-13VW2VO.jpg",
-    "gif": "3642-13VW2VO.gif"
-  },
+    },
   {
     "id": "og_0856",
     "muscle": "Pectoraux",
@@ -43417,9 +40619,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "chest",
-    "img": "0856-I1OBLnn.jpg",
-    "gif": "0856-I1OBLnn.gif"
-  },
+    },
   {
     "id": "og_1754",
     "muscle": "Triceps",
@@ -43445,9 +40645,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper arms",
-    "img": "1754-gtO1ErP.jpg",
-    "gif": "1754-gtO1ErP.gif"
-  },
+    },
   {
     "id": "og_1755",
     "muscle": "Triceps",
@@ -43474,9 +40672,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper arms",
-    "img": "1755-bZq4bwK.jpg",
-    "gif": "1755-bZq4bwK.gif"
-  },
+    },
   {
     "id": "og_1767",
     "muscle": "Triceps",
@@ -43501,9 +40697,7 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "upper arms",
-    "img": "1767-K1vlode.jpg",
-    "gif": "1767-K1vlode.gif"
-  },
+    },
   {
     "id": "og_0857",
     "muscle": "Abdominaux",
@@ -43529,9 +40723,7 @@ export const exerciseLibrary = [
     ],
     "eq": "wheel roller",
     "bp": "waist",
-    "img": "0857-NAgVB3t.jpg",
-    "gif": "0857-NAgVB3t.gif"
-  },
+    },
   {
     "id": "og_3637",
     "muscle": "Cardio",
@@ -43558,9 +40750,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "cardio",
-    "img": "3637-km2Ljzj.jpg",
-    "gif": "3637-km2Ljzj.gif"
-  },
+    },
   {
     "id": "og_1429",
     "muscle": "Dos",
@@ -43586,9 +40776,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1429-Qqi7bko.jpg",
-    "gif": "1429-Qqi7bko.gif"
-  },
+    },
   {
     "id": "og_1367",
     "muscle": "Dos",
@@ -43615,9 +40803,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "back",
-    "img": "1367-OYFhXVD.jpg",
-    "gif": "1367-OYFhXVD.gif"
-  },
+    },
   {
     "id": "og_1311",
     "muscle": "Pectoraux",
@@ -43643,9 +40829,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "1311-JmMVpR3.jpg",
-    "gif": "1311-JmMVpR3.gif"
-  },
+    },
   {
     "id": "og_2363",
     "muscle": "Pectoraux",
@@ -43670,9 +40854,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "chest",
-    "img": "2363-O2K9Vb5.jpg",
-    "gif": "2363-O2K9Vb5.gif"
-  },
+    },
   {
     "id": "og_0858",
     "muscle": "Abdominaux",
@@ -43699,9 +40881,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "waist",
-    "img": "0858-Qoujh3Q.jpg",
-    "gif": "0858-Qoujh3Q.gif"
-  },
+    },
   {
     "id": "og_1604",
     "muscle": "Ischio-Jambiers",
@@ -43729,9 +40909,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "upper legs",
-    "img": "1604-DFGXwZr.jpg",
-    "gif": "1604-DFGXwZr.gif"
-  },
+    },
   {
     "id": "og_1428",
     "muscle": "Avant-bras",
@@ -43756,9 +40934,7 @@ export const exerciseLibrary = [
     ],
     "eq": "body weight",
     "bp": "lower arms",
-    "img": "1428-2zNKRUB.jpg",
-    "gif": "1428-2zNKRUB.gif"
-  },
+    },
   {
     "id": "og_0859",
     "muscle": "Avant-bras",
@@ -43785,7 +40961,5 @@ export const exerciseLibrary = [
     ],
     "eq": "weighted",
     "bp": "lower arms",
-    "img": "0859-bd5b860.jpg",
-    "gif": "0859-bd5b860.gif"
-  }
+    }
 ];
