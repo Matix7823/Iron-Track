@@ -1656,7 +1656,7 @@ const Workout = () => {
         <>
           {session.exercises.map((exo, i) => <ExerciseCard key={exo.id} exo={exo} index={i} sessionId={currentSession} onRemoveRequest={setExerciseToDelete} />)}
           {/* Add exercise / session buttons */}
-          <div className="flex gap-2 w-full mb-12">
+          <div className="flex gap-2 w-full mb-6">
             <button
               onClick={() => setShowAddModal(true)}
               className="flex-1 glass border-dashed border-white/20 py-6 rounded-2xl flex flex-col items-center gap-2 text-slate-500 hover:text-blue-400 hover:border-blue-500/50 transition-all"
@@ -1675,17 +1675,15 @@ const Workout = () => {
         </>
       )}
 
-
-      {/* Save button */}
-      <div className="fixed-save-bar glass-dark border-t border-white/5 px-4 pt-3 pb-3 flex justify-center">
+      {/* Save button - positionné en bas de page dans le flux naturel */}
+      <div className="w-full flex justify-center mt-2 mb-8">
         <motion.button
-          whileTap={{ scale:.97 }}
+          whileTap={{ scale: .97 }}
           onClick={handlePreSave}
-          className="btn-primary w-full max-w-lg text-base py-4 neon-border shadow-2xl">
+          className="btn-primary w-full max-w-lg text-base py-4 neon-border shadow-2xl flex items-center justify-center gap-2">
           <Save size={20} /> Valider la Séance
         </motion.button>
       </div>
-      <div className="h-52" />
     </div>
   );
 };
